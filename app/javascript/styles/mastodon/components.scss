@@ -2584,7 +2584,7 @@ $ui-header-height: 55px;
       margin: 0;
       background: $ui-base-color;
       border-left: 1px solid lighten($ui-base-color, 8%);
-      border-radius: 10px 0 10px 0;
+      border-radius: 10px 0;
       height: 100vh;
     }
 
@@ -7104,7 +7104,7 @@ noscript {
       display: block;
       flex: 0 0 auto;
       width: 94px;
-      
+
       .account__avatar {
         background: darken($ui-base-color, 8%);
         border: 2px solid lighten($ui-base-color, 4%);
