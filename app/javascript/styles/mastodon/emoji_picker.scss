@@ -197,7 +197,7 @@
     width: 100%;
     font-weight: 500;
     padding: 5px 6px;
-    background: $ui-base-color;
+    background: lighter($ui-base-color, 4%);
     color: $ui-highlight-color;
   }
 }
