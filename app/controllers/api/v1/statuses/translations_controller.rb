@@ -9,7 +9,9 @@ class Api::V1::Statuses::TranslationsController < Api::BaseController
 
   rescue_from TranslationService::NotConfiguredError, with: :not_found
   rescue_from TranslationService::RequestNotValidError, with: :bad_request
-  rescue_from TranslationService::UnexpectedResponseError, TranslationService::QuotaExceededError, TranslationService::TooManyRequestsError, with: :service_unavailable
+  rescue_from TranslationService::UnexpectedResponseError, TranslationService::TranslationServerError,
+  TranslationService::QuotaExceededError, with: :service_unavailable
+  rescue_from TranslationService::TooManyRequestsError, with: :not_acceptable
   
   def create
     render json: @translation, serializer: REST::TranslationSerializer
