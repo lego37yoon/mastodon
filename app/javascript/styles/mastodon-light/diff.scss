@@ -685,12 +685,8 @@ html {
   background: $white;
 }
 
-.notification__filter-bar button.active::after {
+.notification__filter-bar button.active::after, .account__section-headline a.active::after {
   border-color: transparent transparent darken($ui-base-color, 7%);
-}
-
-.account__section-headline a.active::after {
-  border-color: transparent transparent $white;
 }
 
 .hero-widget,
