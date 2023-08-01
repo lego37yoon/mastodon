@@ -22,7 +22,7 @@ class TranslationService::Papago < TranslationService
       when 200...300
         transform_response(res.body_with_limit)
       else
-        Translation.new(text: text, detected_source_language: source_language, provider: 'NAVER Papago with error code')
+        show_resource(res.body_with_limit)
       end
     end
   end
@@ -48,4 +48,8 @@ class TranslationService::Papago < TranslationService
   rescue Oj::ParseError
     raise UnexpectedResponseError
   end
+
+  def show_resource(str)
+    Translation.new(text: str, detected_source_language: 'original', provider: 'NAVER Papago with error code')
+  end    
 end
