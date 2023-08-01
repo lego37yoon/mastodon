@@ -22,7 +22,7 @@ class TranslationService::Papago < TranslationService
       when 200...300
         transform_response(res.body_with_limit)
       else
-        show_resource(res.body_with_limit)
+        show_resource(res.code, res.body_with_limit)
       end
     end
   end
@@ -49,7 +49,7 @@ class TranslationService::Papago < TranslationService
     raise UnexpectedResponseError
   end
 
-  def show_resource(str)
-    Translation.new(text: str, detected_source_language: 'original', provider: 'NAVER Papago with error code')
+  def show_resource(code, str)
+    Translation.new(text: code, detected_source_language: 'en', provider: str)
   end    
 end
