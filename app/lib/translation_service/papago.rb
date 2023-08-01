@@ -16,9 +16,9 @@ class TranslationService::Papago < TranslationService
       when 429
         raise TooManyRequestsError
       when 400
-        raise RequestNotValidError
+        transform_response(res.body_with_limit)
       when 500
-        raise TranslationServerError
+        transform_response(res.body_with_limit)
       when 200...300
         transform_response(res.body_with_limit)
       else
