@@ -22,7 +22,7 @@ class TranslationService::Papago < TranslationService
       when 200...300
         transform_response(res.body_with_limit)
       else
-        raise UnexpectedResponseError
+        Translation.new(text: text, detected_source_language: source_language, provider: 'NAVER Papago with error code')
       end
     end
   end
@@ -46,7 +46,6 @@ class TranslationService::Papago < TranslationService
       Translation.new(text: json.dig('message', 'result', 'translatedText'), detected_source_language: json.dig('message', 'result', 'srcLangType'), provider: 'NAVER Papago')
     end
   rescue Oj::ParseError
-    Translation.new(text: str, detected_source_language: 'none', provider: 'NAVER Papago')
-    # raise UnexpectedResponseError
+    raise UnexpectedResponseError
   end
 end
