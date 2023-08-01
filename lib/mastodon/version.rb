@@ -21,7 +21,7 @@ module Mastodon
     end
 
     def suffix
-      '+smore+patch.18'
+      '+smore+patch.19'
     end
 
     def to_a
