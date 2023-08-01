@@ -511,6 +511,10 @@ html {
   border-bottom-color: lighten($ui-base-color, 8%);
 }
 
+.tabs-bar__wapper {
+  background: darken($ui-base-color, 7%);
+}
+
 .nothing-here,
 .page-header,
 .directory__tag > a,
