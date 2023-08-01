@@ -10,6 +10,8 @@ class TranslationService
   def self.configured
     if ENV['DEEPL_API_KEY'].present?
       TranslationService::DeepL.new(ENV.fetch('DEEPL_PLAN', 'free'), ENV['DEEPL_API_KEY'])
+    elsif ENV['PAPAGO_API_ID'].present?
+      TranslationService::Papago.new(ENV['PAPAGO_API_ID'], ENV['PAPAGO_API_SECRET'])
     elsif ENV['LIBRE_TRANSLATE_ENDPOINT'].present?
       TranslationService::LibreTranslate.new(ENV['LIBRE_TRANSLATE_ENDPOINT'], ENV['LIBRE_TRANSLATE_API_KEY'])
     else
@@ -18,7 +20,7 @@ class TranslationService
   end
 
   def self.configured?
-    ENV['DEEPL_API_KEY'].present? || ENV['LIBRE_TRANSLATE_ENDPOINT'].present?
+    ENV['DEEPL_API_KEY'].present? || ENV['PAPAGO_API_ID'].present? || ENV['LIBRE_TRANSLATE_ENDPOINT'].present?
   end
 
   def translate(_text, _source_language, _target_language)
