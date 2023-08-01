@@ -44,6 +44,7 @@ class TranslationService::Papago < TranslationService
       Translation.new(text: json.dig('resultText', 'errorMessage'), detected_source_language: json.dig('resultText', 'errorCode'), provider: 'NAVER Papago')
     else
       Translation.new(text: json.dig('message', 'result', 'translatedText'), detected_source_language: json.dig('message', 'result', 'srcLangType'), provider: 'NAVER Papago')
+    end
   rescue Oj::ParseError
     raise UnexpectedResponseError
   end
