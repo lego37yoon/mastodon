@@ -47,7 +47,7 @@ html {
   background: darken($ui-base-color, 7%);
 }
 
-.column > .scrollable .item-list article {
+.column > .scrollable .item-list article, .column > .scrollable .item-list div {
   background: $white;
 }
 
