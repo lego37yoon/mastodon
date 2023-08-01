@@ -40,9 +40,10 @@ class TranslationService::Papago < TranslationService
   def transform_response(str)
     json = Oj.load(str, mode: :strict)
 
-    raise UnexpectedResponseError unless json.is_a?(Hash)
-
-    Translation.new(text: json.dig('message', 'result', 'translatedText'), detected_source_language: json.dig('message', 'result', 'srcLangType'), provider: 'NAVER Papago')
+    unless json.is_a?(Hash)
+      Translation.new(text: json.dig('resultText', 'errorMessage'), detected_source_language: json.dig('resultText', 'errorCode'), provider: 'NAVER Papago')
+    else
+      Translation.new(text: json.dig('message', 'result', 'translatedText'), detected_source_language: json.dig('message', 'result', 'srcLangType'), provider: 'NAVER Papago')
   rescue Oj::ParseError
     raise UnexpectedResponseError
   end
