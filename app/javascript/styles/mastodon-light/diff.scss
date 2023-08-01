@@ -34,7 +34,6 @@ html {
 }
 
 // Change default background colors of columns
-.column > .scrollable,
 .getting-started,
 .column-inline-form,
 .error-column,
@@ -42,6 +41,14 @@ html {
   background: $white;
   border: 1px solid lighten($ui-base-color, 8%);
   border-top: 0;
+}
+
+.column > .scrollable {
+  background: darken($ui-base-color, 7%);
+}
+
+.item-list article {
+  background: $white;
 }
 
 .column > .scrollable.about {

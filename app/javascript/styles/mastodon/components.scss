@@ -2361,9 +2361,13 @@ $ui-header-height: 55px;
   flex-direction: column;
 
   > .scrollable {
-    background: $ui-base-color;
+    background: darken($ui-base-color, 7%);
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+
+    .item-list article {
+      background: $ui-base-color;
+    }
   }
 }
 
