@@ -666,7 +666,18 @@ html {
   }
 }
 
-.notification__filter-bar button.active::after,
+.account__section-headline, .notification__filter-bar {
+  background: $white;
+}
+
+.account__section-headline a, .account__section-headline button, .notification__filter-bar a, .notification__filter-bar button {
+  background: $white;
+}
+
+.notification__filter-bar button.active::after {
+  border-color: transparent transparent darken($ui-base-color, 7%);
+}
+
 .account__section-headline a.active::after {
   border-color: transparent transparent $white;
 }
