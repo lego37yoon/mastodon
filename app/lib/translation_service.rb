@@ -6,6 +6,7 @@ class TranslationService
   class TooManyRequestsError < Error; end
   class QuotaExceededError < Error; end
   class UnexpectedResponseError < Error; end
+  class RequestNotValidError < Error; end
 
   def self.configured
     if ENV['DEEPL_API_KEY'].present?
