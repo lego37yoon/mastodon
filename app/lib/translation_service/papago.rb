@@ -15,14 +15,10 @@ class TranslationService::Papago < TranslationService
       case res.code
       when 429
         raise TooManyRequestsError
-      when 400
-        transform_response(res.body_with_limit)
-      when 500
-        transform_response(res.body_with_limit)
       when 200...300
         transform_response(res.body_with_limit)
       else
-        show_resource(res.code, res.body_with_limit)
+        raise UnexpectedResponseError
       end
     end
   end
@@ -31,25 +27,19 @@ class TranslationService::Papago < TranslationService
 
   def request(text, source_language, target_language)
     req = Request.new(:post, 'https://openapi.naver.com/v1/papago/n2mt', form: {source: source_language, target: target_language, text: text})
-    req.add_headers('Content-Type': "application/json; charset=UTF-8")
+    req.add_headers('Content-Type': "application/x-www-form-urlencoded; charset=UTF-8")
     req.add_headers('X-Naver-Client-Id': "#{@api_id}")
-    req.add_headers('X-Naver-Secret': "#{@api_secret}")
+    req.add_headers('X-Naver-Client-Secret': "#{@api_secret}")
     req
   end
 
   def transform_response(str)
     json = Oj.load(str, mode: :strict)
 
-    unless json.is_a?(Hash)
-      Translation.new(text: json.dig('resultText', 'errorMessage'), detected_source_language: json.dig('resultText', 'errorCode'), provider: 'NAVER Papago')
-    else
-      Translation.new(text: json.dig('message', 'result', 'translatedText'), detected_source_language: json.dig('message', 'result', 'srcLangType'), provider: 'NAVER Papago')
-    end
+    raise UnexpectedResponseError unless json.is_a?(Hash)
+
+    Translation.new(text: json.dig('message', 'result', 'translatedText'), detected_source_language: json.dig('message', 'result', 'srcLangType'), provider: 'NAVER Papago')
   rescue Oj::ParseError
     raise UnexpectedResponseError
   end
-
-  def show_resource(code, str)
-    Translation.new(text: code, detected_source_language: 'en', provider: str)
-  end    
 end
