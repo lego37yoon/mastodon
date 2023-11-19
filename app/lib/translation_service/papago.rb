@@ -6,7 +6,7 @@ class TranslationService::Papago < TranslationService
   def initialize(api_id, api_secret)
     super()
 
-    @api_id    = api_id
+    @api_id = api_id
     @api_secret = api_secret
   end
 
@@ -26,10 +26,10 @@ class TranslationService::Papago < TranslationService
   private
 
   def request(text, source_language, target_language)
-    req = Request.new(:post, 'https://openapi.naver.com/v1/papago/n2mt', form: {source: source_language, target: target_language, text: text})
-    req.add_headers('Content-Type': "application/x-www-form-urlencoded; charset=UTF-8")
-    req.add_headers('X-Naver-Client-Id': "#{@api_id}")
-    req.add_headers('X-Naver-Client-Secret': "#{@api_secret}")
+    req = Request.new(:post, 'https://openapi.naver.com/v1/papago/n2mt', form: { source: source_language, target: target_language, text: text })
+    req.add_headers('Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8')
+    req.add_headers('X-Naver-Client-Id': @api_id.to_s)
+    req.add_headers('X-Naver-Client-Secret': @api_secret.to_s)
     req
   end
 
