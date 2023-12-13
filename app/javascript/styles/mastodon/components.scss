@@ -49,7 +49,7 @@
 .button {
   background-color: $ui-button-background-color;
   border: 10px none;
-  border-radius: 25px;
+  border-radius: 4px;
   box-sizing: border-box;
   color: $ui-button-color;
   cursor: pointer;
@@ -183,7 +183,7 @@
   padding: 0;
   color: $action-button-color;
   border: 0;
-  border-radius: 10px;
+  border-radius: 4px;
   background: transparent;
   cursor: pointer;
   text-decoration: none;
@@ -2243,12 +2243,7 @@ $ui-header-height: 55px;
 
   > .scrollable {
     background: darken($ui-base-color, 7%);
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-
-    .item-list article {
-      background: $ui-base-color;
-    }
+    border-radius: 0 0 4px 4px;
   }
 }
 
@@ -2476,6 +2471,7 @@ $ui-header-height: 55px;
 
     .navigation-panel__sign-in-banner,
     .navigation-panel__logo,
+    .navigation-panel__banner,
     .getting-started__trends {
       display: none;
     }
