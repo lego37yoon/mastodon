@@ -13,7 +13,7 @@ module Mastodon
     end
 
     def patch
-      '6+smore.patch.1'
+      '7+choco.31'
     end
 
     def default_prerelease
