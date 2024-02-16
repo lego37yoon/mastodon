@@ -3,7 +3,7 @@
 class EmojiFormatter
   include RoutingHelper
 
-  DISALLOWED_BOUNDING_REGEX = /[[:alnum:]:]/
+  DISALLOWED_BOUNDING_REGEX = /[[:space:]]/
 
   attr_reader :html, :custom_emojis, :options
 
@@ -39,15 +39,15 @@ class EmojiFormatter
         if inside_shortname && text[i] == ':'
           inside_shortname = false
           shortcode = text[shortname_start_index + 1..i - 1]
-          char_after = text[i + 1]
+          char_before = text[i - 1]
 
-          next unless (char_after.nil? || !DISALLOWED_BOUNDING_REGEX.match?(char_after)) && (emoji = emoji_map[shortcode])
+          next unless (char_after.nil? || !DISALLOWED_BOUNDING_REGEX.match?(char_before)) && (emoji = emoji_map[shortcode])
 
           result << Nokogiri::XML::Text.new(text[last_index..shortname_start_index - 1], tree.document) if shortname_start_index.positive?
           result << Nokogiri::HTML.fragment(tag_for_emoji(shortcode, emoji))
 
           last_index = i + 1
-        elsif text[i] == ':' && (i.zero? || !DISALLOWED_BOUNDING_REGEX.match?(text[i - 1]))
+        elsif text[i] == ':' && (i.zero? || !DISALLOWED_BOUNDING_REGEX.match?(text[i + 1]))
           inside_shortname = true
           shortname_start_index = i
         end
@@ -83,7 +83,7 @@ class EmojiFormatter
 
     image_tag(
       animate? ? original_url : static_url,
-      image_attributes.merge(alt: ":#{shortcode}:", title: ":#{shortcode}:", data: image_data_attributes(original_url, static_url))
+      image_attributes.merge(alt: "custom emoji name: #{shortcode}", title: ":#{shortcode}:", data: image_data_attributes(original_url, static_url))
     )
   end
 
