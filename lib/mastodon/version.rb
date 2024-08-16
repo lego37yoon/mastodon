@@ -13,7 +13,7 @@ module Mastodon
     end
 
     def patch
-      '10+choco.36'
+      '10+choco.37'
     end
 
     def default_prerelease
