@@ -13,7 +13,7 @@ module Mastodon
     end
 
     def patch
-      '10+choco.37'
+      0
     end
 
     def default_prerelease
@@ -25,7 +25,7 @@ module Mastodon
     end
 
     def build_metadata
-      ENV.fetch('MASTODON_VERSION_METADATA', nil)
+      '+choco.38'
     end
 
     def to_a
