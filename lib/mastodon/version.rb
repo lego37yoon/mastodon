@@ -9,15 +9,15 @@ module Mastodon
     end
 
     def minor
-      2
+      3
     end
 
     def patch
-      '10+choco.37'
+      0
     end
 
     def default_prerelease
-      ''
+      'beta.1'
     end
 
     def prerelease
@@ -25,7 +25,7 @@ module Mastodon
     end
 
     def build_metadata
-      ENV.fetch('MASTODON_VERSION_METADATA', nil)
+      '+choco.38'
     end
 
     def to_a
@@ -65,7 +65,7 @@ module Mastodon
     end
 
     def user_agent
-      @user_agent ||= "#{HTTP::Request::USER_AGENT} (Mastodon/#{Version}; +http#{Rails.configuration.x.use_https ? 's' : ''}://#{Rails.configuration.x.web_domain}/)"
+      @user_agent ||= "Mastodon/#{Version} (#{HTTP::Request::USER_AGENT}; +http#{Rails.configuration.x.use_https ? 's' : ''}://#{Rails.configuration.x.web_domain}/)"
     end
   end
 end

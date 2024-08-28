@@ -51,6 +51,7 @@ const initialState = ImmutableMap({
 
     dismissPermissionBanner: false,
     showUnread: true,
+    minimizeFilteredBanner: false,
 
     shows: ImmutableMap({
       follow: true,
@@ -104,7 +105,7 @@ const initialState = ImmutableMap({
   dismissed_banners: ImmutableMap({
     'public_timeline': false,
     'community_timeline': false,
-    'home.explore_prompt': false,
+    'home/follow-suggestions': false,
     'explore/links': false,
     'explore/statuses': false,
     'explore/tags': false,
