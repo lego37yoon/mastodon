@@ -25,7 +25,7 @@ module Mastodon
     end
 
     def build_metadata
-      '+choco.38'
+      'choco.39'
     end
 
     def to_a
