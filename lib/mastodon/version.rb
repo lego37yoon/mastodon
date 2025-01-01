@@ -13,7 +13,7 @@ module Mastodon
     end
 
     def patch
-      1
+      2
     end
 
     def default_prerelease
@@ -25,7 +25,7 @@ module Mastodon
     end
 
     def build_metadata
-      'choco.39'
+      'choco.40'
     end
 
     def to_a
