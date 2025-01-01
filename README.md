@@ -1,21 +1,22 @@
-<h1><picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./lib/assets/wordmark.dark.png?raw=true">
-  <source media="(prefers-color-scheme: light)" srcset="./lib/assets/wordmark.light.png?raw=true">
-  <img alt="Mastodon" src="./lib/assets/wordmark.light.png?raw=true" height="34">
-</picture></h1>
+# Chocotodon
 
-[![GitHub release](https://img.shields.io/github/release/mastodon/mastodon.svg)][releases]
-[![Ruby Testing](https://github.com/mastodon/mastodon/actions/workflows/test-ruby.yml/badge.svg)](https://github.com/mastodon/mastodon/actions/workflows/test-ruby.yml)
-[![Crowdin](https://d322cqt584bo4o.cloudfront.net/mastodon/localized.svg)][crowdin]
+[![GitHub release](https://img.shields.io/github/release/lego37yoon/mastodon.svg)][releases]
 
-[releases]: https://github.com/mastodon/mastodon/releases
-[crowdin]: https://crowdin.com/project/mastodon
+[releases]: https://github.com/lego37yoon/mastodon/releases
+
+> A Mastodon based forked fediverse software with extra themes and other changes for Korean users, especially for S'more Waffle instance.
+
+초코토돈은 S'more Waffle 인스턴스에 서비스할 목적으로 사용 중인 포크의 이름입니다. Mastodon과 같은 AGPL 라이선스로 배포되며, 아주 빠르게 따라가지는 않지만 대체로 Mastodon의 순정 출시 버전을 따라갑니다. 추가적인 테마나 수정된 기능이 포함되어 있습니다.
+
+> [!WARNING]
+> Chocotodon does not services Docker image, and also not tested on Docker environment. Only non-docker setup officially tested and supported.
+> 초코토돈은 Docker 이미지를 제공하지 않으며, Docker 환경에서 테스트하지 않았습니다. Docker를 이용하지 않은 환경에서만 테스트하였고 지원합니다.
+
+## What is Mastodon?
 
 Mastodon is a **free, open-source social network server** based on ActivityPub where users can follow friends and discover new ones. On Mastodon, users can publish anything they want: links, pictures, text, and video. All Mastodon servers are interoperable as a federated network (users on one server can seamlessly communicate with users from another one, including non-Mastodon software that implements ActivityPub!)
 
 Click below to **learn more** in a video:
-
-[![Screenshot](https://blog.joinmastodon.org/2018/06/why-activitypub-is-the-future/ezgif-2-60f1b00403.gif)][youtube_demo]
 
 [youtube_demo]: https://www.youtube.com/watch?v=IPSbNdBmWKE
 
@@ -142,7 +143,7 @@ You can open issues for bugs you've found or features you think are missing. You
 
 ## License
 
-Copyright (C) 2016-2024 Eugen Rochko & other Mastodon contributors (see [AUTHORS.md](AUTHORS.md))
+Copyright (C) 2016-2025 Eugen Rochko & other Mastodon contributors (see [AUTHORS.md](AUTHORS.md))
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
