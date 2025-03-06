@@ -1,11 +1,11 @@
 services:
   app:
-    working_dir: /workspaces/mastodon/
+    working_dir: /workspaces/smore
     build:
       context: ..
       dockerfile: .devcontainer/Dockerfile
     volumes:
-      - ..:/workspaces/mastodon:cached
+      - ..:/workspaces/smore:cached
     environment:
       RAILS_ENV: development
       NODE_ENV: development
@@ -16,9 +16,7 @@ services:
       DB_USER: postgres
       DB_PASS: postgres
       DB_PORT: '5432'
-      ES_ENABLED: 'true'
-      ES_HOST: es
-      ES_PORT: '9200'
+      LOCAL_DOMAIN: mastodon.local
       LIBRE_TRANSLATE_ENDPOINT: http://libretranslate:5000
     # Overrides default command so things don't shut down after the process ends.
     command: sleep infinity
@@ -31,8 +29,8 @@ services:
       - internal_network
 
   db:
-    image: postgres:14-alpine
-    restart: unless-stopped
+    image: postgres:17-alpine
+    restart: always
     volumes:
       - postgres-data:/var/lib/postgresql/data
     environment:
@@ -40,36 +38,21 @@ services:
       POSTGRES_DB: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_HOST_AUTH_METHOD: trust
+      TZ: Asia/Seoul
+      LANG: ko_KR.utf8
     networks:
       - internal_network
 
   redis:
-    image: redis:7-alpine
+    image: valkey/valkey:7.2-alpine
     restart: unless-stopped
     volumes:
       - redis-data:/data
     networks:
       - internal_network
 
-  es:
-    image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.2
-    restart: unless-stopped
-    environment:
-      ES_JAVA_OPTS: -Xms512m -Xmx512m
-      cluster.name: es-mastodon
-      discovery.type: single-node
-      bootstrap.memory_lock: 'true'
-    volumes:
-      - es-data:/usr/share/elasticsearch/data
-    networks:
-      - internal_network
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
-
   libretranslate:
-    image: libretranslate/libretranslate:v1.6.1
+    image: libretranslate/libretranslate:v1.6.4
     restart: unless-stopped
     volumes:
       - lt-data:/home/libretranslate/.local
@@ -80,7 +63,6 @@ services:
 volumes:
   postgres-data:
   redis-data:
-  es-data:
   lt-data:
 
 networks:
