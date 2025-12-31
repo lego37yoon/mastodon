@@ -192,7 +192,29 @@ RSpec.describe FeedManager do
         list.accounts << jeff
         status = Fabricate(:status, text: 'I post a lot', account: bob)
         reblog = Fabricate(:status, reblog: status, account: jeff)
-        expect(described_class.instance.filter?(:home, reblog, alice)).to be false
+        expect(subject.filter?(:home, reblog, alice)).to be false
+      end
+    end
+
+    context 'with list feed' do
+      let(:list) { Fabricate(:list, account: bob) }
+
+      before do
+        bob.follow!(alice)
+        list.list_accounts.create!(account: alice)
+      end
+
+      it "returns false for followee's status" do
+        status = Fabricate(:status, text: 'Hello world', account: alice)
+
+        expect(subject.filter?(:list, status, list)).to be false
+      end
+
+      it 'returns false for reblog by followee' do
+        status = Fabricate(:status, text: 'Hello world', account: jeff)
+        reblog = Fabricate(:status, reblog: status, account: alice)
+
+        expect(subject.filter?(:list, reblog, list)).to be false
       end
     end
 

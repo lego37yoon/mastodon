@@ -1,7 +1,9 @@
-@import 'mastodon/mixins';
-@import 'mastodon/variables';
-@import 'fonts/roboto';
-@import 'fonts/roboto-mono';
+@use 'mastodon/functions';
+@use 'mastodon/mixins';
+@use 'mastodon/variables';
+@use 'mastodon/css_variables';
+@use 'fonts/roboto';
+@use 'fonts/roboto-mono';
 
 @use 'mastodon/reset';
 @use 'mastodon/basics';

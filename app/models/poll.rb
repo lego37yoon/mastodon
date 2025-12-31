@@ -39,10 +39,8 @@ class Poll < ApplicationRecord
 
   validates :options, presence: true
   validates :expires_at, presence: true, if: :local?
-  validates_with PollValidator, on: :create, if: :local?
-
-  scope :attached, -> { where.not(status_id: nil) }
-  scope :unattached, -> { where(status_id: nil) }
+  validates_with PollOptionsValidator, if: :local?
+  validates_with PollExpirationValidator, if: -> { local? && expires_at_changed? }
 
   before_validation :prepare_options, if: :local?
   before_validation :prepare_votes_count

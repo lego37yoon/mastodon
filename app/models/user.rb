@@ -66,9 +66,7 @@ class User < ApplicationRecord
   include User::PamAuthenticable
 
   devise :two_factor_authenticatable,
-         otp_secret_encryption_key: Rails.configuration.x.otp_secret
-
-  include LegacyOtpSecret # Must be after the above `devise` line in order to override the legacy method
+         otp_secret_length: 32
 
   devise :two_factor_backupable,
          otp_number_of_backup_codes: 10
@@ -170,10 +168,6 @@ class User < ApplicationRecord
     else
       super
     end
-  end
-
-  def confirmed?
-    confirmed_at.present?
   end
 
   def invited?

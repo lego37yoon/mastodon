@@ -27,7 +27,7 @@ require_relative '../lib/sanitize_ext/sanitize_config'
 require_relative '../lib/paperclip/url_generator_extensions'
 require_relative '../lib/paperclip/attachment_extensions'
 
-require_relative '../lib/paperclip/gifv_transcoder'
+require_relative '../lib/paperclip/gif_transcoder'
 require_relative '../lib/paperclip/media_type_spoof_detector_extensions'
 require_relative '../lib/paperclip/transcoder'
 require_relative '../lib/paperclip/type_corrector'

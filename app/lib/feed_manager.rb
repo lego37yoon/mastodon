@@ -32,6 +32,33 @@ class FeedManager
     "feed:#{type}:#{id}:#{subtype}"
   end
 
+  # The number of items in the given timeline
+  # @param [Symbol] type
+  # @param [Integer] id
+  # @param [Symbol] subtype
+  # @return [Integer]
+  def timeline_size(type, id, subtype = nil)
+    redis.zcard(key(type, id, subtype))
+  end
+
+  # The filter result of the status to a particular feed
+  # @param [Symbol] timeline_type
+  # @param [Status] status
+  # @param [Account|List] receiver
+  # @return [void|Symbol] nil, :filter, or :skip_home
+  def filter(timeline_type, status, receiver)
+    case timeline_type
+    when :home
+      filter_from_home(status, receiver.id, build_crutches(receiver.id, [status]), :home)
+    when :list
+      (filter_from_list?(status, receiver) ? :filter : nil) || filter_from_home(status, receiver.account_id, build_crutches(receiver.account_id, [status], list: receiver), :list)
+    when :mentions
+      filter_from_mentions?(status, receiver.id) ? :filter : nil
+    when :tags
+      filter_from_tags?(status, receiver.id, build_crutches(receiver.id, [status])) ? :filter : nil
+    end
+  end
+
   # Check if the status should not be added to a feed
   # @param [Symbol] timeline_type
   # @param [Status] status
