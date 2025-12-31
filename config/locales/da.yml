@@ -917,11 +917,8 @@ da:
       reblogs: Genblogninger
       replied_to_html: Besvarede %{acct_link}
       status_changed: Indlæg ændret
-      status_title: Indlæg fra @%{name}
-      title: Kontoindlæg - @%{name}
-      trending: Trender
-      view_publicly: Vis offentligt
-      view_quoted_post: Vis citeret indlæg
+      title: Kontoindlæg
+      trending: Populære
       visibility: Synlighed
       with_media: Med medier
     strikes:
@@ -938,9 +935,7 @@ da:
       appeal_rejected: Appel afvist
     system_checks:
       database_schema_check:
-        message_html: Der er afventende databasemigreringer. Kør dem venligst for at sikre, at applikationen opfører sig som forventet
-      elasticsearch_analysis_index_mismatch:
-        message_html: Elasticsearch-indeksanalyseringsindstillinger er forældede. Kør <code>tootctl search deploy --only=%{value}</code>
+        message_html: Databasemigreringer afventer. Kør dem for at sikre den forventede adfærd fra applikationen
       elasticsearch_health_red:
         message_html: Elasticsearch-klynge er syg (rød status), søgefunktioner er utilgængelige
       elasticsearch_health_yellow:
@@ -1103,27 +1098,8 @@ da:
         used_by_over_week:
           one: Brugt af én person den seneste uge
           other: Brugt af %{count} personer den seneste uge
-      title: Anbefalinger og trends
-      trending: Trender
-    username_blocks:
-      add_new: Tilføj ny
-      block_registrations: Blokér registreringer
-      comparison:
-        contains: Indeholder
-        equals: Er lig
-      contains_html: Indeholder %{string}
-      created_msg: Brugernavn-regel er hermed oprettet
-      delete: Slet
-      edit:
-        title: Redigér brugernavn-regel
-      matches_exactly_html: Er lig med %{string}
-      new:
-        create: Opret regel
-        title: Opret ny brugernavn-regel
-      no_username_block_selected: Ingen brugernavn-regler ændret (ingen var valgt)
-      not_permitted: Ikke tilladt
-      title: Brugernavn-regler
-      updated_msg: Brugernavn-regel opdateret
+      title: Anbefalinger og Tendenser
+      trending: Populære
     warning_presets:
       add_new: Tilføj ny
       delete: Slet
@@ -1186,7 +1162,7 @@ da:
       new_trending_statuses:
         title: Indlæg, der trender
       new_trending_tags:
-        title: Populære hashtags
+        title: Hashtags, der trender
       subject: Nye tendenser klar til gennemgang på %{instance}
   aliases:
     add_new: Opret alias
@@ -1512,43 +1488,19 @@ da:
       overwrite: Overskriv
       overwrite_long: Erstat aktuelle poster med de nye
     overwrite_preambles:
-      blocking_html:
-        one: Du er ved at <strong>erstatte din sortliste</strong> med <strong>%{count} konto</strong> fra <strong>%{filename}</strong>.
-        other: Du er ved at <strong>erstatte din sortliste</strong> med op til <strong>%{count} konti</strong> fra <strong>%{filename}</strong>.
-      bookmarks_html:
-        one: Du er ved at <strong>erstatte dine bogmærker</strong> med <strong>%{count} indlæg</strong> fra <strong>%{filename}</strong>.
-        other: Du er ved at <strong>erstatte dine bogmærker</strong> med op til <strong>%{count} indlæg</strong> fra <strong>%{filename}</strong>.
-      domain_blocking_html:
-        one: Du er ved at <strong>erstatte din domænesortliste</strong> med <strong>%{count} domæne</strong> fra <strong>%{filename}</strong>.
-        other: Du er ved at <strong>erstatte din domænesortliste</strong> med op til <strong>%{count} domæner</strong> fra <strong>%{filename}</strong>.
-      following_html:
-        one: Du er ved at <strong>følge</strong> <strong>%{count} konto</strong> fra <strong>%{filename}</strong> og <strong>stoppe med at følge andre</strong>.
-        other: Du er ved at <strong>følge</strong> <strong>%{count} konti</strong> fra <strong>%{filename}</strong> og <strong>stoppe med at følge andre</strong>.
-      lists_html:
-        one: Du er ved at <strong>erstatte dine lister</strong> med indhold fra <strong>%{filename}</strong>. <strong>%{count} konto</strong> føjes til nye lister.
-        other: Du er ved at <strong>erstatte dine lister</strong> med indhold fra <strong>%{filename}</strong>. Op til <strong>%{count} konti</strong> føjes til nye lister.
-      muting_html:
-        one: Du er ved at <strong>erstatte din liste over en skjult konto</strong> med op til <strong>%{count} konto</strong> fra <strong>%{filename}</strong>.
-        other: Du er ved at <strong>erstatte din liste over skjulte konti</strong> med op til <strong>%{count} konti</strong> fra <strong>%{filename}</strong>.
+      blocking_html: Du er ved at <strong>erstatte bloklisten</strong> med op til <strong>%{total_items} konti</strong> fra <strong>%{filename}</strong>.
+      bookmarks_html: Du er ved at <strong>erstatte bogmærkelisten</strong> med op til <strong>%{total_items} emner</strong> fra <strong>%{filename}</strong>.
+      domain_blocking_html: Du er ved at <strong>erstatte domæneblokeringslisten</strong> med op til <strong>%{total_items} domæner</strong> fra <strong>%{filename}</strong>.
+      following_html: Du er ved at <strong>følge</strong> op til <strong>%{total_items} konti</strong> fra <strong>%{filename}</strong> og <strong>stoppe med at følge alle andre</strong>.
+      lists_html: Du er ved at <strong>erstatte dine lister</strong> med indholdet af <strong>%{filename}</strong>. Op til <strong>%{total_items} konti</strong> tilføjes nye lister.
+      muting_html: Du er ved at <strong>erstatte listen over tavsgjorte konti</strong> med op til <strong>%{total_items} konti</strong> fra <strong>%{filename}</strong>.
     preambles:
-      blocking_html:
-        one: Du er ved at <strong>blokere</strong> <strong>%{count} konto</strong> fra <strong>%{filename}</strong>.
-        other: Du er ved at <strong>blokere</strong> op til <strong>%{count} konti</strong> fra <strong>%{filename}</strong>.
-      bookmarks_html:
-        one: Du er ved at tilføje <strong>%{count} indlæg</strong> fra <strong>%{filename}</strong> til dine <strong>bogmærker</strong>.
-        other: Du er ved at tilføje <strong>%{count} indlæg</strong> fra <strong>%{filename}</strong> til dine <strong>bogmærker</strong>.
-      domain_blocking_html:
-        one: Du er ved at <strong>blokere</strong> <strong>%{count} domæne</strong> fra <strong>%{filename}</strong>.
-        other: Man er ved at <strong>blokere</strong> op til <strong>%{count} domæner</strong> fra <strong>%{filename}</strong>.
-      following_html:
-        one: Du er ved at <strong>følge</strong> <strong>%{count} konto</strong> fra <strong>%{filename}</strong>.
-        other: Man er ved at <strong>følge</strong> op til<strong>%{count} konti</strong> fra <strong>%{filename}</strong>.
-      lists_html:
-        one: Du er ved at tilføje <strong>%{count} konto</strong> fra <strong>%{filename}</strong> til dine <strong>lister</strong>. Nye lister oprettes, hvis der ikke findes nogen liste at tilføje til.
-        other: Du er ved at tilføje <strong>%{count} konti</strong> fra <strong>%{filename}</strong> til dine <strong>lister</strong>. Nye lister oprettes, hvis der ikke findes nogen liste at tilføje til.
-      muting_html:
-        one: Du er ved at <strong>skjule</strong> op til <strong>%{count} konto</strong> fra <strong>%{filename}</strong>.
-        other: Du er ved at <strong>skjule</strong> op til <strong>%{count} konti</strong> fra <strong>%{filename}</strong>.
+      blocking_html: Du er ved at <strong>blokere</strong> op til <strong>%{total_items} konti</strong> fra <strong>%{filename}</strong>.
+      bookmarks_html: Du er ved at føje op til <strong>%{total_items} indlæg</strong> fra <strong>%{filename}</strong> til <strong>bogmærkelisten</strong>.
+      domain_blocking_html: Du er ved at <strong>blokere</strong> op til <strong>%{total_items} domæner</strong> fra <strong>%{filename}</strong>.
+      following_html: Du er ved at <strong>følge</strong> op til <strong>%{total_items} konti</strong> fra <strong>%{filename}</strong>.
+      lists_html: Du er ved at tilføje op til <strong>%{total_items} konti</strong> fra <strong>%{filename}</strong> til dine <strong>lister</strong>. Nye lister oprettes, hvis der ikke er nogen liste at føje konti til.
+      muting_html: Du er ved at <strong>tavsgøre</strong> op til <strong>%{total_items} konti</strong> fra <strong>%{filename}</strong>.
     preface: Du kan importere data, du har eksporteret fra en anden server, såsom en liste over folk du følger eller blokerer.
     recent_imports: Seneste importer
     states:
@@ -1759,10 +1711,7 @@ da:
       over_character_limit: må maks. udgøre %{max} tegn hver
       self_vote: Du kan ikke stemme i dine egne afstemninger
       too_few_options: skal have flere end ét valg
-      too_many_options: må maks. indeholde %{max} valg
-    vote: Stem
-  posting_defaults:
-    explanation: Disse indstillinger vil blive brugt som standard, når du opretter nye indlæg, men du kan redigere dem for hvert enkelt indlæg i redigeringsværktøjet.
+      too_many_options: for mange svar (maks. %{max})
   preferences:
     other: Andet
     posting_defaults: Standarder for indlæg
@@ -1935,24 +1884,15 @@ da:
       direct: Indlæg, som kun kan ses af omtalte brugere, kan ikke fastgøres
       limit: Maksimalt antal indlæg allerede fastgjort
       ownership: Andres indlæg kan ikke fastgøres
-      reblog: En fremhævelse kan ikke fastgøres
-    quote_error:
-      not_available: Indlæg utilgængeligt
-      pending_approval: Indlæg afventer
-      revoked: Indlæg fjernet af forfatter
-    quote_policies:
-      followers: Kun følgere
-      nobody: Kun mig
-      public: Alle
-    quote_post_author: Citerede et indlæg af %{acct}
+      reblog: Et boost kan ikke fastgøres
     title: '%{name}: "%{quote}"'
     visibilities:
       direct: Privat omtale
       private: Kun følgere
       public: Offentlig
-      public_long: Alle på og udenfor Mastodon
-      unlisted: Offentlig (stille)
-      unlisted_long: Skjult fra Mastodons søgeresultater, tendenser og offentlige tidslinjer
+      public_long: Kan ses af alle
+      unlisted: Ulistet
+      unlisted_long: Kan ses af alle, men listes på offentlige tidslinjer
   statuses_cleanup:
     enabled: Slet automatisk gamle indlæg
     enabled_hint: Sletter automatisk dine indlæg, når disse når en bestemt alder, medmindre de matcher en af undtagelserne nedenfor
@@ -1961,8 +1901,8 @@ da:
     ignore_favs: Ignorér favoritter
     ignore_reblogs: Ignorér fremhævelser
     interaction_exceptions: Undtagelser baseret på interaktioner
-    interaction_exceptions_explanation: Bemærk, at det ikke garanteres, at indlæg slettes, hvis de når under favorit- eller fremhævelses-tærsklerne efter én gang at været nået over dem.
-    keep_direct: Behold direkte beskeder
+    interaction_exceptions_explanation: Bemærk, at det ikke garanteres, at indlæg slettes, hvis de når under favorit- eller boost-tærsklerne efter én gang at været nået over dem.
+    keep_direct: Behold direkte besked
     keep_direct_hint: Sletter ingen af dine direkte beskeder
     keep_media: Behold indlæg med medievedhæftninger
     keep_media_hint: Sletter ingen af dine indlæg med medievedhæftninger

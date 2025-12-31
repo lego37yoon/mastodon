@@ -15,11 +15,6 @@ cs:
       user/invite_request:
         text: Důvod
     errors:
-      attributes:
-        domain:
-          invalid: není platný název domény
-      messages:
-        invalid_domain_on_line: "%{value} není platný název domény"
       models:
         account:
           attributes:

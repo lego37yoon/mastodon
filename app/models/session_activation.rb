@@ -28,10 +28,6 @@ class SessionActivation < ApplicationRecord
 
   before_create :assign_access_token
 
-  DEFAULT_SCOPES = %w(read write follow).freeze
-
-  scope :latest, -> { order(id: :desc) }
-
   class << self
     def active?(id)
       id && exists?(session_id: id)

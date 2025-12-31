@@ -19,7 +19,8 @@ ru:
         domain:
           invalid: не является корректным доменным именем
       messages:
-        invalid_domain_on_line: "%{value} не является корректным доменным именем"
+        invalid_domain_on_line: "%{value} Не является действительным доменным именем"
+        too_many_lines: Превышает предел %{limit} строк
       models:
         account:
           attributes:
@@ -39,20 +40,11 @@ ru:
         import:
           attributes:
             data:
-              malformed: имеет недопустимый формат
-        list_account:
-          attributes:
-            account_id:
-              taken: уже в списке
-          must_be_following: должен быть пользователем, на которого вы подписаны
+              malformed: неверный формат
         status:
           attributes:
             reblog:
-              taken: поста уже существует
-        terms_of_service:
-          attributes:
-            effective_date:
-              too_soon: должна быть не ранее %{date}
+              taken: пост уже существует
         user:
           attributes:
             date_of_birth:

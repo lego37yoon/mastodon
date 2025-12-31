@@ -193,7 +193,6 @@ uk:
         create_domain_block: Створити блокування домену
         create_email_domain_block: Створити блокування домену е-пошти
         create_ip_block: Створити правило IP
-        create_relay: Створити реле
         create_unavailable_domain: Створити недоступний домен
         create_user_role: Створити роль
         demote_user: Понизити користувача
@@ -205,22 +204,18 @@ uk:
         destroy_email_domain_block: Видалити блокування домену е-пошти
         destroy_instance: Очистити домен
         destroy_ip_block: Видалити правило IP
-        destroy_relay: Видалити реле
         destroy_status: Видалити допис
         destroy_unavailable_domain: Видалити недоступний домен
         destroy_user_role: Знищити роль
         disable_2fa_user: Вимкнути 2FA
         disable_custom_emoji: Вимкнути користувацькі емодзі
-        disable_relay: Вимкнути реле
         disable_sign_in_token_auth_user: Вимкнути автентифікацію за допомогою токена е-пошти для користувача
         disable_user: Відключити користувача
         enable_custom_emoji: Увімкнути користувацькі емодзі
-        enable_relay: Увімкнути реле
         enable_sign_in_token_auth_user: Увімкнути автентифікацію за допомогою токена е-пошти для користувача
         enable_user: Активувати користувача
         memorialize_account: Меморіалізувати акаунт
         promote_user: Підвищити користувача
-        publish_terms_of_service: Опублікувати Умови використання
         reject_appeal: Відхилити апеляцію
         reject_user: Відхилити користувача
         remove_avatar_user: Видалити аватар
@@ -258,7 +253,6 @@ uk:
         create_domain_block_html: "%{name} блокує домен %{target}"
         create_email_domain_block_html: "%{name} блокує домен електронної пошти %{target}"
         create_ip_block_html: "%{name} створює правило для IP %{target}"
-        create_relay_html: "%{name} створив реле %{target}"
         create_unavailable_domain_html: "%{name} зупиняє доставляння на домен %{target}"
         create_user_role_html: "%{name} створює роль %{target}"
         demote_user_html: "%{name} понижує користувача %{target}"
@@ -270,22 +264,18 @@ uk:
         destroy_email_domain_block_html: "%{name} розблоковує домен електронної пошти %{target}"
         destroy_instance_html: "%{name} очищує домен %{target}"
         destroy_ip_block_html: "%{name} видаляє правило для IP %{target}"
-        destroy_relay_html: "%{name} видалив реле %{target}"
         destroy_status_html: "%{name} вилучає допис %{target}"
         destroy_unavailable_domain_html: "%{name} відновлює доставляння на домен %{target}"
         destroy_user_role_html: "%{name} видаляє роль %{target}"
         disable_2fa_user_html: "%{name} вимикає двоетапну перевірку для користувача %{target}"
         disable_custom_emoji_html: "%{name} вимикає емодзі %{target}"
-        disable_relay_html: "%{name} вимкнув реле %{target}"
         disable_sign_in_token_auth_user_html: "%{name} вимикає автентифікацію через токен е-пошти для %{target}"
         disable_user_html: "%{name} вимикає вхід для користувача %{target}"
         enable_custom_emoji_html: "%{name} вмикає емодзі %{target}"
-        enable_relay_html: "%{name} увімкнув реле %{target}"
         enable_sign_in_token_auth_user_html: "%{name} вмикає автентифікацію через токен е-пошти для %{target}"
         enable_user_html: "%{name} вмикає вхід для користувача %{target}"
         memorialize_account_html: "%{name} перетворює обліковий запис %{target} на сторінку пам'яті"
         promote_user_html: "%{name} підвищує користувача %{target}"
-        publish_terms_of_service_html: "%{name} опублікував оновлення умов використання"
         reject_appeal_html: "%{name} відхилили звернення на оскарження рішення від %{target}"
         reject_user_html: "%{name} відхиляє реєстрацію від %{target}"
         remove_avatar_user_html: "%{name} прибирає аватар %{target}"
@@ -315,7 +305,6 @@ uk:
       title: Журнал подій
       unavailable_instance: "(ім'я домену недоступне)"
     announcements:
-      back: Назад до анонсів
       destroyed_msg: Оголошення успішно видалено!
       edit:
         title: Редагувати оголошення
@@ -324,10 +313,6 @@ uk:
       new:
         create: Створити оголошення
         title: Нове оголошення
-      preview:
-        disclaimer: Оскільки користувачі не можуть відмовитися від них, сповіщення по електронній пошті повинні обмежуватися важливими оголошеннями, такими як порушення особистих даних або повідомлення про закриття серверу.
-        explanation_html: 'Електронний лист буде надіслано <strong>%{display_count} користувачам</strong>. До електронного листа буде включено такий текст:'
-        title: Попередній перегляд сповіщення
       publish: Опублікувати
       published_msg: Оголошення успішно опубліковано!
       scheduled_for: Заплановано на %{time}
@@ -496,15 +481,6 @@ uk:
       new:
         title: Імпорт блокувань домену
       no_file: Файл не вибрано
-    fasp:
-      debug:
-        callbacks:
-          delete: Видалити
-      providers:
-        delete: Видалити
-        registrations:
-          confirm: Підтвердити
-        save: Зберегти
     follow_recommendations:
       description_html: "<strong>Слідувати рекомендаціям та допомогти новим користувачам швидко знайти цікавий вміст</strong>. Коли користувачі не взаємодіяли з іншими людьми достатньо, щоб сформувати персоналізовані рекомендації, радимо замість цього вказувати ці облікові записи. Вони щоденно переобчислюються з масиву облікових записів з найбільшою кількістю недавніх взаємодій і найбільшою кількістю місцевих підписників розраховується для цієї мови."
       language: Для мови
@@ -579,9 +555,6 @@ uk:
         all: Усі
         limited: Обмежені
         title: Модерація
-      moderation_notes:
-        create: Додати нотатку модерації
-        title: Нотатки модераторів
       private_comment: Приватний коментар
       public_comment: Публічний коментар
       purge: Очисти
@@ -825,9 +798,10 @@ uk:
         title: Усталено відмовитись від індексації користувачів пошуковими системами
       discovery:
         follow_recommendations: Поради щодо підписок
-        privacy: Конфіденційність
+        preamble: Показ цікавих матеріалів відіграє важливу роль у залученні нових користувачів, які, можливо, не знають нікого з Mastodon. Контролюйте роботу різних функцій виявлення на вашому сервері.
         profile_directory: Каталог профілів
         public_timelines: Публічна стрічка
+        publish_discovered_servers: Опублікувати знайдені сервери
         publish_statistics: Публікувати статистику
         title: Виявлення
         trends: Популярні
@@ -872,10 +846,8 @@ uk:
       back_to_account: Назад до сторінки облікового запису
       back_to_report: Повернутися до сторінки скарги
       batch:
-        add_to_report: 'Додати до звіту #%{id}'
         remove_from_report: Вилучити зі скарги
         report: Скарга
-      contents: Вміст
       deleted: Видалено
       favourites: Вподобане
       history: Історія версій
@@ -884,18 +856,13 @@ uk:
       media:
         title: Медіа
       metadata: Метадані
-      no_history: Цей допис ще не редагували
       no_status_selected: Жодного допису не було змінено, оскільки жодного з них не було вибрано
       open: Відкрити допис
       original_status: Оригінальний допис
-      quotes: Цитати
       reblogs: Поширення
-      replied_to_html: Відповів %{acct_link}
       status_changed: Допис змінено
-      status_title: "@%{name} опублікував допис"
-      title: Дописи облікового запису - @%{name}
+      title: Дописи облікових записів
       trending: Популярне
-      view_publicly: Переглянути привселюдно
       visibility: Видимість
       with_media: З медіа
     strikes:
@@ -913,8 +880,6 @@ uk:
     system_checks:
       database_schema_check:
         message_html: Існують відкладені перенесення бази даних. Запустіть їх, щоб забезпечити очікувану роботу програми
-      elasticsearch_analysis_index_mismatch:
-        message_html: Налаштування індексу Elasticsearch застарілі. Будь ласка, запустіть <code>tootctl search deploy --only-mapping --only=%{value}</code>
       elasticsearch_health_red:
         message_html: Кластер Elasticsearch нездоровий (червоний статус), функції пошуку недоступні
       elasticsearch_health_yellow:
@@ -974,32 +939,6 @@ uk:
       search: Пошук
       title: Гештеґи
       updated_msg: Параметри хештеґів успішно оновлені
-    terms_of_service:
-      back: Назад до умов використання
-      changelog: Що змінилося
-      create: Використовувати власний
-      current: Поточний
-      draft: Чернетка
-      generate: Використовувати шаблон
-      generates:
-        action: Згенерувати
-        chance_to_review_html: "<strong>Створені умови використання не опублікуються автоматично.</strong> Ви матимете змогу переглянути результати. Будь ласка, заповніть потрібні дані, щоб перейти далі."
-        explanation_html: Наданий шаблон умов надання послуг призначений лише для інформаційних цілей і не має розглядатися як юридична консультація з будь-якого питання. Проконсультуйтеся зі своїм юридичним радником щодо вашої ситуації та конкретних юридичних питань, які у вас постали.
-        title: Налаштування Умов обслуговування
-      history: Історія
-      live: Наживо
-      no_history: Змін умов обслуговування поки що не зафіксовано.
-      no_terms_of_service_html: Наразі у вас не налаштовано умов використання. Умови використання призначені для забезпечення ясності та захисту від потенційних зобов’язань у суперечках із користувачами.
-      notified_on_html: Користувачі сповіщені %{date}
-      notify_users: Сповістити користувачів
-      preview:
-        explanation_html: 'Електронний лист буде надіслано <strong>%{display_count} користувачам</strong>, які зареєструвалися до %{date}. Розміщений нижче текст додасться до електронного листа:'
-        send_preview: Надіслати попередній перегляд на %{email}
-        title: Попередній перегляд сповіщення про умови використання
-      publish: Опублікувати
-      published_on_html: Опубліковано %{date}
-      save_draft: Зберегти чернетку
-      title: Умови використання
     title: Адміністрування
     trends:
       allow: Дозволити
@@ -1081,11 +1020,6 @@ uk:
           other: Використали %{count} людей за минулий тиждень
       title: Рекомендації та тренди
       trending: Популярне
-    username_blocks:
-      comparison:
-        contains: Містить
-        equals: Дорівнює
-      delete: Видалити
     warning_presets:
       add_new: Додати новий
       delete: Видалити
@@ -1160,10 +1094,10 @@ uk:
     hint_html: Якщо ви збираєтеся мігрувати з іншого облікового запису на цей, ви можете налаштувати псевдонім, який потрібен для перенесення підписок зі старою облікового запису. Ця дія сама по собі <strong>нешкідлива і її можна скасувати</strong>. <strong>Міграція облікового запису починається зі старого облікового запису</strong>.
     remove: Від'єднати псевдонім
   appearance:
-    advanced_settings: Додаткові налаштування
+    advanced_web_interface: Розширений вебінтерфейс
+    advanced_web_interface_hint: 'Якщо ви бажаєте використовувати всю ширину вашого екрана, розширений вебінтерфейс дає змогу налаштовувати одночасний показ багатьох стовпчиків: головна, сповіщення, федеративна стрічка, будь-яка кількість списків і хештеґів.'
     animations_and_accessibility: Анімація та доступність
-    boosting_preferences: Параметри поширення
-    boosting_preferences_info_html: "<strong>Підказка:</strong> незалежно від налаштувань, <kbd>Shift</kbd> + <kbd>натиск</kbd> на піктограму %{icon} Поширити призводитиме до негайного поширення."
+    confirmation_dialogs: Діалоги підтвердження
     discovery: Виявлення
     localization:
       body: Mastodon перекладено волонтерами.
@@ -1220,6 +1154,7 @@ uk:
     migrate_account: Переїхати на інший обліковий запис
     migrate_account_html: Якщо ви бажаєте переспрямувати цей обліковий запис на інший, ви можете <a href="%{path}">налаштувати це тут</a>.
     or_log_in_with: Або увійдіть з
+    privacy_policy_agreement_html: Мною прочитано і я погоджуюся з <a href="%{privacy_policy_path}" target="_blank">політикою приватності</a>
     progress:
       confirm: Підтвердити електронну адресу
       details: Ваші дані
@@ -1244,7 +1179,7 @@ uk:
     set_new_password: Встановити новий пароль
     setup:
       email_below_hint_html: Перевірте теку "Спам", або зробіть ще один запит. Ви можете виправити свою електронну адресу, якщо вона неправильна.
-      email_settings_hint_html: Натисніть посилання, надіслане на %{email}, щоб почати користуватися Mastodon. Ми чекатимемо тут.
+      email_settings_hint_html: Натисніть на посилання, яке ми надіслали вам, щоб підтвердити %{email}. Ми чекатимемо прямо тут.
       link_not_received: Не отримали посилання?
       new_confirmation_instructions_sent: Ви отримаєте новий лист із посиланням для підтвердження протягом кількох хвилин!
       title: Перевірте вашу поштову скриньку
@@ -1253,7 +1188,7 @@ uk:
       title: Увійти до %{domain}
     sign_up:
       manual_review: Реєстрація на %{domain} проходить через ручний розгляд нашими модераторами. Щоб допомогти нам завершити вашу реєстрацію, напишіть трохи про себе і чому ви хочете зареєструватися на %{domain}.
-      preamble: За допомогою облікового запису на цьому сервері Mastodon ви зможете стежити за будь-якою іншою людиною у федіверсі незалежно від того, де розміщений обліковий запис.
+      preamble: За допомогою облікового запису на цьому сервері Mastodon, ви зможете слідкувати за будь-якою іншою людиною в мережі, не зважаючи на те, де розміщений обліковий запис.
       title: Налаштуймо вас на %{domain}.
     status:
       account_status: Стан облікового запису
@@ -1265,8 +1200,6 @@ uk:
       view_strikes: Переглянути попередні попередження вашому обліковому запису
     too_fast: Форму подано занадто швидко, спробуйте ще раз.
     use_security_key: Використовувати ключ безпеки
-    user_agreement_html: Я прочитав і приймаю <a href="%{terms_of_service_path}" target="_blank">умови використання</a> та <a href="%{privacy_policy_path}" target="_blank">політику конфіденційності< /a>
-    user_privacy_agreement_html: Мною прочитано і я погоджуюся з <a href="%{privacy_policy_path}" target="_blank">політикою приватності</a>
   author_attribution:
     example_title: Зразок тексту
     hint_html: Ви пишете новини чи статті в блозі за межами Mastodon? Контролюйте, як вони підписуються, коли ними діляться на Mastodon.
@@ -1274,7 +1207,7 @@ uk:
     more_from_html: Більше від %{name}
     s_blog: Блог %{name}
     then_instructions: Потім додайте доменне ім'я публікації у поле нижче.
-    title: Зазначення авторства
+    title: Атрибути авторства
   challenge:
     confirm: Далі
     hint_html: "<strong>Підказка:</strong> ми не будемо запитувати ваш пароль впродовж наступної години."
@@ -1352,9 +1285,6 @@ uk:
     basic_information: Основна інформація
     hint_html: "<strong>Налаштуйте те, що люди бачитимуть у вашому загальнодоступному профілі та поруч із вашими дописами.</strong> Інші люди з більшою ймовірністю підпишуться на вас та взаємодіятимуть з вами, якщо у вас є заповнений профіль та зображення профілю."
     other: Інше
-  emoji_styles:
-    auto: Авто
-    native: Рідний
   errors:
     '400': Ваш запит був недійсним або неправильним.
     '403': У Вас немає доступу до перегляду даної сторінки.
@@ -1488,6 +1418,20 @@ uk:
       merge_long: Зберегти наявні записи та додати нові
       overwrite: Перезаписувати
       overwrite_long: Замінити наявні записи новими
+    overwrite_preambles:
+      blocking_html: Ви збираєтеся <strong>замінити ваш список блокування</strong> з <strong>%{total_items} обліковими записами</strong> з <strong>%{filename}</strong>.
+      bookmarks_html: Ви збираєтеся <strong>замінити ваші закладки</strong> з <strong>%{total_items} дописами</strong> з <strong>%{filename}</strong>.
+      domain_blocking_html: Ви збираєтеся <strong>замінити ваш список блокування доменів</strong> з <strong>%{total_items} доменами</strong> з <strong>%{filename}</strong>.
+      following_html: Ви збираєтеся <strong>слідкувати</strong> за <strong>%{total_items} обліковими записами</strong> з <strong>%{filename}</strong> і <strong>перестати слідкувати за всіма іншими</strong>.
+      lists_html: Ви збираєтеся <strong>замінити ваші списки</strong> вмістом з <strong>%{filename}</strong>. До нових списків буде додано до <strong>%{total_items} облікових записів</strong>.
+      muting_html: Ви збираєтеся <strong>замінити ваш список ігнорованих облікових записів</strong> з <strong>%{total_items} обліковими записами</strong> з <strong>%{filename}</strong>.
+    preambles:
+      blocking_html: Ви збираєтеся <strong>заблокувати</strong> <strong>%{total_items} облікових записів</strong> з <strong>%{filename}</strong>.
+      bookmarks_html: Ви збираєтеся додати <strong>%{total_items} дописів</strong> з <strong>%{filename}</strong> до ваших <strong>закладок</strong>.
+      domain_blocking_html: Ви збираєтеся <strong>заблокувати</strong> <strong>%{total_items} доменів</strong> з <strong>%{filename}</strong>.
+      following_html: Ви збираєтеся <strong>слідкувати</strong> за <strong>%{total_items} обліковими записами</strong> з <strong>%{filename}</strong>.
+      lists_html: Ви збираєтеся додати до <strong>%{total_items} облікових записів</strong> з <strong>%{filename}</strong> до ваших <strong>списків</strong>. Нові списки будуть створені, якщо немає списку для додавання.
+      muting_html: Ви збираєтеся <strong>ігнорувати</strong> <strong>%{total_items} облікових записів</strong> з <strong>%{filename}</strong>.
     preface: Ви можете імпортувати дані, які ви експортували з іншого сервера, наприклад, список людей, яких ви відстежуєте або блокуєте.
     recent_imports: Останні імпорти
     states:
@@ -1542,9 +1486,6 @@ uk:
       expires_at: Час роботи
       uses: Використання
     title: Запросити людей
-  link_preview:
-    potentially_sensitive_content:
-      action: Натисніть, щоб показати
   lists:
     errors:
       limit: Ви досягли максимальної кількості списків
@@ -1645,8 +1586,6 @@ uk:
       title: Нова згадка
     poll:
       subject: Опитування від %{name} завершено
-    quote:
-      body: 'Ваш пост був процитований %{name}:'
     reblog:
       body: "%{name} поширює ваш допис:"
       subject: "%{name} поширив ваш статус"
@@ -1695,9 +1634,6 @@ uk:
       self_vote: Ви не можете голосувати у власному опитуванні
       too_few_options: має містити більше ніж один варіант
       too_many_options: не може мати більше ніж %{max} варіантів
-    vote: Голосувати
-  posting_defaults:
-    explanation: Ці налаштування будуть використовуватися як стандартні при створенні нових записів, але ви можете редагувати їх на кожен пост у цьому редакторі.
   preferences:
     other: Інше
     posting_defaults: Усталені налаштування дописів
@@ -1754,7 +1690,7 @@ uk:
   scheduled_statuses:
     over_daily_limit: Ви перевищили ліміт в %{limit} запланованих дописів на сьогодні
     over_total_limit: Ви перевищили ліміт в %{limit} запланованих дописів
-    too_soon: дата повинна бути в майбутньому
+    too_soon: Запланована дата має бути в майбутньому
   self_destruct:
     lead_html: На жаль, <strong>%{domain}</strong> остаточно закривається. Якщо у вас є обліковий запис там, ви не зможете продовжити його використання, але ви все ще можете надіслати запит на резервну копію даних.
     title: Сервер закривається
@@ -1868,32 +1804,30 @@ uk:
     edited_at_html: Відредаговано %{date}
     errors:
       in_reply_not_found: Допису, на який ви намагаєтеся відповісти, не існує.
-      quoted_status_not_found: Повідомлення, яке ви намагаєтеся цитувати, не існує.
     over_character_limit: перевищено ліміт символів %{max}
     pin_errors:
       direct: Не можливо прикріпити дописи, які видимі лише згаданим користувачам
       limit: Ви вже закріпили максимальну кількість дописів
       ownership: Не можна закріпити чужий допис
       reblog: Не можна закріпити просунутий допис
-    quote_policies:
-      followers: Лише підписникам
-      public: Будь-кому
     title: '%{name}: "%{quote}"'
     visibilities:
-      private: Лише підписникам
+      direct: Особисто
+      private: Для підписників
+      private_long: Показувати тільки підписникам
       public: Для всіх
-      public_long: Будь-кому на Mastodon і за його межами
-      unlisted: Тихо публічно
-      unlisted_long: Сховано з результатів пошуку Mastodon, трендових і публічних стрічок
+      public_long: Показувати всім
+      unlisted: Приховувати зі стрічок
+      unlisted_long: Показувати всім, але не відображати в публічних стрічках
   statuses_cleanup:
     enabled: Автовидалення давніх дописів
     enabled_hint: Автоматично видаляє ваші дописи після досягнення вказаного вікового порогу, якщо вони не є одним з наведених винятків
     exceptions: Винятки
     explanation: Оскільки видалення дописів є складною операцією, то це відбувається повільно, коли сервер не дуже завантажено. З цієї причини ваші дописи можуть бути видалені через деякий час після досягнення вікового порогу.
-    ignore_favs: Ігнорувати вподобані
+    ignore_favs: Ігнорувати обране
     ignore_reblogs: Ігнорувати поширення
     interaction_exceptions: Винятки базуються на взаємодії
-    interaction_exceptions_explanation: 'Зауважте: якщо допис вподобають або поширять достатню кількість разів, а потім це скасують, то його може все одно бути залишено.'
+    interaction_exceptions_explanation: Зверніть увагу, що немає гарантії, щоб дописи були видалені, якщо вони йдуть нижче улюблених або підсилювачів після того, як вони перейшли за них.
     keep_direct: Зберігати приватні повідомлення
     keep_direct_hint: Не видаляти ваших особистих повідомлень
     keep_media: Зберігати повідомлення з вкладеними мультимедійними файлами
@@ -1916,8 +1850,8 @@ uk:
       '63113904': 2 роки
       '7889238': 3 місяці
     min_age_label: Поріг давності
-    min_favs: Залишати дописи, вподобані стільки разів
-    min_favs_hint: Не видаляти ваших дописів, які були вподобані принаймні стільки разів. Залиште порожнім, щоб видаляти дописи незалежно від кількості вподобань
+    min_favs: Залишати дописи в обраному більше ніж
+    min_favs_hint: Не видаляти ваших дописів, що були поширені більш ніж вказану кількість разів. Залиште порожнім, щоб видаляти дописи, попри кількість їхніх поширень
     min_reblogs: Залишати дописи, поширені більше ніж
     min_reblogs_hint: Не видаляти ваших дописів, що були поширені більш ніж вказану кількість разів. Залиште порожнім, щоб видаляти дописи, попри кількість їхніх поширень
   stream_entries:
@@ -1927,8 +1861,6 @@ uk:
       too_late: Запізно оскаржувати це попередження
   tags:
     does_not_match_previous_name: не збігається з попереднім ім'ям
-  terms_of_service:
-    title: Умови використання
   themes:
     contrast: Mastodon (Висока контрастність)
     default: Mastodon (Темна)
@@ -1960,10 +1892,6 @@ uk:
     recovery_instructions_html: У випадку втрати доступу до вашого телефону ви можете використати один з нижчевказаних кодів відновлення, щоб повернути доступ до вашого облікового запису. <strong>Тримайте коди відновлення у безпеці</strong>, наприклад, роздрукуйте їх та зберігайте разом з іншими важливими документами.
     webauthn: Ключі безпеки
   user_mailer:
-    announcement_published:
-      description: 'Адміністратори %{domain} роблять оголошення:'
-      subject: Службове оголошення
-      title: Службове оголошення сервісу %{domain}
     appeal_approved:
       action: Налаштування облікового запису
       explanation: Оскарження попередження вашому обліковому запису %{strike_date}, яке ви надіслали %{appeal_date} було схвалено. Ваш обліковий запис знову вважається добропорядним.
@@ -1993,13 +1921,6 @@ uk:
       further_actions_html: Якщо це були не ви. Радимо вам негайно %{action} й увімкнути двоетапну перевірку, щоб уберегти свій обліковий запис.
       subject: До вашого облікового запису отримано доступ з нової IP-адреси
       title: Новий вхід
-    terms_of_service_changed:
-      agreement: Далі використовуючи %{domain}, ви погоджуєтеся з цими умовами. Якщо ви не згодні з оновленими умовами, ви можете припинити свою угоду з %{domain} будь-якої миті, видаливши ваш обліковий запис.
-      changelog: 'Коротко, ось що це оновлення означає для вас:'
-      sign_off: Команда %{domain}
-      subject: Оновлення до наших умов обслуговування
-      subtitle: Умови використання %{domain} змінюються
-      title: Важливе оновлення
     warning:
       appeal: Подати апеляцію
       appeal_description: Якщо ви вважаєте, що це помилка, ви можете надіслати оскаржити дії персоналу %{instance}.
@@ -2068,6 +1989,7 @@ uk:
       post_action: Створити
       post_step: Привітайтеся зі світом, з текстом, світлинами, відео та опитуваннями.
       post_title: Напишіть свій перший допис
+      share_action: Поділитися
       share_step: Розкажіть друзям, як знайти вас на Mastodon.
       share_title: Поділіться своїм профілем Mastodon
       sign_in_action: Увійти

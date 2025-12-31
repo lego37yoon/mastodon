@@ -169,12 +169,6 @@ class PreviewCard < ApplicationRecord
 
   private
 
-  def serialized_authors
-    return unless author_name? || author_url? || author_account_id?
-
-    PreviewCard::Author.new(self)
-  end
-
   def extract_dimensions
     file = image.queued_for_write[:original]
 

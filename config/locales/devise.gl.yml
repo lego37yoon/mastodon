@@ -7,7 +7,6 @@ gl:
       send_paranoid_instructions: Se o teu enderezo de email xa existira na nosa base de datos, vas recibir un correo coas instrucións de confirmación dentro dalgúns minutos. Por favor, comproba o cartafol de spam se non recibiches o correo.
     failure:
       already_authenticated: Xa estás conectada.
-      closed_registrations: Bloqueouse o teu intento de crear unha conta debido a unha directiva da rede. Se cres que é un erro, contacta con %{email}.
       inactive: A túa conta aínda non está activada.
       invalid: "%{authentication_keys} ou contrasinal non validos."
       last_attempt: Tes un intento máis antes de que a túa conta fique bloqueada.
@@ -95,6 +94,11 @@ gl:
       updated_not_active: O teu contrasinal foi mudado de xeito correcto.
     registrations:
       destroyed: Adeus! A túa conta foi cancelada de xeito correcto. Agardamos verte de novo.
+      signed_up: Benvido! Rexistrácheste de xeito correcto.
+      signed_up_but_inactive: A túa conta foi rexistada. Porén aínda non está activada.
+      signed_up_but_locked: A túa conta foi rexistada. Porén está bloqueada.
+      signed_up_but_pending: Acabamos de enviar unha mensaxe ao teu correo cunha ligazón de confirmación. Após premer na ligazón, revisaremos a túa solicitude. Recibirás unha notificación se a túa conta é aprobada.
+      signed_up_but_unconfirmed: Enviouse unha mensaxe cunha ligazón de confirmación ao teu email. Por favor, preme nesa ligazón para activar a túa conta. Comproba o teu cartafol de correo lixo (spam) se ves que non recibiches o correo.
       update_needs_confirmation: Actualizaches a túa conta de xeito correcto, pero precisamos verificar o teu novo enderezo de correo. Por favor, revisa o teu correo e segue a ligazón para confirmar o teu novo enderezo de correo. Comproba o cartafol de correo lixo (spam) se ves que non recibiches o correo.
       updated: A túa conta foi actualizada de xeito correcto.
     sessions:

@@ -2,6 +2,9 @@
 az:
   simple_form:
     hints:
+      account:
+        attribution_domains_as_text: Hər sətirdə biri. Saxta atributlardan qoruyur.
+        unlocked: İnsanlar, təsdiq istəmədən sizi izləyə biləcək. İzləmə istəklərini incələmək, yeni izləyiciləri qəbul edib rədd etmək istəyirsinizsə işarəni götürün.
       admin_account_action:
         include_statuses: İstifadəçi, hansı göndərişlərin moderasiya əməliyyatına və ya xəbərdarlığına səbəb olduğunu görəcək
       defaults:
@@ -13,7 +16,6 @@ az:
         setting_display_media_default: Həssas olaraq işarələnmiş medianı gizlət
         setting_display_media_hide_all: Medianı həmişə gizlət
         setting_display_media_show_all: Medianı həmişə göstər
-        setting_system_scrollbars_ui: Yalnız Safari və Chrome əaslı masaüstü brauzerlərinə tətbiq olunur
         setting_use_blurhash: Meyillər, gizli vizualların rənglərinə əsaslanır, ancaq detalları gizlədir
         setting_use_pending_items: Lenti avtomatik diyirləmək əvəzinə, zaman xətti güncəlləmələrini tək bir kliklə gizlət
       featured_tag:
@@ -50,19 +52,22 @@ az:
         setting_aggregate_reblogs: Zaman xəttindəki TP-ları qruplaşdır
         setting_always_send_emails: E-poçt göndərişlərini həmişə göndər
         setting_auto_play_gif: Animasiyalı GIF-ləri avto-oxut
+        setting_boost_modal: Bir təkrar paylaşımı silməzdən əvvəl təsdiq dialoq pəncərəsini göstər
+        setting_default_privacy: Göndəriş məxfiliyi
         setting_default_sensitive: Medianı həmişə həssas olaraq işarələ
+        setting_delete_modal: Bir göndərişi silməzdən əvvəl təsdiq dialoq pəncərəsini göstər
         setting_disable_hover_cards: Üzərinə gəldikdə profil önizləməsini sıradan çıxart
         setting_disable_swiping: Sürüşdürmə hərəkətlərini sıradan çıxart
         setting_display_media: Medianın nümayişi
         setting_expand_spoilers: Məzmun xəbərdarlığı ilə işarələnmiş göndərişləri həmişə genişləndir
         setting_reduce_motion: Animasiyalarda hərəkəti azalt
         setting_system_font_ui: Sistemin ilkin şriftini istifadə et
-        setting_system_scrollbars_ui: Sistemin ilkin sürüşdürmə çubuğunu istifadə et
         setting_trends: Bugünün trendlərini göstər
         setting_use_blurhash: Gizli media üçün rəngli meyilləri göstər
         setting_use_pending_items: Yavaş rejim
       form_admin_settings:
         show_domain_blocks: Əngəllənən domenləri göstər
+        timeline_preview: Ümumi zaman xətlərinə səlahiyyətsiz erişimə icazə ver
       ip_block:
         severities:
           no_access: Erişimi əngəllə
@@ -72,7 +77,4 @@ az:
         follow: Kimsə sizi izləyir
         follow_request: Kimsə sizi izləmək üçün sorğu göndərdi
         mention: Kimsə adınızı çəkdi
-        quote: Kimsə sizdən sitat gətirdi
         reblog: Kimsə göndərişinizi təkrar paylaşdı
-      username_block:
-        username: Uyuşacaq söz

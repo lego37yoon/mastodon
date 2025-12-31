@@ -98,11 +98,10 @@ class ActivityPub::ProcessAccountService < BaseService
   end
 
   def set_immediate_protocol_attributes!
-    @account.inbox_url               = valid_collection_uri(@json['inbox'])
-    @account.outbox_url              = valid_collection_uri(@json['outbox'])
-    @account.shared_inbox_url        = valid_collection_uri(@json['endpoints'].is_a?(Hash) ? @json['endpoints']['sharedInbox'] : @json['sharedInbox'])
-    @account.followers_url           = valid_collection_uri(@json['followers'])
-    @account.following_url           = valid_collection_uri(@json['following'])
+    @account.inbox_url               = @json['inbox'] || ''
+    @account.outbox_url              = @json['outbox'] || ''
+    @account.shared_inbox_url        = (@json['endpoints'].is_a?(Hash) ? @json['endpoints']['sharedInbox'] : @json['sharedInbox']) || ''
+    @account.followers_url           = @json['followers'] || ''
     @account.url                     = url || @uri
     @account.uri                     = @uri
     @account.actor_type              = actor_type

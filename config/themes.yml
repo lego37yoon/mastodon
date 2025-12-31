@@ -1,3 +1,7 @@
 default: styles/application.scss
 contrast: styles/contrast.scss
 mastodon-light: styles/mastodon-light.scss
+maruburi-light: styles/maruburi-light.scss
+maruburi-dark: styles/maruburi-dark.scss
+ridibatang-light: styles/ridibatang-light.scss
+ridibatang-dark: styles/ridibatang-dark.scss

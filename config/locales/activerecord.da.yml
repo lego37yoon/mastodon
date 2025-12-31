@@ -48,11 +48,7 @@ da:
         status:
           attributes:
             reblog:
-              taken: af indlæg findes allerede
-        terms_of_service:
-          attributes:
-            effective_date:
-              too_soon: er for tidligt, skal være efter %{date}
+              taken: af status findes allerede
         user:
           attributes:
             date_of_birth:

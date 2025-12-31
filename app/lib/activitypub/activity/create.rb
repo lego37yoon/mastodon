@@ -56,8 +56,6 @@ class ActivityPub::Activity::Create < ActivityPub::Activity
     ApplicationRecord.transaction do
       @status = Status.create!(@params.merge(quote: @quote))
       attach_tags(@status)
-      attach_mentions(@status)
-      attach_counts(@status)
     end
 
     resolve_thread(@status)
@@ -242,8 +240,6 @@ class ActivityPub::Activity::Create < ActivityPub::Activity
     return if account.nil?
 
     @mentions << Mention.new(account: account, silent: false)
-  rescue Mastodon::UnexpectedResponseError, *Mastodon::HTTP_CONNECTION_ERRORS
-    @unresolved_mentions << tag['href']
   end
 
   def process_emoji(tag)

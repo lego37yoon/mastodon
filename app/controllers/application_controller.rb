@@ -70,27 +70,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_functional!
-    return if current_user.functional?
-
-    respond_to do |format|
-      format.any do
-        if current_user.confirmed?
-          redirect_to edit_user_registration_path
-        else
-          redirect_to auth_setup_path
-        end
-      end
-
-      format.json do
-        if !current_user.confirmed?
-          render json: { error: 'Your login is missing a confirmed e-mail address' }, status: 403
-        elsif !current_user.approved?
-          render json: { error: 'Your login is currently pending approval' }, status: 403
-        elsif !current_user.functional?
-          render json: { error: 'Your login is currently disabled' }, status: 403
-        end
-      end
-    end
+    redirect_to edit_user_registration_path unless current_user.functional?
   end
 
   def skip_csrf_meta_tags?

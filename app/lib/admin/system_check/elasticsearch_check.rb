@@ -16,8 +16,8 @@ class Admin::SystemCheck::ElasticsearchCheck < Admin::SystemCheck::BaseCheck
   def pass?
     return true unless Chewy.enabled?
 
-    running_version.present? && compatible_version? && cluster_health['status'] == 'green' && indexes_match? && specifications_match? && preset_matches?
-  rescue Faraday::ConnectionFailed, Elasticsearch::Transport::Transport::Error, HTTPClient::KeepAliveDisconnected
+    running_version.present? && compatible_version? && cluster_health['status'] == 'green' && indexes_match? && preset_matches?
+  rescue Faraday::ConnectionFailed, Elasticsearch::Transport::Transport::Error
     false
   end
 

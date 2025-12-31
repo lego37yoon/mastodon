@@ -15,11 +15,6 @@ ar:
       user/invite_request:
         text: الغرض
     errors:
-      attributes:
-        domain:
-          invalid: ليس بإسم نطاق صالح
-      messages:
-        invalid_domain_on_line: "%{value} ليس إسم نطاق صالح"
       models:
         account:
           attributes:
