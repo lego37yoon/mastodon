@@ -2,6 +2,7 @@
 
 class REST::StatusSerializer < ActiveModel::Serializer
   include FormattingHelper
+  include CatHelper
 
   # Please update `app/javascript/mastodon/api_types/statuses.ts` when making changes to the attributes
 
@@ -84,7 +85,20 @@ class REST::StatusSerializer < ActiveModel::Serializer
   end
 
   def content
-    status_content_format(object)
+    if object.account.is_cat?
+      quoted_status = object.quote&.quoted_status if object.local?
+      html_aware_format(nyaify(object.text), object.local?, preloaded_accounts: [object.account] + (object.respond_to?(:active_mentions) ? object.active_mentions.map(&:account) : []), quoted_status: quoted_status)
+    else
+      status_content_format(object)
+    end
+  end
+
+  def spoiler_text
+    if object.account.is_cat?
+      nyaify(object.spoiler_text)
+    else
+      object.spoiler_text
+    end
   end
 
   def url

@@ -45,6 +45,10 @@ module ContextHelper
       'interactingObject' => { '@id' => 'gts:interactingObject' },
       'interactionTarget' => { '@id' => 'gts:interactionTarget' },
     },
+    isCat: {
+      'misskey' => 'https://misskey-hub.net/ns#',
+      'isCat' => 'misskey:isCat',
+    },
   }.freeze
 
   def full_context
