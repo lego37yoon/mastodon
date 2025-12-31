@@ -670,7 +670,6 @@ id:
         title: Keluarkan pengguna dari pengindeksan mesin telusur secara bawaan
       discovery:
         follow_recommendations: Ikuti rekomendasi
-        preamble: Menampilkan konten menarik penting dalam memandu pengguna baru yang mungkin tidak tahu siapa pun di Mastodon. Atur bagaimana berbagai fitur penemuan bekerja di server Anda.
         profile_directory: Direktori profil
         public_timelines: Linimasa publik
         title: Penemuan
@@ -711,7 +710,6 @@ id:
       original_status: Kiriman asli
       reblogs: Reblog
       status_changed: Kiriman diubah
-      title: Status akun
       trending: Sedang tren
       visibility: Visibilitas
       with_media: Dengan media
@@ -863,10 +861,7 @@ id:
     hint_html: Jika Anda ingin pindah dari akun lain ke sini, Anda dapat membuat alias, yang dilakukan sebelum Anda setuju dengan memindah pengikut dari akun lama ke akun sini. Aksi ini <strong>tidak berbahaya dan tidak bisa dikembalikan</strong>. <strong>Pemindahan akun dimulai dari akun lama</strong>.
     remove: Hapus tautan alias
   appearance:
-    advanced_web_interface: Antarmuka web tingkat lanjut
-    advanced_web_interface_hint: 'Jika Anda ingin memanfaatkan seluruh lebar layar Anda, antarmuka web tingkat lanjut memungkinkan Anda mengonfigurasi beragam kolom untuk menampilkan informasi sebanyak yang Anda inginkan: Beranda, notifikasi, linimasa gabungan, daftar, dan tagar.'
     animations_and_accessibility: Animasi dan aksesibilitas
-    confirmation_dialogs: Dialog konfirmasi
     discovery: Jelajah
     localization:
       body: Mastodon diterjemahkan oleh sukarelawan.
@@ -904,7 +899,6 @@ id:
     migrate_account: Pindah ke akun berbeda
     migrate_account_html: Jika Anda ingin mengalihkan akun ini ke akun lain, Anda dapat <a href="%{path}">mengaturnya di sini</a>.
     or_log_in_with: Atau masuk dengan
-    privacy_policy_agreement_html: Saya telah membaca dan menerima <a href="%{privacy_policy_path}" target="_blank">kebijakan privasi</a>
     providers:
       cas: CAS
       saml: SAML
@@ -919,7 +913,6 @@ id:
     sign_in:
       title: Masuk ke %{domain}
     sign_up:
-      preamble: Dengan sebuah akun di server Mastodon ini, Anda akan dapat mengikuti orang lain dalam jaringan, di mana pun akun mereka berada.
       title: Mari kita siapkan Anda di %{domain}.
     status:
       account_status: Status akun
@@ -1295,7 +1288,6 @@ id:
   scheduled_statuses:
     over_daily_limit: Anda telah melampaui batas %{limit} kiriman terjadwal untuk sehari
     over_total_limit: Anda telah melampaui batas %{limit} kiriman terjadwal
-    too_soon: Tanggal terjadwal haruslah pada hari yang akan datang
   sessions:
     activity: Aktivitas terakhir
     browser: Peramban
@@ -1383,13 +1375,7 @@ id:
       reblog: Boost tidak bisa disematkan
     title: '%{name}: "%{quote}"'
     visibilities:
-      direct: Langsung
-      private: Khusus pengikut
-      private_long: Hanya tampilkan ke pengikut
       public: Publik
-      public_long: Bisa dilihat semua orang
-      unlisted: Bisa dilihat semua orang, tapi tidak ditampilkan di linimasa publik
-      unlisted_long: Tidak terdaftar di linimasa publik tetapi siapapun dapat melihat
   statuses_cleanup:
     enabled: Otomatis hapus kiriman lama
     enabled_hint: "Otomatis menghapus kiriman Anda saat sudah mencapai batasan usia, kecuali yang cocok \nsesuai di bawah ini"

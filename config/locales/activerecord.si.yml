@@ -23,27 +23,15 @@ si:
       models:
         account:
           attributes:
+            fields:
+              fields_with_values_missing_labels: ලේබල නොමැති අගයන් අඩංගු වේ.
             username:
               invalid: අකුරු, අංක සහ යට-ඉරි පමණි
               reserved: වෙන් කර ඇත
-        admin/webhook:
-          attributes:
-            url:
-              invalid: වලංගු URL එකක් නොවේ.
-        doorkeeper/application:
-          attributes:
-            website:
-              invalid: වලංගු URL එකක් නොවේ.
-        import:
-          attributes:
-            data:
-              malformed: විකෘති වී ඇත
-        status:
-          attributes:
-            reblog:
-              taken: තනතුරේ කොටසක් දැනටමත් පවතී.
         user:
           attributes:
+            date_of_birth:
+              below_limit: වයස් සීමාවට වඩා අඩුය
             email:
               blocked: නොඉඩ දෙන වි-තැපැල් ප්‍රතිපාදකයෙකු භාවිතා කරයි
               unreachable: පෙනෙන හැටියට නොපවතී

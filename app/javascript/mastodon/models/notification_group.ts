@@ -1,6 +1,7 @@
 import type {
   ApiAccountRelationshipSeveranceEventJSON,
   ApiAccountWarningJSON,
+  ApiAnnualReportEventJSON,
   BaseNotificationGroupJSON,
   ApiNotificationGroupJSON,
   ApiNotificationJSON,
@@ -35,8 +36,11 @@ export type NotificationGroupFavourite =
 export type NotificationGroupReblog = BaseNotificationWithStatus<'reblog'>;
 export type NotificationGroupStatus = BaseNotificationWithStatus<'status'>;
 export type NotificationGroupMention = BaseNotificationWithStatus<'mention'>;
+export type NotificationGroupQuote = BaseNotificationWithStatus<'quote'>;
 export type NotificationGroupPoll = BaseNotificationWithStatus<'poll'>;
 export type NotificationGroupUpdate = BaseNotificationWithStatus<'update'>;
+export type NotificationGroupQuotedUpdate =
+  BaseNotificationWithStatus<'quoted_update'>;
 export type NotificationGroupFollow = BaseNotification<'follow'>;
 export type NotificationGroupFollowRequest = BaseNotification<'follow_request'>;
 export type NotificationGroupAdminSignUp = BaseNotification<'admin.sign_up'>;
@@ -66,6 +70,12 @@ export interface NotificationGroupSeveredRelationships
   event: AccountRelationshipSeveranceEvent;
 }
 
+type AnnualReportEvent = ApiAnnualReportEventJSON;
+export interface NotificationGroupAnnualReport
+  extends BaseNotification<'annual_report'> {
+  annualReport: AnnualReportEvent;
+}
+
 interface Report extends Omit<ApiReportJSON, 'target_account'> {
   targetAccountId: string;
 }
@@ -80,14 +90,17 @@ export type NotificationGroup =
   | NotificationGroupReblog
   | NotificationGroupStatus
   | NotificationGroupMention
+  | NotificationGroupQuote
   | NotificationGroupPoll
   | NotificationGroupUpdate
+  | NotificationGroupQuotedUpdate
   | NotificationGroupFollow
   | NotificationGroupFollowRequest
   | NotificationGroupModerationWarning
   | NotificationGroupSeveredRelationships
   | NotificationGroupAdminSignUp
-  | NotificationGroupAdminReport;
+  | NotificationGroupAdminReport
+  | NotificationGroupAnnualReport;
 
 function createReportFromJSON(reportJSON: ApiReportJSON): Report {
   const { target_account, ...report } = reportJSON;
@@ -113,6 +126,12 @@ function createAccountRelationshipSeveranceEventFromJSON(
   return eventJson;
 }
 
+function createAnnualReportEventFromJSON(
+  eventJson: ApiAnnualReportEventJSON,
+): AnnualReportEvent {
+  return eventJson;
+}
+
 export function createNotificationGroupFromJSON(
   groupJson: ApiNotificationGroupJSON,
 ): NotificationGroup {
@@ -123,8 +142,10 @@ export function createNotificationGroupFromJSON(
     case 'reblog':
     case 'status':
     case 'mention':
+    case 'quote':
     case 'poll':
-    case 'update': {
+    case 'update':
+    case 'quoted_update': {
       const { status_id: statusId, ...groupWithoutStatus } = group;
       return {
         statusId: statusId ?? undefined,
@@ -149,7 +170,6 @@ export function createNotificationGroupFromJSON(
         event: createAccountRelationshipSeveranceEventFromJSON(group.event),
         sampleAccountIds,
       };
-
     case 'moderation_warning': {
       const { moderation_warning, ...groupWithoutModerationWarning } = group;
       return {
@@ -159,7 +179,15 @@ export function createNotificationGroupFromJSON(
         sampleAccountIds,
       };
     }
-
+    case 'annual_report': {
+      const { annual_report, ...groupWithoutAnnualReport } = group;
+      return {
+        ...groupWithoutAnnualReport,
+        partial: false,
+        annualReport: createAnnualReportEventFromJSON(annual_report),
+        sampleAccountIds,
+      };
+    }
     default:
       return {
         sampleAccountIds,
@@ -188,8 +216,10 @@ export function createNotificationGroupFromNotificationJSON(
     case 'reblog':
     case 'status':
     case 'mention':
+    case 'quote':
     case 'poll':
     case 'update':
+    case 'quoted_update':
       return {
         ...group,
         type: notification.type,

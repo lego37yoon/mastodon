@@ -6,6 +6,8 @@ class BackupService < BaseService
   include Payloadable
   include ContextHelper
 
+  CHUNK_SIZE = 1.megabyte
+
   attr_reader :account, :backup
 
   def call(backup)
@@ -19,8 +21,8 @@ class BackupService < BaseService
 
   def build_outbox_json!(file)
     skeleton = serialize(collection_presenter, ActivityPub::CollectionSerializer)
-    skeleton['@context'] = full_context
-    skeleton['orderedItems'] = ['!PLACEHOLDER!']
+    skeleton[:@context] = full_context
+    skeleton[:orderedItems] = ['!PLACEHOLDER!']
     skeleton = Oj.dump(skeleton)
     prepend, append = skeleton.split('"!PLACEHOLDER!"')
     add_comma = false
@@ -180,8 +182,6 @@ class BackupService < BaseService
       adapter: ActivityPub::Adapter
     ).as_json
   end
-
-  CHUNK_SIZE = 1.megabyte
 
   def download_to_zip(zipfile, attachment, filename)
     adapter = Paperclip.io_adapters.for(attachment)

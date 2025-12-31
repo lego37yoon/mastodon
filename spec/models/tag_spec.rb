@@ -3,9 +3,43 @@
 require 'rails_helper'
 
 RSpec.describe Tag do
-  include_examples 'Reviewable'
+  it_behaves_like 'Reviewable'
 
-  describe 'validations' do
+  describe 'Validations' do
+    describe 'name' do
+      context 'with a new record' do
+        subject { Fabricate.build :tag, name: 'original' }
+
+        it { is_expected.to allow_value('changed').for(:name) }
+      end
+
+      context 'with an existing record' do
+        subject { Fabricate :tag, name: 'original' }
+
+        it { is_expected.to_not allow_value('changed').for(:name).with_message(previous_name_error_message) }
+        it { is_expected.to allow_value('ORIGINAL').for(:name) }
+      end
+    end
+
+    describe 'display_name' do
+      context 'with a new record' do
+        subject { Fabricate.build :tag, name: 'original', display_name: 'OriginalDisplayName' }
+
+        it { is_expected.to allow_value('ChangedDisplayName').for(:display_name) }
+      end
+
+      context 'with an existing record' do
+        subject { Fabricate :tag, name: 'original', display_name: 'OriginalDisplayName' }
+
+        it { is_expected.to_not allow_value('ChangedDisplayName').for(:display_name).with_message(previous_name_error_message) }
+        it { is_expected.to allow_value('ORIGINAL').for(:display_name) }
+      end
+    end
+
+    def previous_name_error_message
+      I18n.t('tags.does_not_match_previous_name')
+    end
+
     it 'invalid with #' do
       expect(described_class.new(name: '#hello_world')).to_not be_valid
     end
@@ -48,6 +82,10 @@ RSpec.describe Tag do
 
     it 'matches ﻿#ａｅｓｔｈｅｔｉｃ' do
       expect(subject.match('﻿this is #ａｅｓｔｈｅｔｉｃ').to_s).to eq '#ａｅｓｔｈｅｔｉｃ'
+    end
+
+    it 'matches ＃ｆｏｏ' do
+      expect(subject.match('this is ＃ｆｏｏ').to_s).to eq '＃ｆｏｏ'
     end
 
     it 'matches digits at the start' do

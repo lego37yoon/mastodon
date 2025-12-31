@@ -26,18 +26,6 @@ br:
             username:
               invalid: nemet lizherennoù, niverennoù hag isbarrennigoù
               reserved: a zo miret
-        admin/webhook:
-          attributes:
-            url:
-              invalid: n'eo ket un URL talvoudek
-        doorkeeper/application:
-          attributes:
-            website:
-              invalid: n'eo ket un URL talvoudek
-        import:
-          attributes:
-            data:
-              malformed: a zo stummet fall
         status:
           attributes:
             reblog:

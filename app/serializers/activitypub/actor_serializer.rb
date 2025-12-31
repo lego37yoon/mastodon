@@ -8,7 +8,7 @@ class ActivityPub::ActorSerializer < ActivityPub::Serializer
 
   context_extensions :manually_approves_followers, :featured, :also_known_as,
                      :moved_to, :property_value, :discoverable, :suspended,
-                     :memorial, :indexable, :attribution_domains
+                     :memorial, :indexable, :attribution_domains, :isCat
 
   attributes :id, :type, :following, :followers,
              :inbox, :outbox, :featured, :featured_tags,
@@ -44,7 +44,7 @@ class ActivityPub::ActorSerializer < ActivityPub::Serializer
   delegate :suspended?, :instance_actor?, to: :object
 
   def id
-    object.instance_actor? ? instance_actor_url : account_url(object)
+    ActivityPub::TagManager.instance.uri_for(object)
   end
 
   def type
@@ -60,27 +60,27 @@ class ActivityPub::ActorSerializer < ActivityPub::Serializer
   end
 
   def following
-    account_following_index_url(object)
+    ActivityPub::TagManager.instance.following_uri_for(object)
   end
 
   def followers
-    account_followers_url(object)
+    ActivityPub::TagManager.instance.followers_uri_for(object)
   end
 
   def inbox
-    object.instance_actor? ? instance_actor_inbox_url : account_inbox_url(object)
+    ActivityPub::TagManager.instance.inbox_uri_for(object)
   end
 
   def outbox
-    object.instance_actor? ? instance_actor_outbox_url : account_outbox_url(object)
+    ActivityPub::TagManager.instance.outbox_uri_for(object)
   end
 
   def featured
-    account_collection_url(object, :featured)
+    ActivityPub::TagManager.instance.collection_uri_for(object, :featured)
   end
 
   def featured_tags
-    account_collection_url(object, :tags)
+    ActivityPub::TagManager.instance.collection_uri_for(object, :tags)
   end
 
   def endpoints
@@ -218,5 +218,11 @@ class ActivityPub::ActorSerializer < ActivityPub::Serializer
     def signature_value
       object.token
     end
+  end
+
+  attribute :is_cat, key: :isCat
+
+  def cat?
+    object.is_cat
   end
 end

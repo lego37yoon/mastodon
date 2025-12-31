@@ -65,7 +65,7 @@ export function configFromEnv(env, environment) {
     if (typeof parsedUrl.ssl === 'boolean') {
       baseConfig.ssl = parsedUrl.ssl;
     } else if (typeof parsedUrl.ssl === 'object' && !Array.isArray(parsedUrl.ssl) && parsedUrl.ssl !== null) {
-      /** @type {Record<string, any>} */
+      /** @type {Record<string, unknown>} */
       const sslOptions = parsedUrl.ssl;
       baseConfig.ssl = {};
 
@@ -116,13 +116,44 @@ let pool;
 /**
  *
  * @param {pg.PoolConfig} config
+ * @param {string} environment
+ * @param {import('pino').Logger} logger
  * @returns {pg.Pool}
  */
-export function getPool(config) {
+export function getPool(config, environment, logger) {
   if (pool) {
     return pool;
   }
 
   pool = new pg.Pool(config);
+
+  // Setup logging on pool.query and client.query for checked out clients:
+  // This is taken from: https://node-postgres.com/guides/project-structure
+  if (environment === 'development') {
+    const logQuery = (originalQuery) => {
+      return async (queryTextOrConfig, values, ...rest) => {
+        const start = process.hrtime();
+
+        const result = await originalQuery.apply(pool, [queryTextOrConfig, values, ...rest]);
+
+        const duration = process.hrtime(start);
+        const durationInMs = (duration[0] * 1000000000 + duration[1]) / 1000000;
+
+        logger.debug({
+          query: queryTextOrConfig,
+          values,
+          duration: durationInMs
+        }, 'Executed database query');
+
+        return result;
+      };
+    };
+
+    pool.on('connect', (client) => {
+      const originalQuery = client.query.bind(client);
+      client.query = logQuery(originalQuery);
+    });
+  }
+
   return pool;
 }

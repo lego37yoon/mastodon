@@ -6,13 +6,15 @@ class ActivityPub::SynchronizeFollowersService < BaseService
 
   MAX_COLLECTION_PAGES = 10
 
-  def call(account, partial_collection_url)
+  def call(account, partial_collection_url, expected_digest = nil)
     @account = account
     @expected_followers_ids = []
+    @digest = [expected_digest].pack('H*') if expected_digest.present?
 
     return unless process_collection!(partial_collection_url)
 
-    remove_unexpected_local_followers!
+    # Only remove followers if the digests match, as it is a destructive operation
+    remove_unexpected_local_followers! if expected_digest.blank? || @digest == "\x00" * 32
   end
 
   private
@@ -20,6 +22,8 @@ class ActivityPub::SynchronizeFollowersService < BaseService
   def process_page!(items)
     page_expected_followers = extract_local_followers(items)
     @expected_followers_ids.concat(page_expected_followers.pluck(:id))
+
+    items.each { |uri| Xorcist.xor!(@digest, Digest::SHA256.digest(uri)) } if @digest.present?
 
     handle_unexpected_outgoing_follows!(page_expected_followers)
   end
@@ -30,10 +34,7 @@ class ActivityPub::SynchronizeFollowersService < BaseService
     # Account record, and should we not do that, we should have sent a Delete.
     # In any case there is not much we can do if that occurs.
 
-    # TODO: this will need changes when switching to numeric IDs
-
-    usernames = items.filter_map { |uri| ActivityPub::TagManager.instance.uri_to_local_id(uri, :username)&.downcase }
-    Account.local.with_username(usernames)
+    ActivityPub::TagManager.instance.uris_to_local_accounts(items)
   end
 
   def remove_unexpected_local_followers!
@@ -98,6 +99,6 @@ class ActivityPub::SynchronizeFollowersService < BaseService
     return collection_or_uri if collection_or_uri.is_a?(Hash)
     return if non_matching_uri_hosts?(@account.uri, collection_or_uri)
 
-    fetch_resource_without_id_validation(collection_or_uri, nil, true)
+    fetch_resource_without_id_validation(collection_or_uri, nil, raise_on_error: :temporary)
   end
 end

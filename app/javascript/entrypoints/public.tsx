@@ -1,7 +1,5 @@
 import { createRoot } from 'react-dom/client';
 
-import './public-path';
-
 import { IntlMessageFormat } from 'intl-messageformat';
 import type { MessageDescriptor, PrimitiveType } from 'react-intl';
 import { defineMessages } from 'react-intl';
@@ -10,7 +8,6 @@ import Rails from '@rails/ujs';
 import axios from 'axios';
 import { throttle } from 'lodash';
 
-import { start } from '../mastodon/common';
 import { timeAgoString } from '../mastodon/components/relative_timestamp';
 import emojify from '../mastodon/features/emoji/emoji';
 import loadKeyboardExtensions from '../mastodon/load_keyboard_extensions';
@@ -19,8 +16,6 @@ import { loadPolyfills } from '../mastodon/polyfills';
 import ready from '../mastodon/ready';
 
 import 'cocoon-js-vanilla';
-
-start();
 
 const messages = defineMessages({
   usernameTaken: {
@@ -68,7 +63,7 @@ function loaded() {
 
     if (id) message = localeData[id];
 
-    if (!message) message = defaultMessage as string;
+    message ??= defaultMessage as string;
 
     const messageFormat = new IntlMessageFormat(message, locale);
     return messageFormat.format(values) as string;
@@ -119,7 +114,11 @@ function loaded() {
         formattedContent = dateFormat.format(datetime);
       }
 
-      content.title = formattedContent;
+      const timeGiven = content.dateTime.includes('T');
+      content.title = timeGiven
+        ? dateTimeFormat.format(datetime)
+        : dateFormat.format(datetime);
+
       content.textContent = formattedContent;
     });
 
@@ -146,12 +145,14 @@ function loaded() {
       );
     });
 
+  updateDefaultQuotePrivacyFromPrivacy(
+    document.querySelector('#user_settings_attributes_default_privacy'),
+  );
+
   const reactComponents = document.querySelectorAll('[data-component]');
 
   if (reactComponents.length > 0) {
-    import(
-      /* webpackChunkName: "containers/media_container" */ '../mastodon/containers/media_container'
-    )
+    import('../mastodon/containers/media_container')
       .then(({ default: MediaContainer }) => {
         reactComponents.forEach((component) => {
           Array.from(component.children).forEach((child) => {
@@ -230,62 +231,6 @@ function loaded() {
       }
     },
   );
-
-  Rails.delegate(
-    document,
-    'button.status__content__spoiler-link',
-    'click',
-    function () {
-      if (!(this instanceof HTMLButtonElement)) return;
-
-      const statusEl = this.parentNode?.parentNode;
-
-      if (
-        !(
-          statusEl instanceof HTMLDivElement &&
-          statusEl.classList.contains('.status__content')
-        )
-      )
-        return;
-
-      if (statusEl.dataset.spoiler === 'expanded') {
-        statusEl.dataset.spoiler = 'folded';
-        this.textContent = new IntlMessageFormat(
-          localeData['status.show_more'] ?? 'Show more',
-          locale,
-        ).format() as string;
-      } else {
-        statusEl.dataset.spoiler = 'expanded';
-        this.textContent = new IntlMessageFormat(
-          localeData['status.show_less'] ?? 'Show less',
-          locale,
-        ).format() as string;
-      }
-    },
-  );
-
-  document
-    .querySelectorAll<HTMLButtonElement>('button.status__content__spoiler-link')
-    .forEach((spoilerLink) => {
-      const statusEl = spoilerLink.parentNode?.parentNode;
-
-      if (
-        !(
-          statusEl instanceof HTMLDivElement &&
-          statusEl.classList.contains('.status__content')
-        )
-      )
-        return;
-
-      const message =
-        statusEl.dataset.spoiler === 'expanded'
-          ? (localeData['status.show_less'] ?? 'Show less')
-          : (localeData['status.show_more'] ?? 'Show more');
-      spoilerLink.textContent = new IntlMessageFormat(
-        message,
-        locale,
-      ).format() as string;
-    });
 }
 
 Rails.delegate(
@@ -327,31 +272,24 @@ Rails.delegate(document, '.input-copy button', 'click', ({ target }) => {
 
   if (!input) return;
 
-  const oldReadOnly = input.readOnly;
-
-  input.readOnly = false;
-  input.focus();
-  input.select();
-  input.setSelectionRange(0, input.value.length);
-
-  try {
-    if (document.execCommand('copy')) {
-      input.blur();
-
+  navigator.clipboard
+    .writeText(input.value)
+    .then(() => {
       const parent = target.parentElement;
 
-      if (!parent) return;
-      parent.classList.add('copied');
+      if (parent) {
+        parent.classList.add('copied');
 
-      setTimeout(() => {
-        parent.classList.remove('copied');
-      }, 700);
-    }
-  } catch (err) {
-    console.error(err);
-  }
+        setTimeout(() => {
+          parent.classList.remove('copied');
+        }, 700);
+      }
 
-  input.readOnly = oldReadOnly;
+      return true;
+    })
+    .catch((error: unknown) => {
+      console.error(error);
+    });
 });
 
 const toggleSidebar = () => {
@@ -413,6 +351,31 @@ const setInputDisabled = (
   }
 };
 
+const setInputHint = (
+  input: HTMLInputElement | HTMLSelectElement,
+  hintPrefix: string,
+) => {
+  const fieldWrapper = input.closest<HTMLElement>('.fields-group > .input');
+  if (!fieldWrapper) return;
+
+  const hint = fieldWrapper.dataset[`${hintPrefix}Hint`];
+  const hintElement =
+    fieldWrapper.querySelector<HTMLSpanElement>(':scope > .hint');
+
+  if (hint) {
+    if (hintElement) {
+      hintElement.textContent = hint;
+    } else {
+      const newHintElement = document.createElement('span');
+      newHintElement.className = 'hint';
+      newHintElement.textContent = hint;
+      fieldWrapper.appendChild(newHintElement);
+    }
+  } else {
+    hintElement?.remove();
+  }
+};
+
 Rails.delegate(
   document,
   '#account_statuses_cleanup_policy_enabled',
@@ -430,6 +393,36 @@ Rails.delegate(
   },
 );
 
+const updateDefaultQuotePrivacyFromPrivacy = (
+  privacySelect: EventTarget | null,
+) => {
+  if (!(privacySelect instanceof HTMLSelectElement) || !privacySelect.form)
+    return;
+
+  const select = privacySelect.form.querySelector<HTMLSelectElement>(
+    'select#user_settings_attributes_default_quote_policy',
+  );
+  if (!select) return;
+
+  setInputHint(select, privacySelect.value);
+
+  if (privacySelect.value === 'private') {
+    select.value = 'nobody';
+    setInputDisabled(select, true);
+  } else {
+    setInputDisabled(select, false);
+  }
+};
+
+Rails.delegate(
+  document,
+  '#user_settings_attributes_default_privacy',
+  'change',
+  ({ target }) => {
+    updateDefaultQuotePrivacyFromPrivacy(target);
+  },
+);
+
 // Empty the honeypot fields in JS in case something like an extension
 // automatically filled them.
 Rails.delegate(document, '#registration_new_user,#new_user', 'submit', () => {
@@ -444,6 +437,24 @@ Rails.delegate(document, '#registration_new_user,#new_user', 'submit', () => {
       field.value = '';
     }
   });
+});
+
+Rails.delegate(document, '.rules-list button', 'click', ({ target }) => {
+  if (!(target instanceof HTMLElement)) {
+    return;
+  }
+
+  const button = target.closest('button');
+
+  if (!button) {
+    return;
+  }
+
+  if (button.ariaExpanded === 'true') {
+    button.ariaExpanded = 'false';
+  } else {
+    button.ariaExpanded = 'true';
+  }
 });
 
 function main() {

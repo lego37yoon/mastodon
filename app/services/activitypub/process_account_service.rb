@@ -102,6 +102,7 @@ class ActivityPub::ProcessAccountService < BaseService
     @account.outbox_url              = valid_collection_uri(@json['outbox'])
     @account.shared_inbox_url        = valid_collection_uri(@json['endpoints'].is_a?(Hash) ? @json['endpoints']['sharedInbox'] : @json['sharedInbox'])
     @account.followers_url           = valid_collection_uri(@json['followers'])
+    @account.following_url           = valid_collection_uri(@json['following'])
     @account.url                     = url || @uri
     @account.uri                     = @uri
     @account.actor_type              = actor_type
@@ -141,13 +142,13 @@ class ActivityPub::ProcessAccountService < BaseService
     begin
       @account.avatar_remote_url = image_url('icon') || '' unless skip_download?
       @account.avatar = nil if @account.avatar_remote_url.blank?
-    rescue Mastodon::UnexpectedResponseError, HTTP::TimeoutError, HTTP::ConnectionError, OpenSSL::SSL::SSLError
+    rescue Mastodon::UnexpectedResponseError, *Mastodon::HTTP_CONNECTION_ERRORS
       RedownloadAvatarWorker.perform_in(rand(30..600).seconds, @account.id)
     end
     begin
       @account.header_remote_url = image_url('image') || '' unless skip_download?
       @account.header = nil if @account.header_remote_url.blank?
-    rescue Mastodon::UnexpectedResponseError, HTTP::TimeoutError, HTTP::ConnectionError, OpenSSL::SSL::SSLError
+    rescue Mastodon::UnexpectedResponseError, *Mastodon::HTTP_CONNECTION_ERRORS
       RedownloadHeaderWorker.perform_in(rand(30..600).seconds, @account.id)
     end
     @account.statuses_count    = outbox_total_items    if outbox_total_items.present?
@@ -155,6 +156,7 @@ class ActivityPub::ProcessAccountService < BaseService
     @account.followers_count   = followers_total_items if followers_total_items.present?
     @account.hide_collections  = following_private? || followers_private?
     @account.moved_to_account  = @json['movedTo'].present? ? moved_account : nil
+    @account.is_cat = cat?
   end
 
   def set_suspension!
@@ -281,6 +283,10 @@ class ActivityPub::ProcessAccountService < BaseService
     !collection_info('followers').last
   end
 
+  def cat?
+    @json['isCat'] || @json['is_cat'] || false
+  end
+
   def collection_info(type)
     collection_uri = valid_collection_uri(@json[type])
     return [nil, nil] if collection_uri.blank?
@@ -291,7 +297,7 @@ class ActivityPub::ProcessAccountService < BaseService
     total_items = collection.is_a?(Hash) && collection['totalItems'].present? && collection['totalItems'].is_a?(Numeric) ? collection['totalItems'] : nil
     has_first_page = collection.is_a?(Hash) && collection['first'].present?
     @collections[type] = [total_items, has_first_page]
-  rescue HTTP::Error, OpenSSL::SSL::SSLError, Mastodon::LengthValidationError
+  rescue *Mastodon::HTTP_CONNECTION_ERRORS, Mastodon::LengthValidationError
     @collections[type] = [nil, nil]
   end
 
