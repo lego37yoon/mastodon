@@ -27,11 +27,13 @@ import MediaGallery from 'mastodon/components/media_gallery';
 import { PictureInPicturePlaceholder } from 'mastodon/components/picture_in_picture_placeholder';
 import StatusContent from 'mastodon/components/status_content';
 import { QuotedStatus } from 'mastodon/components/status_quoted';
+import StatusReactions from 'mastodon/components/status_reactions';
 import { VisibilityIcon } from 'mastodon/components/visibility_icon';
 import { Audio } from 'mastodon/features/audio';
 import scheduleIdleTask from 'mastodon/features/ui/util/schedule_idle_task';
 import { Video } from 'mastodon/features/video';
 import { useIdentity } from 'mastodon/identity_context';
+import { visibleReactions } from 'mastodon/initial_state';
 
 import Card from './card';
 
@@ -55,6 +57,8 @@ export const DetailedStatus: React.FC<{
   pictureInPicture: any;
   onToggleHidden?: (status: any) => void;
   onToggleMediaVisibility?: () => void;
+  onReactionAdd?: (status: any, name: string, url: string) => void;
+  onReactionRemove?: (status: any, name: string) => void;
   ancestors?: number;
   multiColumn?: boolean;
 }> = ({
@@ -71,6 +75,8 @@ export const DetailedStatus: React.FC<{
   pictureInPicture,
   onToggleMediaVisibility,
   onToggleHidden,
+  onReactionAdd,
+  onReactionRemove,
   ancestors = 0,
   multiColumn = false,
 }) => {
@@ -123,6 +129,14 @@ export const DetailedStatus: React.FC<{
     [_measureHeight],
   );
 
+  const handleRefWithMeasure = useCallback(
+    (c: HTMLDivElement) => {
+      nodeRef.current = c;
+      _measureHeight();
+    },
+    [_measureHeight],
+  );
+
   const handleTranslate = useCallback(() => {
     if (onTranslate) onTranslate(status);
   }, [onTranslate, status]);
@@ -135,7 +149,7 @@ export const DetailedStatus: React.FC<{
     if (nodeRef.current && previousAncestors.current < ancestors) {
       nodeRef.current.scrollIntoView(true);
 
-      // In the single-column interface, `scrollIntoView` will put the post behind the header, so compensate for that.
+      // In the single-column interface, `scrollIntoView` put the post behind the header, so compensate for that.
       if (!multiColumn) {
         const offset = document
           .querySelector('.column-header__wrapper')
@@ -465,6 +479,16 @@ export const DetailedStatus: React.FC<{
               />
             )}
           </>
+        )}
+
+        {visibleReactions && visibleReactions > 0 && (
+          <StatusReactions
+            statusId={status.get('id')}
+            reactions={status.get('reactions')}
+            addReaction={onReactionAdd}
+            removeReaction={onReactionRemove}
+            canReact={signedIn}
+          />
         )}
 
         <div className='detailed-status__meta'>

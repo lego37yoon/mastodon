@@ -29,13 +29,10 @@ export function MastodonAssetsManifest(): Plugin {
     },
     async generateBundle() {
       // Glob all assets and return an array of absolute paths.
-      const assetPaths = await glob(
-        ['flavours/*/{fonts,icons,images}/**/*', '{fonts,icons,images}/**/*'],
-        {
-          cwd: jsRoot,
-          absolute: true,
-        },
-      );
+      const assetPaths = await glob('{fonts,icons,images}/**/*', {
+        cwd: jsRoot,
+        absolute: true,
+      });
 
       const assetManifest: Record<string, AssetManifestChunk> = {};
       const excludeExts = ['', '.md'];
@@ -51,14 +48,14 @@ export function MastodonAssetsManifest(): Plugin {
         const ref = this.emitFile({
           name: path.basename(file),
           type: 'asset',
-          source: contents,
+          source: new Uint8Array(contents),
         });
         const hashedFilename = this.getFileName(ref);
 
         // With the emitted file information, hash the contents and store in manifest.
         const name = path.relative(jsRoot, file);
         const hash = createHash(ALGORITHM)
-          .update(contents)
+          .update(new Uint8Array(contents))
           .digest()
           .toString('base64');
         assetManifest[name] = {

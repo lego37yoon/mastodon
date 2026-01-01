@@ -8,8 +8,8 @@
     = vite_client_tag
     = vite_react_refresh_tag
     = vite_polyfills_tag
-    = theme_style_tags current_theme
-    = flavoured_vite_typescript_tag 'error.ts', crossorigin: 'anonymous'
+    = theme_style_tags Setting.default_settings['theme']
+    = vite_typescript_tag 'error.ts', crossorigin: 'anonymous'
   %body.error
     .dialog
       .dialog__illustration

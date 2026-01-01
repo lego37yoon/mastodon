@@ -59,12 +59,8 @@ module User::HasSettings
     settings['noindex']
   end
 
-  def setting_flavour
-    settings['flavour']
-  end
-
-  def setting_skin
-    settings['skin']
+  def setting_theme
+    settings['theme']
   end
 
   def setting_display_media
@@ -119,16 +115,8 @@ module User::HasSettings
     settings['default_privacy'] || (account.locked? ? 'private' : 'public')
   end
 
-  def setting_default_content_type
-    settings['default_content_type']
-  end
-
-  def setting_hide_followers_count
-    settings['hide_followers_count']
-  end
-
   def setting_visible_reactions
-    integer_cast_setting('visible_reactions', 0)
+    settings['visible_reactions'] || 0
   end
 
   def setting_default_quote_policy
@@ -151,18 +139,6 @@ module User::HasSettings
     settings['notification_emails.trends']
   end
 
-  def allows_trending_tags_review_emails?
-    settings['notification_emails.trends']
-  end
-
-  def allows_trending_links_review_emails?
-    settings['notification_emails.link_trends']
-  end
-
-  def allows_trending_statuses_review_emails?
-    settings['notification_emails.status_trends']
-  end
-
   def aggregates_reblogs?
     settings['aggregate_reblogs']
   end
@@ -177,15 +153,5 @@ module User::HasSettings
 
   def hide_all_media?
     settings['web.display_media'] == 'hide_all'
-  end
-
-  def integer_cast_setting(key, min = nil, max = nil)
-    i = ActiveModel::Type::Integer.new.cast(settings[key])
-    # the cast above doesn't return a number if passed the string "e"
-    i = 0 unless i.is_a? Numeric
-    return min if !min.nil? && i < min
-    return max if !max.nil? && i > max
-
-    i
   end
 end

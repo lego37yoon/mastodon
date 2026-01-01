@@ -136,11 +136,6 @@ export const baseConfig = [
               group: 'internal',
               position: 'after',
             },
-            {
-              pattern: '{flavours/glitch-soc/**}',
-              group: 'internal',
-              position: 'after',
-            },
           ],
 
           pathGroupsExcludedImportTypes: [],
@@ -154,20 +149,6 @@ export const baseConfig = [
       'jsdoc/require-property-description': 'off',
       'jsdoc/require-returns-description': 'off',
       'jsdoc/require-returns': 'off',
-
-      // Forbid imports from vanilla in glitch flavour
-      'import/no-restricted-paths': [
-        'error',
-        {
-          zones: [
-            {
-              target: 'app/javascript/flavours/glitch/',
-              from: 'app/javascript/mastodon/',
-              message: 'Import from /flavours/glitch/ instead',
-            },
-          ],
-        },
-      ],
 
       'promise/always-return': 'off',
       'promise/catch-or-return': [
@@ -199,11 +180,10 @@ export default tseslint.config([
     'vendor/**/*',
     'streaming/**/*',
     '.bundle/**/*',
-    'storybook-static/**/*',
   ]),
   react.configs.flat.recommended,
   react.configs.flat['jsx-runtime'],
-  reactHooks.configs.flat.recommended,
+  reactHooks.configs['recommended-latest'],
   jsxA11Y.flatConfigs.recommended,
   importPlugin.flatConfigs.react,
   // @ts-expect-error -- For some reason the formatjs package exports an empty object?
@@ -310,7 +290,6 @@ export default tseslint.config([
       'react/jsx-tag-spacing': 'error',
       'react/jsx-wrap-multilines': 'error',
       'react/self-closing-comp': 'error',
-      'react/button-has-type': 'error',
     },
   },
   {
@@ -319,11 +298,6 @@ export default tseslint.config([
       'app/javascript/mastodon/features/emoji/unicode_to_unified_name.js',
       'app/javascript/mastodon/features/emoji/emoji_compressed.js',
       'app/javascript/mastodon/features/emoji/unicode_to_filename.js',
-      'app/javascript/flavours/glitch/common.js',
-      'app/javascript/flavours/glitch/entrypoints/common.js',
-      'app/javascript/flavours/glitch/features/emoji/unicode_to_unified_name.js',
-      'app/javascript/flavours/glitch/features/emoji/emoji_compressed.js',
-      'app/javascript/flavours/glitch/features/emoji/unicode_to_filename.js',
       'app/javascript/mastodon/service_worker/web_push_locales.js',
       '**/*.config.js',
       '**/.*rc.js',
@@ -353,7 +327,7 @@ export default tseslint.config([
       tseslint.configs.stylisticTypeChecked,
       react.configs.flat.recommended,
       react.configs.flat['jsx-runtime'],
-      reactHooks.configs.flat.recommended,
+      reactHooks.configs['recommended-latest'],
       jsxA11Y.flatConfigs.recommended,
       importPlugin.flatConfigs.react,
       importPlugin.flatConfigs.typescript,

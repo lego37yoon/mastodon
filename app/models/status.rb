@@ -22,9 +22,7 @@
 #  account_id                   :bigint(8)        not null
 #  application_id               :bigint(8)
 #  in_reply_to_account_id       :bigint(8)
-#  local_only                   :boolean
 #  poll_id                      :bigint(8)
-#  content_type                 :string
 #  deleted_at                   :datetime
 #  edited_at                    :datetime
 #  trendable                    :boolean
@@ -47,7 +45,7 @@ class Status < ApplicationRecord
   include Status::Visibility
   include Status::InteractionPolicyConcern
 
-  MEDIA_ATTACHMENTS_LIMIT = 4
+  MEDIA_ATTACHMENTS_LIMIT = 16
 
   rate_limit by: :account, family: :statuses
 
@@ -109,7 +107,6 @@ class Status < ApplicationRecord
   validates_with StatusLengthValidator
   validates_with DisallowedHashtagsValidator
   validates :reblog, uniqueness: { scope: :account }, if: :reblog?
-  validates :content_type, inclusion: { in: %w(text/plain text/markdown text/html) }, allow_nil: true
 
   accepts_nested_attributes_for :poll
 
@@ -141,8 +138,6 @@ class Status < ApplicationRecord
     where('NOT EXISTS (SELECT * FROM statuses_tags forbidden WHERE forbidden.status_id = statuses.id AND forbidden.tag_id IN (?))', tag_ids)
   }
 
-  scope :not_local_only, -> { where(local_only: [false, nil]) }
-
   after_create_commit :trigger_create_webhooks
   after_update_commit :trigger_update_webhooks
 
@@ -157,11 +152,10 @@ class Status < ApplicationRecord
   before_validation :set_conversation
   before_validation :set_local
 
-  before_create :set_local_only
-
   around_create Mastodon::Snowflake::Callbacks
 
   after_create :set_poll_id
+  after_create :update_conversation
 
   # The `prepend: true` option below ensures this runs before
   # the `dependent: destroy` callbacks remove relevant records
@@ -376,42 +370,6 @@ class Status < ApplicationRecord
   end
 
   class << self
-    def as_direct_timeline(account, limit = 20, max_id = nil, since_id = nil)
-      # direct timeline is mix of direct message from_me and to_me.
-      # 2 queries are executed with pagination.
-      # constant expression using arel_table is required for partial index
-
-      # _from_me part does not require any timeline filters
-      query_from_me = where(account_id: account.id)
-                      .direct_visibility
-                      .limit(limit)
-                      .order(id: :desc)
-
-      # _to_me part requires mute and block filter.
-      # FIXME: may we check mutes.hide_notifications?
-      query_to_me = Status
-                    .direct_visibility
-                    .joins(:mentions)
-                    .where(mentions: { account_id: account.id })
-                    .limit(limit)
-                    .order('mentions.status_id DESC')
-                    .not_excluded_by_account(account)
-
-      if max_id.present?
-        query_from_me = query_from_me.where(id: ...max_id)
-        query_to_me = query_to_me.where(mentions: { status_id: ...max_id })
-      end
-
-      if since_id.present?
-        query_from_me = query_from_me.where('statuses.id > ?', since_id)
-        query_to_me = query_to_me.where('mentions.status_id > ?', since_id)
-      end
-
-      # TODO: use a single query?
-      ids = (query_from_me.pluck(:id) + query_to_me.pluck(:id)).sort.uniq.reverse.take(limit)
-      Status.where(id: ids)
-    end
-
     def favourites_map(status_ids, account_id)
       Favourite.select(:status_id).where(status_id: status_ids).where(account_id: account_id).each_with_object({}) { |f, h| h[f.status_id] = true }
     end
@@ -445,15 +403,6 @@ class Status < ApplicationRecord
         status&.distributable? ? status : nil
       end
     end
-  end
-
-  def marked_local_only?
-    # match both with and without U+FE0F (the emoji variation selector)
-    /#{local_only_emoji}\ufe0f?\z/.match?(content)
-  end
-
-  def local_only_emoji
-    '👁'
   end
 
   def status_stat
@@ -531,12 +480,6 @@ class Status < ApplicationRecord
     update_column(:poll_id, poll.id) if association(:poll).loaded? && poll.present?
   end
 
-  def set_local_only
-    return unless account.domain.nil? && !attribute_changed?(:local_only)
-
-    self.local_only = marked_local_only?
-  end
-
   def set_conversation
     self.thread = thread.reblog if thread&.reblog?
 
@@ -546,9 +489,14 @@ class Status < ApplicationRecord
       self.in_reply_to_account_id = carried_over_reply_to_account_id
       self.conversation_id        = thread.conversation_id if conversation_id.nil?
     elsif conversation_id.nil?
-      conversation = build_owned_conversation
-      self.conversation = conversation
+      build_conversation
     end
+  end
+
+  def update_conversation
+    return if reply?
+
+    conversation.update!(parent_status: self, parent_account: account) if conversation && conversation.parent_status.nil?
   end
 
   def carried_over_reply_to_account_id

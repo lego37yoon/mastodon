@@ -34,7 +34,7 @@ class BackupService < BaseService
       add_comma = true
 
       file.write(statuses.map do |status|
-        item = serialize_payload(ActivityPub::ActivityPresenter.from_status(status), ActivityPub::ActivitySerializer, allow_local_only: true)
+        item = serialize_payload(ActivityPub::ActivityPresenter.from_status(status), ActivityPub::ActivitySerializer)
         item.delete(:@context)
 
         unless item[:type] == 'Announce' || item[:object][:attachment].blank?
@@ -63,7 +63,7 @@ class BackupService < BaseService
       dump_actor!(zipfile)
     end
 
-    archive_filename = "#{['archive', Time.current.to_fs(:number), SecureRandom.hex(16)].join('-')}.zip"
+    archive_filename = "#{['archive', Time.now.utc.strftime('%Y%m%d%H%M%S'), SecureRandom.hex(16)].join('-')}.zip"
 
     @backup.dump      = ActionDispatch::Http::UploadedFile.new(tempfile: tmp_file, filename: archive_filename)
     @backup.processed = true
@@ -179,8 +179,7 @@ class BackupService < BaseService
     ActiveModelSerializers::SerializableResource.new(
       object,
       serializer: serializer,
-      adapter: ActivityPub::Adapter,
-      allow_local_only: true
+      adapter: ActivityPub::Adapter
     ).as_json
   end
 

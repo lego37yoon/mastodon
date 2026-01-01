@@ -17,6 +17,7 @@ import { languages as preloadedLanguages } from 'mastodon/initial_state';
 
 import { EmojiHTML } from './emoji/html';
 import { HandledLink } from './status/handled_link';
+import { nyaize } from '../utils/nyaize';
 
 const MAX_HEIGHT = 706; // 22px * 32 (+ 2px padding at the top)
 
@@ -191,7 +192,10 @@ class StatusContent extends PureComponent {
     const targetLanguages = this.props.languages?.get(status.get('language') || 'und');
     const renderTranslate = this.props.onTranslate && this.props.identity.signedIn && ['public', 'unlisted'].includes(status.get('visibility')) && status.get('search_index').trim().length > 0 && targetLanguages?.includes(contentLocale);
 
-    const content = statusContent ?? getStatusContent(status);
+    let content = statusContent ?? getStatusContent(status);
+    // if (status.getIn(['account', 'is_cat'])) {
+    //   content = nyaize(content);
+    // }
     const language = status.getIn(['translation', 'language']) || status.get('language');
     const classNames = classnames('status__content', {
       'status__content--with-action': this.props.onClick && this.props.history,

@@ -118,7 +118,9 @@ nan:
       reject: 拒絕
       rejected_msg: 成功拒絕 %{username} ê註冊申請ah
       remote_suspension_irreversible: Tsit ê口座ê資料已經hōo lâng thâi掉，bē當復原。
-      remote_suspension_reversible_hint_html: Tsit ê口座ê權限佇tsit ê服侍器hōo lâng停止ah，資料ē佇 %{date} lóng總thâi掉。佇hit日前，遠距離ê服侍器ē當復原tsit ê口座，無任何pháinn作用。Nā lí想beh liâm-mī thâi掉tsit ê口座ê任何資料，ē當佇下跤操作。
+      remote_suspension_reversible_hint_html: Tsit ê口座ê權限佇tsit ê服侍器hōo lâng停止ah，資料ē佇
+        %{date} lóng總thâi掉。佇hit日前，遠距離ê服侍器ē當復原tsit ê口座，無任何pháinn作用。Nā lí想beh liâm-mī
+        thâi掉tsit ê口座ê任何資料，ē當佇下跤操作。
       remove_avatar: Thâi掉標頭
       remove_header: Thâi掉封面ê圖
       removed_avatar_msg: 成功thâi掉 %{username} ê 標頭影像
@@ -152,7 +154,8 @@ nan:
       suspend: 中止權限
       suspended: 權限中止ah
       suspension_irreversible: Tsit ê口座ê資料已經thâi掉，bē當回復。Lí ē當取消停止tsit ê口座ê權限，予伊ē當使用，但是bē當回復任何khah早ê資料。
-      suspension_reversible_hint_html: Tsit ê口座ê權限hōo lâng停止ah，資料ē佇 %{date} lóng總thâi掉。佇hit日前，tsit ê口座ē當復原，無任何pháinn作用。Nā lí想beh liâm-mī thâi掉tsit ê口座ê任何資料，ē當佇下跤操作。
+      suspension_reversible_hint_html: Tsit ê口座ê權限hōo lâng停止ah，資料ē佇 %{date} lóng總thâi掉。佇hit日前，tsit
+        ê口座ē當復原，無任何pháinn作用。Nā lí想beh liâm-mī thâi掉tsit ê口座ê任何資料，ē當佇下跤操作。
       title: 口座
       unblock_email: 取消封鎖電子phue ê地址
       unblocked_email_msg: 成功取消封鎖 %{username} ê電子phue地址
@@ -184,10 +187,8 @@ nan:
         create_domain_block: 加添封鎖ê域名
         create_email_domain_block: 加添電子phue域名ê封鎖
         create_ip_block: 加添IP規則
-        create_relay: 建立中繼
         create_unavailable_domain: 建立bē當用ê域名
         create_user_role: 建立角色
-        create_username_block: 新造使用者號名規則
         demote_user: Kā用者降級
         destroy_announcement: Thâi掉公告
         destroy_canonical_email_block: Thâi掉電子phue ê封鎖
@@ -197,23 +198,18 @@ nan:
         destroy_email_domain_block: Thâi掉電子phue域名ê封鎖
         destroy_instance: 清掉域名
         destroy_ip_block: Thâi掉IP規則
-        destroy_relay: Thâi掉中繼
         destroy_status: Thâi掉PO文
         destroy_unavailable_domain: Thâi掉bē當用ê域名
         destroy_user_role: Thâi掉角色
-        destroy_username_block: 共使用者號名規則刣掉
         disable_2fa_user: 停止用雙因素認證
         disable_custom_emoji: 停止用自訂ê Emoji
-        disable_relay: 停止用中繼
         disable_sign_in_token_auth_user: 停止用使用者電子phue ê token認證
         disable_user: 停止用口座
         enable_custom_emoji: 啟用自訂ê Emoji
-        enable_relay: 啟用中繼
         enable_sign_in_token_auth_user: 啟用使用者電子phue ê token認證
         enable_user: 啟用口座
         memorialize_account: 設做故人ê口座
         promote_user: Kā用者升級
-        publish_terms_of_service: 公佈服務規定
         reject_appeal: 拒絕申訴
         reject_user: 拒絕用者
         remove_avatar_user: Thâi掉標頭
@@ -236,6 +232,13 @@ nan:
         update_report: 更新檢舉
         update_status: 更新PO文
         update_user_role: 更新角色
+        create_relay: 建立中繼
+        create_username_block: 新造使用者號名規則
+        destroy_relay: Thâi掉中繼
+        destroy_username_block: 共使用者號名規則刣掉
+        disable_relay: 停止用中繼
+        enable_relay: 啟用中繼
+        publish_terms_of_service: 公佈服務規定
         update_username_block: 更新使用者號名規則
       actions:
         approve_appeal_html: "%{name} 允准 %{target} 所寫ê tuì管理決定ê投訴"
@@ -252,10 +255,8 @@ nan:
         create_domain_block_html: "%{name} 封鎖域名 %{target}"
         create_email_domain_block_html: "%{name} kā 電子phue域名 %{target} 封鎖ah"
         create_ip_block_html: "%{name} 建立 IP %{target} ê規則"
-        create_relay_html: "%{name} 建立中繼 %{target}"
         create_unavailable_domain_html: "%{name} 停止送kàu域名 %{target}"
         create_user_role_html: "%{name} 建立 %{target} 角色"
-        create_username_block_html: "%{name} 加添用者ê名包含 %{target} ê規則ah"
         demote_user_html: "%{name} kā用者 %{target} 降級"
         destroy_announcement_html: "%{name} kā公告 %{target} thâi掉ah"
         destroy_canonical_email_block_html: "%{name} kā hash是 %{target} ê電子phue取消封鎖ah"
@@ -265,23 +266,18 @@ nan:
         destroy_email_domain_block_html: "%{name} kā 電子phue域名 %{target} 取消封鎖ah"
         destroy_instance_html: "%{name} 清除域名 %{target}"
         destroy_ip_block_html: "%{name} thâi掉 IP %{target} ê規則"
-        destroy_relay_html: "%{name} thâi掉中繼 %{target}"
         destroy_status_html: "%{name} kā %{target} ê PO文thâi掉"
         destroy_unavailable_domain_html: "%{name} 恢復送kàu域名 %{target}"
         destroy_user_role_html: "%{name} thâi掉 %{target} 角色"
-        destroy_username_block_html: "%{name} thâi掉用者ê名包含 %{target} ê規則ah"
         disable_2fa_user_html: "%{name} 停止使用者 %{target} 用雙因素驗證"
         disable_custom_emoji_html: "%{name} kā 新ê emoji %{target} 停止使用ah"
-        disable_relay_html: "%{name} 停止使用中繼 %{target}"
         disable_sign_in_token_auth_user_html: "%{name} 停止 %{target} 用電子phue ê token驗證"
         disable_user_html: "%{name} kā 用者 %{target} 設做bē當登入"
         enable_custom_emoji_html: "%{name} kā 新ê emoji %{target} 啟用ah"
-        enable_relay_html: "%{name} 啟用中繼 %{target}"
         enable_sign_in_token_auth_user_html: "%{name} 啟用 %{target} ê電子phue ê token驗證"
         enable_user_html: "%{name} kā 用者 %{target} 設做允准登入"
         memorialize_account_html: "%{name} kā %{target} 設做故人口座"
         promote_user_html: "%{name} kā 用者 %{target} 升級"
-        publish_terms_of_service_html: "%{name} 公佈服務規定ê更新"
         reject_appeal_html: "%{name} 拒絕 %{target} 所寫ê tuì管理決定ê投訴"
         reject_user_html: "%{name} 拒絕 %{target} ê 註冊"
         remove_avatar_user_html: "%{name} thâi掉 %{target} ê標頭"
@@ -304,6 +300,13 @@ nan:
         update_report_html: "%{name} 更新 %{target} ê檢舉"
         update_status_html: "%{name} kā %{target} ê PO文更新"
         update_user_role_html: "%{name} 更改 %{target} 角色"
+        create_relay_html: "%{name} 建立中繼 %{target}"
+        create_username_block_html: "%{name} 加添用者ê名包含 %{target} ê規則ah"
+        destroy_relay_html: "%{name} thâi掉中繼 %{target}"
+        destroy_username_block_html: "%{name} thâi掉用者ê名包含 %{target} ê規則ah"
+        disable_relay_html: "%{name} 停止使用中繼 %{target}"
+        enable_relay_html: "%{name} 啟用中繼 %{target}"
+        publish_terms_of_service_html: "%{name} 公佈服務規定ê更新"
         update_username_block_html: "%{name} 更新用者ê名包含 %{target} ê規則ah"
       deleted_account: thâi掉ê口座
       empty: Tshuē無log。
@@ -312,7 +315,6 @@ nan:
       title: 審查日誌
       unavailable_instance: "（域名bē當用）"
     announcements:
-      back: 倒去公告
       destroyed_msg: 公告成功thâi掉ah！
       edit:
         title: 編輯公告
@@ -321,10 +323,6 @@ nan:
       new:
         create: 加添公告
         title: 新ê公告
-      preview:
-        disclaimer: 因為用者bē當退出，電子批ê通知應該限制tī重要ê公告，比論個人資料洩出，á是關掉服侍器ê通知。
-        explanation_html: Tsit封email ē送hōo <strong>%{display_count} ê用者</strong>。Email ē包括下跤ê文字：
-        title: 先kā公告通知看māi
       publish: 公開
       published_msg: 公告成功公佈ah！
       scheduled_for: 排tī %{time}
@@ -333,6 +331,12 @@ nan:
       unpublish: 取消公佈
       unpublished_msg: 公告成功取消ah！
       updated_msg: 公告成功更新ah！
+      back: 倒去公告
+      preview:
+        disclaimer: 因為用者bē當退出，電子批ê通知應該限制tī重要ê公告，比論個人資料洩出，á是關掉服侍器ê通知。
+        explanation_html: Tsit封email ē送hōo <strong>%{display_count} ê用者</strong>。Email
+          ē包括下跤ê文字：
+        title: 先kā公告通知看māi
     critical_update_pending: 愛處理ê重大更新
     custom_emojis:
       assign_category: 分配類別
@@ -408,7 +412,8 @@ nan:
         confirm: 中止權限
         permanent_action: 取消中止權限，bē當復原任何資料á是關係。
         preamble_html: Lí teh beh停止 <strong>%{domain}</strong> kap伊ê kiánn域名ê權限。
-        remove_all_data: Tse ē tī lí ê服侍器內底，kā tuì tsit ê域名ê口座來ê所有內容、媒體kap個人資料lóng thâi掉。
+        remove_all_data: Tse ē tī lí ê服侍器內底，kā tuì tsit ê域名ê口座來ê所有內容、媒體kap個人資料lóng
+          thâi掉。
         stop_communication: Lí ê服侍器ē停止kap hia ê服侍器聯絡。
         title: 確認封鎖域名 %{domain}
         undo_relationships: Tse ē取消任何ê佇in ê服侍器ê口座kap lí ê之間ê跟tuè關係。
@@ -424,7 +429,8 @@ nan:
         create: 加添封鎖
         hint: 封鎖域名bē當擋口座記錄受加添佇資料庫，m̄-kú ē 自動自尾kàu頭，kā hia ê口座使用指定ê管理方式。
         severity:
-          desc_html: "<strong>限制</strong>ē kā hit ê域名ê口座所送ê PO文，設做kan-ta跟tuè伊ê tsiah通看見。<strong>中止權限</strong>ē thâi掉tī lí ê 服侍器內底，所有tuì hit ê域名ê口座來ê內容、媒體kap個人資料。Nā kan-ta beh拒絕媒體檔案，請用<strong>無</strong>。"
+          desc_html: "<strong>限制</strong>ē kā hit ê域名ê口座所送ê PO文，設做kan-ta跟tuè伊ê tsiah通看見。<strong>中止權限</strong>ē
+            thâi掉tī lí ê 服侍器內底，所有tuì hit ê域名ê口座來ê內容、媒體kap個人資料。Nā kan-ta beh拒絕媒體檔案，請用<strong>無</strong>。"
           noop: 無
           silence: 限制
           suspend: 中止權限
@@ -460,7 +466,8 @@ nan:
         title: 封鎖新ê電子phue網域
       no_email_domain_block_selected: 因為無揀任何電子phue域名封鎖，所以lóng無改變
       not_permitted: 無允准
-      resolved_dns_records_hint_html: 域名解析做下kha ê MX域名，tsiah ê域名上後負責收電子phue。封鎖MX域名ē封任何有siâng款MX域名ê電子郵件ê註冊，就算通看見ê域名無kâng，mā án-ne。<strong>Tio̍h細膩，m̄通封鎖主要ê電子phue提供者。</strong>
+      resolved_dns_records_hint_html: 域名解析做下kha ê MX域名，tsiah ê域名上後負責收電子phue。封鎖MX域名ē封任何有siâng款MX域名ê電子郵件ê註冊，就算通看見ê域名無kâng，mā
+        án-ne。<strong>Tio̍h細膩，m̄通封鎖主要ê電子phue提供者。</strong>
       resolved_through_html: 通過 %{domain} 解析
       title: 封鎖ê電子phue網域
     export_domain_allows:
@@ -469,47 +476,20 @@ nan:
       no_file: Iáu bē揀檔案
     export_domain_blocks:
       import:
-        description_html: Lí teh-beh輸入封鎖域名ê列單。請koh kā tsit ê列單斟酌檢查，特別是lí無家tī編tsit ê列單ê時。
+        description_html: Lí teh-beh輸入封鎖域名ê列單。請koh kā tsit ê列單斟酌檢查，特別是lí無家tī編tsit
+          ê列單ê時。
         existing_relationships_warning: 有ê跟tuè關係
-        private_comment_description_html: 為著幫tsān lí追蹤輸入ê封鎖tuì toh來，輸入ê封鎖ē kap下kha ê私人評論sann-kap加添：<q>%{comment}</q>
+        private_comment_description_html: 為著幫tsān lí追蹤輸入ê封鎖tuì toh來，輸入ê封鎖ē kap下kha
+          ê私人評論sann-kap加添：<q>%{comment}</q>
         private_comment_template: 佇 %{date} tuì %{source} 輸入
         title: 輸入域名封鎖
       invalid_domain_block: 因為下kha ê錯誤，làng過tsi̍t ê以上ê域名封鎖：%{error}
       new:
         title: 輸入域名封鎖
       no_file: Iáu bē揀檔案
-    fasp:
-      debug:
-        callbacks:
-          created_at: 建立佇
-          delete: Thâi掉
-          ip: IP地址
-          request_body: 請求主文
-          title: 除蟲callback
-      providers:
-        active: 有效
-        base_url: 基本URL
-        callback: Callback
-        delete: Thâi掉
-        edit: 編輯提供者
-        finish_registration: 完成註冊
-        name: 名
-        providers: 提供者
-        public_key_fingerprint: 公開鎖匙ê指頭仔螺(public key fingerprint)
-        registration_requested: 註冊請求ah
-        registrations:
-          confirm: 確認
-          description: Lí收著FASP ê註冊ah。nā準lí bô啟動，請拒絕。若有啟動，請佇確認註冊以前，細膩比較名kap鎖匙ê指頭仔螺。
-          reject: 拒絕
-          title: 確認FASP註冊
-        save: 儲存
-        select_capabilities: 揀功能
-        sign_in: 登入
-        status: 狀態
-        title: 聯邦宇宙輔助服務提供者 (FASP)
-      title: FASP
     follow_recommendations:
-      description_html: "<strong>跟tuè建議幫tsān新用者緊tshuē著心適ê內容</strong>。Nā使用者無hām別lâng有夠額ê互動，來形成個人化ê跟tuè建議，就ē推薦tsiah ê口座。In是佇指定語言內底，由最近上tsia̍p參與ê，kap上tsē lâng跟tuè ê口座，用ta̍k kang做基礎，相濫koh計算出來ê。"
+      description_html: "<strong>跟tuè建議幫tsān新用者緊tshuē著心適ê內容</strong>。Nā使用者無hām別lâng有夠額ê互動，來形成個人化ê跟tuè建議，就ē推薦tsiah
+        ê口座。In是佇指定語言內底，由最近上tsia̍p參與ê，kap上tsē lâng跟tuè ê口座，用ta̍k kang做基礎，相濫koh計算出來ê。"
       language: 揀語言
       status: 狀態
       suppress: Khàm掉跟tuè建議
@@ -522,7 +502,8 @@ nan:
         view_all: 看完整ê審核日誌
       availability:
         description_html:
-          other: Nā佇 <strong>%{count} kang</strong>內，寄送kàu hit ê域名lóng失敗，除非收著hit ê域名<em>來ê</em>寄送，a̍h無buē koh試寄送。
+          other: Nā佇 <strong>%{count} kang</strong>內，寄送kàu hit ê域名lóng失敗，除非收著hit ê域名<em>來ê</em>寄送，a̍h無buē
+            koh試寄送。
         failure_threshold_reached: 佇 %{date} kàu失敗ê底限。
         failures_recorded:
           other: 連suà %{count} kang lóng寄失敗。
@@ -573,17 +554,11 @@ nan:
         all: 全部
         limited: 受限制
         title: 管理
-      moderation_notes:
-        create: 加添管理筆記
-        created_msg: 站臺ê管理記錄成功建立！
-        description_html: 檢視á是替別ê管理者kap未來ê家己留筆記
-        destroyed_msg: 站臺ê管理記錄成功thâi掉！
-        placeholder: 關係本站、行ê行動，á是其他通幫tsān lí未來管本站ê資訊。
-        title: 管理ê筆記
       private_comment: 私人評論
       public_comment: 公開ê評論
       purge: 清除
-      purge_description_html: Nā lí想講tsit ê域名ē永永斷線，ē當tuì儲存內底thâi掉uì tsit ê域名來ê所有口座記錄kap相關資料。Huân-sè ē開點á時間。
+      purge_description_html: Nā lí想講tsit ê域名ē永永斷線，ē當tuì儲存內底thâi掉uì tsit ê域名來ê所有口座記錄kap相關資料。Huân-sè
+        ē開點á時間。
       title: 聯邦
       total_blocked_by_us: Hōo lán封鎖
       total_followed_by_them: Hōo in跟tuè
@@ -592,6 +567,13 @@ nan:
       total_storage: 媒體ê附件
       totals_time_period_hint_html: 下kha顯示ê總計包含ta̍k時ê資料。
       unknown_instance: 佇本服務器，現tsú時iáu無tsit ê域名ê記錄。
+      moderation_notes:
+        create: 加添管理筆記
+        created_msg: 站臺ê管理記錄成功建立！
+        description_html: 檢視á是替別ê管理者kap未來ê家己留筆記
+        destroyed_msg: 站臺ê管理記錄成功thâi掉！
+        placeholder: 關係本站、行ê行動，á是其他通幫tsān lí未來管本站ê資訊。
+        title: 管理ê筆記
     invites:
       deactivate_all: Lóng停用
       filter:
@@ -620,11 +602,13 @@ nan:
     relays:
       add_new: 加添新ê中繼
       delete: Thâi掉
-      description_html: "<strong>聯邦ê中繼站</strong> 是中lâng ê服侍器，ē tī訂koh公開kàu hit ê中繼站ê服侍器之間，交換tsē-tsē ê 公開PO文。<strong>中繼站通幫tsān小型kap中型服侍器tuì聯邦宇宙發現內容</strong>，本地ê用者免手動跟tuè遠距離ê服侍器ê別lâng。"
+      description_html: "<strong>聯邦ê中繼站</strong> 是中lâng ê服侍器，ē tī訂koh公開kàu hit ê中繼站ê服侍器之間，交換tsē-tsē
+        ê 公開PO文。<strong>中繼站通幫tsān小型kap中型服侍器tuì聯邦宇宙發現內容</strong>，本地ê用者免手動跟tuè遠距離ê服侍器ê別lâng。"
       disable: 停止使用
       disabled: 停止使用ê
       enable: 啟用
-      enable_hint: Lí ê服侍器tsi̍t-ē啟動，ē訂tuì tsit ê中繼逐ê公開PO文，mā ē開始送tsit ê服侍器ê公開PO文kàu hia。
+      enable_hint: Lí ê服侍器tsi̍t-ē啟動，ē訂tuì tsit ê中繼逐ê公開PO文，mā ē開始送tsit ê服侍器ê公開PO文kàu
+        hia。
       enabled: 啟用ê
       inbox_url: 中繼 URL
       pending: Teh等中繼站允准
@@ -643,14 +627,20 @@ nan:
       action_log: 審查日誌
       action_taken_by: 操作由
       actions:
-        delete_description_html: 受檢舉ê PO文ē thâi掉，而且ē用tsi̍t ue̍h橫tsuā記錄，幫tsān lí提升kâng tsi̍t ê用戶未來ê違規。
-        mark_as_sensitive_description_html: 受檢舉ê PO文內ê媒體ē標做敏感，而且ē用tsi̍t ue̍h橫tsuā記錄，幫tsān lí提升kâng tsi̍t ê用戶未來ê違規。
+        delete_description_html: 受檢舉ê PO文ē thâi掉，而且ē用tsi̍t ue̍h橫tsuā記錄，幫tsān lí提升kâng
+          tsi̍t ê用戶未來ê違規。
+        mark_as_sensitive_description_html: 受檢舉ê PO文內ê媒體ē標做敏感，而且ē用tsi̍t ue̍h橫tsuā記錄，幫tsān
+          lí提升kâng tsi̍t ê用戶未來ê違規。
         other_description_html: 看其他控制tsit ê口座ê所行，kap自訂聯絡受檢舉ê口座ê選項。
         resolve_description_html: Buē用行動控制受檢舉ê口座，mā無用橫tsuā記錄，而且tsit ê報告ē關掉。
-        silence_description_html: 本口座kan-ta ē hōo早前跟tuè ê á是手動tshiau ê看見，大大限制看見ê範圍。設定隨時ē當回復。請關所有tuì tsit ê口座ê檢舉。
-        suspend_description_html: Tsit ê口座kap伊ê內容ē bē當用，落尾ē thâi掉，mā bē當hām伊互動。30 kang以內通回復。請關所有tuì tsit ê口座ê檢舉。
-      actions_description_html: 決定行siánn物行動來解決tsit ê檢舉。Nā lí tuì受檢舉ê口座採用處罰，電子phue通知ē送予in，除非選擇 <strong>Pùn-sò phue</strong> 類別。
-      actions_description_remote_html: 決定行siánn物行動來解決tsit ê檢舉。Tse kan-ta ē影響 <strong>lí ê</strong> 服侍器hām tsit ê遠距離服侍器聯絡kap處理伊ê內容ê方法。
+        silence_description_html: 本口座kan-ta ē hōo早前跟tuè ê á是手動tshiau ê看見，大大限制看見ê範圍。設定隨時ē當回復。請關所有tuì
+          tsit ê口座ê檢舉。
+        suspend_description_html: Tsit ê口座kap伊ê內容ē bē當用，落尾ē thâi掉，mā bē當hām伊互動。30
+          kang以內通回復。請關所有tuì tsit ê口座ê檢舉。
+      actions_description_html: 決定行siánn物行動來解決tsit ê檢舉。Nā lí tuì受檢舉ê口座採用處罰，電子phue通知ē送予in，除非選擇
+        <strong>Pùn-sò phue</strong> 類別。
+      actions_description_remote_html: 決定行siánn物行動來解決tsit ê檢舉。Tse kan-ta ē影響 <strong>lí
+        ê</strong> 服侍器hām tsit ê遠距離服侍器聯絡kap處理伊ê內容ê方法。
       actions_no_posts: Tsit份檢舉無beh thâi掉ê相關PO文
       add_to_report: 加添其他ê內容kàu檢舉
       already_suspended_badges:
@@ -671,7 +661,8 @@ nan:
       created_at: 檢舉tī
       delete_and_resolve: Thâi掉PO文
       forwarded: 轉送ah
-      forwarded_replies_explanation: 本報告是tuì別站ê用者送ê，關係別站ê內容。本報告轉hōo lí，因為受檢舉ê內容是回應lí ê服侍器ê用者。
+      forwarded_replies_explanation: 本報告是tuì別站ê用者送ê，關係別站ê內容。本報告轉hōo lí，因為受檢舉ê內容是回應lí
+        ê服侍器ê用者。
       forwarded_to: 有轉送kàu %{domain}
       mark_as_resolved: 標做「解決ah」
       mark_as_sensitive: 標做敏感
@@ -701,18 +692,26 @@ nan:
       statuses_description_html: 冒犯ê內容ē引用tī kap受檢舉口座ê聯絡
       summary:
         action_preambles:
-          delete_html: Lí teh-beh <strong>thâi掉</strong> <strong>@%{acct}</strong> ê tsi̍t-kuá PO文。Tse ē：
-          mark_as_sensitive_html: Lí teh-beh <strong>kā</strong> <strong>@%{acct}</strong> ê tsi̍t-kuá PO文<strong>標做敏感</strong>。Tse ē：
-          silence_html: Lí teh-beh <strong>限制</strong> <strong>@%{acct}</strong> ê口座。Tse ē：
-          suspend_html: Lí teh-beh <strong>停止</strong> <strong>@%{acct}</strong> ê口座權限。Tse ē：
+          delete_html: Lí teh-beh <strong>thâi掉</strong> <strong>@%{acct}</strong>
+            ê tsi̍t-kuá PO文。Tse ē：
+          mark_as_sensitive_html: Lí teh-beh <strong>kā</strong> <strong>@%{acct}</strong>
+            ê tsi̍t-kuá PO文<strong>標做敏感</strong>。Tse ē：
+          silence_html: Lí teh-beh <strong>限制</strong> <strong>@%{acct}</strong> ê口座。Tse
+            ē：
+          suspend_html: Lí teh-beh <strong>停止</strong> <strong>@%{acct}</strong> ê口座權限。Tse
+            ē：
         actions:
           delete_html: Thâi掉冒犯ê PO文
           mark_as_sensitive_html: Kā冒犯êPO文ê媒體標做敏感
-          silence_html: Kā in ê個人資料kap內容標做kan-ta有跟tuè ê，á是手動tshiau伊ê個人檔案ê，通看見，來嚴嚴限制 <strong>@%{acct}</strong> ê傳播範圍
-          suspend_html: Kā <strong>@%{acct}</strong> 停止權限，koh kā in ê 個人資料kap內容標做bē當用，kap bē當hām in互動
+          silence_html: Kā in ê個人資料kap內容標做kan-ta有跟tuè ê，á是手動tshiau伊ê個人檔案ê，通看見，來嚴嚴限制
+            <strong>@%{acct}</strong> ê傳播範圍
+          suspend_html: Kā <strong>@%{acct}</strong> 停止權限，koh kā in ê 個人資料kap內容標做bē當用，kap
+            bē當hām in互動
         close_report: 'Kā 檢舉報告 #%{id} 標做解決ah'
-        close_reports_html: Kā <strong>ta̍k ê</strong>tuì <strong>@%{acct}</strong> ê檢舉標做解決ah
-        delete_data_html: Tuì tann起30kang以後，thâi掉 <strong>@%{acct}</strong> ê個人資料kap內容，除非佇tsit ê期限進前，取消停止in ê權限
+        close_reports_html: Kā <strong>ta̍k ê</strong>tuì <strong>@%{acct}</strong>
+          ê檢舉標做解決ah
+        delete_data_html: Tuì tann起30kang以後，thâi掉 <strong>@%{acct}</strong> ê個人資料kap內容，除非佇tsit
+          ê期限進前，取消停止in ê權限
         preview_preamble_html: "<strong>@%{acct}</strong> ē收著警告，包含下kha ê內容："
         record_strike_html: 記錄tuì <strong>@%{acct}</strong>ê警告，來幫tsān lí提升佇tsit ê口座ê未來違規
         send_email_html: Kā警告電子phue寄hōo <strong>@%{acct}</strong>
@@ -738,7 +737,8 @@ nan:
       description_html: 用<strong>用者角色</strong>，lí通自訂lí ê用者ē當接近使用Mastodon ê siánn物功能kap區域。
       edit: 編「%{name}」ê角色
       everyone: 預設ê權限
-      everyone_full_description_html: Tse是ē影響<strong>所有用者</strong>ê<strong>基本角色</strong>，就算是無分配tio̍h角色ê mā kâng款。所有其他ê角色繼承伊ê權限。
+      everyone_full_description_html: Tse是ē影響<strong>所有用者</strong>ê<strong>基本角色</strong>，就算是無分配tio̍h角色ê
+        mā kâng款。所有其他ê角色繼承伊ê權限。
       permissions_count:
         other: "%{count} ê權限"
       privileges:
@@ -787,14 +787,15 @@ nan:
       title: 角色
     rules:
       add_new: 加添規則
-      add_translation: 加添翻譯
       delete: Thâi掉
-      description_html: 雖bóng大部份ê lóng講有讀kap同意服務規定，m̄-koh攏無讀了，直到發生問題ê時。<strong>提供in列單ē當hōo tsi̍t kái看服侍器ê規則khah快。</strong>請試kā個別ê規則寫kah短koh簡單，m̄-kú m̄通kā in拆做tsē-tsē分開ê項目。
+      description_html: 雖bóng大部份ê lóng講有讀kap同意服務規定，m̄-koh攏無讀了，直到發生問題ê時。<strong>提供in列單ē當hōo
+        tsi̍t kái看服侍器ê規則khah快。</strong>請試kā個別ê規則寫kah短koh簡單，m̄-kú m̄通kā in拆做tsē-tsē分開ê項目。
       edit: 編輯規則
       empty: Iáu bē定義服侍器ê規則。
+      title: 服侍器規則
+      add_translation: 加添翻譯
       move_down: Suá khah落來
       move_up: Suá khah起去
-      title: 服侍器規則
       translation: 翻譯
       translations: 翻譯
       translations_explanation: Lí ē當（但是無必要）加添tsiah-ê規則ê翻譯。若無翻譯版，預設ê值ē顯示。請一直確認任何提供ê翻譯kap預設ê同步。
@@ -804,17 +805,16 @@ nan:
         preamble: 提供關係服侍器án-nuá運作kap管理，以及資金源頭ê詳細資訊。
         rules_hint: Tse是關係lí ê用者應該遵守ê規則ê專區。
         title: 關係本站
-      allow_referrer_origin:
-        desc: Nā是lí ê用者點連結kàu外部網站，in ê瀏覽器可能ē kā lí ê Mastodon服侍器ê地址當做流量ê來源送出。如果tse ē唯一區別lí ê用者，比如tse是個人ê Mastodon服侍器，請kā停止使用。
-        title: 允准外部網站kā lí ê Mastodon服侍器當做流量ê來源
       appearance:
         preamble: 自訂Mastodon網頁ê界面。
         title: 外觀
       branding:
-        preamble: Lí ê服侍器品牌hōo伊kap別ê服侍器區別。Tsit ê資訊可能展示佇無kâng ê環境，比如Mastodon ê網頁界面、原底ê app、佇別站ê sing看連結ê所在kap佇通信app內底等。因為tsit ê緣故，上好kā資訊保持kah清楚、短koh簡要。
+        preamble: Lí ê服侍器品牌hōo伊kap別ê服侍器區別。Tsit ê資訊可能展示佇無kâng ê環境，比如Mastodon ê網頁界面、原底ê
+          app、佇別站ê sing看連結ê所在kap佇通信app內底等。因為tsit ê緣故，上好kā資訊保持kah清楚、短koh簡要。
         title: 品牌
       captcha_enabled:
-        desc_html: Tsit ê功能需要tuì hCaptcha來ê外部kha本，可能有安全kap隱私ê顧慮。另外，<strong>tse ē明顯降kē tsi̍t寡lâng（特別是障礙者）註冊ê容易程度</strong>。因為tsiah ê緣故，請考慮別ê替代方案，比如審核制á是邀請制ê註冊。
+        desc_html: Tsit ê功能需要tuì hCaptcha來ê外部kha本，可能有安全kap隱私ê顧慮。另外，<strong>tse ē明顯降kē
+          tsi̍t寡lâng（特別是障礙者）註冊ê容易程度</strong>。因為tsiah ê緣故，請考慮別ê替代方案，比如審核制á是邀請制ê註冊。
         title: 要求新ê用者解決CAPTCHA問題，來確認in ê口座
       content_retention:
         danger_zone: 危險ê所在
@@ -825,27 +825,18 @@ nan:
         title: 預設kā用者tuì tshiau-tshuē ia̋n-jín ê索引排除
       discovery:
         follow_recommendations: 跟tuè建議
-        preamble: Kā心適ê內容浮現出來，ē當幫tsān tī Mastodon頂siáng lóng可能m̄知ê新手。控制tsē-tsē發現lí ê服侍器ê特色作品ê功能án-nuá運作。
-        privacy: 隱私權
+        preamble: Kā心適ê內容浮現出來，ē當幫tsān tī Mastodon頂siáng lóng可能m̄知ê新手。控制tsē-tsē發現lí
+          ê服侍器ê特色作品ê功能án-nuá運作。
         profile_directory: 個人資料ê目錄
         public_timelines: 公共ê時間線
         publish_statistics: 發布統計
         title: 發現
         trends: 趨勢
+        privacy: 隱私權
       domain_blocks:
         all: Kàu ta̍k ê lâng
         disabled: 無kàu tó tsi̍t ê
         users: Kàu ta̍k位登入ê用者
-      feed_access:
-        modes:
-          authenticated: Kan-ta hōo登入ê用者
-          disabled: 愛特別ê用者角色
-          public: Ta̍k lâng
-      landing_page:
-        values:
-          about: 關係本站
-          local_feed: 本地ê動態
-          trends: 趨勢
       registrations:
         moderation_recommandation: 佇開放hōo ta̍k ê lâng註冊進前，請確認lí有夠額koh主動反應ê管理團隊！
         preamble: 控制ē當佇lí ê服侍器註冊ê人。
@@ -858,16 +849,32 @@ nan:
         warning_hint: Guán建議用「註冊tio̍h愛核准」，除非lí tuì lí ê管理團隊ē當不管時處理pùn-sò訊息kap惡意註冊有信心。
       security:
         authorized_fetch: 要求tuì聯邦ê服侍器ê認證
-        authorized_fetch_hint: 要求tuì聯邦ê服侍器ê驗證ē當koh khah嚴格執行用者級kap服侍器級ê封鎖。M̄-kú ē致kàu性能處罰ê損失，減少lí ê回應ê擴散程度，mā有可能引入kap tsi̍t-kuá聯邦服務ê相容性問題。另外，tse bē當防止別lâng專工掠lí ê公開PO文kap口座。
+        authorized_fetch_hint: 要求tuì聯邦ê服侍器ê驗證ē當koh khah嚴格執行用者級kap服侍器級ê封鎖。M̄-kú ē致kàu性能處罰ê損失，減少lí
+          ê回應ê擴散程度，mā有可能引入kap tsi̍t-kuá聯邦服務ê相容性問題。另外，tse bē當防止別lâng專工掠lí ê公開PO文kap口座。
         authorized_fetch_overridden_hint: 因為hōo環境變數khàm掉，lí tsit-má bē當改tsit ê設定。
         federation_authentication: 聯邦驗證ê執行
       title: 服侍器ê設定
+      allow_referrer_origin:
+        desc: Nā是lí ê用者點連結kàu外部網站，in ê瀏覽器可能ē kā lí ê Mastodon服侍器ê地址當做流量ê來源送出。如果tse
+          ē唯一區別lí ê用者，比如tse是個人ê Mastodon服侍器，請kā停止使用。
+        title: 允准外部網站kā lí ê Mastodon服侍器當做流量ê來源
+      feed_access:
+        modes:
+          authenticated: Kan-ta hōo登入ê用者
+          disabled: 愛特別ê用者角色
+          public: Ta̍k lâng
+      landing_page:
+        values:
+          about: 關係本站
+          local_feed: 本地ê動態
+          trends: 趨勢
     site_uploads:
       delete: Thâi掉傳上去ê檔案
       destroyed_msg: 成功thâi掉傳上去kàu本站ê內容ah！
     software_updates:
       critical_update: 重要—請緊升級
-      description: 建議kā lí ê Mastodon安裝維持上新ê狀態，the̍h著上新ê修正kap功能。另外，隨時更新Mastodon有時陣真重要，ē當避免安全問題。因為tsiah-ê原因，Mastodon每30分鐘檢查更新，mā ē根據lí ê電子phue通知ê偏愛設定kā lí通知。
+      description: 建議kā lí ê Mastodon安裝維持上新ê狀態，the̍h著上新ê修正kap功能。另外，隨時更新Mastodon有時陣真重要，ē當避免安全問題。因為tsiah-ê原因，Mastodon每30分鐘檢查更新，mā
+        ē根據lí ê電子phue通知ê偏愛設定kā lí通知。
       documentation_link: 看詳細
       release_notes: 版本ê資訊
       title: Ē當the̍h ê更新
@@ -883,10 +890,9 @@ nan:
       back_to_account: Tńg去口座ê頁
       back_to_report: Tńg去檢舉ê頁
       batch:
-        add_to_report: '加kàu檢舉 #%{id}'
         remove_from_report: Tuì檢舉suá掉
         report: 檢舉
-      contents: 內容
+        add_to_report: '加kàu檢舉 #%{id}'
       deleted: Thâi掉ah
       favourites: 收藏
       history: 版本ê歷史
@@ -895,21 +901,22 @@ nan:
       media:
         title: 媒體
       metadata: Meta資料
-      no_history: Tsit篇PO文iáu無hōo lâng編輯
       no_status_selected: 因為無揀任何PO文，所以lóng無改變
       open: 公開PO文
       original_status: 原底ê PO文
-      quotes: 引用
       reblogs: 轉送
-      replied_to_html: 回應 %{acct_link}
       status_changed: PO文有改ah
-      status_title: 由 @%{name} 所PO
-      title: Tsit ê口座ê PO文 - @%{name}
+      title: 口座ê PO文
       trending: 趨勢
-      view_publicly: 公開看
-      view_quoted_post: 看引用ê PO文
       visibility: 通看ê程度
       with_media: 有媒體
+      contents: 內容
+      no_history: Tsit篇PO文iáu無hōo lâng編輯
+      quotes: 引用
+      replied_to_html: 回應 %{acct_link}
+      status_title: 由 @%{name} 所PO
+      view_publicly: 公開看
+      view_quoted_post: 看引用ê PO文
     strikes:
       actions:
         delete_statuses: "%{name} kā %{target} ê PO文thâi掉ah"
@@ -925,8 +932,6 @@ nan:
     system_checks:
       database_schema_check:
         message_html: 有leh等待處理ê資料庫遷suá。請執行tsiah-ê，來保證應用程式照期望pháng
-      elasticsearch_analysis_index_mismatch:
-        message_html: Elasticsearch ê索引分析器過期ah。請執行 <code>tootctl search deploy --only-mapping --only=%{value}</code>
       elasticsearch_health_red:
         message_html: Elasticsearch ê cluster無健康（紅色ê狀態），bē當用tshiau-tshuē功能
       elasticsearch_health_yellow:
@@ -938,14 +943,17 @@ nan:
         message_html: Lí ê Elasticsearch ê cluster有超過tsi̍t ê節點，m̄-kú Mastodon iáu無設定用in。
       elasticsearch_preset_single_node:
         action: 看文件
-        message_html: Lí ê Elasticsearch 叢集kan-ta有tsi̍t ê節點，<code>ES_PRESET</code> 應該設定做 <code>single_node_cluster</code>。
+        message_html: Lí ê Elasticsearch 叢集kan-ta有tsi̍t ê節點，<code>ES_PRESET</code>
+          應該設定做 <code>single_node_cluster</code>。
       elasticsearch_reset_chewy:
-        message_html: Lí ê Elasticsearch系統索引因為設定改變，過期ah。請執行 <code>tootctl search deploy --reset-chewy</code> 來更新。
+        message_html: Lí ê Elasticsearch系統索引因為設定改變，過期ah。請執行 <code>tootctl search deploy
+          --reset-chewy</code> 來更新。
       elasticsearch_running_check:
         message_html: Bē當連接 Elasticsearch。請確認kám有teh pháng，á是停用全文tshiau-tshuē
       elasticsearch_version_check:
         message_html: Bē當相容ê Elasticsearch版本：%{value}
-        version_comparison: Elasticsearch %{running_version} 版teh pháng，m̄-kú 愛 %{required_version} 版。
+        version_comparison: Elasticsearch %{running_version} 版teh pháng，m̄-kú 愛 %{required_version}
+          版。
       rules_check:
         action: 管理服侍器ê規則
         message_html: Lí iáu bē定義任何服侍器ê規則。
@@ -966,6 +974,9 @@ nan:
       upload_check_privacy_error_object_storage:
         action: 檢查tse，the̍h著其他資訊
         message_html: "<strong>Lí ê物件儲存空間設定錯誤。Lí ê服侍器ê隱私權有風險。</strong>"
+      elasticsearch_analysis_index_mismatch:
+        message_html: Elasticsearch ê索引分析器過期ah。請執行 <code>tootctl search deploy --only-mapping
+          --only=%{value}</code>
     tags:
       moderation:
         not_trendable: Bē當做趨勢
@@ -986,6 +997,112 @@ nan:
       search: Tshiau-tshuē
       title: Hashtag
       updated_msg: Hashtag設定更新成功ah
+    title: 管理
+    trends:
+      allow: 允准
+      approved: 允准ah
+      confirm_allow: Lí kám確定beh允准所揀ê標簽？
+      confirm_disallow: Lí kám確定無愛允准所揀ê標簽？
+      disallow: 無愛允准
+      links:
+        allow: 允准連結
+        allow_provider: 允准提供者
+        confirm_allow: Lí kám確定beh允准所揀ê連結？
+        confirm_allow_provider: Lí kám確定beh允准所揀ê提供者？
+        confirm_disallow: Lí kám確定無愛允准所揀ê連結？
+        confirm_disallow_provider: Lí kám確定無愛允准所揀ê提供者？
+        disallow: 無愛允准連結
+        disallow_provider: 無愛允准提供者
+        no_link_selected: 因為無揀任何連結，所以lóng無改變
+        publishers:
+          no_publisher_selected: 因為無揀任何提供者，所以lóng無改變
+        shared_by_over_week:
+          other: 頂禮拜hōo %{count} 位用者分享
+        title: 趨勢ê連結
+        usage_comparison: Tī kin-á日hōo %{today} ê lâng分享，比較tsa-hng有 %{yesterday} ê
+        description_html: Tsia是連結，現tsú時lí ê服侍器hōo通見ê用者大量分享ê。tse通幫tsān lí ê用者tshuē著tsit-má世間有siánn
+          tāi誌。直kàu lí允准公開者，連結bē公開展示。lí通允准á是拒絕單ê連結。
+      not_allowed_to_trend: 無允准刊tī趨勢
+      only_allowed: Kan-ta允准
+      pending_review: Teh等審核
+      preview_card_providers:
+        allowed: Tsit ê提供者ê連結通刊tī趨勢
+        rejected: Tsit ê提供者ê連結bē刊tī趨勢
+        title: 發布者
+        description_html: Tsiah ê域名來自定定受lí ê服侍器分享ê連結。連結bē變做公開趨勢，除非連結ê域名受允准。Lí ê允准（á是拒絕）擴展kàu
+          kiánn域名。
+      rejected: 拒絕ê
+      statuses:
+        allow: 允准PO文
+        allow_account: 允准作者
+        confirm_allow: Lí kám確定beh允准所揀ê狀態？
+        confirm_allow_account: Lí kám確定beh允准所揀ê口座？
+        confirm_disallow: Lí kám確定無愛允准所揀ê狀態？
+        confirm_disallow_account: Lí kám確定無愛允准所揀ê口座？
+        disallow: 無允准PO文
+        disallow_account: 無允准作者
+        no_status_selected: 因為無揀任何趨勢PO文，所以lóng無改變
+        not_discoverable: 作者iáu bē揀通hōo lâng發現
+        shared_by:
+          other: Hōo lâng分享á是收藏 %{friendly_count} kái
+        title: 趨勢ê PO文
+        description_html: Tsiah ê是lí ê服侍器所知ê，tsit-má teh受tsē-tsē分享kap收藏ê PO文。PO文bē公開顯示，除非lí允准作者，而且作者允准in
+          ê口座hőng推薦hōo別lâng。Lí通允准á是拒絕個別PO文。
+      tags:
+        current_score: 目前ê分數：%{score}
+        dashboard:
+          tag_accounts_measure: 無重複用
+          tag_languages_dimension: Tsia̍p用ê語言
+          tag_servers_dimension: 人氣服侍器
+          tag_servers_measure: 無kâng ê服侍器
+          tag_uses_measure: Lóng總使用
+        description_html: Tsiah ê是hashtag，tsit-má佇lí ê服侍器看見ê tsē-tsē PO文中出現。Tse通tsān
+          lí ê用者tshuē著ta̍k家上tsē討論ê內容。除非lí核准，hashtag bē公開顯示。
+        listable: 通受建議
+        no_tag_selected: 因為無揀任何標簽，所以lóng無改變
+        not_listable: Bē當受建議
+        not_trendable: Bē刊tī趨勢
+        not_usable: Bē當用
+        peaked_on_and_decaying: 佇 %{date} 日上烘，tsit-má teh退火
+        title: 趨勢ê hashtag
+        trendable: 通刊tī趨勢
+        trending_rank: '趨勢 #%{rank}'
+        usable: Ē當用
+        usage_comparison: Tī kin-á日hōo %{today} ê lâng用，比較tsa-hng有 %{yesterday} ê
+        used_by_over_week:
+          other: 頂禮拜hōo %{count} 位用者用
+      title: 推薦kap趨勢
+      trending: 趨勢
+    fasp:
+      debug:
+        callbacks:
+          created_at: 建立佇
+          delete: Thâi掉
+          ip: IP地址
+          request_body: 請求主文
+          title: 除蟲callback
+      providers:
+        active: 有效
+        base_url: 基本URL
+        callback: Callback
+        delete: Thâi掉
+        edit: 編輯提供者
+        finish_registration: 完成註冊
+        name: 名
+        providers: 提供者
+        public_key_fingerprint: 公開鎖匙ê指頭仔螺(public key fingerprint)
+        registration_requested: 註冊請求ah
+        registrations:
+          confirm: 確認
+          description: Lí收著FASP ê註冊ah。nā準lí bô啟動，請拒絕。若有啟動，請佇確認註冊以前，細膩比較名kap鎖匙ê指頭仔螺。
+          reject: 拒絕
+          title: 確認FASP註冊
+        save: 儲存
+        select_capabilities: 揀功能
+        sign_in: 登入
+        status: 狀態
+        title: 聯邦宇宙輔助服務提供者 (FASP)
+      title: FASP
     terms_of_service:
       back: 轉去服務規定
       changelog: Siánn物有改
@@ -1006,7 +1123,8 @@ nan:
       notified_on_html: 佇 %{date} 通知ê用者
       notify_users: 通知用者
       preview:
-        explanation_html: Tsit封email ē送hōo tī %{date} 進前註冊 ê <strong>%{display_count} ê用者</strong>。Email ē包括下跤ê文字：
+        explanation_html: Tsit封email ē送hōo tī %{date} 進前註冊 ê <strong>%{display_count}
+          ê用者</strong>。Email ē包括下跤ê文字：
         send_preview: Kā tāi先看ê內容寄kàu %{email}
         send_to_all:
           other: 寄出 %{display_count} 張電子phue
@@ -1015,78 +1133,6 @@ nan:
       published_on_html: 公開tī %{date}
       save_draft: 儲存草稿
       title: 服務規定
-    title: 管理
-    trends:
-      allow: 允准
-      approved: 允准ah
-      confirm_allow: Lí kám確定beh允准所揀ê標簽？
-      confirm_disallow: Lí kám確定無愛允准所揀ê標簽？
-      disallow: 無愛允准
-      links:
-        allow: 允准連結
-        allow_provider: 允准提供者
-        confirm_allow: Lí kám確定beh允准所揀ê連結？
-        confirm_allow_provider: Lí kám確定beh允准所揀ê提供者？
-        confirm_disallow: Lí kám確定無愛允准所揀ê連結？
-        confirm_disallow_provider: Lí kám確定無愛允准所揀ê提供者？
-        description_html: Tsia是連結，現tsú時lí ê服侍器hōo通見ê用者大量分享ê。tse通幫tsān lí ê用者tshuē著tsit-má世間有siánn tāi誌。直kàu lí允准公開者，連結bē公開展示。lí通允准á是拒絕單ê連結。
-        disallow: 無愛允准連結
-        disallow_provider: 無愛允准提供者
-        no_link_selected: 因為無揀任何連結，所以lóng無改變
-        publishers:
-          no_publisher_selected: 因為無揀任何提供者，所以lóng無改變
-        shared_by_over_week:
-          other: 頂禮拜hōo %{count} 位用者分享
-        title: 趨勢ê連結
-        usage_comparison: Tī kin-á日hōo %{today} ê lâng分享，比較tsa-hng有 %{yesterday} ê
-      not_allowed_to_trend: 無允准刊tī趨勢
-      only_allowed: Kan-ta允准
-      pending_review: Teh等審核
-      preview_card_providers:
-        allowed: Tsit ê提供者ê連結通刊tī趨勢
-        description_html: Tsiah ê域名來自定定受lí ê服侍器分享ê連結。連結bē變做公開趨勢，除非連結ê域名受允准。Lí ê允准（á是拒絕）擴展kàu kiánn域名。
-        rejected: Tsit ê提供者ê連結bē刊tī趨勢
-        title: 發布者
-      rejected: 拒絕ê
-      statuses:
-        allow: 允准PO文
-        allow_account: 允准作者
-        confirm_allow: Lí kám確定beh允准所揀ê狀態？
-        confirm_allow_account: Lí kám確定beh允准所揀ê口座？
-        confirm_disallow: Lí kám確定無愛允准所揀ê狀態？
-        confirm_disallow_account: Lí kám確定無愛允准所揀ê口座？
-        description_html: Tsiah ê是lí ê服侍器所知ê，tsit-má teh受tsē-tsē分享kap收藏ê PO文。PO文bē公開顯示，除非lí允准作者，而且作者允准in ê口座hőng推薦hōo別lâng。Lí通允准á是拒絕個別PO文。
-        disallow: 無允准PO文
-        disallow_account: 無允准作者
-        no_status_selected: 因為無揀任何趨勢PO文，所以lóng無改變
-        not_discoverable: 作者iáu bē揀通hōo lâng發現
-        shared_by:
-          other: Hōo lâng分享á是收藏 %{friendly_count} kái
-        title: 趨勢ê PO文
-      tags:
-        current_score: 目前ê分數：%{score}
-        dashboard:
-          tag_accounts_measure: 無重複用
-          tag_languages_dimension: Tsia̍p用ê語言
-          tag_servers_dimension: 人氣服侍器
-          tag_servers_measure: 無kâng ê服侍器
-          tag_uses_measure: Lóng總使用
-        description_html: Tsiah ê是hashtag，tsit-má佇lí ê服侍器看見ê tsē-tsē PO文中出現。Tse通tsān lí ê用者tshuē著ta̍k家上tsē討論ê內容。除非lí核准，hashtag bē公開顯示。
-        listable: 通受建議
-        no_tag_selected: 因為無揀任何標簽，所以lóng無改變
-        not_listable: Bē當受建議
-        not_trendable: Bē刊tī趨勢
-        not_usable: Bē當用
-        peaked_on_and_decaying: 佇 %{date} 日上烘，tsit-má teh退火
-        title: 趨勢ê hashtag
-        trendable: 通刊tī趨勢
-        trending_rank: '趨勢 #%{rank}'
-        usable: Ē當用
-        usage_comparison: Tī kin-á日hōo %{today} ê lâng用，比較tsa-hng有 %{yesterday} ê
-        used_by_over_week:
-          other: 頂禮拜hōo %{count} 位用者用
-      title: 推薦kap趨勢
-      trending: 趨勢
     username_blocks:
       add_new: 加新ê
       block_registrations: 封鎖註冊
@@ -1115,7 +1161,8 @@ nan:
     webhooks:
       add_new: 加添端點
       delete: Thâi掉
-      description_html: "<strong>Webhook</strong> hōo Mastodon 通kā關係所揀ê事件ê<strong>即時通知</strong>sak kàu lí 家己ê應用程式，就án-ne lí ê應用程式ē當<strong>自動啟動反應</strong>。"
+      description_html: "<strong>Webhook</strong> hōo Mastodon 通kā關係所揀ê事件ê<strong>即時通知</strong>sak
+        kàu lí 家己ê應用程式，就án-ne lí ê應用程式ē當<strong>自動啟動反應</strong>。"
       disable: 停止使用
       disabled: 停用ah
       edit: 編輯端點
@@ -1131,91 +1178,34 @@ nan:
       status: 狀態
       title: Webhooks
       webhook: Webhook
-  admin_mailer:
-    auto_close_registrations:
-      body: 因為欠最近ê管理員活動，佇 %{instance} ê註冊已經自動切kàu需要手動審查，以免 %{instance} hōo 可能行ê pháinn 行為ê當做平臺。Lí不管時lóng通切轉去，開放註冊。
-      subject: "%{instance} ê註冊已經自動切kàu需要允准"
-    new_appeal:
-      actions:
-        delete_statuses: thâi掉in ê PO文
-        disable: 冷凍in ê口座
-        mark_statuses_as_sensitive: 標in ê PO文做敏感ê
-        none: 警告
-        sensitive: 標in ê 口座做敏感ê
-        silence: 限制in ê口座
-        suspend: 停止使用in ê口座
-      body: "%{target} teh tuì %{action_taken_by} tī %{date} 所做ê管理決定送申訴，hit ê決定是 %{type}。In有寫："
-      next_steps: Lí通允准申訴來取消管理決定，á是kā忽略。
-      subject: "%{username} teh tuì tī %{instance} 頂ê管理決定送申訴"
-    new_critical_software_updates:
-      body: Mastodon 推出新ê重大版本，請liōng早升級！
-      subject: "%{instance} 有通the̍h ê Mastodon ê重大更新！"
-    new_pending_account:
-      body: 下kha是新口座ê詳細。Lí通允准á是拒絕tsit ê申請。
-      subject: "%{instance} 頂有新ê口座 (%{username}) 愛審查"
-    new_report:
-      body: "%{reporter} 有檢舉用者 %{target}"
-      body_remote: Tuì %{domain} 來ê有檢舉 %{target}
-      subject: "%{instance} ê 新檢舉（#%{id}）"
-    new_software_updates:
-      body: Mastodon推出新ê版本ah，lí huân-sè想beh升級！
-      subject: "%{instance} 有通the̍h ê Mastodon ê新版本！"
-    new_trends:
-      body: 下kha ê項目愛審查，tsiah ē當公開顯示：
-      new_trending_links:
-        title: 趨勢ê連結
-      new_trending_statuses:
-        title: 趨勢ê PO文
-      new_trending_tags:
-        title: 趨勢ê hashtag
-      subject: "%{instance} 頂有新ê趨勢愛審查"
-  aliases:
-    add_new: 加添別名
-    created_msg: 別名成功加添ah。Lí ē當開始tuì舊ê口座轉。
-    deleted_msg: Thâi掉捌名成功。Bē當tuì hit ê口座轉kàu tsit ê ah。
-    empty: Lí bô半个別名。
-    hint_html: Nā lí beh tuì別ê口座轉kah tsit ê，lí通佇tsia加別名，tse是必要ê，了後lí ē當kā跟tuè lí ê tuì舊口座suá到tsit ê。Tsit ê動作是<strong>無害koh通還原</strong>。<strong>著tī舊口座suá口座</strong>。
-    remove: 取消連結別名
-  appearance:
-    advanced_settings: 進一步ê設定
-    animations_and_accessibility: 動畫kap無障礙設定
-    boosting_preferences: 轉送ê偏好設定
-    boosting_preferences_info_html: "<strong>撇步：</strong>無論án-nuá設定，<kbd>Shift</kbd> + <kbd>Click</kbd> 佇%{icon} 轉送標á ē liâm-mī轉送。"
-    discovery: 發現
-    localization:
-      body: Mastodon是由志工翻譯。
-      guide_link: https://crowdin.com/project/mastodon
-      guide_link_text: Ta̍k家lóng ē當貢獻。
-    sensitive_content: 敏感ê內容
-  application_mailer:
-    notification_preferences: 改電子phue ê偏好
-    salutation: "%{name}、"
-    settings: 改電子phue ê偏好：%{link}
-    unsubscribe: 取消訂
-    view: 檢視：
-    view_profile: 看個人資料
-    view_status: 看PO文
-  applications:
-    created: 應用程式成功加添
-    destroyed: 應用程式成功thâi掉
-    logout: 登出
-    regenerate_token: 重頭產生接近使用ê token
-    token_regenerated: 接近使用ê token 成功重頭產生
-    warning: 注意！毋通kā分享hōo別lâng！
-    your_token: Lí ê接近使用token
   auth:
+    privacy_policy_agreement_html: 我有讀，同意<a href="%{privacy_policy_path}" target="_blank">隱私權政策</a>
+    setup:
+      email_settings_hint_html: 請點gún所送ê連結來驗證 %{email}。Gún tī tsia等lí。
+      email_below_hint_html: 請檢查lí ê pùn-sò phue資料giap-á，á是請求koh送tsi̍t改。Lí通改電子phue地址，nā是有出入。
+      link_not_received: Kám iáu bē收著連結？
+      new_confirmation_instructions_sent: Lí ē tī幾分鐘後收著新ê電子phue，有確認連結！
+      title: 請檢查lí ê收件giap-á
+    sign_up:
+      preamble: 用tī tsit臺Mastodon服侍器ê口座，lí thang跟tuè其他佇tsit ê網路ê lâng，無論in ê口座khǹg
+        tī tueh。
+      manual_review: 佇 %{domain} ê註冊ē經過guán ê管理員人工審查。為著tsān guán 進行lí ê註冊，寫tsi̍t點á關係lí家己kap想beh
+        tī %{domain}註冊ê理由。
+      title: Lán做伙設定 %{domain}。
     apply_for_account: 申請口座
     captcha_confirmation:
       help_html: Nā lí完成CAPTCHA ê時陣有問題，lí通用 %{email} kap guán 聯絡，guán ē幫tsān lí。
       hint_html: 上尾步ah！Guán愛確認lí是人類（以免pùn-sò訊息入侵！）解決下kha êCAPTCHA了後，ji̍h「繼續」。
       title: 安全檢查
     confirmations:
-      awaiting_review: Lí ê電子phue地址有確認ah！%{domain} ê人員leh審查lí ê註冊。Nā in允准lí ê口座，Lí ē收著電子phue！
+      awaiting_review: Lí ê電子phue地址有確認ah！%{domain} ê人員leh審查lí ê註冊。Nā in允准lí ê口座，Lí
+        ē收著電子phue！
       awaiting_review_title: Lí ê註冊當leh審查
       clicking_this_link: Ji̍h tsit ê連結
       login_link: 登入
       proceed_to_login_html: Lí tsit-má通繼續去 %{login_link}。
-      redirect_to_app_html: Lí應該受重轉kàu <strong>%{app_name}</strong>應用程式，若是iáu-buē，試 %{clicking_this_link} á是手動轉去tsit ê應用程式。
+      redirect_to_app_html: Lí應該受重轉kàu <strong>%{app_name}</strong>應用程式，若是iáu-buē，試
+        %{clicking_this_link} á是手動轉去tsit ê應用程式。
       registration_complete: Lí佇 %{domain} ê註冊完成ah！
       welcome_title: 歡迎 %{name}！
       wrong_email_hint: Nā是電子phue ê地址無正確，lí ē當tī口座設定kā改。
@@ -1259,19 +1249,10 @@ nan:
       title_invited: Lí受邀請ah。
     security: 安全
     set_new_password: 設新ê密碼
-    setup:
-      email_below_hint_html: 請檢查lí ê pùn-sò phue資料giap-á，á是請求koh送tsi̍t改。Lí通改電子phue地址，nā是有出入。
-      email_settings_hint_html: 請tshi̍h guán送kàu %{email} ê連結，來開始用 Mastodon。Guán ē佇tsia等。
-      link_not_received: Kám iáu bē收著連結？
-      new_confirmation_instructions_sent: Lí ē tī幾分鐘後收著新ê電子phue，有確認連結！
-      title: 請檢查lí ê收件giap-á
     sign_in:
-      preamble_html: 請用lí佇 <strong>%{domain}</strong> ê口座kap密碼登入。若是lí ê口座tī別ê服侍器，lí bē當tī tsia登入。
+      preamble_html: 請用lí佇 <strong>%{domain}</strong> ê口座kap密碼登入。若是lí ê口座tī別ê服侍器，lí
+        bē當tī tsia登入。
       title: 登入 %{domain}
-    sign_up:
-      manual_review: 佇 %{domain} ê註冊ē經過guán ê管理員人工審查。為著tsān guán 進行lí ê註冊，寫tsi̍t點á關係lí家己kap想beh tī %{domain}註冊ê理由。
-      preamble: Nā是lí tī tsit ê服侍器有口座，lí ē當tuè別ê佇聯邦宇宙ê lâng，無論伊ê口座tī tó-tsi̍t站。
-      title: Lán做伙設定 %{domain}。
     status:
       account_status: 口座ê狀態
       confirming: Teh等電子phue確認完成。
@@ -1282,8 +1263,102 @@ nan:
       view_strikes: 看早前tuì lí ê口座ê警告
     too_fast: 添表ê速度傷緊，請koh試。
     use_security_key: 用安全鎖
-    user_agreement_html: 我有讀而且同意 <a href="%{terms_of_service_path}" target="_blank">服務規定</a> kap <a href="%{privacy_policy_path}" target="_blank">隱私權政策</a>
+    user_agreement_html: 我有讀而且同意 <a href="%{terms_of_service_path}" target="_blank">服務規定</a>
+      kap <a href="%{privacy_policy_path}" target="_blank">隱私權政策</a>
     user_privacy_agreement_html: 我有讀而且同意 <a href="%{privacy_policy_path}" target="_blank">隱私權政策</a>
+  imports:
+    overwrite_preambles:
+      blocking_html: Lí teh-beh用<strong>%{filename}</strong> 內底ê <strong>%{total_items}
+        ê口座</strong>，替換lí ê封鎖列單。
+    preambles:
+      muting_html: Lí teh-beh kā <strong>%{filename}</strong>內底ê<strong>%{total_items}
+        ê口座</strong><strong>消音</strong>。
+  scheduled_statuses:
+    too_soon: 預定PO文ê時間kan-ta tī未來
+  statuses:
+    default_language: Kap界面ê語言sio kâng
+  two_factor_authentication:
+    disable: 停止用雙因素認證
+  user_mailer:
+    welcome:
+      feature_creativity: Mastodon支持聲音、影kap圖片êPO文、容易使用性ê描述、投票、內容ê警告、動畫ê標頭、自訂ê繪文字kap裁縮小圖ê控制等等，幫tsān
+        lí展現家己。無論beh發表藝術作品、音樂，á是podcast，Mastodon佇tsia為lí服務。
+      sign_in_action: 登入
+  admin_mailer:
+    auto_close_registrations:
+      body: 因為欠最近ê管理員活動，佇 %{instance} ê註冊已經自動切kàu需要手動審查，以免 %{instance} hōo 可能行ê pháinn
+        行為ê當做平臺。Lí不管時lóng通切轉去，開放註冊。
+      subject: "%{instance} ê註冊已經自動切kàu需要允准"
+    new_appeal:
+      actions:
+        delete_statuses: thâi掉in ê PO文
+        disable: 冷凍in ê口座
+        mark_statuses_as_sensitive: 標in ê PO文做敏感ê
+        none: 警告
+        sensitive: 標in ê 口座做敏感ê
+        silence: 限制in ê口座
+        suspend: 停止使用in ê口座
+      body: "%{target} teh tuì %{action_taken_by} tī %{date} 所做ê管理決定送申訴，hit ê決定是 %{type}。In有寫："
+      next_steps: Lí通允准申訴來取消管理決定，á是kā忽略。
+      subject: "%{username} teh tuì tī %{instance} 頂ê管理決定送申訴"
+    new_critical_software_updates:
+      body: Mastodon 推出新ê重大版本，請liōng早升級！
+      subject: "%{instance} 有通the̍h ê Mastodon ê重大更新！"
+    new_pending_account:
+      body: 下kha是新口座ê詳細。Lí通允准á是拒絕tsit ê申請。
+      subject: "%{instance} 頂有新ê口座 (%{username}) 愛審查"
+    new_report:
+      body: "%{reporter} 有檢舉用者 %{target}"
+      body_remote: Tuì %{domain} 來ê有檢舉 %{target}
+      subject: "%{instance} ê 新檢舉（#%{id}）"
+    new_software_updates:
+      body: Mastodon推出新ê版本ah，lí huân-sè想beh升級！
+      subject: "%{instance} 有通the̍h ê Mastodon ê新版本！"
+    new_trends:
+      body: 下kha ê項目愛審查，tsiah ē當公開顯示：
+      new_trending_links:
+        title: 趨勢ê連結
+      new_trending_statuses:
+        title: 趨勢ê PO文
+      new_trending_tags:
+        title: 趨勢ê hashtag
+      subject: "%{instance} 頂有新ê趨勢愛審查"
+  aliases:
+    add_new: 加添別名
+    created_msg: 別名成功加添ah。Lí ē當開始tuì舊ê口座轉。
+    deleted_msg: Thâi掉捌名成功。Bē當tuì hit ê口座轉kàu tsit ê ah。
+    empty: Lí bô半个別名。
+    hint_html: Nā lí beh tuì別ê口座轉kah tsit ê，lí通佇tsia加別名，tse是必要ê，了後lí ē當kā跟tuè lí ê
+      tuì舊口座suá到tsit ê。Tsit ê動作是<strong>無害koh通還原</strong>。<strong>著tī舊口座suá口座</strong>。
+    remove: 取消連結別名
+  appearance:
+    advanced_settings: 進一步ê設定
+    animations_and_accessibility: 動畫kap無障礙設定
+    boosting_preferences: 轉送ê偏好設定
+    boosting_preferences_info_html: "<strong>撇步：</strong>無論án-nuá設定，<kbd>Shift</kbd>
+      + <kbd>Click</kbd> 佇%{icon} 轉送標á ē liâm-mī轉送。"
+    discovery: 發現
+    localization:
+      body: Mastodon是由志工翻譯。
+      guide_link: https://crowdin.com/project/mastodon
+      guide_link_text: Ta̍k家lóng ē當貢獻。
+    sensitive_content: 敏感ê內容
+  application_mailer:
+    notification_preferences: 改電子phue ê偏好
+    salutation: "%{name}、"
+    settings: 改電子phue ê偏好：%{link}
+    unsubscribe: 取消訂
+    view: 檢視：
+    view_profile: 看個人資料
+    view_status: 看PO文
+  applications:
+    created: 應用程式成功加添
+    destroyed: 應用程式成功thâi掉
+    logout: 登出
+    regenerate_token: 重頭產生接近使用ê token
+    token_regenerated: 接近使用ê token 成功重頭產生
+    warning: 注意！毋通kā分享hōo別lâng！
+    your_token: Lí ê接近使用token
   author_attribution:
     example_title: 見本文字
     hint_html: Lí kám佇Mastodon外口寫新聞á是blog文章？控制當in佇Mastodon分享ê時陣，án-tsuánn表示作者資訊。
@@ -1329,7 +1404,8 @@ nan:
       caches: 已經hōo其他ê站the̍h著cache ê內容，可能iáu ē有資料
       data_removal: Lí ê PO文kap其他ê資料ē永永thâi掉。
       email_change_html: Lí ē當<a href="%{path}">改lí ê電子phue地址</a>，suah毋免thâi掉lí ê口座。
-      email_contact_html: 若是iáu buē收著phue，lí通寄kàu <a href="mailto:%{email}">%{email}</a> tshuē幫tsān
+      email_contact_html: 若是iáu buē收著phue，lí通寄kàu <a href="mailto:%{email}">%{email}</a>
+        tshuē幫tsān
       email_reconfirmation_html: Nā是lí iáu bē收著驗證phue，lí通<a href="%{path}">koh請求</a>
       irreversible: Lí bē當復原á是重頭啟用lí ê口座
       more_details_html: 其他資訊，請看<a href="%{terms_path}">隱私政策</a>。
@@ -1362,15 +1438,5 @@ nan:
         sensitive: Kā 口座文標做敏感ê
         silence: 口座制限
         suspend: 停止口座權限
-  scheduled_statuses:
-    too_soon: Tio̍h用未來ê日期。
-  statuses:
-    default_language: Kap界面ê語言sio kâng
   terms_of_service:
     title: 服務規定
-  two_factor_authentication:
-    disable: 停止用雙因素認證
-  user_mailer:
-    welcome:
-      feature_creativity: Mastodon支持聲音、影kap圖片êPO文、容易使用性ê描述、投票、內容ê警告、動畫ê標頭、自訂ê繪文字kap裁縮小圖ê控制等等，幫tsān lí展現家己。無論beh發表藝術作品、音樂，á是podcast，Mastodon佇tsia為lí服務。
-      sign_in_action: 登入

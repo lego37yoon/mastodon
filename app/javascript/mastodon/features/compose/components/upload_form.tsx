@@ -177,7 +177,6 @@ export const UploadForm: React.FC = () => {
               onDragStart={handleDragStart}
               onDragEnd={handleDragEnd}
               onDragCancel={handleDragCancel}
-              onDragAbort={handleDragCancel}
               accessibility={accessibility}
             >
               <SortableContext

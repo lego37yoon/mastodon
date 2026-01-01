@@ -11,16 +11,11 @@
   %p.lead= t('admin.settings.appearance.preamble')
 
   .fields-group
-    = f.input :flavour_and_skin,
-              collection: Themes.instance.flavours_and_skins,
-              group_label_method: ->(flavour_and_skin) { I18n.t("flavours.#{flavour_and_skin}.name", default: flavour_and_skin) },
-              wrapper: :with_label,
-              label: t('admin.settings.flavour_and_skin.title'),
+    = f.input :theme,
+              collection: Themes.instance.names,
               include_blank: false,
-              as: :grouped_select,
-              label_method: :last,
-              value_method: ->(value) { value.join('/') },
-              group_method: :last
+              label_method: ->(theme) { I18n.t("themes.#{theme}", default: theme) },
+              wrapper: :with_label
 
   .fields-group
     = f.input :custom_css,

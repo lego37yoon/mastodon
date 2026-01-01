@@ -20,7 +20,7 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 
 import { MastodonServiceWorkerLocales } from './config/vite/plugin-sw-locales';
 import { MastodonEmojiCompressed } from './config/vite/plugin-emoji-compressed';
-import { GlitchThemes as MastodonThemes } from './config/vite/plugin-glitch-themes';
+import { MastodonThemes } from './config/vite/plugin-mastodon-themes';
 import { MastodonNameLookup } from './config/vite/plugin-name-lookup';
 import { MastodonAssetsManifest } from './config/vite/plugin-assets-manifest';
 
@@ -153,6 +153,14 @@ export const config: UserConfigFnPromise = async ({ mode, command }) => {
           },
         },
       },
+    },
+    experimental: {
+      /**
+       * Setting this causes Vite to not rely on the base config for import URLs,
+       * and instead uses import.meta.url, which is what we want for proper CDN support.
+       * @see https://github.com/mastodon/mastodon/pull/37310
+       */
+      renderBuiltUrl: () => undefined,
     },
     worker: {
       format: 'es',

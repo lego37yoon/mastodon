@@ -8,7 +8,7 @@ class ActivityPub::ActorSerializer < ActivityPub::Serializer
 
   context_extensions :manually_approves_followers, :featured, :also_known_as,
                      :moved_to, :property_value, :discoverable, :suspended,
-                     :memorial, :indexable, :attribution_domains
+                     :memorial, :indexable, :attribution_domains, :isCat
 
   attributes :id, :type, :following, :followers,
              :inbox, :outbox, :featured, :featured_tags,
@@ -218,5 +218,11 @@ class ActivityPub::ActorSerializer < ActivityPub::Serializer
     def signature_value
       object.token
     end
+  end
+
+  attribute :is_cat, key: :isCat
+
+  def cat?
+    object.is_cat
   end
 end

@@ -96,6 +96,9 @@ RUN \
 # Set /opt/mastodon as working directory
 WORKDIR /opt/mastodon
 
+# Add backport repository for some specific packages where we need the latest version
+RUN echo 'deb http://deb.debian.org/debian bookworm-backports main' >> /etc/apt/sources.list
+
 # hadolint ignore=DL3008,DL3005
 RUN \
   # Mount Apt cache and lib directories from Docker buildx caches

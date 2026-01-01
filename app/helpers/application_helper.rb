@@ -156,8 +156,7 @@ module ApplicationHelper
   def body_classes
     output = []
     output << content_for(:body_classes)
-    output << "flavour-#{current_flavour.parameterize}"
-    output << "skin-#{current_skin.parameterize}"
+    output << "theme-#{current_theme.parameterize}"
     output << 'system-font' if current_account&.user&.setting_system_font_ui
     output << 'custom-scrollbars' unless current_account&.user&.setting_system_scrollbars_ui
     output << (current_account&.user&.setting_reduce_motion ? 'reduce-motion' : 'no-reduce-motion')
@@ -264,11 +263,6 @@ module ApplicationHelper
 
   def within_authorization_flow?
     session[:user_return_to].present? && Rails.application.routes.recognize_path(session[:user_return_to])[:controller] == 'oauth/authorizations'
-  end
-
-  # glitch-soc addition to handle the multiple flavors
-  def flavoured_vite_typescript_tag(pack_name, **)
-    vite_typescript_tag("#{Themes.instance.flavour(current_flavour)['pack_directory'].delete_prefix('app/javascript/')}/#{pack_name}", **)
   end
 
   private

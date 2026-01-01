@@ -2,49 +2,26 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Settings preferences appearance page' do
-  let(:user) { Fabricate :user }
+RSpec.describe 'Admin::Settings::Appearance' do
+  let(:admin_user) { Fabricate(:admin_user) }
 
-  before { sign_in user }
+  before { sign_in(admin_user) }
 
-  it 'Views and updates user prefs' do
-    visit settings_preferences_appearance_path
+  it 'Saves changes to appearance settings' do
+    visit admin_settings_appearance_path
+    expect(page)
+      .to have_title(I18n.t('admin.settings.appearance.title'))
+
+    fill_in custom_css_field,
+            with: 'html { display: inline; }'
+
+    click_on submit_button
 
     expect(page)
-      .to have_private_cache_control
-
-    # TODO: glitch-soc's option is elsewhere
-    # select 'contrast', from: theme_selection_field
-    check confirm_reblog_field
-    uncheck confirm_delete_field
-
-    check advanced_layout_field
-
-    expect { save_changes }
-      .to change { user.reload.settings['web.reblog_modal'] }.to(true)
-      .and change { user.reload.settings['web.delete_modal'] }.to(false)
-      .and(change { user.reload.settings['web.advanced_layout'] }.to(true))
-    expect(page)
-      .to have_title(I18n.t('settings.appearance'))
+      .to have_content(success_message)
   end
 
-  def save_changes
-    within('form') { click_on submit_button }
-  end
-
-  def confirm_delete_field
-    form_label('defaults.setting_delete_modal')
-  end
-
-  def confirm_reblog_field
-    form_label('defaults.setting_boost_modal')
-  end
-
-  def theme_selection_field
-    form_label('defaults.setting_theme')
-  end
-
-  def advanced_layout_field
-    form_label('defaults.setting_advanced_layout')
+  def custom_css_field
+    form_label 'form_admin_settings.custom_css'
   end
 end

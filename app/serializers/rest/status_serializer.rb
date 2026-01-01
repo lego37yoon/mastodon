@@ -2,6 +2,7 @@
 
 class REST::StatusSerializer < ActiveModel::Serializer
   include FormattingHelper
+  include CatHelper
 
   # Please update `app/javascript/mastodon/api_types/statuses.ts` when making changes to the attributes
 
@@ -15,12 +16,10 @@ class REST::StatusSerializer < ActiveModel::Serializer
   attribute :muted, if: :current_user?
   attribute :bookmarked, if: :current_user?
   attribute :pinned, if: :pinnable?
-  attribute :local_only, if: :local?
   has_many :filtered, serializer: REST::FilterResultSerializer, if: :current_user?
 
   attribute :content, unless: :source_requested?
   attribute :text, if: :source_requested?
-  attribute :content_type, if: :source_requested?
 
   belongs_to :reblog, serializer: REST::StatusSerializer
   belongs_to :application, if: :show_application?
@@ -38,8 +37,6 @@ class REST::StatusSerializer < ActiveModel::Serializer
   has_one :preview_card, key: :card, serializer: REST::PreviewCardSerializer
   has_one :preloadable_poll, key: :poll, serializer: REST::PollSerializer
   has_one :quote_approval
-
-  delegate :local?, to: :object
 
   def quote
     object.quote if object.quote&.acceptable?
@@ -89,7 +86,20 @@ class REST::StatusSerializer < ActiveModel::Serializer
   end
 
   def content
-    status_content_format(object)
+    if object.account.is_cat?
+      quoted_status = object.quote&.quoted_status if object.local?
+      html_aware_format(nyaify(object.text), object.local?, preloaded_accounts: [object.account] + (object.respond_to?(:active_mentions) ? object.active_mentions.map(&:account) : []), quoted_status: quoted_status)
+    else
+      status_content_format(object)
+    end
+  end
+
+  def spoiler_text
+    if object.account.is_cat?
+      nyaify(object.spoiler_text)
+    else
+      object.spoiler_text
+    end
   end
 
   def url

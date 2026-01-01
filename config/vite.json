@@ -3,8 +3,7 @@
     "sourceCodeDir": "app/javascript",
     "additionalEntrypoints": [
       "~/{fonts,icons,images}/**/*",
-      "~/styles/entrypoints/*.scss",
-      "~/flavours/*/{fonts,icons,images}/**/*"
+      "~/styles/entrypoints/*.scss"
     ],
     "watchAdditionalPaths": []
   },

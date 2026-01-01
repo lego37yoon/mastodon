@@ -11,15 +11,12 @@ class ApplicationController < ActionController::Base
   include CacheConcern
   include PreloadingConcern
   include DomainControlHelper
-  include ThemingConcern
   include DatabaseHelper
   include AuthorizedFetchHelper
   include SelfDestructHelper
 
   helper_method :current_account
   helper_method :current_session
-  helper_method :current_flavour
-  helper_method :current_skin
   helper_method :current_theme
   helper_method :single_user_mode?
   helper_method :use_seamless_external_login?
@@ -172,6 +169,12 @@ class ApplicationController < ActionController::Base
     return @current_session if defined?(@current_session)
 
     @current_session = SessionActivation.find_by(session_id: cookies.signed['_session_id']) if cookies.signed['_session_id'].present?
+  end
+
+  def current_theme
+    return Setting.theme unless Themes.instance.names.include? current_user&.setting_theme
+
+    current_user.setting_theme
   end
 
   def respond_with_error(code)

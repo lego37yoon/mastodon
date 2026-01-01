@@ -15,11 +15,6 @@ ml:
       user/invite_request:
         text: കാരണം
     errors:
-      attributes:
-        domain:
-          invalid: ഇതൊരു തെറ്റിയ മേഖലപേരാണു്
-      messages:
-        invalid_domain_on_line: "%{value} ഒരു തെറ്റിയ മേഖലപേരാണു്"
       models:
         account:
           attributes:

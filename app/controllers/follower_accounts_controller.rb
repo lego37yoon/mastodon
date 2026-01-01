@@ -7,7 +7,6 @@ class FollowerAccountsController < ApplicationController
   vary_by -> { public_fetch_mode? ? 'Accept, Accept-Language, Cookie' : 'Accept, Accept-Language, Cookie, Signature' }
 
   before_action :require_account_signature!, if: -> { request.format == :json && authorized_fetch_mode? }
-  before_action :protect_hidden_collections, if: -> { request.format.json? }
 
   skip_around_action :set_locale, if: -> { request.format == :json }
   skip_before_action :require_functional!, unless: :limited_federation_mode?
@@ -19,6 +18,8 @@ class FollowerAccountsController < ApplicationController
       end
 
       format.json do
+        raise Mastodon::NotPermittedError if page_requested? && @account.hide_collections?
+
         expires_in(page_requested? ? 0 : 3.minutes, public: public_fetch_mode?)
 
         render json: collection_presenter,
@@ -40,10 +41,6 @@ class FollowerAccountsController < ApplicationController
     @follows = scope.recent.page(params[:page]).per(FOLLOW_PER_PAGE).preload(:account)
   end
 
-  def protect_hidden_collections
-    raise Mastodon::NotPermittedError if page_requested? && @account.hide_collections?
-  end
-
   def page_requested?
     params[:page].present?
   end
@@ -61,24 +58,22 @@ class FollowerAccountsController < ApplicationController
   end
 
   def collection_presenter
-    options = {}
-    options[:size] = @account.followers_count unless Setting.hide_followers_count || @account.user&.setting_hide_followers_count
     if page_requested?
       ActivityPub::CollectionPresenter.new(
         id: page_url(params.fetch(:page, 1)),
         type: :ordered,
+        size: @account.followers_count,
         items: follows.map { |follow| ActivityPub::TagManager.instance.uri_for(follow.account) },
         part_of: ActivityPub::TagManager.instance.followers_uri_for(@account),
         next: next_page_url,
-        prev: prev_page_url,
-        **options
+        prev: prev_page_url
       )
     else
       ActivityPub::CollectionPresenter.new(
         id: ActivityPub::TagManager.instance.followers_uri_for(@account),
         type: :ordered,
-        first: page_url(1),
-        **options
+        size: @account.followers_count,
+        first: page_url(1)
       )
     end
   end

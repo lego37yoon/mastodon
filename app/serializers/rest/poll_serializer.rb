@@ -33,6 +33,16 @@ class REST::PollSerializer < ActiveModel::Serializer
   end
 
   class OptionSerializer < ActiveModel::Serializer
+    include CatHelper
+
     attributes :title, :votes_count
+
+    def title
+      if object.poll.account.is_cat?
+        nyaify(object.title)
+      else
+        object.title
+      end
+    end
   end
 end

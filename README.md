@@ -1,18 +1,18 @@
-# Mastodon Glitch Edition
+# Chocotodon
 
-[![Ruby Testing](https://github.com/glitch-soc/mastodon/actions/workflows/test-ruby.yml/badge.svg)](https://github.com/glitch-soc/mastodon/actions/workflows/test-ruby.yml)
-[![Crowdin](https://badges.crowdin.net/glitch-soc/localized.svg)][glitch-crowdin]
+[![GitHub release](https://img.shields.io/github/release/lego37yoon/mastodon.svg)][releases]
 
-[glitch-crowdin]: https://crowdin.com/project/glitch-soc
+[releases]: https://github.com/lego37yoon/mastodon/releases
 
-So here's the deal: we all work on this code, and anyone who uses that does so absolutely at their own risk. can you dig it?
+> A Mastodon based forked fediverse software with extra themes and other changes for Korean users, especially for S'more Waffle instance.
 
-- You can view documentation for this project at [glitch-soc.github.io/docs/](https://glitch-soc.github.io/docs/).
-- And contributing guidelines are available [here](CONTRIBUTING.md) and [here](https://glitch-soc.github.io/docs/contributing/).
+초코토돈은 S'more Waffle 인스턴스에 서비스할 목적으로 사용 중인 포크의 이름입니다. Mastodon과 같은 AGPL 라이선스로 배포되며, 아주 빠르게 따라가지는 않지만 대체로 Mastodon의 순정 출시 버전을 따라갑니다. 추가적인 테마나 수정된 기능이 포함되어 있습니다.
 
-Mastodon Glitch Edition is a fork of [Mastodon](https://github.com/mastodon/mastodon). Upstream's README file is reproduced below.
+> [!WARNING]
+> Chocotodon does not services Docker image, and also not tested on Docker environment. Only non-docker setup officially tested and supported.
+> 초코토돈은 Docker 이미지를 제공하지 않으며, Docker 환경에서 테스트하지 않았습니다. Docker를 이용하지 않은 환경에서만 테스트하였고 지원합니다.
 
----
+## What is Mastodon?
 
 > [!NOTE]
 > Want to learn more about Mastodon?

@@ -3,14 +3,21 @@ sl:
   simple_form:
     hints:
       account:
-        attribution_domains: Ena na vrstico. Ščiti pred napačno navedbo avtorstva.
-        discoverable: Vaše javne objave in profil so lahko predstavljeni ali priporočeni v različnih delih Mastodona, vaš profil pa je lahko predlagan drugim uporabnikom.
+        attribution_domains_as_text: Ena na vrstico. Ščiti pred napačno navedbo avtorstva.
+        discoverable: Vaše javne objave in profil so lahko predstavljeni ali priporočeni
+          v različnih delih Mastodona, vaš profil pa je lahko predlagan drugim uporabnikom.
         display_name: Vaše polno ime ali lažno ime.
         fields: Vaša domača stran, starost, kar koli.
-        indexable: Vaše javne objave se lahko pojavijo v rezultatih iskanja na Mastodonu. Ljudje, ki so bili v interakciji z vašimi objavami, jih bodo lahko iskali ne glede na to.
+        indexable: Vaše javne objave se lahko pojavijo v rezultatih iskanja na Mastodonu.
+          Ljudje, ki so bili v interakciji z vašimi objavami, jih bodo lahko iskali
+          ne glede na to.
         note: 'Druge osebe lahko @omenite ali #ključnite.'
-        show_collections: Ljudje bodo lahko brskali po vaših sledilcih in sledenih. Ljudje, ki jim sledite, bodo videli, da jim sledite ne glede na to.
-        unlocked: Ljudje vam bodo lahko sledili, ne da bi zahtevali odobritev. Ne potrdite, če želite pregledati prošnje za sledenje in izbrati, ali želite nove sledilce sprejeti ali zavrniti.
+        show_collections: Ljudje bodo lahko brskali po vaših sledilcih in sledenih.
+          Ljudje, ki jim sledite, bodo videli, da jim sledite ne glede na to.
+        unlocked: Ljudje vam bodo lahko sledili, ne da bi zahtevali odobritev. Ne
+          potrdite, če želite pregledati prošnje za sledenje, in izbirajte, ali želite
+          nove sledilce sprejeti ali zavrniti.
+        attribution_domains: Ena na vrstico. Ščiti pred napačno navedbo avtorstva.
       account_alias:
         acct: Določite uporabniškoime@domena računa, od katerega se želite preseliti
       account_migration:
@@ -19,88 +26,156 @@ sl:
         text: Lahko uporabite skladnjo objave, kot so URL-ji, ključniki in omembe
         title: Neobvezno. Ni vidno prejemniku
       admin_account_action:
-        include_statuses: Uporabnik vidi, katere objave so povzročile dejanje moderiranja ali opozorilo
-        send_email_notification: Uporabnik bo prejel razlago, kaj se je zgodilo z njihovim računom
-        text_html: Neobvezno. Lahko uporabite skladnjo objave. <a href="%{path}">Prednastavite opozorila</a>, da prihranite čas
+        include_statuses: Uporabnik vidi, katere objave so povzročile dejanje moderiranja
+          ali opozorilo
+        send_email_notification: Uporabnik bo prejel razlago, kaj se je zgodilo z
+          njihovim računom
+        text_html: Neobvezno. Lahko uporabite skladnjo objave. <a href="%{path}">Prednastavite
+          opozorila</a>, da prihranite čas
         type_html: Izberite, kaj boste storili z <strong>%{acct}</strong>
         types:
-          disable: Preprečite uporabniku, da uporablja svoj račun, vendar ne izbrišite ali skrijte njegove vsebine.
-          none: Uporabite to, da pošljete opozorilo uporabnik, ne da bi sprožili kakšno drugo dejanje.
-          sensitive: Vsilite, da so vse medijske priponke tega uporabnika označene kot občutljive.
-          silence: Prepreči uporabniku, da lahko objavlja javno, skrije njihove objave in obvestila pred osebami, ki mu ne sledijo. Zaključi vse prijave zoper ta račun.
-          suspend: Prepreči vsakršno interakcijo od ali do tega računa in izbriše njegovo vsebino. Povratno v roku 30 dni. Zaključi vse prijave zoper ta račun.
-        warning_preset_id: Neobvezno. Še vedno lahko dodate besedilo po meri na konec prednastavitve
+          disable: Preprečite uporabniku, da uporablja svoj račun, vendar ne izbrišite
+            ali skrijte njegove vsebine.
+          none: Uporabite to, da pošljete opozorilo uporabnik, ne da bi sprožili kakšno
+            drugo dejanje.
+          sensitive: Vsilite, da so vse medijske priponke tega uporabnika označene
+            kot občutljive.
+          silence: Prepreči uporabniku, da lahko objavlja javno, skrije njihove objave
+            in obvestila pred osebami, ki mu ne sledijo. Zaključi vse prijave zoper
+            ta račun.
+          suspend: Prepreči vsakršno interakcijo od ali do tega računa in izbriše
+            njegovo vsebino. Povratno v roku 30 dni. Zaključi vse prijave zoper ta
+            račun.
+        warning_preset_id: Neobvezno. Še vedno lahko dodate besedilo po meri na konec
+          prednastavitve
       announcement:
         all_day: Če je potrjeno, bodo prikazani le datumi časovnega obsega
         ends_at: Neobvezno. Obvestilo bo samodejno neobjavljeno v navedenem času
         scheduled_at: Pustite prazno, da objavite obvestilo takoj
-        starts_at: Neobvezno. V primeru, da je vaše obvestilo vezano na določen časovni obseg
-        text: Uporabite lahko skladnjo objav. Pazite na prostor, ki ga zavzame obvestilo na zaslonu uporabnika
+        starts_at: Neobvezno. V primeru, da je vaše obvestilo vezano na določen časovni
+          obseg
+        text: Uporabite lahko skladnjo objav. Pazite na prostor, ki ga zavzame obvestilo
+          na zaslonu uporabnika
       appeal:
         text: Na ukrep se lahko pritožite le enkrat
       defaults:
         autofollow: Osebe, ki se prijavijo prek povabila, vas bodo samodejno sledile
-        avatar: WEBP, PNG, GIF ali JPG. Največ %{size}. Zmanjšana bo na %{dimensions} sl. točk
+        avatar: WEBP, PNG, GIF ali JPG. Največ %{size}. Zmanjšana bo na %{dimensions}
+          sl. točk
         bot: Ta račun v glavnem opravlja samodejna dejanja in morda ni pod nadzorom
         context: En ali več kontekstov, kjer naj se uporabi filter
         current_password: Iz varnostnih razlogov vnesite geslo trenutnega računa
         current_username: Za potrditev vnesite uporabniško ime trenutnega računa
-        digest: Pošlje se le po dolgem obdobju nedejavnosti in samo, če ste prejeli osebna sporočila v vaši odsotnosti
+        digest: Pošlje se le po dolgem obdobju nedejavnosti in samo, če ste prejeli
+          osebna sporočila v vaši odsotnosti
         email: Poslali vam bomo potrditveno e-pošto
-        header: WEBP, PNG, GIF ali JPG. Največ %{size}. Zmanjšana bo na %{dimensions} sl. točk
+        header: WEBP, PNG, GIF ali JPG. Največ %{size}. Zmanjšana bo na %{dimensions}
+          sl. točk
         inbox_url: Kopirajte URL naslov s prve strani releja, ki ga želite uporabiti
-        irreversible: Filtrirane objave bodo nepovratno izginile, tudi če je filter kasneje odstranjen
+        irreversible: Filtrirane objave bodo nepovratno izginile, tudi če je filter
+          kasneje odstranjen
         locale: Jezik uporabniškega vmesnika, e-poštnih sporočil in potisnih obvestil
         password: Uporabite najmanj 8 znakov
-        phrase: Se bo ujemal, ne glede na začetnice v besedilu ali opozorilo o vsebini objave
-        scopes: Do katerih API-jev bo imel program dostop. Če izberete obseg najvišje ravni, vam ni treba izbrati posameznih.
-        setting_aggregate_reblogs: Ne prikažite novih izpostavitev za objave, ki so bile nedavno izpostavljene (vpliva samo na novo prejete izpostavitve)
-        setting_always_send_emails: Običajno e-obvestila ne bodo poslana, če ste na Mastodonu dejavni
-        setting_default_sensitive: Občutljivi mediji so privzeto skriti in jih je mogoče razkriti s klikom
+        phrase: Se bo ujemal, ne glede na začetnice v besedilu ali opozorilo o vsebini
+          objave
+        scopes: Do katerih API-jev bo imel program dostop. Če izberete obseg najvišje
+          ravni, vam ni treba izbrati posameznih.
+        setting_aggregate_reblogs: Ne prikažite novih izpostavitev za objave, ki so
+          bile nedavno izpostavljene (vpliva samo na novo prejete izpostavitve)
+        setting_always_send_emails: Običajno e-obvestila ne bodo poslana, če ste na
+          Mastodonu dejavni
+        setting_default_sensitive: Občutljivi mediji so privzeto skriti in jih je
+          mogoče razkriti s klikom
         setting_display_media_default: Skrij medij, ki je označen kot občutljiv
         setting_display_media_hide_all: Vedno skrij vse medije
         setting_display_media_show_all: Vedno pokaži medij, ki je označen kot občutljiv
-        setting_system_scrollbars_ui: Velja zgolj za namizne brskalnike, ki temeljijo na Safariju in Chromeu
-        setting_use_blurhash: Prelivi temeljijo na barvah skrite vizualne slike, vendar zakrivajo vse podrobnosti
-        setting_use_pending_items: Skrij posodobitev časovnice za klikom namesto samodejnega posodabljanja
+        setting_use_blurhash: Prelivi temeljijo na barvah skrite vizualne slike, vendar
+          zakrivajo vse podrobnosti
+        setting_use_pending_items: Skrij posodobitev časovnice za klikom namesto samodejnega
+          posodabljanja
         username: Uporabite lahko črke, števke in podčrtaje.
-        whole_word: Ko je ključna beseda ali fraza samo alfanumerična, se bo uporabljala le, če se bo ujemala s celotno besedo
+        whole_word: Ko je ključna beseda ali fraza samo alfanumerična, se bo uporabljala
+          le, če se bo ujemala s celotno besedo
+        setting_system_scrollbars_ui: Velja zgolj za namizne brskalnike, ki temeljijo
+          na Safariju in Chromeu
       domain_allow:
-        domain: Ta domena bo lahko prejela podatke s tega strežnika, dohodni podatki z nje pa bodo obdelani in shranjeni
+        domain: Ta domena bo lahko prejela podatke s tega strežnika, dohodni podatki
+          z nje pa bodo obdelani in shranjeni
       email_domain_block:
-        domain: To je lahko ime domene, ki se pokaže v e-poštnem naslovu, ali zapis MX, ki ga uporablja. Ob prijavi bo preverjeno.
-        with_dns_records: Poskus razrešitve zapisov DNS danih domen bo izveden in rezultati bodo prav tako blokirani
+        domain: To je lahko ime domene, ki se pokaže v e-poštnem naslovu, ali zapis
+          MX, ki ga uporablja. Ob prijavi bo preverjeno.
+        with_dns_records: Poskus razrešitve zapisov DNS danih domen bo izveden in
+          rezultati bodo prav tako blokirani
       featured_tag:
         name: 'Tukaj je nekaj ključnikov, ki ste jih nedavno uporabili:'
       filters:
+        action: Izberite, kako naj se program vede, ko se objava sklada s filtrom
         actions:
           hide: Povsem skrij filtrirano vsebino, kot da ne bi obstajala
           warn: Skrij filtrirano vsebino za opozorilom, ki pomenja naslov filtra
       form_admin_settings:
-        activity_api_enabled: Številke krajevno objavljenih objav, dejavnih uporabnikov in novih registracij na tedenskih seznamih
-        app_icon: WEBP, PNG, GIF ali JPG. Zamenja privzeto ikono programa na mobilnih napravah z ikono po meri.
-        backups_retention_period: Uporabniki lahko ustvarijo arhive svojih objav za kasnejši prenos k sebi. Ko je nastavljeno na pozitivno vrednost, bodo ti arhivi po nastavljenem številu dni samodejno izbrisani.
+        activity_api_enabled: Številke krajevno objavljenih objav, dejavnih uporabnikov
+          in novih registracij na tedenskih seznamih
+        app_icon: WEBP, PNG, GIF ali JPG. Zamenja privzeto ikono programa na mobilnih
+          napravah z ikono po meri.
+        backups_retention_period: Uporabniki lahko ustvarijo arhive svojih objav za
+          kasnejši prenos k sebi. Ko je nastavljeno na pozitivno vrednost, bodo ti
+          arhivi po nastavljenem številu dni samodejno izbrisani.
+        bootstrap_timeline_accounts: Ti računi bodo pripeti na vrh priporočenih sledenj
+          za nove uporabnike.
         closed_registrations_message: Prikazano, ko so registracije zaprte
-        content_cache_retention_period: Vse objave z drugih strežnikov (vključno z izpostavitvami in odgovori) bodo izbrisani po nastavljenem številu dni, ne glede na krajevne interakcije s temi objavami. To vključuje objave, ki jih je krajevni uporabnik dodal med zaznamke ali priljubljene. Zasebne omembe med uporabniki na različnih strežnikih bodo prav tako izgubljene in jih ne bo moč obnoviti. Uporaba te nastavitve je namenjena strežnikom s posebnim namenom in nasprotuje mnogim pričakovanjem uporabnikov na strežnikih za splošni namen.
+        content_cache_retention_period: Vse objave z drugih strežnikov (vključno z
+          izpostavitvami in odgovori) bodo izbrisani po nastavljenem številu dni,
+          ne glede na krajevne interakcije s temi objavami. To vključuje objave, ki
+          jih je krajevni uporabnik dodal med zaznamke ali priljubljene. Zasebne omembe
+          med uporabniki na različnih strežnikih bodo prav tako izgubljene in jih
+          ne bo moč obnoviti. Uporaba te nastavitve je namenjena strežnikom s posebnim
+          namenom in nasprotuje mnogim pričakovanjem uporabnikov na strežnikih za
+          splošni namen.
         custom_css: Spletni različici Mastodona lahko uveljavite sloge po meri.
-        favicon: WEBP, PNG, GIF ali JPG. Zamenja privzeto ikono spletne strani Mastodon z ikono po meri.
+        favicon: WEBP, PNG, GIF ali JPG. Zamenja privzeto ikono spletne strani Mastodon
+          z ikono po meri.
         mascot: Preglasi ilustracijo v naprednem spletnem vmesniku.
-        media_cache_retention_period: Predstavnostne datoteke iz objav uporabnikov na ostalih strežnikih se začasno hranijo na tem strežniku. Ko je nastavljeno na pozitivno vrednost, bodo predstavnostne datoteke izbrisane po nastavljenem številu dni. Če bo predstavnostna datoteka zahtevana po izbrisu, bo ponovno prenešena, če bo vir še vedno na voljo. Zaradi omejitev pogostosti prejemanja predogledov povezav z drugih strani je priporočljivo to vrednost nastaviti na vsaj 14 dni. V nasprotnem predogledi povezav pred tem časom ne bodo osveženi na zahtevo.
-        min_age: Med registracijo bodo morali uporabniki potrditi svoj datum rojstva
-        peers_api_enabled: Seznam imen domen, na katere je ta strežnik naletel v fediverzumu. Sem niso vključeni podatki o tem, ali ste v federaciji z danim strežnikom, zgolj to, ali vaš strežnik ve zanj. To uporabljajo storitve, ki zbirajo statistične podatke o federaciji v splošnem smislu.
-        profile_directory: Imenik profilov izpiše vse uporabnike, ki so dovolili, da so v njem navedeni.
-        require_invite_text: Če registracije zahtevajo ročno potrditev, nastavite vnos besedila pod »Zakaj se želite pridružiti?« za obveznega.
-        site_contact_email: Kako vas lahko uporabniki dosežejo glede pravnih ali podpornih vprašanj.
+        media_cache_retention_period: Predstavnostne datoteke iz objav uporabnikov
+          na ostalih strežnikih se začasno hranijo na tem strežniku. Ko je nastavljeno
+          na pozitivno vrednost, bodo predstavnostne datoteke izbrisane po nastavljenem
+          številu dni. Če bo predstavnostna datoteka zahtevana po izbrisu, bo ponovno
+          prenešena, če bo vir še vedno na voljo. Zaradi omejitev pogostosti prejemanja
+          predogledov povezav z drugih strani je priporočljivo to vrednost nastaviti
+          na vsaj 14 dni. V nasprotnem predogledi povezav pred tem časom ne bodo osveženi
+          na zahtevo.
+        peers_api_enabled: Seznam imen domen, na katere je ta strežnik naletel v fediverzumu.
+          Sem niso vključeni podatki o tem, ali ste v federaciji z danim strežnikom,
+          zgolj to, ali vaš strežnik ve zanj. To uporabljajo storitve, ki zbirajo
+          statistične podatke o federaciji v splošnem smislu.
+        profile_directory: Imenik profilov izpiše vse uporabnike, ki so dovolili,
+          da so v njem navedeni.
+        require_invite_text: Če registracije zahtevajo ročno potrditev, nastavite
+          vnos besedila pod »Zakaj se želite pridružiti?« za obveznega.
+        site_contact_email: Kako vas lahko uporabniki dosežejo glede pravnih ali podpornih
+          vprašanj.
         site_contact_username: Kako vas lahko kontaktirajo na Mastodonu.
-        site_extended_description: Dodajte podatke, ki so lahko uporabni za obiskovalce in uporabnike. Vsebino lahko oblikujete s skladnjo Markdown.
-        site_short_description: Kratek opis v pomoč za identifikacijo vašega strežnika. Kdo ga vzdržuje, komu je namenjen?
-        site_terms: Uporabite svoj lasten pravilnik o zasebnosti ali pustite prazno za privzetega. Lahko ga strukturirate s skladnjo Markdown.
+        site_extended_description: Dodajte podatke, ki so lahko uporabni za obiskovalce
+          in uporabnike. Vsebino lahko oblikujete s skladnjo Markdown.
+        site_short_description: Kratek opis v pomoč za identifikacijo vašega strežnika.
+          Kdo ga vzdržuje, komu je namenjen?
+        site_terms: Uporabite svoj lasten pravilnik o zasebnosti ali pustite prazno
+          za privzetega. Lahko ga strukturirate s skladnjo Markdown.
         site_title: Kako naj imenujejo vaš strežnik poleg njegovega domenskega imena.
-        status_page_url: URL strani, kjer je moč videti stanje tega strežnika med prekinjenim delovanjem
+        status_page_url: URL strani, kjer je moč videti stanje tega strežnika med
+          prekinjenim delovanjem
         theme: Tema, ki jo vidijo odjavljeni obiskovalci in novi uporabniki.
-        thumbnail: Slika v razmerju stranic približno 2:1, prikazana vzdolž podatkov o vašem strežniku.
-        trendable_by_default: Preskočite ročni pregled vsebine v trendu. Posamezne elemente še vedno lahko odstranite iz trenda post festum.
-        trends: Trendi prikažejo, katere objave, ključniki in novice privlačijo zanimanje na vašem strežniku.
+        thumbnail: Slika v razmerju stranic približno 2:1, prikazana vzdolž podatkov
+          o vašem strežniku.
+        timeline_preview: Odjavljeni obiskovalci bodo lahko brskali po najnovejših
+          javnih objavah, ki so na voljo na strežniku.
+        trendable_by_default: Preskočite ročni pregled vsebine v trendu. Posamezne
+          elemente še vedno lahko odstranite iz trenda post festum.
+        trends: Trendi prikažejo, katere objave, ključniki in novice privlačijo zanimanje
+          na vašem strežniku.
+        trends_as_landing_page: Odjavljenim uporabnikom in obiskovalcem namesto opisa
+          tega strežnika pokažite vsebine v trendu. Trendi morajo biti omogočeni.
+        min_age: Med registracijo bodo morali uporabniki potrditi svoj datum rojstva
       form_challenge:
         current_password: Vstopate v varovano območje
       imports:
@@ -109,8 +184,10 @@ sl:
         text: To nam bo pomagalo pregledati vašo prijavo
       ip_block:
         comment: Neobvezno. Spomnite se, zakaj ste dodali to pravilo.
-        expires_in: Naslovi IP so končno imejen vir, včasij si jih delimo in pogosto menjajo rabo. Zato nedoločeni bloki IP niso priporočeni.
-        ip: Vnesite naslov IPv4 oz. IPv6. S skladnjo CIDR lahko blokirate celotne obsege. Pazite, da se ne zaklenete ven!
+        expires_in: Naslovi IP so končno imejen vir, včasij si jih delimo in pogosto
+          menjajo rabo. Zato nedoločeni bloki IP niso priporočeni.
+        ip: Vnesite naslov IPv4 oz. IPv6. S skladnjo CIDR lahko blokirate celotne
+          obsege. Pazite, da se ne zaklenete ven!
         severities:
           no_access: Blokiraj dostop do vseh virov
           sign_up_block: Nove registracije ne bodo možne
@@ -118,44 +195,61 @@ sl:
         severity: Izberite, kaj se bo zgodilo z zahtevami iz tega IP-naslova
       rule:
         hint: Neobvezno. Vnesite dodatne podrobnosti o pravilu
-        text: Opišite pravilo ali zahtevo za uporabnike na tem strežniku. Poskusite biti kratki in jasni
+        text: Opišite pravilo ali zahtevo za uporabnike na tem strežniku. Poskusite
+          biti kratki in jasni
       sessions:
-        otp: 'Vnesite dvomestno kodo, ki je ustvarjena z aplikacijo na telefonu, ali uporabite eno od vaših obnovitvenih kod:'
-        webauthn: Če gre za ključek USB, ga ne pozabite vstaviti in, če je potrebno, tapniti.
+        otp: 'Vnesite dvomestno kodo, ki je ustvarjena z aplikacijo na telefonu, ali
+          uporabite eno od vaših obnovitvenih kod:'
+        webauthn: Če gre za ključek USB, ga ne pozabite vstaviti in, če je potrebno,
+          tapniti.
       settings:
-        indexable: Stran vašega profila se lahko pojavi med zadetki iskanja iskalnikov Google, Bing idr.
-        show_application: Ne glede na to boste vedno lahko pogledali, katera aplikacija je objavila vašo objavo.
+        indexable: Stran vašega profila se lahko pojavi med zadetki iskanja iskalnikov
+          Google, Bing idr.
+        show_application: Ne glede na to boste vedno lahko pogledali, katera aplikacija
+          je objavila vašo objavo.
       tag:
         name: Spremenite lahko le npr. velikost črk (velike/male), da je bolj berljivo
-      terms_of_service:
-        changelog: Uporabite lahko oblikovanje z Markdown.
-        effective_date: Razumen čas do uveljavitve je navadno nekje med 10 in 30 dni od datuma, ko ste obvestili svoje uporabnike.
-        text: Uporabite lahko oblikovanje z Markdown.
-      terms_of_service_generator:
-        admin_email: Pravna obvestila vključujejo odgovore na obvestila, sodne naloge, zahteve za odstranitev in zahteve organov pregona.
-        arbitration_address: Lahko je enak kot fizični naslov zgoraj ali „N/A“, če uporabljate e-pošto.
-        arbitration_website: Lahko je spletni obrazec ali „N/A“, če uporabljate e-pošto.
-        choice_of_law: Mesto, regija, teritorij ali zvezna država, katere področni zakoni urejajo vse tožbene zahtevke.
-        dmca_email: Lahko je enak e-poštni naslov kot v polju „E-poštni naslov za pravna obvestila“ zgoraj.
-        domain: Edinstvena identifikacija spletne storitve, ki jo ponujate.
-        jurisdiction: Navedite državo, kjer živi tisti, ki plačuje račune. Če je to podjetje ali druga entiteta, navedite državo, kjer je bila ustanovljena. Po potrebi dopišite tudi mesto, regijo, teritorij ali zvezno državo.
-        min_age: Ne smete biti mlajši od starostne omejitve, ki jo postavljajo zakoni vašega pravosodnega sistema.
       user:
-        chosen_languages: Ko je označeno, bodo v javnih časovnicah prikazane samo objave v izbranih jezikih
+        chosen_languages: Ko je označeno, bodo v javnih časovnicah prikazane samo
+          objave v izbranih jezikih
         role: Vloga določa, katera dovoljenja ima uporabnik.
       user_role:
-        color: Barva, uporabljena za vlogo po celem up. vmesniku, podana v šestnajstiškem zapisu RGB
+        color: Barva, uporabljena za vlogo po celem up. vmesniku, podana v šestnajstiškem
+          zapisu RGB
         highlighted: S tem je vloga javno vidna
         name: Javno ime vloge, če naj bo vloga prikazana kot priponka
         permissions_as_keys: Uporabniki s to vlogo bodo imeli dostop do ...
-        position: Višja vloga se odloča o razrešitvi sporov v določenih situacijah. Določena dejanja lahko izvede le na vlogah z nižjo prioriteto
+        position: Višja vloga se odloča o razrešitvi sporov v določenih situacijah.
+          Določena dejanja lahko izvede le na vlogah z nižjo prioriteto
       webhook:
         events: Izberite dogodke za pošiljanje
-        template: Sestavite svojo obremenitev JSON z uporabo interpolacije spremenljivk. Za privzeti JSON pustite prazno.
+        template: Sestavite svojo obremenitev JSON z uporabo interpolacije spremenljivk.
+          Za privzeti JSON pustite prazno.
         url: Kam bodo poslani dogodki
+      terms_of_service:
+        changelog: Uporabite lahko oblikovanje z Markdown.
+        effective_date: Razumen čas do uveljavitve je navadno nekje med 10 in 30 dni
+          od datuma, ko ste obvestili svoje uporabnike.
+        text: Uporabite lahko oblikovanje z Markdown.
+      terms_of_service_generator:
+        admin_email: Pravna obvestila vključujejo odgovore na obvestila, sodne naloge,
+          zahteve za odstranitev in zahteve organov pregona.
+        arbitration_address: Lahko je enak kot fizični naslov zgoraj ali „N/A“, če
+          uporabljate e-pošto.
+        arbitration_website: Lahko je spletni obrazec ali „N/A“, če uporabljate e-pošto.
+        choice_of_law: Mesto, regija, teritorij ali zvezna država, katere področni
+          zakoni urejajo vse tožbene zahtevke.
+        dmca_email: Lahko je enak e-poštni naslov kot v polju „E-poštni naslov za
+          pravna obvestila“ zgoraj.
+        domain: Edinstvena identifikacija spletne storitve, ki jo ponujate.
+        jurisdiction: Navedite državo, kjer živi tisti, ki plačuje račune. Če je to
+          podjetje ali druga entiteta, navedite državo, kjer je bila ustanovljena.
+          Po potrebi dopišite tudi mesto, regijo, teritorij ali zvezno državo.
+        min_age: Ne smete biti mlajši od starostne omejitve, ki jo postavljajo zakoni
+          vašega pravosodnega sistema.
     labels:
       account:
-        attribution_domains: Spletna mesta, ki vas smejo navajati kot avtorja/ico
+        attribution_domains_as_text: Spletna mesta, ki vas smejo navajati kot avtorja/ico
         discoverable: Izpostavljaj profile in objave v algoritmih odkrivanja
         fields:
           name: Oznaka
@@ -163,6 +257,7 @@ sl:
         indexable: Med zadetke iskanja vključi javne objave
         show_collections: Pokaži sledene in sledilce v profilu
         unlocked: Samodejno sprejmi nove sledilce
+        attribution_domains: Spletna mesta, ki vas smejo navajati kot avtorja/ico
       account_alias:
         acct: Ročica starega računa
       account_migration:
@@ -219,12 +314,11 @@ sl:
         setting_aggregate_reblogs: Skupinske izpostavitve na časovnicah
         setting_always_send_emails: Vedno pošlji e-obvestila
         setting_auto_play_gif: Samodejno predvajanje animiranih GIF-ov
-        setting_boost_modal: Nadziraj vidnost objav
+        setting_boost_modal: Pred izpostavljanjem pokaži potrditveno okno
         setting_default_language: Jezik objavljanja
-        setting_default_privacy: Vidnost objav
-        setting_default_quote_policy: Kdo lahko citira
+        setting_default_privacy: Zasebnost objave
         setting_default_sensitive: Vedno označi medije kot občutljive
-        setting_delete_modal: Pred brisanjem objave me opozori
+        setting_delete_modal: Pred brisanjem objave prikaži okno za pritrditev
         setting_disable_hover_cards: Onemogoči predogled profila pod kazalcem
         setting_disable_swiping: Onemogoči poteze drsanja
         setting_display_media: Prikaz medijev
@@ -235,7 +329,6 @@ sl:
         setting_hide_network: Skrij svoje omrežje
         setting_reduce_motion: Zmanjšanje premikanja v animacijah
         setting_system_font_ui: Uporabi privzeto pisavo sistema
-        setting_system_scrollbars_ui: Uporabi privzeti drsni trak sistema
         setting_theme: Tema strani
         setting_trends: Pokaži današnje trende
         setting_unfollow_modal: Pokaži potrditveno okno, preden nekoga prenehamo slediti
@@ -248,6 +341,8 @@ sl:
         username: Uporabniško ime
         username_or_email: Uporabniško ime ali E-pošta
         whole_word: Celotna beseda
+        setting_default_quote_policy: Kdo lahko citira
+        setting_system_scrollbars_ui: Uporabi privzeti drsni trak sistema
       email_domain_block:
         with_dns_records: Vključi zapise MX in IP-številke domene
       featured_tag:
@@ -257,7 +352,8 @@ sl:
           hide: Povsem skrij
           warn: Skrij z opozorilom
       form_admin_settings:
-        activity_api_enabled: Objavi združeno statistiko o dejavnosti uporabnikov v API-ju
+        activity_api_enabled: Objavi združeno statistiko o dejavnosti uporabnikov
+          v API-ju
         app_icon: Ikona programa
         backups_retention_period: Obdobje hrambe arhivov uporabnikov
         bootstrap_timeline_accounts: Vedno priporočaj te račune novim uporabnikom
@@ -267,7 +363,6 @@ sl:
         favicon: Ikona spletne strani
         mascot: Maskota po meri (opuščeno)
         media_cache_retention_period: Obdobje hrambe predpomnilnika predstavnosti
-        min_age: Spodnja starostna meja
         peers_api_enabled: Objavi seznam odkritih strežnikov v API-ju
         profile_directory: Omogoči imenik profilov
         registrations_mode: Kdo se lahko registrira
@@ -283,8 +378,11 @@ sl:
         status_page_url: URL strani stanja
         theme: Privzeta tema
         thumbnail: Sličica strežnika
+        timeline_preview: Omogoči neoverjen dostop do javnih časovnic
         trendable_by_default: Dovoli trende brez predhodnega pregleda
         trends: Omogoči trende
+        trends_as_landing_page: Uporabi trende za pristopno stran
+        min_age: Spodnja starostna meja
       interactions:
         must_be_follower: Blokiraj obvestila nesledilcev
         must_be_following: Blokiraj obvestila oseb, ki jim ne sledite
@@ -309,7 +407,6 @@ sl:
         follow_request: Pošlji e-pošto, ko vam nekdo želi slediti
         mention: Pošlji e-pošto, ko vas nekdo omeni
         pending_account: Pošlji e-pošto, ko je potreben pregled novega računa
-        quote: Nekdo vas je citiral
         reblog: Pošlji e-sporočilo, ko nekdo izpostavi vašo objavo
         report: Novo poročilo je oddano
         software_updates:
@@ -319,6 +416,7 @@ sl:
           none: Nikoli ne obveščaj o posodobitvah (ni priporočeno)
           patch: Obveščaj o posodobitvah z odpravljenimi hrošči
         trending_tag: Nov trend zahteva pregled
+        quote: Nekdo vas je citiral
       rule:
         hint: Dodatne informacije
         text: Pravilo
@@ -330,6 +428,22 @@ sl:
         name: Ključnik
         trendable: Dovoli, da se ta ključnik pojavi med trendi
         usable: Dovoli, da objave krajevno uporabljajo ta ključnik
+      user:
+        role: Vloga
+        time_zone: Časovni pas
+        date_of_birth_1i: Leto
+        date_of_birth_2i: Mesec
+        date_of_birth_3i: Dan
+      user_role:
+        color: Barva značke
+        highlighted: Prikaži vlogo kot značko na uporabniškem profilu
+        name: Ime
+        permissions_as_keys: Pravice
+        position: Prioriteta
+      webhook:
+        events: Omogočeni dogodki
+        template: Predloga obremenitev
+        url: URL končne točke
       terms_of_service:
         changelog: Kaj je novega?
         effective_date: Datum začetka veljavnosti
@@ -344,25 +458,9 @@ sl:
         domain: Domena
         jurisdiction: Pravna pristojnost
         min_age: Najmanjša starost
-      user:
-        date_of_birth_1i: Leto
-        date_of_birth_2i: Mesec
-        date_of_birth_3i: Dan
-        role: Vloga
-        time_zone: Časovni pas
-      user_role:
-        color: Barva značke
-        highlighted: Prikaži vlogo kot značko na uporabniškem profilu
-        name: Ime
-        permissions_as_keys: Pravice
-        position: Prioriteta
       username_block:
         allow_with_approval: Dovoli registracije z odobritvijo
         comparison: Metoda primerjave
-      webhook:
-        events: Omogočeni dogodki
-        template: Predloga obremenitev
-        url: URL končne točke
     'no': Ne
     not_recommended: Ni priporočeno
     overridden: Preglašeno

@@ -3,7 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe 'Instances' do
-  include_context 'with API authentication'
+  let(:user)    { Fabricate(:user) }
+  let(:token)   { Fabricate(:accessible_access_token, resource_owner_id: user.id) }
+  let(:headers) { { 'Authorization' => "Bearer #{token.token}" } }
 
   describe 'GET /api/v2/instance' do
     context 'when logged out' do
@@ -18,7 +20,7 @@ RSpec.describe 'Instances' do
 
         expect(response.parsed_body)
           .to be_present
-          .and include(title: 'Mastodon Glitch Edition')
+          .and include(title: 'Mastodon')
           .and include_api_versions
           .and include_configuration_limits
       end
@@ -36,7 +38,7 @@ RSpec.describe 'Instances' do
 
         expect(response.parsed_body)
           .to be_present
-          .and include(title: 'Mastodon Glitch Edition')
+          .and include(title: 'Mastodon')
           .and include_api_versions
           .and include_configuration_limits
       end

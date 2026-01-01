@@ -156,6 +156,7 @@ class ActivityPub::ProcessAccountService < BaseService
     @account.followers_count   = followers_total_items if followers_total_items.present?
     @account.hide_collections  = following_private? || followers_private?
     @account.moved_to_account  = @json['movedTo'].present? ? moved_account : nil
+    @account.is_cat = cat?
   end
 
   def set_suspension!
@@ -280,6 +281,10 @@ class ActivityPub::ProcessAccountService < BaseService
 
   def followers_private?
     !collection_info('followers').last
+  end
+
+  def cat?
+    @json['isCat'] || @json['is_cat'] || false
   end
 
   def collection_info(type)

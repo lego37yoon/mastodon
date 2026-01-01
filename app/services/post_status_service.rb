@@ -64,25 +64,9 @@ class PostStatusService < BaseService
 
   private
 
-  def fill_blank_text!
-    return unless @text.blank? && @options[:spoiler_text].present? && @quoted_status.blank?
-
-    @text = begin
-      if @media&.any?(&:video?) || @media&.any?(&:gifv?)
-        '📹'
-      elsif @media&.any?(&:audio?)
-        '🎵'
-      elsif @media&.any?(&:image?)
-        '🖼'
-      else
-        '.'
-      end
-    end
-  end
-
   def preprocess_attributes!
-    fill_blank_text!
     @sensitive    = (@options[:sensitive].nil? ? @account.user&.setting_default_sensitive : @options[:sensitive]) || @options[:spoiler_text].present?
+    @text         = @options.delete(:spoiler_text) if @text.blank? && @options[:spoiler_text].present? && @quoted_status.blank?
     @visibility   = @options[:visibility] || @account.user&.setting_default_privacy
     @visibility   = :unlisted if @visibility&.to_sym == :public && @account.silenced?
     @visibility   = :private if @quoted_status&.private_visibility? && %i(public unlisted).include?(@visibility&.to_sym)
@@ -170,7 +154,7 @@ class PostStatusService < BaseService
     Trends.tags.register(@status)
     LinkCrawlWorker.perform_async(@status.id)
     DistributionWorker.perform_async(@status.id)
-    ActivityPub::DistributionWorker.perform_async(@status.id) unless @status.local_only?
+    ActivityPub::DistributionWorker.perform_async(@status.id)
     PollExpirationNotifyWorker.perform_at(@status.poll.expires_at, @status.poll.id) if @status.poll
     ActivityPub::QuoteRequestWorker.perform_async(@status.quote.id) if @status.quote&.quoted_status.present? && !@status.quote&.quoted_status&.local?
   end
@@ -246,7 +230,6 @@ class PostStatusService < BaseService
       visibility: @visibility,
       language: valid_locale_cascade(@options[:language], @account.user&.preferred_posting_language, I18n.default_locale),
       application: @options[:application],
-      content_type: @options[:content_type] || @account.user&.setting_default_content_type,
       rate_limit: @options[:with_rate_limit],
       quote_approval_policy: @options[:quote_approval_policy],
     }.compact

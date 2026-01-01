@@ -226,12 +226,7 @@ const ReblogMenuItem: FC<ReblogMenuItemProps> = ({ index, item, onClick }) => {
       })}
       key={`${text}-${index}`}
     >
-      <button
-        onClick={onClick}
-        aria-disabled={disabled}
-        data-index={index}
-        type='button'
-      >
+      <button onClick={onClick} aria-disabled={disabled} data-index={index}>
         <DropdownMenuItemContent item={item} />
       </button>
     </li>

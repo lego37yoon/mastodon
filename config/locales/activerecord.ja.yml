@@ -15,11 +15,6 @@ ja:
       user/invite_request:
         text: 理由
     errors:
-      attributes:
-        domain:
-          invalid: 有効なドメイン名ではありません
-      messages:
-        invalid_domain_on_line: "%{value}は有効なドメイン名ではありません"
       models:
         account:
           attributes:

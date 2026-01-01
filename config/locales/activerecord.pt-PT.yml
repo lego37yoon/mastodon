@@ -15,11 +15,6 @@ pt-PT:
       user/invite_request:
         text: Motivo
     errors:
-      attributes:
-        domain:
-          invalid: não é um nome de domínio válido
-      messages:
-        invalid_domain_on_line: "%{value} não é um nome de domínio válido"
       models:
         account:
           attributes:

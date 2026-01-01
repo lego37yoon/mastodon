@@ -644,10 +644,9 @@ const startServer = async () => {
    * @param {boolean} options.needsFiltering
    * @param {boolean=} options.filterLocal
    * @param {boolean=} options.filterRemote
-   * @param {boolean=} options.allowLocalOnly
    * @returns {SubscriptionListener}
    */
-  const streamFrom = (channelIds, req, log, output, attachCloseHandler, destinationType, { needsFiltering, filterLocal, filterRemote, allowLocalOnly } = { needsFiltering: false, filterLocal: false, filterRemote: false, allowLocalOnly: false }) => {
+  const streamFrom = (channelIds, req, log, output, attachCloseHandler, destinationType, { needsFiltering, filterLocal, filterRemote } = { needsFiltering: false, filterLocal: false, filterRemote: false }) => {
     log.info({ channelIds }, `Starting stream`);
 
     /**
@@ -676,12 +675,6 @@ const startServer = async () => {
       }
 
       const { event, payload } = message;
-
-      // Only send local-only statuses to logged-in users
-      if ((event === 'update' || event === 'status.update') && payload.local_only && !(req.accountId && allowLocalOnly)) {
-        log.debug(`Message ${payload.id} filtered because it was local-only`);
-        return;
-      }
 
       // Streaming only needs to apply filtering to some channels and only to
       // some events. This is because majority of the filtering happens on the
@@ -1003,7 +996,7 @@ const startServer = async () => {
   // @ts-expect-error
   api.use(errorMiddleware);
 
-  api.get('/api/v1/streaming/*splat', (req, res) => {
+  api.get('/api/v1/streaming/*', (req, res) => {
     // @ts-expect-error
     const channelName = channelNameFromPath(req);
 
@@ -1059,13 +1052,13 @@ const startServer = async () => {
    * @param {Request} req
    * @param {string} name
    * @param {StreamParams} params
-   * @returns {Promise.<{ channelIds: string[], options: { needsFiltering: boolean, filterLocal?: boolean, filterRemote?: boolean, allowLocalOnly?: boolean } }>}
+   * @returns {Promise.<{ channelIds: string[], options: { needsFiltering: boolean, filterLocal?: boolean, filterRemote?: boolean } }>}
    */
   const channelNameToIds = (req, name, params) => new Promise((resolve, reject) => {
     /**
      * @param {string} feedKind
      * @param {string} channelId
-     * @param {{ needsFiltering: boolean, allowLocalOnly: boolean }} options
+     * @param {{ needsFiltering: boolean }} options
      */
     const resolveFeed = (feedKind, channelId, options) => {
       getFeedAccessSettings(feedKind, req).then(({ localAccess, remoteAccess }) => {
@@ -1082,45 +1075,39 @@ const startServer = async () => {
     case 'user':
       resolve({
         channelIds: channelsForUserStream(req),
-        options: { needsFiltering: false, allowLocalOnly: true },
+        options: { needsFiltering: false },
       });
 
       break;
     case 'user:notification':
       resolve({
         channelIds: [`timeline:${req.accountId}:notifications`],
-        options: { needsFiltering: false, allowLocalOnly: true },
+        options: { needsFiltering: false },
       });
 
       break;
     case 'public':
-      resolveFeed('public', 'timeline:public', { needsFiltering: true, allowLocalOnly: isTruthy(params.allow_local_only) });
-      break;
-    case 'public:allow_local_only':
-      resolveFeed('public', 'timeline:public', { needsFiltering: true, allowLocalOnly: true });
+      resolveFeed('public', 'timeline:public', { needsFiltering: true });
       break;
     case 'public:local':
-      resolveFeed('public', 'timeline:public:local', { needsFiltering: true, allowLocalOnly: true });
+      resolveFeed('public', 'timeline:public:local', { needsFiltering: true });
       break;
     case 'public:remote':
-      resolveFeed('public', 'timeline:public:remote', { needsFiltering: true, allowLocalOnly: false });
+      resolveFeed('public', 'timeline:public:remote', { needsFiltering: true });
       break;
     case 'public:media':
-      resolveFeed('public', 'timeline:public:media', { needsFiltering: true, allowLocalOnly: isTruthy(params.allow_local_only) });
-      break;
-    case 'public:allow_local_only:media':
-      resolveFeed('public', 'timeline:public:media', { needsFiltering: true, allowLocalOnly: true });
+      resolveFeed('public', 'timeline:public:media', { needsFiltering: true });
       break;
     case 'public:local:media':
-      resolveFeed('public', 'timeline:public:local:media', { needsFiltering: true, allowLocalOnly: true });
+      resolveFeed('public', 'timeline:public:local:media', { needsFiltering: true });
       break;
     case 'public:remote:media':
-      resolveFeed('public', 'timeline:public:remote:media', { needsFiltering: true, allowLocalOnly: false });
+      resolveFeed('public', 'timeline:public:remote:media', { needsFiltering: true });
       break;
     case 'direct':
       resolve({
         channelIds: [`timeline:direct:${req.accountId}`],
-        options: { needsFiltering: false, allowLocalOnly: true },
+        options: { needsFiltering: false },
       });
 
       break;
@@ -1130,7 +1117,7 @@ const startServer = async () => {
         return;
       }
 
-      resolveFeed('hashtag', `timeline:hashtag:${normalizeHashtag(params.tag)}`, { needsFiltering: true, allowLocalOnly: true });
+      resolveFeed('hashtag', `timeline:hashtag:${normalizeHashtag(params.tag)}`, { needsFiltering: true });
 
       break;
     case 'hashtag:local':
@@ -1139,7 +1126,7 @@ const startServer = async () => {
         return;
       }
 
-      resolveFeed('hashtag', `timeline:hashtag:${normalizeHashtag(params.tag)}:local`, { needsFiltering: true, allowLocalOnly: true });
+      resolveFeed('hashtag', `timeline:hashtag:${normalizeHashtag(params.tag)}:local`, { needsFiltering: true });
 
       break;
     case 'list':
@@ -1151,7 +1138,7 @@ const startServer = async () => {
       authorizeListAccess(params.list, req).then(() => {
         resolve({
           channelIds: [`timeline:list:${params.list}`],
-          options: { needsFiltering: false, allowLocalOnly: true },
+          options: { needsFiltering: false },
         });
       }).catch(() => {
         reject(new AuthenticationError('Not authorized to stream this list'));

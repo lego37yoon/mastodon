@@ -16,8 +16,7 @@ RSpec.describe ApplicationHelper do
 
       it 'uses the current theme and user settings classes in the result' do
         expect(helper.body_classes)
-          .to match(/flavour-glitch/)
-          .and match(/skin-default/)
+          .to match(/theme-default/)
           .and match(/system-font/)
           .and match(/reduce-motion/)
       end
@@ -37,8 +36,7 @@ RSpec.describe ApplicationHelper do
             @current_account ||= Fabricate(:account, user: User.last)
           end
 
-          def current_flavour = 'glitch'
-          def current_skin = 'default'
+          def current_theme = 'default'
         end
       end
     end

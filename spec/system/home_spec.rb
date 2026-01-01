@@ -50,7 +50,6 @@ RSpec.describe 'Home page' do
 
     context 'when the landing page is set to local_feed' do
       before do
-        Setting.local_live_feed_access = 'public' # glitch-soc defaults to "authenticated"
         Setting.landing_page = 'local_feed'
       end
 

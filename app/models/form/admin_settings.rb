@@ -15,27 +15,20 @@ class Form::AdminSettings
     registrations_mode
     closed_registrations_message
     bootstrap_timeline_accounts
-    flavour
-    skin
+    theme
     activity_api_enabled
     peers_api_enabled
     preview_sensitive_media
     custom_css
     profile_directory
-    hide_followers_count
-    flavour_and_skin
     thumbnail
     mascot
-    show_reblogs_in_public_timelines
-    show_replies_in_public_timelines
     trends
     trendable_by_default
-    trending_status_cw
     show_domain_blocks
     show_domain_blocks_rationale
     allow_referrer_origin
     noindex
-    outgoing_spoilers
     require_invite_text
     media_cache_retention_period
     content_cache_retention_period
@@ -67,12 +60,8 @@ class Form::AdminSettings
     peers_api_enabled
     preview_sensitive_media
     profile_directory
-    hide_followers_count
-    show_reblogs_in_public_timelines
-    show_replies_in_public_timelines
     trends
     trendable_by_default
-    trending_status_cw
     noindex
     require_invite_text
     captcha_enabled
@@ -84,10 +73,6 @@ class Form::AdminSettings
     mascot
     app_icon
     favicon
-  ).freeze
-
-  PSEUDO_KEYS = %i(
-    flavour_and_skin
   ).freeze
 
   DIGEST_KEYS = %i(
@@ -156,7 +141,7 @@ class Form::AdminSettings
     return false unless errors.empty? && valid?
 
     KEYS.each do |key|
-      next if PSEUDO_KEYS.include?(key) || !instance_variable_defined?(:"@#{key}")
+      next unless instance_variable_defined?(:"@#{key}")
 
       cache_digest_value(key) if DIGEST_KEYS.include?(key)
 
@@ -167,14 +152,6 @@ class Form::AdminSettings
         setting.update(value: typecast_value(key, instance_variable_get(:"@#{key}")))
       end
     end
-  end
-
-  def flavour_and_skin
-    "#{Setting.flavour}/#{Setting.skin}"
-  end
-
-  def flavour_and_skin=(value)
-    @flavour, @skin = value.split('/', 2)
   end
 
   private

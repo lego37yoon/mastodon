@@ -1,0 +1,65 @@
+@use 'fonts/maruburi';
+@use 'mastodon-light/variables';
+@use 'mastodon-light/css_variables';
+
+@import 'maruburi-light/variables';
+@import 'application_base';
+@import 'mastodon-light/diff';
+
+// Override fonts that were set using default variables
+body {
+  font-family: $font-sans-serif, sans-serif;
+}
+
+.app-body.system-font {
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    'Fira Sans',
+    'Droid Sans',
+    'Helvetica Neue',
+    $font-sans-serif,
+    sans-serif;
+}
+
+.character-counter {
+  font-family: $font-sans-serif, sans-serif;
+}
+
+// Override monospace fonts
+code,
+kbd,
+pre,
+samp {
+  font-family: $font-monospace, monospace;
+}
+
+.rich-formatting code,
+.rich-formatting pre,
+.rich-formatting kbd {
+  font-family: $font-monospace, monospace;
+}
+
+.flash-message .oauth-code {
+  font-family: $font-monospace, monospace;
+}
+
+.form_admin_settings_site_short_description,
+.form_admin_settings_site_description,
+.form_admin_settings_site_extended_description,
+.form_admin_settings_site_terms,
+.form_admin_settings_custom_css,
+.form_admin_settings_closed_registrations_message {
+  textarea {
+    font-family: $font-monospace, monospace;
+  }
+}
+
+.input-copy input[type='text'] {
+  font-family: $font-monospace, monospace;
+}

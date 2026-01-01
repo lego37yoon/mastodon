@@ -24,8 +24,7 @@
 class CustomEmoji < ApplicationRecord
   include Attachmentable
 
-  LOCAL_LIMIT = (ENV['MAX_EMOJI_SIZE'] || 256.kilobytes).to_i
-  LIMIT       = [LOCAL_LIMIT, (ENV['MAX_REMOTE_EMOJI_SIZE'] || 256.kilobytes).to_i].max
+  LIMIT = 512.kilobytes
   MINIMUM_SHORTCODE_SIZE = 2
 
   SHORTCODE_RE_FRAGMENT = '[a-zA-Z0-9_]{2,}'
@@ -45,9 +44,7 @@ class CustomEmoji < ApplicationRecord
 
   normalizes :domain, with: ->(domain) { domain.downcase.strip }
 
-  validates_attachment :image, content_type: { content_type: IMAGE_MIME_TYPES }, presence: true
-  validates_attachment_size :image, less_than: LIMIT, unless: :local?
-  validates_attachment_size :image, less_than: LOCAL_LIMIT, if: :local?
+  validates_attachment :image, content_type: { content_type: IMAGE_MIME_TYPES }, presence: true, size: { less_than: LIMIT }
   validates :shortcode, uniqueness: { scope: :domain }, format: { with: SHORTCODE_ONLY_RE }, length: { minimum: MINIMUM_SHORTCODE_SIZE }
 
   scope :local, -> { where(domain: nil) }

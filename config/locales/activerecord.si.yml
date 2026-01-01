@@ -28,31 +28,6 @@ si:
             username:
               invalid: අකුරු, අංක සහ යට-ඉරි පමණි
               reserved: වෙන් කර ඇත
-        admin/webhook:
-          attributes:
-            url:
-              invalid: වලංගු URL එකක් නොවේ.
-        doorkeeper/application:
-          attributes:
-            website:
-              invalid: වලංගු URL එකක් නොවේ.
-        import:
-          attributes:
-            data:
-              malformed: විකෘති වී ඇත
-        list_account:
-          attributes:
-            account_id:
-              taken: දැනටමත් ලැයිස්තුවේ ඇත.
-          must_be_following: අනුගමනය කරන ගිණුමක් විය යුතුය.
-        status:
-          attributes:
-            reblog:
-              taken: තනතුරේ කොටසක් දැනටමත් පවතී.
-        terms_of_service:
-          attributes:
-            effective_date:
-              too_soon: ඉක්මනින් වැඩියි, %{date}ට වඩා පසුව විය යුතුයි.
         user:
           attributes:
             date_of_birth:

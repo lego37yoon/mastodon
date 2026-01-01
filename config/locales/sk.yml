@@ -207,7 +207,6 @@ sk:
         enable_user: Povoľ užívateľa
         memorialize_account: Zmena na „in memoriam“
         promote_user: Povýš užívateľskú rolu
-        publish_terms_of_service: Zverejni podmienky prevozu
         reject_appeal: Zamietnuť odvolanie
         reject_user: Zamietnuť používateľa
         remove_avatar_user: Vymazať profilovú fotku
@@ -291,8 +290,6 @@ sk:
       new:
         create: Vytvor oznam
         title: Nové oznámenie
-      preview:
-        disclaimer: Keďže si používatelia nemôžu e-mailové upozornenia vypnúť, mali by byť využívané iba na dôležité oznamy, napríklad upozornenia o úniku osobných údajov alebo rušení servera.
       publish: Zverejni
       published_msg: Oboznámenie úspešne zverejnené!
       scheduled_for: Načasované na %{time}
@@ -650,6 +647,7 @@ sk:
         follow_recommendations: Odporúčania pre nasledovanie
         profile_directory: Katalóg profilov
         public_timelines: Verejné časové osi
+        publish_discovered_servers: Zverejni objavené servery
         publish_statistics: Zverejni štatistiky
         title: Objavovanie
         trends: Trendy
@@ -700,6 +698,7 @@ sk:
       open: Otvor príspevok
       original_status: Pôvodný príspevok
       status_changed: Príspevok bol zmenený
+      title: Príspevky na účte
       trending: Populárne
       visibility: Viditeľnosť
       with_media: S médiami
@@ -803,7 +802,10 @@ sk:
     deleted_msg: Alias úspešne odstránený. Presun z tamtoho účtu na tento už viac nebude možný.
     remove: Odpoj alias
   appearance:
+    advanced_web_interface: Pokročilé webové rozhranie
+    advanced_web_interface_hint: 'Ak chcete využiť celkú šírku svojej obrazovky, pokročilé webové rozhranie vám umožňuje nastaviť mnoho rôznych stĺpcov, aby ste videli naraz toľko informácií, koľko chcete: Domov, upozornenia, federovanú časovú os a ľubovolný počet zoznamov či hashtagov.'
     animations_and_accessibility: Animácie a prístupnosť
+    confirmation_dialogs: Potvrdzovacie dialógy
     discovery: Objavovanie
     localization:
       body: Mastodon je prekladaný dobrovoľníkmi.
@@ -1231,6 +1233,7 @@ sk:
   scheduled_statuses:
     over_daily_limit: Prekročil/a si denný limit %{limit} predplánovaných príspevkov
     over_total_limit: Prekročil/a si limit %{limit} predplánovaných príspevkov
+    too_soon: Dátum musí byť stanovený do budúcnosti
   sessions:
     activity: Posledná aktivita
     browser: Prehliadač
@@ -1318,12 +1321,13 @@ sk:
       reblog: Zdieľanie nie je možné pripnúť
     title: '%{name}: „%{quote}"'
     visibilities:
-      direct: Súkromné označenie
+      direct: Súkromné
       private: Iba pre sledujúce účty
+      private_long: Zobrazovať iba sledujúcim účtom
       public: Verejné
-      public_long: Ktokoľvek na Mastodone aj mimo neho
-      unlisted: Tiché verejné
-      unlisted_long: Skryté z výsledkov vyhľadávania, populárnych tém a verejných časových osí na Mastodone
+      public_long: Zobrazujú sa všetkým
+      unlisted: Nezaradené
+      unlisted_long: Zobrazujú sa všetkým, ale nezobrazujú sa na verejných časových osiach
   statuses_cleanup:
     enabled: Automaticky mazať staré príspevky
     enabled_hint: Automaticky vymaže vaše príspevky po dosiahnutí stanoveného veku, pokiaľ nespadajú do niektorej z výnimiek nižšie
@@ -1437,6 +1441,7 @@ sk:
       follow_title: Prispôsob svoj domáci kanál
       follows_title: Koho nasledovať
       post_title: Vytvor svoj prvý príspevok
+      share_action: Zdieľaj
       sign_in_action: Prihlás sa
       subject: Vitaj na Mastodone
       title: Vitaj na palube, %{name}!

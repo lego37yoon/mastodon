@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_11_19_093332) do
+ActiveRecord::Schema[8.0].define(version: 2025_12_31_200246) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -200,6 +200,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_19_093332) do
     t.string "attribution_domains", default: [], array: true
     t.string "following_url", default: "", null: false
     t.integer "id_scheme", default: 1
+    t.boolean "is_cat", default: false, null: false
     t.index "(((setweight(to_tsvector('simple'::regconfig, (display_name)::text), 'A'::\"char\") || setweight(to_tsvector('simple'::regconfig, (username)::text), 'B'::\"char\")) || setweight(to_tsvector('simple'::regconfig, (COALESCE(domain, ''::character varying))::text), 'C'::\"char\")))", name: "search_index", using: :gin
     t.index "lower((username)::text), COALESCE(lower((domain)::text), ''::text)", name: "index_accounts_on_username_and_domain_lower", unique: true
     t.index ["domain", "id"], name: "index_accounts_on_domain_and_id"
@@ -349,39 +350,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_19_093332) do
     t.datetime "updated_at", null: false
     t.index ["canonical_email_hash"], name: "index_canonical_email_blocks_on_canonical_email_hash", unique: true
     t.index ["reference_account_id"], name: "index_canonical_email_blocks_on_reference_account_id"
-  end
-
-  create_table "collection_items", force: :cascade do |t|
-    t.bigint "collection_id", null: false
-    t.bigint "account_id"
-    t.integer "position", default: 1, null: false
-    t.string "object_uri"
-    t.string "approval_uri"
-    t.string "activity_uri"
-    t.datetime "approval_last_verified_at"
-    t.integer "state", default: 0, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["account_id"], name: "index_collection_items_on_account_id"
-    t.index ["approval_uri"], name: "index_collection_items_on_approval_uri", unique: true, where: "(approval_uri IS NOT NULL)"
-    t.index ["collection_id"], name: "index_collection_items_on_collection_id"
-    t.index ["object_uri"], name: "index_collection_items_on_object_uri", unique: true, where: "(activity_uri IS NOT NULL)"
-  end
-
-  create_table "collections", force: :cascade do |t|
-    t.bigint "account_id", null: false
-    t.string "name", null: false
-    t.text "description", null: false
-    t.string "uri"
-    t.boolean "local", null: false
-    t.boolean "sensitive", null: false
-    t.boolean "discoverable", null: false
-    t.bigint "tag_id"
-    t.integer "original_number_of_items"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["account_id"], name: "index_collections_on_account_id"
-    t.index ["tag_id"], name: "index_collections_on_tag_id"
   end
 
   create_table "conversation_mutes", force: :cascade do |t|
@@ -727,7 +695,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_19_093332) do
     t.integer "thumbnail_file_size"
     t.datetime "thumbnail_updated_at", precision: nil
     t.string "thumbnail_remote_url"
-    t.integer "thumbnail_storage_schema_version"
     t.index ["account_id", "status_id"], name: "index_media_attachments_on_account_id_and_status_id", order: { status_id: :desc }
     t.index ["scheduled_status_id"], name: "index_media_attachments_on_scheduled_status_id", where: "(scheduled_status_id IS NOT NULL)"
     t.index ["shortcode"], name: "index_media_attachments_on_shortcode", unique: true, opclass: :text_pattern_ops, where: "(shortcode IS NOT NULL)"
@@ -1115,7 +1082,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_19_093332) do
     t.text "spoiler_text", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "content_type"
     t.bigint "ordered_media_attachment_ids", array: true
     t.text "media_descriptions", array: true
     t.string "poll_options", array: true
@@ -1142,6 +1108,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_19_093332) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["account_id", "status_id", "name"], name: "index_status_reactions_on_account_id_and_status_id", unique: true
+    t.index ["account_id"], name: "index_status_reactions_on_account_id"
     t.index ["custom_emoji_id"], name: "index_status_reactions_on_custom_emoji_id"
     t.index ["status_id"], name: "index_status_reactions_on_status_id"
   end
@@ -1188,9 +1155,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_19_093332) do
     t.bigint "account_id", null: false
     t.bigint "application_id"
     t.bigint "in_reply_to_account_id"
-    t.boolean "local_only"
     t.bigint "poll_id"
-    t.string "content_type"
     t.datetime "deleted_at", precision: nil
     t.datetime "edited_at", precision: nil
     t.boolean "trendable"
@@ -1435,10 +1400,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_19_093332) do
   add_foreign_key "bulk_import_rows", "bulk_imports", on_delete: :cascade
   add_foreign_key "bulk_imports", "accounts", on_delete: :cascade
   add_foreign_key "canonical_email_blocks", "accounts", column: "reference_account_id", on_delete: :cascade
-  add_foreign_key "collection_items", "accounts"
-  add_foreign_key "collection_items", "collections", on_delete: :cascade
-  add_foreign_key "collections", "accounts"
-  add_foreign_key "collections", "tags"
   add_foreign_key "conversation_mutes", "accounts", name: "fk_225b4212bb", on_delete: :cascade
   add_foreign_key "conversation_mutes", "conversations", on_delete: :cascade
   add_foreign_key "custom_filter_keywords", "custom_filters", on_delete: :cascade

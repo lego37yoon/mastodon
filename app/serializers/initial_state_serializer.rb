@@ -5,7 +5,6 @@ class InitialStateSerializer < ActiveModel::Serializer
 
   attributes :meta, :compose, :accounts,
              :media_attachments, :settings,
-             :max_feed_hashtags, :poll_limits,
              :languages, :features, :max_reactions
 
   attribute :critical_updates_pending, if: -> { object&.role&.can?(:view_devops) && SoftwareUpdate.check_enabled? }
@@ -17,26 +16,17 @@ class InitialStateSerializer < ActiveModel::Serializer
     StatusReactionValidator::LIMIT
   end
 
-  def max_feed_hashtags
-    TagFeed::LIMIT_PER_MODE
-  end
+  attribute :critical_updates_pending, if: -> { object&.role&.can?(:view_devops) && SoftwareUpdate.check_enabled? }
 
-  def poll_limits
-    {
-      max_options: PollOptionsValidator::MAX_OPTIONS,
-      max_option_chars: PollOptionsValidator::MAX_OPTION_CHARS,
-      min_expiration: PollExpirationValidator::MIN_EXPIRATION,
-      max_expiration: PollExpirationValidator::MAX_EXPIRATION,
-    }
-  end
+  has_one :push_subscription, serializer: REST::WebPushSubscriptionSerializer
+  has_one :role, serializer: REST::RoleSerializer
 
   def meta
     store = default_meta_store
 
-    if object_account
-      store[:me]                = object_account.id.to_s
+    if object.current_account
+      store[:me]                = object.current_account.id.to_s
       store[:boost_modal]       = object_account_user.setting_boost_modal
-      store[:favourite_modal]   = object_account_user.setting_favourite_modal
       store[:quick_boosting]    = object_account_user.setting_quick_boosting
       store[:delete_modal]      = object_account_user.setting_delete_modal
       store[:missing_alt_text_modal] = object_account_user.settings['web.missing_alt_text_modal']
@@ -49,7 +39,6 @@ class InitialStateSerializer < ActiveModel::Serializer
       store[:advanced_layout]   = object_account_user.setting_advanced_layout
       store[:use_blurhash]      = object_account_user.setting_use_blurhash
       store[:use_pending_items] = object_account_user.setting_use_pending_items
-      store[:default_content_type] = object_account_user.setting_default_content_type
       store[:show_trends]       = Setting.trends && object_account_user.setting_trends
       store[:visible_reactions] = object_account_user.setting_visible_reactions
       store[:emoji_style]       = object_account_user.settings['web.emoji_style']
@@ -144,10 +133,6 @@ class InitialStateSerializer < ActiveModel::Serializer
       local_topic_feed_access: Setting.local_topic_feed_access,
       remote_topic_feed_access: Setting.remote_topic_feed_access,
     }
-  end
-
-  def object_account
-    object.current_account
   end
 
   def object_account_user

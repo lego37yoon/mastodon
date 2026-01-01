@@ -3,14 +3,14 @@ io:
   simple_form:
     hints:
       account:
-        attribution_domains: Un en singla lineo.
+        attribution_domains_as_text: Un en singla lineo.
         discoverable: Vua publika posti e profilo povas remarkesar o rekomendesar en diferanta parti di Mastodon e vua profilo povas sugestesar ad altra uzanti.
         display_name: Vua tota nomo o vua gaya nomo.
         fields: Vua retsituo, pronomi, evo, irgo quan vu volas.
         indexable: Vua posta publika povos aparar en rezultaji di serchi che Mastodon. Personi qui interagis kun vua posti povos serchar oli irgakaze.
         note: 'Vu povas @mencionar altra personi o #hashtagi.'
         show_collections: Personi povos navigar tra vua sequati e sequanti. Personi quin vu sequas, vidos ke vu sequas li irgakaze.
-        unlocked: Personi povos sequar vu sen demandar aprobo.
+        unlocked: Personi povos sequar vu sen demandar aprobo. Deselektez se vu volas revuar sequadodemandi e selektez aceptar o refuzar nova sequati.
       account_alias:
         acct: Partikulare pozez uzantonomo@domeno di konto quon vua volas ektransferesar
       account_migration:
@@ -60,7 +60,6 @@ io:
         setting_display_media_default: Celez audvidaji qua markesis quale trublema
         setting_display_media_hide_all: Omnatempe celas audvidaji
         setting_display_media_show_all: Omnatempe montras audvidaji
-        setting_system_scrollbars_ui: Nur ye tablokomputilretumili qua bazita ye Safario e Kromeo
         setting_use_blurhash: Inklini esas segun kolori di celesis vidaji ma kovras irga detali
         setting_use_pending_items: Celez tempolinetildatigo dop kliko vice automatike ruligar la fluo
         username: Vu darfas uzar literi, nombri, e sublinei
@@ -98,8 +97,10 @@ io:
         status_page_url: URL di pagino ube personi povas vidar la stando di ca servilo kande la servilo ne funcionas
         theme: Temo quo videsas da ekirita vizitanti e nova uzanti.
         thumbnail: Cirkum 2:1 imajo montresar kun informo di ca servilo.
+        timeline_preview: Ekirita vizitanti videsos maxim recenta publika posti quo esas displonebla en la servilo.
         trendable_by_default: Ignorez manuala kontrolar di populara enhavajo.
         trends: Populari montras quala afishi, gretvorti e novaji populareskas en vua servilo.
+        trends_as_landing_page: Montrez populara posti a uzanti neeniriti e vizitanti vice deskriptajo pri ca servilo. Bezonas ke populari es aktivita.
       form_challenge:
         current_password: Vu eniras sekura areo
       imports:
@@ -126,15 +127,6 @@ io:
         show_application: Vu sempre povos vidar qua apliko publikigis vua posto irgakaze.
       tag:
         name: Vu povas nur chanjar literkaso, por exemplo, por kauzigar lu divenar plu lektebla
-      terms_of_service:
-        changelog: Povas strukturesita kun Markdown-sintaxo.
-        text: Povas strukturesita kun Markdown-sintaxo.
-      terms_of_service_generator:
-        admin_email: Legala notici inkluzas kontranotici, judicikomandi, forigdemandi e legaddemandi.
-        choice_of_law: Urbo, regiono, teritorio o stato qua havas ca interna inkluziva legi.
-        dmca_address: Por jeranti ek Usa, uzez la adreso en DMCA e demandez forigo di vua hemadreso.
-        domain: Unika identifikeso di enreta servo qua vu provizas.
-        jurisdiction: Listigez lando di paganto di fakturi.
       user:
         chosen_languages: Kande marketigesis, nur posti en selektesis lingui montresos en publika tempolinei
         role: La rolo donas certena permisi a la uzanto.
@@ -150,7 +142,7 @@ io:
         url: Ibe eventi sendesos
     labels:
       account:
-        attribution_domains: Reteyi kua permisesis agnoskar vu
+        attribution_domains_as_text: Reteyi kua permisesis agnoskar vu
         discoverable: Inkluzar profilo e posti en trovado-algoritmi
         fields:
           name: Etiketo
@@ -214,8 +206,11 @@ io:
         setting_aggregate_reblogs: Grupigar repeti en tempolinei
         setting_always_send_emails: Sempre sendez retpostoavizi
         setting_auto_play_gif: Autoplear anima GIFi
+        setting_boost_modal: Montrez konfirmdialogo ante repetar
         setting_default_language: Postolinguo
+        setting_default_privacy: Videbleso di la mesaji
         setting_default_sensitive: Omnatempe markas audvidaji quale trublema
+        setting_delete_modal: Montrez konfirmdialogo ante efacar posto
         setting_disable_hover_cards: Desebligar profilprevido dum paso
         setting_disable_swiping: Desebligar fingromovi
         setting_display_media: Audvidajmontrajo
@@ -226,7 +221,6 @@ io:
         setting_hide_network: Celez vua sociala grafiko
         setting_reduce_motion: Despluigar movo di animi
         setting_system_font_ui: Uzez originala literfonto di sistemo
-        setting_system_scrollbars_ui: Uzar originala rullangeto di sistemo
         setting_theme: Reteytemo
         setting_trends: Montrar hodia populari
         setting_unfollow_modal: Montrez konfirmdialogo ante desequar ulu
@@ -273,8 +267,10 @@ io:
         status_page_url: URL dil stando-pagino
         theme: Originala temo
         thumbnail: Servilimajeto
+        timeline_preview: Permisez neyurizita aceso a publika tempolineo
         trendable_by_default: Permisez populari sen kontrolo
         trends: Ebligar populari
+        trends_as_landing_page: Uzar populari quale la iniciala pagino
       interactions:
         must_be_follower: Celar la savigi da homi, qui ne sequas tu
         must_be_following: Celar la savigi da homi, quin tu ne sequas
@@ -319,18 +315,6 @@ io:
         name: Hashtago
         trendable: Permisez ca gretvorto aparar en populari
         usable: Permisez posti uzar ca gretiketo lokale
-      terms_of_service:
-        changelog: Quo chanjesis?
-        text: Servtermini
-      terms_of_service_generator:
-        admin_email: Retpostoadreso por legala notici
-        arbitration_address: Fizika adreso por judicinotici
-        arbitration_website: Reteyo por sendar judicinotici
-        choice_of_law: Legselekteso
-        dmca_address: Fizika adreso por autoroyurnotici
-        dmca_email: Retpostoadreso por autoroyurnotici
-        domain: Domeno
-        jurisdiction: Legala seciono
       user:
         role: Rolo
         time_zone: Klokozono
