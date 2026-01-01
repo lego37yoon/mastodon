@@ -93,12 +93,14 @@ If you would like to help with translations 🌐 you can do so on [Crowdin](http
 
 ## LICENSE
 
-Copyright (c) 2016-2025 Eugen Rochko (+ [`mastodon authors`](AUTHORS.md))
+### for the most part of software
+
+Copyright (c) 2016-2026 Eugen Rochko (+ [`mastodon authors`](AUTHORS.md))
 
 Licensed under GNU Affero General Public License as stated in the [LICENSE](LICENSE):
 
 ```text
-Copyright (c) 2016-2025 Eugen Rochko & other Mastodon contributors
+Copyright (c) 2016-2026 Eugen Rochko & other Mastodon contributors
 
 This program is free software: you can redistribute it and/or modify it under
 the terms of the GNU Affero General Public License as published by the Free
@@ -113,3 +115,15 @@ details.
 You should have received a copy of the GNU Affero General Public License along
 with this program. If not, see https://www.gnu.org/licenses/
 ```
+
+### `nyaize.ts`, `cat_helper.rb` files
+
+> Note that `cat_helper.rb` file is not used in Misskey, but converted from `nyaize.ts`
+
+Copyright (c) 2026 syuilo and Misskey Project
+
+Licensed under GNU Affero General Public License as stated in the [LICENSE](https://github.com/misskey-dev/misskey/blob/develop/LICENSE):
+
+### Emoji Reactions
+
+###
