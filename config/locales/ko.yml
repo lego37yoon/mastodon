@@ -1966,6 +1966,10 @@ ko:
     default: 마스토돈 (어두움)
     mastodon-light: 마스토돈 (밝음)
     system: 자동 (시스템 테마 사용)
+    maruburi-dark: 마루부리 (어두움)
+    maruburi-light: 마루부리 (밝음)
+    ridibatang-dark: 리디바탕 (어두움)
+    ridibatang-light: 리디바탕 (밝음)
   time:
     formats:
       default: "%Y-%m-%d %H:%M"

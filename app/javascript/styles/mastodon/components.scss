@@ -433,7 +433,7 @@
 .text-icon-button {
   color: $lighter-text-color;
   border: 0;
-  border-radius: 10px;
+  border-radius: 4px;
   background: transparent;
   cursor: pointer;
   font-weight: 600;
@@ -655,7 +655,7 @@
     background: $ui-primary-color;
     box-shadow: 0 2px 6px color.change($base-shadow-color, $alpha: 0.3);
     padding: 8px 10px;
-    border-radius: 10px;
+    border-radius: 4px;
     font-size: 13px;
     font-weight: 400;
 
@@ -2303,7 +2303,8 @@
   display: block;
   position: relative;
   border-radius: var(--avatar-border-radius);
-  background-color: var(--surface-background-color);
+  background: var(--surface-background-color);
+  flex-shrink: 0;
 
   img {
     width: 100%;
@@ -3044,6 +3045,8 @@ a.account__display-name {
       flex: 0 1 auto;
       display: flex;
       flex-direction: column;
+      contain: inline-size layout paint style;
+      container: column / inline-size;
 
       @media screen and (min-width: $no-gap-breakpoint) {
         max-width: 600px;
@@ -3838,7 +3841,6 @@ a.account__display-name {
   inset-inline-start: 0;
   background: var(--background-color);
   box-sizing: border-box;
-  border-radius: 10px;
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -3879,6 +3881,7 @@ a.account__display-name {
   margin-bottom: 10px;
   display: flex;
   flex-direction: row;
+  border-radius: 4px;
   overflow: hidden;
 
   a:hover,
@@ -3892,7 +3895,6 @@ a.account__display-name {
   overflow-y: scroll;
   overflow-x: hidden;
   flex: 1 1 auto;
-  border-radius: 0 0 10px 10px;
   -webkit-overflow-scrolling: touch;
 
   &.optionally-scrollable {
@@ -4166,9 +4168,9 @@ a.account__display-name {
 
     h4 {
       border-bottom: 1px solid var(--background-border-color);
+      padding: 10px;
       font-size: 12px;
       text-transform: uppercase;
-      padding: 10px;
       font-weight: 500;
 
       a {
@@ -5781,7 +5783,8 @@ a.status-card {
     color: var(--nested-card-text);
     background:
       /* This is a bit of a silly hack for layering two background colours
-       * since --nested-card-background is too transparent for a tooltip */ linear-gradient(
+       * since --nested-card-background is too transparent for a tooltip */
+      linear-gradient(
         var(--nested-card-background),
         var(--nested-card-background)
       ),
@@ -7256,7 +7259,8 @@ a.status-card {
     color: var(--nested-card-text);
     background:
       /* This is a bit of a silly hack for layering two background colours
-       * since --nested-card-background is too transparent for a tooltip */ linear-gradient(
+       * since --nested-card-background is too transparent for a tooltip */
+      linear-gradient(
         var(--nested-card-background),
         var(--nested-card-background)
       ),
@@ -8105,7 +8109,6 @@ a.status-card {
   }
 
   button {
-    border-radius: 10px;
     background: transparent;
     border: 0;
     margin: 0;
@@ -8345,103 +8348,7 @@ noscript {
   inset-inline-start: 0;
   width: 100%;
   height: 100%;
-  background: rgba($base-overlay-background, 0.5);
-}
-
-.list-editor {
-  background: $ui-base-color;
-  flex-direction: column;
-  border-radius: 8px;
-  box-shadow: 2px 4px 15px rgba($base-shadow-color, 0.4);
-  width: 380px;
-  overflow: hidden;
-
-  @media screen and (width <= 420px) {
-    width: 90%;
-  }
-
-  h4 {
-    padding: 15px 0;
-    background: lighten($ui-base-color, 13%);
-    font-weight: 500;
-    font-size: 16px;
-    text-align: center;
-    border-radius: 8px 8px 0 0;
-  }
-
-  .drawer__pager {
-    height: 50vh;
-    border-radius: 4px;
-  }
-
-  .drawer__inner {
-    border-radius: 0 0 8px 8px;
-
-    &.backdrop {
-      width: calc(100% - 60px);
-      box-shadow: 2px 4px 15px rgba($base-shadow-color, 0.4);
-      border-radius: 0 0 0 8px;
-    }
-  }
-
-  &__accounts {
-    overflow-y: auto;
-  }
-
-  .account__display-name {
-    &:hover strong {
-      text-decoration: none;
-    }
-  }
-
-  .account__avatar {
-    cursor: default;
-  }
-
-  .search {
-    margin-bottom: 0;
-  }
-}
-
-.list-adder {
-  background: $ui-base-color;
-  flex-direction: column;
-  border-radius: 8px;
-  box-shadow: 2px 4px 15px rgba($base-shadow-color, 0.4);
-  width: 380px;
-  overflow: hidden;
-
-  @media screen and (width <= 420px) {
-    width: 90%;
-  }
-
-  &__account {
-    background: lighten($ui-base-color, 13%);
-  }
-
-  &__lists {
-    background: lighten($ui-base-color, 13%);
-    height: 50vh;
-    border-radius: 0 0 8px 8px;
-    overflow-y: auto;
-  }
-
-  .list {
-    padding: 10px;
-    border-bottom: 1px solid var(--background-border-color);
-  }
-
-  .list__wrapper {
-    display: flex;
-  }
-
-  .list__display-name {
-    flex: 1 1 auto;
-    overflow: hidden;
-    text-decoration: none;
-    font-size: 16px;
-    padding: 10px;
-  }
+  background: color.change($base-overlay-background, $alpha: 0.5);
 }
 
 .focal-point {
@@ -8569,47 +8476,6 @@ noscript {
     gap: 8px;
     overflow: hidden;
     margin-inline-start: -2px; // aligns the pfp with content below
-
-    &__buttons {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding-top: 55px;
-      overflow: hidden;
-
-      .button {
-        flex-shrink: 1;
-        white-space: nowrap;
-        min-width: 80px;
-      }
-
-      .icon-button {
-        border: 1px solid lighten($ui-base-color, 12%);
-        border-radius: 4px;
-        box-sizing: content-box;
-        padding: 5px;
-
-        .icon {
-          width: 24px;
-          height: 24px;
-        }
-
-        &.copied {
-          border-color: $valid-value-color;
-        }
-      }
-
-      .optional {
-        @container account-header (max-width: 372px) {
-          display: none;
-        }
-
-        // Fallback for older browsers with no container queries support
-        @media screen and (max-width: 372px + 55px) {
-          display: none;
-        }
-      }
-    }
 
     &__name {
       margin-top: 16px;
@@ -10164,7 +10030,7 @@ noscript {
   position: relative;
   margin: 10px;
   margin-bottom: 5px;
-  border-radius: 10px;
+  border-radius: 8px;
   border: 1px solid $highlight-text-color;
   background: color.change($highlight-text-color, $alpha: 0.15);
   overflow: hidden;
@@ -10288,7 +10154,6 @@ noscript {
   padding-top: 20px;
   z-index: 1;
   font-size: 13px;
-  background: $ui-base-color;
 
   .column & {
     padding: 15px;
@@ -10324,7 +10189,7 @@ noscript {
   border-top: 1px solid var(--background-border-color);
 
   @media screen and (min-width: $no-gap-breakpoint) {
-    border-radius: 10px;
+    border-radius: 4px;
   }
 
   &__footer {
@@ -10500,7 +10365,7 @@ noscript {
     }
 
     &.active &__title {
-      border-radius: 10px 10px 0 0;
+      border-radius: 4px 4px 0 0;
     }
 
     &__body {
@@ -10509,7 +10374,6 @@ noscript {
       padding: 20px;
       font-size: 15px;
       line-height: 22px;
-      border-radius: 0 0 10px 10px;
     }
   }
 
@@ -11618,11 +11482,10 @@ noscript {
 .content-warning {
   display: block;
   box-sizing: border-box;
-  background: rgba($ui-highlight-color, 0.05);
-  color: $secondary-text-color;
-  border-top: 1px solid;
-  border-bottom: 1px solid;
-  border-color: rgba($ui-highlight-color, 0.15);
+  background: var(--nested-card-background);
+  color: var(--nested-card-text);
+  border: var(--nested-card-border);
+  border-radius: 8px;
   padding: 8px (5px + 8px);
   position: relative;
   font-size: 15px;
@@ -11640,31 +11503,151 @@ noscript {
     font-weight: 500;
   }
 
-  &::before,
-  &::after {
-    content: '';
+  &--filter {
+    color: $darker-text-color;
+
+    p {
+      font-weight: normal;
+    }
+
+    .filter-name {
+      font-weight: 500;
+      color: $secondary-text-color;
+    }
+  }
+}
+
+.lists__item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-inline-end: 13px;
+  border-bottom: 1px solid var(--background-border-color);
+
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 16px 13px;
+    flex: 1 1 auto;
+    font-size: 16px;
+    line-height: 24px;
+    color: $secondary-text-color;
+    text-decoration: none;
+
+    &:is(a):hover,
+    &:is(a):focus,
+    &:is(a):active {
+      color: $primary-text-color;
+    }
+
+    input {
+      display: block;
+      width: 100%;
+      background: transparent;
+      border: 0;
+      padding: 0;
+      font-family: inherit;
+      font-size: inherit;
+      line-height: inherit;
+      color: inherit;
+
+      &::placeholder {
+        color: var(--input-placeholder-color);
+        opacity: 1;
+      }
+
+      &:focus {
+        outline: 0;
+      }
+    }
+  }
+}
+
+.column-search-header {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  border: 1px solid var(--background-border-color);
+  border-top: 0;
+  border-bottom: 0;
+  padding: 16px;
+  padding-bottom: 8px;
+
+  input {
+    background: var(--input-background-color);
+    border: 1px solid var(--background-border-color);
+    color: var(--on-input-color);
+    padding: 12px;
+    font-size: 16px;
+    line-height: normal;
+    border-radius: 4px;
     display: block;
-    position: absolute;
-    height: 100%;
-    background: url('../images/warning-stripes.svg') repeat-y;
-    width: 5px;
-    top: 0;
+    flex: 1 1 auto;
+
+    &::placeholder {
+      color: var(--input-placeholder-color);
+      opacity: 1;
+    }
+
+    &:focus {
+      outline: 0;
+    }
+  }
+}
+
+.column-footer {
+  padding: 16px;
+}
+
+.lists-scrollable {
+  min-height: 50vh;
+}
+
+.featured-carousel {
+  overflow: hidden;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--background-border-color);
+  touch-action: pan-y;
+
+  &__slides {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: start;
   }
 
-  &::before {
-    border-start-start-radius: 4px;
-    border-end-start-radius: 4px;
-    inset-inline-start: 0;
+  &__slide {
+    flex: 0 0 auto;
+    flex-basis: 100%;
+    width: 100%;
+    overflow: hidden;
   }
 
-  &::after {
-    border-start-end-radius: 4px;
-    border-end-end-radius: 4px;
+  .status {
+    border-bottom: 0;
+  }
+
+  &__header {
+    padding: 8px 16px;
+    color: $darker-text-color;
     inset-inline-end: 0;
+    display: flex;
+    align-items: center;
+    gap: 4px;
   }
 
-  &--filter::before,
-  &--filter::after {
-    background-image: url('../images/filter-stripes.svg');
+  &__title {
+    flex-grow: 1;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    .icon {
+      width: 16px;
+      height: 16px;
+    }
   }
 }
