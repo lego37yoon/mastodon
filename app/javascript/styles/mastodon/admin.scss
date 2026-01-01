@@ -2045,8 +2045,6 @@ a.sparkline {
     max-width: 566px;
 
     .status-card__image {
-      aspect-ratio: 1;
-
       &--video {
         aspect-ratio: 16 / 9;
       }
@@ -2054,6 +2052,8 @@ a.sparkline {
       &--large {
         aspect-ratio: 1.91 / 1;
       }
+
+      aspect-ratio: 1;
     }
 
     .spoiler-button__overlay__label {
