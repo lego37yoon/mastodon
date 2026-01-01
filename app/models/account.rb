@@ -70,7 +70,7 @@ class Account < ApplicationRecord
   BACKGROUND_REFRESH_INTERVAL = 1.week.freeze
   REFRESH_DEADLINE = 6.hours
   STALE_THRESHOLD = 1.day
-  DEFAULT_FIELDS_SIZE = 4
+  DEFAULT_FIELDS_SIZE = (ENV['MAX_PROFILE_FIELDS'] || 4).to_i
   INSTANCE_ACTOR_ID = -99
 
   USERNAME_RE   = /[a-z0-9_]+([.-]+[a-z0-9_]+)*/i
@@ -261,10 +261,6 @@ class Account < ApplicationRecord
 
   def memorialize!
     update!(memorial: true)
-  end
-
-  def trendable?
-    boolean_with_default('trendable', Setting.trendable_by_default)
   end
 
   def sign?

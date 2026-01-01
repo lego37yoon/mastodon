@@ -58,7 +58,7 @@ export const ConfirmationModal: React.FC<
 
       <div className='safety-action-modal__bottom'>
         <div className='safety-action-modal__actions'>
-          <button onClick={onClose} className='link-button'>
+          <button onClick={onClose} className='link-button' type='button'>
             {cancel ?? (
               <FormattedMessage
                 id='confirmation_modal.cancel'
@@ -70,13 +70,16 @@ export const ConfirmationModal: React.FC<
           {secondary && (
             <>
               <div className='spacer' />
-              <button onClick={handleSecondary} className='link-button'>
+              <button
+                onClick={handleSecondary}
+                className='link-button'
+                type='button'
+              >
                 {secondary}
               </button>
             </>
           )}
 
-          {/* eslint-disable-next-line jsx-a11y/no-autofocus -- we are in a modal and thus autofocusing is justified */}
           <Button onClick={handleClick} autoFocus>
             {confirm}
           </Button>

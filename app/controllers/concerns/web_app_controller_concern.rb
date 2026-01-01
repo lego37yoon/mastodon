@@ -26,7 +26,7 @@ module WebAppControllerConcern
   end
 
   def redirect_unauthenticated_to_permalinks!
-    return if user_signed_in? && current_account.moved_to_account_id.nil?
+    return if user_signed_in? # NOTE: Different from upstream because we allow moved users to log in
 
     permalink_redirector = PermalinkRedirector.new(request.original_fullpath)
     return if permalink_redirector.redirect_path.blank?

@@ -50,7 +50,6 @@ const ListItem: React.FC<{
   );
 
   return (
-    // eslint-disable-next-line jsx-a11y/label-has-associated-control
     <label className='lists__item'>
       <div className='lists__item__title'>
         <Icon id='list-ul' icon={ListAltIcon} />

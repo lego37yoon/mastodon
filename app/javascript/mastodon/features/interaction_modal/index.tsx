@@ -354,7 +354,6 @@ const LoginForm: React.FC<{
           aria-label={intl.formatMessage(messages.loginPrompt, {
             example: EXAMPLE_VALUE,
           })}
-          // eslint-disable-next-line jsx-a11y/no-autofocus
           autoFocus
           onChange={handleChange}
           onFocus={handleFocus}
@@ -381,6 +380,7 @@ const LoginForm: React.FC<{
                 className={classNames('search__popout__menu__item', {
                   selected: selectedOption === i,
                 })}
+                type='button'
               >
                 {option
                   .split(domainRegExp)
@@ -451,7 +451,7 @@ const InteractionModal: React.FC<{
     );
   } else {
     signupButton = (
-      <button className='link-button' onClick={handleSignupClick}>
+      <button className='link-button' onClick={handleSignupClick} type='button'>
         <FormattedMessage
           id='sign_in_banner.create_account'
           defaultMessage='Create account'

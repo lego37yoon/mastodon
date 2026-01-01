@@ -758,5 +758,20 @@
   "video.play": "播放",
   "video.volume_down": "調低音量",
   "video.volume_up": "調高音量",
-  "visibility_modal.save": "儲存"
+  "visibility_modal.save": "儲存",
+  "account.followers_counter": "{count, plural, other {{counter} 個追蹤者}}",
+  "account.followers_you_know_counter": "你認識的 {counter} 人",
+  "alt_text_badge.title": "替代文字",
+  "alt_text_modal.cancel": "取消",
+  "alt_text_modal.done": "完成",
+  "confirmations.delete_list.title": "刪除列表？",
+  "confirmations.discard_draft.post.title": "要捨棄文章的草稿？",
+  "confirmations.unfollow.title": "取消追蹤 {name}？",
+  "confirmations.withdraw_request.confirm": "撤回請求",
+  "confirmations.withdraw_request.title": "撤回追蹤{name}的請求？",
+  "content_warning.hide": "隱藏嘟文",
+  "content_warning.show": "仍要顯示",
+  "content_warning.show_more": "顯示更多",
+  "ignore_notifications_modal.ignore": "忽略推播通知",
+  "info_button.label": "幫助"
 }

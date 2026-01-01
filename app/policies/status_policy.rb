@@ -32,6 +32,10 @@ class StatusPolicy < ApplicationPolicy
     show? && !blocking_author?
   end
 
+  def react?
+    show? && !blocking_author?
+  end
+
   def destroy?
     owned?
   end

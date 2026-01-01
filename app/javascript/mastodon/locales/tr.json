@@ -1040,5 +1040,21 @@
   "visibility_modal.quote_label": "Kimler alıntılayabilir",
   "visibility_modal.quote_nobody": "Sadece ben",
   "visibility_modal.quote_public": "Herkesten",
-  "visibility_modal.save": "Kaydet"
+  "visibility_modal.save": "Kaydet",
+  "carousel.current": "<sr>Slayt</sr> {current, number} / {max, number}",
+  "carousel.slide": "Slayt {current, number} / {max, number}",
+  "column.create_list": "Liste oluştur",
+  "column.edit_list": "Listeyi düzenle",
+  "featured_carousel.current": "<sr>Gönderi</sr> {current, number} / {max, number}",
+  "footer.about_this_server": "Hakkında",
+  "footer.terms_of_service": "Hizmet şartları",
+  "status.favourites_count": "{count, plural, one {{counter} favori} other {{counter} favori}}",
+  "status.quotes_count": "{count, plural, one {{counter} alıntı} other {{counter} alıntı}}",
+  "status.reblogs_count": "{count, plural, one {{counter} yeniden paylaşım} other {{counter} yeniden paylaşım}}",
+  "upload_error.quote": "Anketlerde dosya yüklemesine izin verilmez.",
+  "upload_form.drag_and_drop.instructions": "Bir medya eklentisini taşımak için, boşluk veya enter tuşuna basın. Sürükleme sırasında medya eklentisini herhangi bir yöne hareket ettirmek için ok tuşlarını kullanın. Medya eklentisini yeni konumuna bırakmak için tekrar boşluk veya enter tuşuna basın veya işlemi iptal etmek için escape tuşuna basın.",
+  "upload_form.drag_and_drop.on_drag_cancel": "Sürükleme iptal edildi. Medya eklentisi {item} bırakıldı.",
+  "upload_form.drag_and_drop.on_drag_end": "Medya eklentisi {item} bırakıldı.",
+  "upload_form.drag_and_drop.on_drag_over": "Medya eklentisi {item} hareket ettirildi.",
+  "upload_form.drag_and_drop.on_drag_start": "Medya eklentisi {item} tutuldu."
 }

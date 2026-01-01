@@ -942,5 +942,11 @@
   "visibility_modal.quote_followers": "ผู้ติดตามเท่านั้น",
   "visibility_modal.quote_nobody": "แค่ฉัน",
   "visibility_modal.quote_public": "ใครก็ตาม",
-  "visibility_modal.save": "บันทึก"
+  "visibility_modal.save": "บันทึก",
+  "featured_carousel.current": "<sr>โพสต์</sr> {current, number} / {max, number}",
+  "upload_form.drag_and_drop.instructions": "เพื่อหยิบไฟล์แนบสื่อ กดปุ่มเว้นวรรคหรือขึ้นบรรทัดใหม่ ขณะลาก ใช้ปุ่มลูกศรเพื่อย้ายไฟล์แนบสื่อในทิศทางใดก็ตามที่กำหนด กดปุ่มเว้นวรรคหรือขึ้นบรรทัดใหม่อีกครั้งเพื่อปล่อยไฟล์แนบสื่อในตำแหน่งใหม่ หรือกดปุ่ม Escape เพื่อยกเลิก",
+  "upload_form.drag_and_drop.on_drag_cancel": "ยกเลิกการลากแล้ว ปล่อยไฟล์แนบสื่อ {item} แล้ว",
+  "upload_form.drag_and_drop.on_drag_end": "ปล่อยไฟล์แนบสื่อ {item} แล้ว",
+  "upload_form.drag_and_drop.on_drag_over": "ย้ายไฟล์แนบสื่อ {item} แล้ว",
+  "upload_form.drag_and_drop.on_drag_start": "หยิบไฟล์แนบสื่อ {item} แล้ว"
 }

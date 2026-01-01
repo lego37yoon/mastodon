@@ -21,6 +21,7 @@
       "@/*": ["app/javascript/*"],
       "mastodon": ["app/javascript/mastodon"],
       "mastodon/*": ["app/javascript/mastodon/*"],
+      "locales": ["app/javascript/locales"],
       "images/*": ["app/javascript/images/*"],
       "styles/*": ["app/javascript/styles/*"]
     },

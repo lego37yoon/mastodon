@@ -39,6 +39,10 @@ module User::HasSettings
     settings['web.delete_modal']
   end
 
+  def setting_favourite_modal
+    settings['web.favourite_modal']
+  end
+
   def setting_reduce_motion
     settings['web.reduce_motion']
   end
@@ -109,6 +113,10 @@ module User::HasSettings
 
   def setting_default_privacy
     settings['default_privacy'] || (account.locked? ? 'private' : 'public')
+  end
+
+  def setting_visible_reactions
+    settings['visible_reactions'] || 0
   end
 
   def setting_default_quote_policy

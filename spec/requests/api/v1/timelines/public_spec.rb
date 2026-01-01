@@ -36,6 +36,11 @@ RSpec.describe 'Public' do
     context 'when the instance allows public preview' do
       let(:expected_statuses) { [local_status, remote_status, media_status] }
 
+      before do
+        Setting.local_live_feed_access = 'public'
+        Setting.remote_live_feed_access = 'public'
+      end
+
       it_behaves_like 'forbidden for wrong scope', 'profile'
 
       context 'with an authorized user' do

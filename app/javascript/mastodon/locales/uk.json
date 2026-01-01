@@ -1007,5 +1007,15 @@
   "visibility_modal.quote_label": "Кому можна цитувати",
   "visibility_modal.quote_nobody": "Лише мені",
   "visibility_modal.quote_public": "Будь-хто",
-  "visibility_modal.save": "Зберегти"
+  "visibility_modal.save": "Зберегти",
+  "footer.about_this_server": "Про сервер",
+  "status.favourites_count": "{count, plural, one {{counter} вподобання} few {{counter} вподобання} many {{counter} вподобань} other {{counter} вподобання}}",
+  "status.quotes_count": "{count, plural, one {{counter} цитата} few {{counter} цитати} many {{counter} цитат} other {{counter} цитати}}",
+  "status.reblogs_count": "{count, plural, one {{counter} поширення} few {{counter} поширення} many {{counter} поширень} other {{counter} поширення}}",
+  "upload_error.quote": "Додавати файли й цитувати одночасно не можна.",
+  "upload_form.drag_and_drop.instructions": "Щоб вибрати медіавкладення, натисніть пробіл або Enter. Під час перетягування, використайте клавіші зі стрілками для переміщення вкладення в будь-якому напрямку. Натисніть пробіл або Enter знову, щоб залишити медіавкладення в новому положенні, або натисніть клавішу Escape, щоб скасувати.",
+  "upload_form.drag_and_drop.on_drag_cancel": "Перетягування скасовано. Медіавкладення {item} прибрано.",
+  "upload_form.drag_and_drop.on_drag_end": "Медіавкладення {item} прибрано.",
+  "upload_form.drag_and_drop.on_drag_over": "Медіавкладення {item} переміщено.",
+  "upload_form.drag_and_drop.on_drag_start": "Медіавкладення {item} вибрано."
 }

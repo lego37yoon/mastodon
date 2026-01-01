@@ -5,28 +5,28 @@
 # Table name: media_attachments
 #
 #  id                          :bigint(8)        not null, primary key
-#  status_id                   :bigint(8)
-#  file_file_name              :string
+#  blurhash                    :string
+#  description                 :text
 #  file_content_type           :string
+#  file_file_name              :string
 #  file_file_size              :integer
+#  file_meta                   :json
+#  file_storage_schema_version :integer
 #  file_updated_at             :datetime
+#  processing                  :integer
 #  remote_url                  :string           default(""), not null
+#  shortcode                   :string
+#  thumbnail_content_type      :string
+#  thumbnail_file_name         :string
+#  thumbnail_file_size         :integer
+#  thumbnail_remote_url        :string
+#  thumbnail_updated_at        :datetime
+#  type                        :integer          default("image"), not null
 #  created_at                  :datetime         not null
 #  updated_at                  :datetime         not null
-#  shortcode                   :string
-#  type                        :integer          default("image"), not null
-#  file_meta                   :json
 #  account_id                  :bigint(8)
-#  description                 :text
 #  scheduled_status_id         :bigint(8)
-#  blurhash                    :string
-#  processing                  :integer
-#  file_storage_schema_version :integer
-#  thumbnail_file_name         :string
-#  thumbnail_content_type      :string
-#  thumbnail_file_size         :integer
-#  thumbnail_updated_at        :datetime
-#  thumbnail_remote_url        :string
+#  status_id                   :bigint(8)
 #
 
 class MediaAttachment < ApplicationRecord
@@ -39,8 +39,8 @@ class MediaAttachment < ApplicationRecord
 
   MAX_DESCRIPTION_LENGTH = 1_500
 
-  IMAGE_LIMIT = 16.megabytes
-  VIDEO_LIMIT = 99.megabytes
+  IMAGE_LIMIT = (ENV['MAX_IMAGE_SIZE'] || 16.megabytes).to_i
+  VIDEO_LIMIT = (ENV['MAX_VIDEO_SIZE'] || 99.megabytes).to_i
 
   MAX_VIDEO_MATRIX_LIMIT = 8_294_400 # 3840x2160px
   MAX_VIDEO_FRAME_RATE   = 120
