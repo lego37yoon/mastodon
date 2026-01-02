@@ -9,8 +9,8 @@
 초코토돈은 S'more Waffle 인스턴스에 서비스할 목적으로 사용 중인 포크의 이름입니다. Mastodon과 같은 AGPL 라이선스로 배포되며, 아주 빠르게 따라가지는 않지만 대체로 Mastodon의 순정 출시 버전을 따라갑니다. 추가적인 테마나 수정된 기능이 포함되어 있습니다.
 
 > [!WARNING]
-> Chocotodon does not services Docker image, and also not tested on Docker environment. Only non-docker setup officially tested and supported.
-> 초코토돈은 Docker 이미지를 제공하지 않으며, Docker 환경에서 테스트하지 않았습니다. Docker를 이용하지 않은 환경에서만 테스트하였고 지원합니다.
+> Chocotodon does not services Docker image, and also not tested on Docker environment. Only non-docker setup officially tested and supported. However, some features are developed under Dev Container, so may be partially compatible.
+> 초코토돈은 Docker 이미지를 제공하지 않으며, Docker 환경에서 테스트하지 않았습니다. Docker를 이용하지 않은 환경에서만 테스트하였고 지원합니다. 다만, 개발은 Dev Container에서 이뤄졌으므로 일부 호환성을 가질 수 있습니다.
 
 ## What is Mastodon?
 
@@ -126,4 +126,26 @@ Licensed under GNU Affero General Public License as stated in the [LICENSE](http
 
 ### Emoji Reactions
 
-###
+> ported sources from customed Mastodon Glitch SOC Edition, by TheEssem
+> You can access the original source from [here](https://github.com/TheEssem/mastodon/tree/feature/emoji-reactions)
+
+opyright (c) 2016-2026 Eugen Rochko (+ [`mastodon authors`](AUTHORS.md)), TheEssem
+
+Licensed under GNU Affero General Public License as stated in the [LICENSE](LICENSE):
+
+```text
+Copyright (c) 2016-2026 Eugen Rochko & other Mastodon contributors
+
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU Affero General Public License as published by the Free
+Software Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more
+details.
+
+You should have received a copy of the GNU Affero General Public License along
+with this program. If not, see https://www.gnu.org/licenses/
+```
