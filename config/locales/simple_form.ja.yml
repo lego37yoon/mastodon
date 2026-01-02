@@ -11,6 +11,7 @@ ja:
         note: '自己紹介には #ハッシュタグ や、ほかのアカウントのユーザー名 (@user) を使用できます'
         show_collections: チェックを入れるとフォローとフォロワーの一覧を誰でも見られるようにします。チェックをはずすとこれらの情報を非公開にできますが、あなたがフォローしているユーザーからは、あなたがフォロワーになっていることがわかります。
         unlocked: 新しいフォロワーを自動的に承認します。チェックをはずすとフォローリクエストとその承認が必要になり、新しいフォロワーを受け入れるか拒否するかを自分で選べるようになります。
+        attribution_domains: 1行につき1つずつ入力してください。この設定は関わりのないwebサイトに対して虚偽の帰属表示が行われることを防止する役割があります。
       account_alias:
         acct: 引っ越し元のユーザー名@ドメインを指定してください
       account_migration:
@@ -64,6 +65,8 @@ ja:
         setting_use_pending_items: 新着があってもタイムラインを自動的にスクロールしないようにします
         username: アルファベット大文字と小文字、数字、アンダーバー「_」が使えます
         whole_word: キーワードまたはフレーズが英数字のみの場合、単語全体と一致する場合のみ適用されるようになります
+        setting_emoji_style: 絵文字の表示方法。「オート」の場合、可能ならネイティブの絵文字を使用し、レガシーなブラウザではTwemojiで代替します。
+        setting_system_scrollbars_ui: Safari/Chromeベースのデスクトップブラウザーでのみ有効です
       domain_allow:
         domain: 登録するとこのサーバーからデータを受信したり、このドメインから受信するデータを処理して保存できるようになります
       email_domain_block:
@@ -76,6 +79,7 @@ ja:
         actions:
           hide: フィルタに一致した投稿を完全に非表示にします
           warn: フィルタに一致した投稿を非表示にし、フィルタのタイトルを含む警告を表示します
+          blur: メディアは警告して非表示にするが、テキストは表示する
       form_admin_settings:
         activity_api_enabled: 週単位でローカルで公開された投稿数、アクティブユーザー数、新規登録者数を表示します
         app_icon: モバイル端末で表示されるデフォルトのアプリアイコンを独自のアイコンで上書きします。WEBP、PNG、GIF、JPGが利用可能です。
@@ -87,7 +91,8 @@ ja:
         favicon: デフォルトのMastodonのブックマークアイコンを独自のアイコンで上書きします。WEBP、PNG、GIF、JPGが利用可能です。
         mascot: 上級者向けWebインターフェースのイラストを上書きします。
         media_cache_retention_period: リモートユーザーが投稿したメディアファイルは、あなたのサーバーにキャッシュされます。正の値を設定すると、メディアは指定した日数後に削除されます。削除後にメディアデータが要求された場合、ソースコンテンツがまだ利用可能であれば、再ダウンロードされます。リンクプレビューカードがサードパーティのサイトを更新する頻度に制限があるため、この値を少なくとも14日に設定することをお勧めします。
-        peers_api_enabled: このサーバーが Fediverse で遭遇したドメイン名のリストです。このサーバーが知っているだけで、特定のサーバーと連合しているかのデータは含まれません。これは一般的に Fediverse に関する統計情報を収集するサービスによって使用されます。
+        peers_api_enabled: このサーバーが Fediverse で遭遇したドメイン名のリストです。このサーバーが知っているだけで、特定のサーバーと連合しているかのデータは含まれません。これは一般的に
+          Fediverse に関する統計情報を収集するサービスによって使用されます。
         profile_directory: ディレクトリには、掲載する設定をしたすべてのユーザーが一覧表示されます。
         require_invite_text: アカウント登録が承認制の場合、登録の際の申請事由の入力を必須にします
         site_contact_email: 法律またはサポートに関する問い合わせ先
@@ -103,6 +108,7 @@ ja:
         trendable_by_default: トレンドの審査を省略します。トレンドは掲載後でも個別に除外できます。
         trends: トレンドは、サーバー上で人気を集めている投稿、ハッシュタグ、ニュース記事などが表示されます。
         trends_as_landing_page: ログインしていないユーザーに対して、サーバーの説明の代わりにトレンドコンテンツを表示します。トレンドを有効にする必要があります。
+        min_age: ユーザーはサインアップ中に生年月日を確認するよう求められます
       form_challenge:
         current_password: セキュリティ上重要なエリアにアクセスしています
       imports:
@@ -142,6 +148,21 @@ ja:
         events: 送信するイベントを選択
         template: 変数補完を使用して、独自のJSONペイロードを構成できます。デフォルトのJSONを使用する場合は空白のままにします。
         url: イベントの送信先
+      terms_of_service:
+        changelog: Markdown 記法を利用できます。
+        effective_date: 期間は、ユーザーへ通知した日から10日以上30日以下にするのが適当でしょう。
+        text: Markdown 記法を利用できます。
+      terms_of_service_generator:
+        admin_email: 法的通知とは、異議申し立て通知、裁判所命令、削除要請、法執行機関による要請などをいいます。
+        arbitration_address: 上記住所と同じにすることもできます。またはEメールを使用する場合、空白でも構いません。
+        arbitration_website: Webフォームまたは、Eメールを使用する場合は空白でも構いません。
+        choice_of_law: あらゆる請求には都市、地域、領域、または州において施行されている実体法が適用されます。
+        dmca_address: 米国の運営者の場合は、DMCA Designated Agent Directory（DMCA指定代理人ディレクトリ）に登録のある住所を使用してください。申請を行えば記載を私書箱とすることも可能で、その場合はDMCA
+          Designated Agent Post Office Box Waiver Request（DMCA指定代理人の郵便私書箱による免除申請）によって著作権局にメールを送信し、あなたが個人のコンテンツ管理者であって、行った措置に対して報復を受けるおそれがあり、住所を非公開とするために私書箱を使用する必要がある旨を伝えてください。
+        dmca_email: 上で使った「法的通知を受け取るアドレス」と同じでも構いません。
+        domain: あなたの提供するこのオンラインサービスの識別名です。
+        jurisdiction: 運営責任者が居住する国を記載します。企業や他の団体である場合は、その組織の所在国に加えて、市・区・州などの地域を記載します。
+        min_age: お住まいの国や地域の法律によって定められている最低年齢を下回ってはなりません。
     labels:
       account:
         attribution_domains_as_text: あなたの著者表示を許可するwebサイト
@@ -152,6 +173,7 @@ ja:
         indexable: 公開投稿を検索できるようにする
         show_collections: フォローとフォロワーの一覧を開示する
         unlocked: フォローリクエストを不要にする
+        attribution_domains: あなたの著者表示を許可するwebサイト
       account_alias:
         acct: 引っ越し元のユーザー ID
       account_migration:
@@ -235,6 +257,11 @@ ja:
         username: ユーザー名
         username_or_email: ユーザー名またはメールアドレス
         whole_word: 単語全体にマッチ
+        setting_default_quote_policy: 引用できるユーザー
+        setting_emoji_style: 絵文字スタイル
+        setting_missing_alt_text_modal: 代替テキストなしでメディアを投稿する前に警告する
+        setting_quick_boosting: クイックブーストの有効化
+        setting_system_scrollbars_ui: システムのデフォルトのスクロールバーを使う
       email_domain_block:
         with_dns_records: ドメインのMXレコードとIPアドレスを含む
       featured_tag:
@@ -243,6 +270,7 @@ ja:
         actions:
           hide: 完全に隠す
           warn: 警告付きで隠す
+          blur: 警告付きでメディアを非表示にする
       form_admin_settings:
         activity_api_enabled: APIでユーザーアクティビティに関する集計統計を公開する
         app_icon: アプリアイコン
@@ -273,6 +301,7 @@ ja:
         trendable_by_default: 審査前のトレンドの掲載を許可する
         trends: トレンドを有効にする
         trends_as_landing_page: 新規登録画面にトレンドを表示する
+        min_age: 最低年齢の要件
       interactions:
         must_be_follower: フォロワー以外からの通知をブロック
         must_be_following: フォローしていないユーザーからの通知をブロック
@@ -306,6 +335,7 @@ ja:
           none: 通知しない (非推奨)
           patch: 緊急のアップデートとバグ修正アップデートを通知する
         trending_tag: 新しいトレンドのレビューをする必要がある時
+        quote: 投稿が引用された時
       rule:
         hint: ルールの補足説明
         text: ルール
@@ -320,6 +350,7 @@ ja:
       user:
         role: ロール
         time_zone: タイムゾーン
+        date_of_birth_2i: 月
       user_role:
         color: バッジの色
         highlighted: プロフィールにロールのバッジを表示する
@@ -330,6 +361,23 @@ ja:
         events: 有効なイベント
         template: ペイロードテンプレート
         url: エンドポイントURL
+      terms_of_service:
+        changelog: 変更箇所
+        effective_date: 適用日
+        text: サービス利用規約
+      terms_of_service_generator:
+        admin_email: 法的通知を受け取るメールアドレス
+        arbitration_address: 仲裁通知の送付先住所
+        arbitration_website: 仲裁通知の送信用ウェブサイト
+        choice_of_law: 準拠法の選択
+        dmca_address: DMCA/著作権通知の送付先住所
+        dmca_email: DMCA/著作権通知の送付先メールアドレス
+        domain: ドメイン
+        jurisdiction: 裁判管轄
+        min_age: 登録可能な最低年齢
+      username_block:
+        allow_with_approval: 承認制での新規登録を可能にする
+        comparison: 比較方法
     'no': いいえ
     not_recommended: 非推奨
     overridden: 上書き済み

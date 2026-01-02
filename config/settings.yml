@@ -22,6 +22,7 @@ defaults: &defaults
   theme: 'system'
   trends: true
   trendable_by_default: false
+  visible_reactions: 6
   disallowed_hashtags: # space separated string or list of hashtags without the hash
   bootstrap_timeline_accounts: ''
   activity_api_enabled: true

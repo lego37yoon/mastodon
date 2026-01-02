@@ -13,7 +13,7 @@
     = f.input :image,
               wrapper: :with_label,
               input_html: { accept: CustomEmoji::IMAGE_MIME_TYPES.join(',') },
-              hint: t('admin.custom_emojis.image_hint', size: number_to_human_size(CustomEmoji::LIMIT))
+              hint: t('admin.custom_emojis.image_hint', size: number_to_human_size(CustomEmoji::LOCAL_LIMIT))
 
   .actions
     = f.button :button,

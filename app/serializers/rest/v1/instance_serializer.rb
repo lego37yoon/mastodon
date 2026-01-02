@@ -4,7 +4,7 @@ class REST::V1::InstanceSerializer < ActiveModel::Serializer
   include RoutingHelper
 
   attributes :uri, :title, :short_description, :description, :email,
-             :version, :urls, :stats, :thumbnail,
+             :version, :urls, :stats, :thumbnail, :max_toot_chars, :poll_limits,
              :languages, :registrations, :approval_required, :invites_enabled,
              :configuration
 
@@ -36,6 +36,19 @@ class REST::V1::InstanceSerializer < ActiveModel::Serializer
     instance_presenter.thumbnail ? full_asset_url(instance_presenter.thumbnail.file.url(:'@1x')) : frontend_asset_url('images/preview.png')
   end
 
+  def max_toot_chars
+    StatusLengthValidator::MAX_CHARS
+  end
+
+  def poll_limits
+    {
+      max_options: PollOptionsValidator::MAX_OPTIONS,
+      max_option_chars: PollOptionsValidator::MAX_OPTION_CHARS,
+      min_expiration: PollExpirationValidator::MIN_EXPIRATION,
+      max_expiration: PollExpirationValidator::MAX_EXPIRATION,
+    }
+  end
+
   def stats
     {
       user_count: instance_presenter.user_count,
@@ -58,6 +71,7 @@ class REST::V1::InstanceSerializer < ActiveModel::Serializer
         max_characters: StatusLengthValidator::MAX_CHARS,
         max_media_attachments: Status::MEDIA_ATTACHMENTS_LIMIT,
         characters_reserved_per_url: StatusLengthValidator::URL_PLACEHOLDER_CHARS,
+        supported_mime_types: HtmlAwareFormatter::STATUS_MIME_TYPES,
       },
 
       media_attachments: {
@@ -74,6 +88,10 @@ class REST::V1::InstanceSerializer < ActiveModel::Serializer
         max_characters_per_option: PollOptionsValidator::MAX_OPTION_CHARS,
         min_expiration: PollExpirationValidator::MIN_EXPIRATION,
         max_expiration: PollExpirationValidator::MAX_EXPIRATION,
+      },
+
+      reactions: {
+        max_reactions: StatusReactionValidator::LIMIT,
       },
     }
   end

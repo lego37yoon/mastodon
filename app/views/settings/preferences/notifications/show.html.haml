@@ -17,6 +17,7 @@
       = ff.input :'notification_emails.follow_request', wrapper: :with_label, label: I18n.t('simple_form.labels.notification_emails.follow_request')
       = ff.input :'notification_emails.reblog', wrapper: :with_label, label: I18n.t('simple_form.labels.notification_emails.reblog')
       = ff.input :'notification_emails.favourite', wrapper: :with_label, label: I18n.t('simple_form.labels.notification_emails.favourite')
+      = ff.input :'notification_emails.reaction', wrapper: :with_label, label: I18n.t('simple_form.labels.notification_emails.reaction')
       = ff.input :'notification_emails.mention', wrapper: :with_label, label: I18n.t('simple_form.labels.notification_emails.mention')
       = ff.input :'notification_emails.quote', wrapper: :with_label, label: I18n.t('simple_form.labels.notification_emails.quote')
 
@@ -31,6 +32,8 @@
         = ff.input :'notification_emails.appeal', as: :boolean, wrapper: :with_label, label: I18n.t('simple_form.labels.notification_emails.appeal') if current_user.can?(:manage_appeals)
         = ff.input :'notification_emails.pending_account', wrapper: :with_label, label: I18n.t('simple_form.labels.notification_emails.pending_account') if current_user.can?(:manage_users)
         = ff.input :'notification_emails.trends', wrapper: :with_label, label: I18n.t('simple_form.labels.notification_emails.trending_tag') if current_user.can?(:manage_taxonomies)
+        = ff.input :'notification_emails.link_trends', wrapper: :with_label, label: I18n.t('simple_form.labels.notification_emails.trending_link') if current_user.can?(:manage_taxonomies)
+        = ff.input :'notification_emails.status_trends', wrapper: :with_label, label: I18n.t('simple_form.labels.notification_emails.trending_status') if current_user.can?(:manage_taxonomies)
 
       - if SoftwareUpdate.check_enabled? && current_user.can?(:view_devops)
         .fields-group

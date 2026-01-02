@@ -183,7 +183,12 @@ export default tseslint.config([
   ]),
   react.configs.flat.recommended,
   react.configs.flat['jsx-runtime'],
-  reactHooks.configs['recommended-latest'],
+  {
+    plugins: {
+      'react-hooks': reactHooks,
+    },
+    rules: reactHooks.configs.recommended.rules,
+  },
   jsxA11Y.flatConfigs.recommended,
   importPlugin.flatConfigs.react,
   // @ts-expect-error -- For some reason the formatjs package exports an empty object?
@@ -319,20 +324,16 @@ export default tseslint.config([
       'import/no-commonjs': 'off',
     },
   },
+  ...tseslint.configs.strictTypeChecked.map((config) => ({
+    ...config,
+    files: ['**/*.ts', '**/*.tsx'],
+  })),
+  ...tseslint.configs.stylisticTypeChecked.map((config) => ({
+    ...config,
+    files: ['**/*.ts', '**/*.tsx'],
+  })),
   {
     files: ['**/*.ts', '**/*.tsx'],
-
-    extends: [
-      tseslint.configs.strictTypeChecked,
-      tseslint.configs.stylisticTypeChecked,
-      react.configs.flat.recommended,
-      react.configs.flat['jsx-runtime'],
-      reactHooks.configs['recommended-latest'],
-      jsxA11Y.flatConfigs.recommended,
-      importPlugin.flatConfigs.react,
-      importPlugin.flatConfigs.typescript,
-      jsdoc.configs['flat/recommended-typescript'],
-    ],
 
     languageOptions: {
       parserOptions: {

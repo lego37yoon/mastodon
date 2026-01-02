@@ -7,6 +7,7 @@ class PrecomputeFeedService < BaseService
     @skip_filled_timelines = skip_filled_timelines
 
     FeedManager.instance.populate_home(account) unless skip_timeline?(:home, account.id)
+    FeedManager.instance.populate_direct_feed(account) unless skip_timeline?(:direct, account.id)
 
     account.owned_lists.each do |list|
       FeedManager.instance.populate_list(list) unless skip_timeline?(:list, list.id)

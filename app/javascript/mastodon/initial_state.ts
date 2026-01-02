@@ -21,6 +21,7 @@ interface InitialStateMeta {
   limited_federation_mode: boolean;
   locale: string;
   mascot: string | null;
+  max_reactions: number;
   me?: string;
   moved_to_account_id?: string;
   owner?: string;
@@ -43,6 +44,7 @@ interface InitialStateMeta {
   use_blurhash: boolean;
   use_pending_items?: boolean;
   version: string;
+  visible_reactions: number;
   sso_redirect: string;
   status_page_url: string;
   terms_of_service_enabled: boolean;
@@ -147,6 +149,9 @@ export const languages = initialState?.languages.map((lang) => {
     lang[2],
   ];
 });
+
+export const maxReactions = getMeta('max_reactions') ?? 1;
+export const visibleReactions = getMeta('visible_reactions');
 
 export function getAccessToken(): string | undefined {
   return getMeta('access_token');

@@ -11,16 +11,21 @@ kab:
       account_migration:
         acct: Sekcem isem n umseqdac@taγult n umiḍan anida itebγiḍ ad gujjeḍ
       admin_account_action:
-        send_email_notification: Amseqdac ad t-id-yewweḍ usefhem ɣef wayen yeḍran akked umiḍan-is
+        send_email_notification: Amseqdac ad t-id-yewweḍ usefhem ɣef wayen yeḍran
+          akked umiḍan-is
         type_html: Fren d acu ara txedmeḍ s <strong>%{acct}</strong>
       defaults:
-        autofollow: Imdanen ara ijerrden s usnebgi-inek·inem, ad k·m-ḍefṛen s wudem awurman
-        bot: Smekti-d wiyaḍ dakken amiḍan-a ixeddem s wudem amezwer tigawin tiwurmanin yernu ur yezmir ara ad yettwaɛass
+        autofollow: Imdanen ara ijerrden s usnebgi-inek·inem, ad k·m-ḍefṛen s wudem
+          awurman
+        bot: Smekti-d wiyaḍ dakken amiḍan-a ixeddem s wudem amezwer tigawin tiwurmanin
+          yernu ur yezmir ara ad yettwaɛass
         email: Ad n-teṭṭfeḍ imayl i usentem
-        irreversible: Tisuffaɣ i tessazedgeḍ ad ttwakksent i lebda, ula ma tekkseḍ imsizdeg-nni ar zdat
+        irreversible: Tisuffaɣ i tessazedgeḍ ad ttwakksent i lebda, ula ma tekkseḍ
+          imsizdeg-nni ar zdat
         locale: Tutlayt n ugrudem, imaylen d yilɣa yettudemren
         password: Seqdec ma drus 8 n yisekkilen
-        setting_always_send_emails: S umata, ilɣa s yimayl ur d-ttwaceyyεen ara mi ara tesseqdaceḍ Mastodon s wudem urmid
+        setting_always_send_emails: S umata, ilɣa s yimayl ur d-ttwaceyyεen ara mi
+          ara tesseqdaceḍ Mastodon s wudem urmid
         setting_display_media_default: Ffer imidyaten yettwacreḍ d infariyen
         setting_display_media_hide_all: Ffer yal tikkelt akk taywalt
         setting_display_media_show_all: Ffer yal tikkelt teywalt yettwacreḍ d tanafrit
@@ -37,6 +42,15 @@ kab:
         comment: D afrayan. Cfu ɣef wayɣer i terniḍ alugen-a.
         severities:
           no_access: Sewḥel anekcu ɣer akk tiɣbula
+      form_admin_settings:
+        min_age: Ad ttwasutren yiseqdacen ad sentemen azemz-nsen n tlalit deg ujerred
+        site_contact_username: Amek i zemren ad ak·em-id-afen medden ɣef Mastodon.
+      user:
+        date_of_birth:
+          one: Ilaq ad neḍmen belli tesɛiḍ ma ulac %{count} akken ad tesqedceḍ %{domain}.
+            Ur neḥrez ara aya.
+          other: Ilaq ad neḍmen belli tesɛiḍ ma ulac %{count} akken ad tesqedceḍ %{domain}.
+            Ur neḥrez ara aya.
     labels:
       account:
         fields:
@@ -104,6 +118,7 @@ kab:
         username: Isem n useqdac
         username_or_email: Isem n useqdac neɣ imal
         whole_word: Awal akk
+        setting_default_quote_policy: Anwa i izemren ad d-yebder
       featured_tag:
         name: Ahacṭag
       form_admin_settings:
@@ -121,7 +136,8 @@ kab:
       interactions:
         must_be_follower: Ssewḥel ilɣa sɣur wid akk d tid ur yellin ara d imeḍfaren-ik·im
         must_be_following: Ssewḥel ilɣa sɣur wid akked tid ur tettḍafareḍ ara
-        must_be_following_dm: Sewḥel iznan usriden sɣur wid akked tid ur tettḍafareḍ ara
+        must_be_following_dm: Sewḥel iznan usriden sɣur wid akked tid ur tettḍafareḍ
+          ara
       invite:
         comment: Awennit
       invite_request:
@@ -148,11 +164,17 @@ kab:
       user:
         role: Tamlilt
         time_zone: Tamnaḍt tasragant
+        date_of_birth_2i: Ayyur
       user_role:
         name: Isem
         permissions_as_keys: Tisirag
       webhook:
         events: Tidyanin turmidin
+      terms_of_service:
+        changelog: Amaynut?
+        text: Tiwtilin n useqdec
+      terms_of_service_generator:
+        domain: Taɣult
     'no': Ala
     not_recommended: Ur yettuwelleh ara
     overridden: Yeččur

@@ -16,6 +16,7 @@ import { ContentWarning } from 'mastodon/components/content_warning';
 import { FilterWarning } from 'mastodon/components/filter_warning';
 import { Icon }  from 'mastodon/components/icon';
 import { PictureInPicturePlaceholder } from 'mastodon/components/picture_in_picture_placeholder';
+import { identityContextPropShape, withIdentity } from 'mastodon/identity_context';
 import { withOptionalRouter, WithOptionalRouterPropTypes } from 'mastodon/utils/react_router';
 
 import Card from '../features/status/components/card';
@@ -24,7 +25,7 @@ import Card from '../features/status/components/card';
 import Bundle from '../features/ui/components/bundle';
 import { MediaGallery, Video, Audio } from '../features/ui/util/async-components';
 import { SensitiveMediaContext } from '../features/ui/util/sensitive_media_context';
-import { displayMedia } from '../initial_state';
+import { displayMedia, visibleReactions } from '../initial_state';
 
 import { Avatar } from './avatar';
 import { AvatarOverlay } from './avatar_overlay';
@@ -33,6 +34,7 @@ import { getHashtagBarForStatus } from './hashtag_bar';
 import { RelativeTimestamp } from './relative_timestamp';
 import StatusActionBar from './status_action_bar';
 import StatusContent from './status_content';
+import StatusReactions from './status_reactions';
 import { StatusThreadLabel } from './status_thread_label';
 import { VisibilityIcon } from './visibility_icon';
 import { IconButton } from './icon_button';
@@ -87,6 +89,7 @@ class Status extends ImmutablePureComponent {
   static contextType = SensitiveMediaContext;
 
   static propTypes = {
+    identity: identityContextPropShape,
     status: ImmutablePropTypes.map,
     account: ImmutablePropTypes.record,
     children: PropTypes.node,
@@ -96,6 +99,8 @@ class Status extends ImmutablePureComponent {
     onClick: PropTypes.func,
     onReply: PropTypes.func,
     onFavourite: PropTypes.func,
+    onReactionAdd: PropTypes.func,
+    onReactionRemove: PropTypes.func,
     onReblog: PropTypes.func,
     onQuote: PropTypes.func,
     onDelete: PropTypes.func,
@@ -538,9 +543,8 @@ class Status extends ImmutablePureComponent {
     } else if (status.get('card') && !status.get('quote')) {
       media = (
         <Card
-          onOpenMedia={this.handleOpenMedia}
+          key={`${status.get('id')}-${status.get('edited_at')}`}
           card={status.get('card')}
-          compact
           sensitive={status.get('sensitive')}
         />
       );
@@ -553,7 +557,6 @@ class Status extends ImmutablePureComponent {
     }
 
     const {statusContentProps, hashtagBar} = getHashtagBarForStatus(status);
-
     return (
       <Hotkeys handlers={handlers} focusable={!unfocusable}>
         <div className={classNames('status__wrapper', `status__wrapper-${status.get('visibility')}`, { 'status__wrapper-reply': !!status.get('in_reply_to_id'), unread, focusable: !this.props.muted })} tabIndex={this.props.muted || unfocusable ? null : 0} data-featured={featured ? 'true' : null} aria-label={textForScreenReader({intl, status, rebloggedByText, isQuote: isQuotedPost})} ref={this.handleRef} data-nosnippet={status.getIn(['account', 'noindex'], true) || undefined}>
@@ -620,6 +623,15 @@ class Status extends ImmutablePureComponent {
               </>
             )}
 
+            <StatusReactions
+              statusId={status.get('id')}
+              reactions={status.get('reactions')}
+              numVisible={visibleReactions}
+              addReaction={this.props.onReactionAdd}
+              removeReaction={this.props.onReactionRemove}
+              canReact={this.props.identity.signedIn}
+            />
+
             {!isQuotedPost &&
               <StatusActionBar scrollKey={scrollKey} status={status} account={account}  {...other} />
             }
@@ -631,4 +643,4 @@ class Status extends ImmutablePureComponent {
 
 }
 
-export default withOptionalRouter(injectIntl(Status));
+export default withOptionalRouter(withIdentity(injectIntl(Status)));

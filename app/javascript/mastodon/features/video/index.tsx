@@ -800,7 +800,7 @@ export const Video: React.FC<{
   // The outer wrapper is necessary to avoid reflowing the layout when going into full screen
   return (
     <div>
-      <div /* eslint-disable-line jsx-a11y/click-events-have-key-events */
+      <div
         role='menuitem'
         className={classNames('video-player', {
           inactive: !revealed,
@@ -828,7 +828,7 @@ export const Video: React.FC<{
         )}
 
         {(revealed || editable) && (
-          <video /* eslint-disable-line jsx-a11y/media-has-caption */
+          <video
             ref={handleVideoRef}
             src={src}
             poster={preview}
@@ -875,6 +875,7 @@ export const Video: React.FC<{
               <button
                 className='media-gallery__actions__pill'
                 onClick={toggleReveal}
+                type='button'
               >
                 <FormattedMessage
                   id='media_gallery.hide'

@@ -15,6 +15,7 @@ class UserSettings
   setting :default_language, default: nil
   setting :default_sensitive, default: false
   setting :default_privacy, default: nil, in: %w(public unlisted private)
+  setting :visible_reactions, default: 6
   setting :default_quote_policy, default: 'public', in: %w(public followers nobody)
 
   setting_inverse_alias :indexable, :noindex
@@ -30,6 +31,7 @@ class UserSettings
     setting :disable_hover_cards, default: false
     setting :delete_modal, default: true
     setting :reblog_modal, default: false
+    setting :favourite_modal, default: false
     setting :quick_boosting, default: false
     setting :missing_alt_text_modal, default: true
     setting :reduce_motion, default: false
@@ -43,6 +45,7 @@ class UserSettings
     setting :follow, default: true
     setting :reblog, default: false
     setting :favourite, default: false
+    setting :reaction, default: false
     setting :mention, default: true
     setting :quote, default: true
     setting :follow_request, default: true

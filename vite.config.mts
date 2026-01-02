@@ -111,6 +111,9 @@ export const config: UserConfigFnPromise = async ({ mode, command }) => {
         protocol: 'ws',
       },
       port: 3036,
+      watch: {
+        ignored: ['**/node_modules/**', '**/.git/**'],
+      },
     },
     build: {
       commonjsOptions: { transformMixedEsModules: true },
@@ -164,6 +167,9 @@ export const config: UserConfigFnPromise = async ({ mode, command }) => {
     },
     worker: {
       format: 'es',
+    },
+    optimizeDeps: {
+      entries: ['app/javascript/entrypoints/*.{ts,tsx,js,jsx}'],
     },
     plugins: [
       tsconfigPaths({ projects: [path.resolve(__dirname, 'tsconfig.json')] }),

@@ -9,7 +9,9 @@ import type { Account } from 'mastodon/models/account';
 
 interface Props {
   account:
-    | Pick<Account, 'id' | 'acct' | 'avatar' | 'avatar_static'>
+    | (Pick<Account, 'id' | 'acct' | 'avatar' | 'avatar_static'> & {
+        is_cat?: boolean;
+      })
     | undefined; // FIXME: remove `undefined` once we know for sure its always there
   size?: number;
   style?: React.CSSProperties;
@@ -64,6 +66,11 @@ export const Avatar: React.FC<Props> = ({
     >
       {src && !error && (
         <img src={src} alt='' onLoad={handleLoad} onError={handleError} />
+      )}
+      {account?.is_cat && (
+        <div className='account__avatar__cat-badge'>
+          <span>🐱</span>
+        </div>
       )}
 
       {counter && (

@@ -245,7 +245,6 @@ export const VisibilityModal: FC<VisibilityModalProps> = forwardRef(
                 disabled: disableVisibility,
               })}
             >
-              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label
                 className='visibility-dropdown__label'
                 id={visibilityLabelId}
@@ -294,7 +293,6 @@ export const VisibilityModal: FC<VisibilityModalProps> = forwardRef(
                 disabled: disableQuotePolicy,
               })}
             >
-              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label className='visibility-dropdown__label' id={quoteLabelId}>
                 <FormattedMessage
                   id='visibility_modal.quote_label'

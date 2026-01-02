@@ -122,6 +122,11 @@ RSpec.describe 'Link' do
     end
 
     context 'when the instance allows public preview' do
+      before do
+        Setting.local_topic_feed_access = 'public'
+        Setting.remote_topic_feed_access = 'public'
+      end
+
       context 'with an authorized user' do
         it_behaves_like 'a successful request to the link timeline'
       end

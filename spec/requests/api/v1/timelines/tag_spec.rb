@@ -13,6 +13,11 @@ RSpec.describe 'Tag' do
       get "/api/v1/timelines/tag/#{hashtag}", headers: headers, params: params
     end
 
+    before do
+      Setting.local_topic_feed_access = 'public'
+      Setting.remote_topic_feed_access = 'public'
+    end
+
     shared_examples 'a successful request to the tag timeline' do
       it 'returns the expected statuses', :aggregate_failures do
         subject

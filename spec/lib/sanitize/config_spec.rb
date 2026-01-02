@@ -3,11 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe Sanitize::Config do
-  describe '::MASTODON_STRICT' do
-    subject { described_class::MASTODON_STRICT }
-
-    it 'converts h1 to p strong' do
-      expect(Sanitize.fragment('<h1>Foo</h1>', subject)).to eq '<p><strong>Foo</strong></p>'
+  shared_examples 'common HTML sanitization' do
+    it 'keeps h1' do
+      expect(Sanitize.fragment('<h1>Foo</h1>', subject)).to eq '<h1>Foo</h1>'
     end
 
     it 'keeps ul' do
@@ -58,6 +56,22 @@ RSpec.describe Sanitize::Config do
       expect(Sanitize.fragment('<a href="dweb:/a/foo">Test</a>', subject)).to eq '<a href="dweb:/a/foo" rel="nofollow noopener" target="_blank">Test</a>'
     end
 
+    it 'keeps title in abbr' do
+      expect(Sanitize.fragment('<abbr title="HyperText Markup Language">HTML</abbr>', subject)).to eq '<abbr title="HyperText Markup Language">HTML</abbr>'
+    end
+  end
+
+  describe '::MASTODON_STRICT' do
+    subject { described_class::MASTODON_STRICT }
+
+    around do |example|
+      original_web_domain = Rails.configuration.x.web_domain
+      example.run
+      Rails.configuration.x.web_domain = original_web_domain
+    end
+
+    it_behaves_like 'common HTML sanitization'
+
     it 'sanitizes math to LaTeX' do
       mathml = '<math><semantics><mrow><msup><mi>x</mi><mi>n</mi></msup><mo>+</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x^n+y</annotation></semantics></math>'
       expect(Sanitize.fragment(mathml, subject)).to eq '$x^n+y$'
@@ -76,6 +90,23 @@ RSpec.describe Sanitize::Config do
     it 'prefers latex' do
       mathml = '<math><semantics><msqrt><mi>x</mi></msqrt><annotation encoding="text/plain">sqrt(x)</annotation><annotation encoding="application/x-tex">\\sqrt x</annotation></semantics></math>'
       expect(Sanitize.fragment(mathml, subject)).to eq '$\sqrt x$'
+    end
+  end
+
+  describe '::MASTODON_OUTGOING' do
+    subject { described_class::MASTODON_OUTGOING }
+
+    around do |example|
+      original_web_domain = Rails.configuration.x.web_domain
+      example.run
+      Rails.configuration.x.web_domain = original_web_domain
+    end
+
+    it_behaves_like 'common HTML sanitization'
+
+    it 'keeps a with href and rel tag, not adding to rel or target if url is local' do
+      Rails.configuration.x.web_domain = 'domain.test'
+      expect(Sanitize.fragment('<a href="http://domain.test/tags/foo" rel="tag">Test</a>', subject)).to eq '<a href="http://domain.test/tags/foo" rel="tag">Test</a>'
     end
   end
 end

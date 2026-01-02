@@ -7,6 +7,8 @@ namespace :api, format: false do
   # Experimental JSON / REST API
   namespace :v1_alpha do
     resources :async_refreshes, only: :show
+
+    resources :collections, only: [:create]
   end
 
   # JSON / REST API
@@ -26,6 +28,11 @@ namespace :api, format: false do
 
         resource :favourite, only: :create
         post :unfavourite, to: 'favourites#destroy'
+
+        # foreign custom emojis are encoded as shortcode@domain.tld
+        # the constraint prevents rails from interpreting the ".tld" as a filename extension
+        post '/react/:id', to: 'reactions#create', constraints: { id: %r{[^/]+} }
+        post '/unreact/:id', to: 'reactions#destroy', constraints: { id: %r{[^/]+} }
 
         resource :bookmark, only: :create
         post :unbookmark, to: 'bookmarks#destroy'
@@ -50,6 +57,7 @@ namespace :api, format: false do
     end
 
     namespace :timelines do
+      resource :direct, only: :show, controller: :direct
       resource :home, only: :show, controller: :home
       resource :public, only: :show, controller: :public
       resource :link, only: :show, controller: :link
@@ -175,9 +183,10 @@ namespace :api, format: false do
       resource :policy, only: [:show, :update]
     end
 
-    resources :notifications, only: [:index, :show] do
+    resources :notifications, only: [:index, :show, :destroy] do
       collection do
         post :clear
+        delete :destroy_multiple
         get :unread_count
       end
 

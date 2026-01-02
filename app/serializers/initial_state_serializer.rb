@@ -5,7 +5,16 @@ class InitialStateSerializer < ActiveModel::Serializer
 
   attributes :meta, :compose, :accounts,
              :media_attachments, :settings,
-             :languages, :features
+             :languages, :features, :max_reactions
+
+  attribute :critical_updates_pending, if: -> { object&.role&.can?(:view_devops) && SoftwareUpdate.check_enabled? }
+
+  has_one :push_subscription, serializer: REST::WebPushSubscriptionSerializer
+  has_one :role, serializer: REST::RoleSerializer
+
+  def max_reactions
+    StatusReactionValidator::LIMIT
+  end
 
   attribute :critical_updates_pending, if: -> { object&.role&.can?(:view_devops) && SoftwareUpdate.check_enabled? }
 
@@ -31,6 +40,7 @@ class InitialStateSerializer < ActiveModel::Serializer
       store[:use_blurhash]      = object_account_user.setting_use_blurhash
       store[:use_pending_items] = object_account_user.setting_use_pending_items
       store[:show_trends]       = Setting.trends && object_account_user.setting_trends
+      store[:visible_reactions] = object_account_user.setting_visible_reactions
       store[:emoji_style]       = object_account_user.settings['web.emoji_style']
     else
       store[:auto_play_gif] = Setting.auto_play_gif
@@ -116,6 +126,7 @@ class InitialStateSerializer < ActiveModel::Serializer
       landing_page: Setting.landing_page,
       trends_enabled: Setting.trends,
       version: instance_presenter.version,
+      visible_reactions: Setting.visible_reactions,
       terms_of_service_enabled: TermsOfService.current.present?,
       local_live_feed_access: Setting.local_live_feed_access,
       remote_live_feed_access: Setting.remote_live_feed_access,

@@ -31,8 +31,17 @@ class ContentSecurityPolicy
 
   private
 
+  # TODO: remove after 4.4.0
+  def extra_data_hosts
+    return [] unless ENV['EXTRA_DATA_HOSTS']
+
+    ENV.fetch('EXTRA_DATA_HOSTS', '').split('|').tap do |hosts|
+      Rails.logger.warn "EXTRA_DATA_HOSTS is deprecated, use EXTRA_MEDIA_HOSTS=#{hosts.join(',')}"
+    end
+  end
+
   def extra_media_hosts
-    ENV.fetch('EXTRA_MEDIA_HOSTS', '').split(/(?:\s*,\s*|\s+)/)
+    ENV.fetch('EXTRA_MEDIA_HOSTS', '').split(/(?:\s*,\s*|\s+)/).presence || extra_data_hosts
   end
 
   def url_from_configured_asset_host

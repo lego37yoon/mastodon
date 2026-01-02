@@ -108,7 +108,7 @@ export const EditedTimestamp: React.FC<{
       onItemClick={handleItemClick}
       forceDropdown
     >
-      <button className='dropdown-menu__text-button'>
+      <button className='dropdown-menu__text-button' type='button'>
         <FormattedMessage
           id='status.edited'
           defaultMessage='Edited {date}'

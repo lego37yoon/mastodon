@@ -4,105 +4,189 @@ nl:
     hints:
       account:
         attribution_domains_as_text: Eén per regel. Beschermt tegen ongeldige attributies.
-        discoverable: Jouw openbare berichten kunnen worden uitgelicht op verschillende plekken binnen Mastodon en jouw account kan worden aanbevolen aan andere gebruikers.
+        discoverable: Jouw openbare berichten kunnen worden uitgelicht op verschillende
+          plekken binnen Mastodon en jouw account kan worden aanbevolen aan andere
+          gebruikers.
         display_name: Jouw volledige naam of een leuke bijnaam.
-        fields: Jouw website, persoonlijke voornaamwoorden, leeftijd, alles wat je maar kwijt wilt.
-        indexable: Jouw openbare berichten kunnen in de zoekresultaten op Mastodon verschijnen. Mensen die op jouw berichten hebben gereageerd kunnen ze sowieso doorzoeken.
+        fields: Jouw website, persoonlijke voornaamwoorden, leeftijd, alles wat je
+          maar kwijt wilt.
+        indexable: Jouw openbare berichten kunnen in de zoekresultaten op Mastodon
+          verschijnen. Mensen die op jouw berichten hebben gereageerd kunnen ze sowieso
+          doorzoeken.
         note: 'Je kunt andere mensen @vermelden of #hashtags gebruiken.'
         show_collections: Mensen kunnen zien wie jij volgt en wie jou volgen.
-        unlocked: Mensen kunnen jou volgen zonder daarvoor toestemming te hoeven vragen. Wanneer je nieuwe volgers handmatig wil goedkeuren moet je deze optie deselecteren.
+        unlocked: Mensen kunnen jou volgen zonder daarvoor toestemming te hoeven vragen.
+          Wanneer je nieuwe volgers handmatig wil goedkeuren moet je deze optie deselecteren.
       account_alias:
         acct: Vermeld de gebruikersnaam@domein van het account vanwaar je wilt verhuizen
       account_migration:
-        acct: Vermeld de gebruikersnaam@domein van het account waar je naartoe wilt verhuizen
+        acct: Vermeld de gebruikersnaam@domein van het account waar je naartoe wilt
+          verhuizen
       account_warning_preset:
-        text: Je kunt specifieke tekst voor berichten gebruiken, zoals URL's, hashtags en vermeldingen
+        text: Je kunt specifieke tekst voor berichten gebruiken, zoals URL's, hashtags
+          en vermeldingen
         title: Optioneel. Niet zichtbaar voor de ontvanger
       admin_account_action:
-        include_statuses: De gebruiker ziet welke berichten verantwoordelijk zijn voor de moderatiemaatregel of waarschuwing
-        send_email_notification: De gebruiker ontvangt een uitleg over wat er met diens account is gebeurd
-        text_html: Optioneel. Je kunt specifieke tekst voor berichten gebruiken. Om tijd te besparen kun je <a href="%{path}">presets voor waarschuwingen toevoegen</a>
+        include_statuses: De gebruiker ziet welke berichten verantwoordelijk zijn
+          voor de moderatiemaatregel of waarschuwing
+        send_email_notification: De gebruiker ontvangt een uitleg over wat er met
+          diens account is gebeurd
+        text_html: Optioneel. Je kunt specifieke tekst voor berichten gebruiken. Om
+          tijd te besparen kun je <a href="%{path}">presets voor waarschuwingen toevoegen</a>
         type_html: Kies wat er met <strong>%{acct}</strong> moet gebeuren
         types:
-          disable: Voorkom dat de gebruiker diens account gebruikt, maar verwijder of verberg de inhoud niet.
-          none: Gebruik dit om een waarschuwing naar de gebruiker te sturen, zonder dat nog een andere maatregel wordt genomen.
-          sensitive: Forceer dat alle mediabijlagen van deze gebruiker als gevoelig worden gemarkeerd.
-          silence: Voorkom dat de gebruiker berichten kan plaatsen met openbare zichtbaarheid, verberg diens berichten en meldingen van mensen die de gebruiker niet volgen. Sluit alle rapportages tegen dit account af.
-          suspend: Voorkom interactie van of naar dit account en verwijder de inhoud. Dit is omkeerbaar binnen 30 dagen. Dit sluit alle rapporten tegen dit account af.
-        warning_preset_id: Optioneel. Je kunt nog steeds handmatig tekst toevoegen aan het eind van de preset
+          disable: Voorkom dat de gebruiker diens account gebruikt, maar verwijder
+            of verberg de inhoud niet.
+          none: Gebruik dit om een waarschuwing naar de gebruiker te sturen, zonder
+            dat nog een andere maatregel wordt genomen.
+          sensitive: Forceer dat alle mediabijlagen van deze gebruiker als gevoelig
+            worden gemarkeerd.
+          silence: Voorkom dat de gebruiker berichten kan plaatsen met openbare zichtbaarheid,
+            verberg diens berichten en meldingen van mensen die de gebruiker niet
+            volgen. Sluit alle rapportages tegen dit account af.
+          suspend: Voorkom interactie van of naar dit account en verwijder de inhoud.
+            Dit is omkeerbaar binnen 30 dagen. Dit sluit alle rapporten tegen dit
+            account af.
+        warning_preset_id: Optioneel. Je kunt nog steeds handmatig tekst toevoegen
+          aan het eind van de preset
       announcement:
-        all_day: Wanneer dit is aangevinkt worden alleen de datums binnen het tijdvak getoond
-        ends_at: Optioneel. De publicatie van de mededeling wordt op dit tijdstip automatisch beëindigd
+        all_day: Wanneer dit is aangevinkt worden alleen de datums binnen het tijdvak
+          getoond
+        ends_at: Optioneel. De publicatie van de mededeling wordt op dit tijdstip
+          automatisch beëindigd
         scheduled_at: Laat leeg om de mededeling meteen te publiceren
-        starts_at: Optioneel. In het geval dat jouw mededeling aan een bepaald tijdvak is gebonden
-        text: Je kunt specifieke tekst voor berichten gebruiken. Let op de ruimte die de mededeling op het scherm van de gebruiker inneemt
+        starts_at: Optioneel. In het geval dat jouw mededeling aan een bepaald tijdvak
+          is gebonden
+        text: Je kunt specifieke tekst voor berichten gebruiken. Let op de ruimte
+          die de mededeling op het scherm van de gebruiker inneemt
       appeal:
         text: Je kunt maar eenmalig bezwaar indienen tegen een vastgestelde overtreding
       defaults:
-        autofollow: Mensen die zich via de uitnodiging hebben geregistreerd, volgen jou automatisch
+        autofollow: Mensen die zich via de uitnodiging hebben geregistreerd, volgen
+          jou automatisch
         avatar: WEBP, PNG, GIF of JPG. Maximaal %{size}. Wordt verkleind naar %{dimensions}px
-        bot: Signaal aan anderen dat het account voornamelijk geautomatiseerde acties uitvoert en mogelijk niet wordt gecontroleerd
+        bot: Signaal aan anderen dat het account voornamelijk geautomatiseerde acties
+          uitvoert en mogelijk niet wordt gecontroleerd
         context: Een of meerdere locaties waar de filter actief moet zijn
-        current_password: Voer voor veiligheidsredenen het wachtwoord van je huidige account in
-        current_username: Voer ter bevestiging de gebruikersnaam van je huidige account in
-        digest: Wordt alleen na een lange periode van inactiviteit verzonden en alleen wanneer je tijdens jouw afwezigheid persoonlijke berichten hebt ontvangen
+        current_password: Voer voor veiligheidsredenen het wachtwoord van je huidige
+          account in
+        current_username: Voer ter bevestiging de gebruikersnaam van je huidige account
+          in
+        digest: Wordt alleen na een lange periode van inactiviteit verzonden en alleen
+          wanneer je tijdens jouw afwezigheid persoonlijke berichten hebt ontvangen
         email: Je krijgt een bevestigingsmail
         header: WEBP, PNG, GIF of JPG. Maximaal %{size}. Wordt verkleind naar %{dimensions}px
-        inbox_url: Kopieer de URL van de voorpagina van de relayserver die je wil gebruiken
-        irreversible: Gefilterde berichten verdwijnen onomkeerbaar, zelfs als de filter later wordt verwijderd
+        inbox_url: Kopieer de URL van de voorpagina van de relayserver die je wil
+          gebruiken
+        irreversible: Gefilterde berichten verdwijnen onomkeerbaar, zelfs als de filter
+          later wordt verwijderd
         locale: De taal van de gebruikersomgeving, e-mails en pushmeldingen
         password: Gebruik tenminste 8 tekens
         phrase: Komt overeen ongeacht hoofd-/kleine letters of een inhoudswaarschuwing
-        scopes: Tot welke API's heeft de toepassing toegang. Wanneer je een toestemming van het bovenste niveau kiest, hoef je geen individuele toestemmingen meer te kiezen.
-        setting_aggregate_reblogs: Geen nieuwe boosts tonen voor berichten die recentelijk nog zijn geboost (heeft alleen effect op nieuw ontvangen boosts)
-        setting_always_send_emails: Normaliter worden er geen e-mailmeldingen verstuurd wanneer je actief Mastodon gebruikt
-        setting_default_sensitive: Gevoelige media wordt standaard verborgen en kan met één klik worden getoond
+        scopes: Tot welke API's heeft de toepassing toegang. Wanneer je een toestemming
+          van het bovenste niveau kiest, hoef je geen individuele toestemmingen meer
+          te kiezen.
+        setting_aggregate_reblogs: Geen nieuwe boosts tonen voor berichten die recentelijk
+          nog zijn geboost (heeft alleen effect op nieuw ontvangen boosts)
+        setting_always_send_emails: Normaliter worden er geen e-mailmeldingen verstuurd
+          wanneer je actief Mastodon gebruikt
+        setting_default_sensitive: Gevoelige media wordt standaard verborgen en kan
+          met één klik worden getoond
         setting_display_media_default: Als gevoelig gemarkeerde media verbergen
         setting_display_media_hide_all: Media altijd verbergen
         setting_display_media_show_all: Media altijd tonen
-        setting_use_blurhash: Wazige kleurovergangen zijn gebaseerd op de kleuren van de verborgen media, waarmee elk detail verdwijnt
-        setting_use_pending_items: De tijdlijn wordt bijgewerkt door op het aantal nieuwe items te klikken, in plaats van dat deze automatisch wordt bijgewerkt
+        setting_use_blurhash: Wazige kleurovergangen zijn gebaseerd op de kleuren
+          van de verborgen media, waarmee elk detail verdwijnt
+        setting_use_pending_items: De tijdlijn wordt bijgewerkt door op het aantal
+          nieuwe items te klikken, in plaats van dat deze automatisch wordt bijgewerkt
         username: Je kunt letters, cijfers en underscores gebruiken
-        whole_word: Wanneer het trefwoord of zinsdeel alfanumeriek is, wordt het alleen gefilterd wanneer het hele woord overeenkomt
+        whole_word: Wanneer het trefwoord of zinsdeel alfanumeriek is, wordt het alleen
+          gefilterd wanneer het hele woord overeenkomt
       domain_allow:
-        domain: Dit domein is in staat om gegevens van deze server op te halen, en binnenkomende gegevens worden verwerkt en opgeslagen
+        domain: Dit domein is in staat om gegevens van deze server op te halen, en
+          binnenkomende gegevens worden verwerkt en opgeslagen
       email_domain_block:
-        domain: Dit kan de domeinnaam zijn die wordt weergegeven in het e-mailadres of in het MX-record dat het gebruikt. Ze worden gecontroleerd tijdens de registratie.
-        with_dns_records: Er wordt een poging gewaagd om de desbetreffende DNS-records op te zoeken, waarna de resultaten ook worden geblokkeerd
+        domain: Dit kan de domeinnaam zijn die wordt weergegeven in het e-mailadres
+          of in het MX-record dat het gebruikt. Ze worden gecontroleerd tijdens de
+          registratie.
+        with_dns_records: Er wordt een poging gewaagd om de desbetreffende DNS-records
+          op te zoeken, waarna de resultaten ook worden geblokkeerd
       featured_tag:
         name: 'Hier zijn enkele van de hashtags die je onlangs hebt gebruikt:'
       filters:
-        action: Kies welke acties uitgevoerd moeten wanneer een bericht overeenkomt met het filter
+        action: Kies welke acties uitgevoerd moeten wanneer een bericht overeenkomt
+          met het filter
         actions:
           hide: Verberg de gefilterde inhoud volledig, alsof het niet bestaat
-          warn: Verberg de gefilterde inhoud achter een waarschuwing, met de titel van het filter als waarschuwingstekst
+          warn: Verberg de gefilterde inhoud achter een waarschuwing, met de titel
+            van het filter als waarschuwingstekst
       form_admin_settings:
-        activity_api_enabled: Aantallen lokaal gepubliceerde berichten, actieve gebruikers en nieuwe registraties per week
-        app_icon: WEBP, PNG, GIF of JPG. Vervangt op mobiele apparaten het standaard app-pictogram met een aangepast pictogram.
-        backups_retention_period: Gebruikers hebben de mogelijkheid om archieven van hun berichten te genereren om later te downloaden. Indien ingesteld op een positieve waarde, worden deze archieven automatisch verwijderd uit jouw opslag na het opgegeven aantal dagen.
-        bootstrap_timeline_accounts: Deze accounts worden bovenaan de aanbevelingen aan nieuwe gebruikers getoond. Meerdere gebruikersnamen met komma's scheiden.
-        closed_registrations_message: Weergegeven wanneer registratie van nieuwe accounts is uitgeschakeld
-        content_cache_retention_period: Alle berichten van andere servers (inclusief boosts en reacties) worden verwijderd na het opgegeven aantal dagen, ongeacht enige lokale gebruikersinteractie met die berichten. Dit betreft ook berichten die een lokale gebruiker aan diens bladwijzers heeft toegevoegd of als favoriet heeft gemarkeerd. Privéberichten tussen gebruikers van verschillende servers gaan ook verloren en zijn onmogelijk te herstellen. Het gebruik van deze instelling is bedoeld voor servers die een speciaal doel dienen en overtreedt veel gebruikersverwachtingen wanneer deze voor algemeen gebruik wordt geïmplementeerd.
+        activity_api_enabled: Aantallen lokaal gepubliceerde berichten, actieve gebruikers
+          en nieuwe registraties per week
+        app_icon: WEBP, PNG, GIF of JPG. Vervangt op mobiele apparaten het standaard
+          app-pictogram met een aangepast pictogram.
+        backups_retention_period: Gebruikers hebben de mogelijkheid om archieven van
+          hun berichten te genereren om later te downloaden. Indien ingesteld op een
+          positieve waarde, worden deze archieven automatisch verwijderd uit jouw
+          opslag na het opgegeven aantal dagen.
+        bootstrap_timeline_accounts: Deze accounts worden bovenaan de aanbevelingen
+          aan nieuwe gebruikers getoond. Meerdere gebruikersnamen met komma's scheiden.
+        closed_registrations_message: Weergegeven wanneer registratie van nieuwe accounts
+          is uitgeschakeld
+        content_cache_retention_period: Alle berichten van andere servers (inclusief
+          boosts en reacties) worden verwijderd na het opgegeven aantal dagen, ongeacht
+          enige lokale gebruikersinteractie met die berichten. Dit betreft ook berichten
+          die een lokale gebruiker aan diens bladwijzers heeft toegevoegd of als favoriet
+          heeft gemarkeerd. Privéberichten tussen gebruikers van verschillende servers
+          gaan ook verloren en zijn onmogelijk te herstellen. Het gebruik van deze
+          instelling is bedoeld voor servers die een speciaal doel dienen en overtreedt
+          veel gebruikersverwachtingen wanneer deze voor algemeen gebruik wordt geïmplementeerd.
         custom_css: Je kunt aangepaste CSS toepassen op de webversie van deze Mastodon-server.
-        favicon: WEBP, PNG, GIF of JPG. Vervangt de standaard Mastodon favicon met een aangepast pictogram.
+        favicon: WEBP, PNG, GIF of JPG. Vervangt de standaard Mastodon favicon met
+          een aangepast pictogram.
         mascot: Overschrijft de illustratie in de geavanceerde webomgeving.
-        media_cache_retention_period: Mediabestanden van berichten van externe gebruikers worden op jouw server in de cache opgeslagen. Indien ingesteld op een positieve waarde, worden media verwijderd na het opgegeven aantal dagen. Als de mediagegevens worden opgevraagd nadat ze zijn verwijderd, worden ze opnieuw gedownload wanneer de originele inhoud nog steeds beschikbaar is. Vanwege beperkingen op hoe vaak linkvoorbeelden sites van derden raadplegen, wordt aanbevolen om deze waarde in te stellen op ten minste 14 dagen. Anders worden linkvoorbeelden niet op aanvraag bijgewerkt.
-        peers_api_enabled: Een lijst met domeinnamen die deze server heeft aangetroffen in de fediverse. Er zijn hier geen gegevens inbegrepen over de vraag of je verbonden bent met een bepaalde server, alleen dat je server er van weet. Dit wordt gebruikt door diensten die statistieken over de federatie in algemene zin verzamelen.
-        profile_directory: De gebruikersgids bevat een lijst van alle gebruikers die ervoor gekozen hebben om ontdekt te kunnen worden.
-        require_invite_text: Maak het invullen van "Waarom wil je je hier registreren?" verplicht in plaats van optioneel, wanneer registraties handmatig moeten worden goedgekeurd
-        site_contact_email: Hoe mensen je kunnen bereiken voor juridische vragen of support.
+        media_cache_retention_period: Mediabestanden van berichten van externe gebruikers
+          worden op jouw server in de cache opgeslagen. Indien ingesteld op een positieve
+          waarde, worden media verwijderd na het opgegeven aantal dagen. Als de mediagegevens
+          worden opgevraagd nadat ze zijn verwijderd, worden ze opnieuw gedownload
+          wanneer de originele inhoud nog steeds beschikbaar is. Vanwege beperkingen
+          op hoe vaak linkvoorbeelden sites van derden raadplegen, wordt aanbevolen
+          om deze waarde in te stellen op ten minste 14 dagen. Anders worden linkvoorbeelden
+          niet op aanvraag bijgewerkt.
+        peers_api_enabled: Een lijst met domeinnamen die deze server heeft aangetroffen
+          in de fediverse. Er zijn hier geen gegevens inbegrepen over de vraag of
+          je verbonden bent met een bepaalde server, alleen dat je server er van weet.
+          Dit wordt gebruikt door diensten die statistieken over de federatie in algemene
+          zin verzamelen.
+        profile_directory: De gebruikersgids bevat een lijst van alle gebruikers die
+          ervoor gekozen hebben om ontdekt te kunnen worden.
+        require_invite_text: Maak het invullen van "Waarom wil je je hier registreren?"
+          verplicht in plaats van optioneel, wanneer registraties handmatig moeten
+          worden goedgekeurd
+        site_contact_email: Hoe mensen je kunnen bereiken voor juridische vragen of
+          support.
         site_contact_username: Hoe mensen je op Mastodon kunnen bereiken.
-        site_extended_description: Alle aanvullende informatie die nuttig kan zijn voor bezoekers en jouw gebruikers. Kan worden opgemaakt met Markdown.
-        site_short_description: Een korte beschrijving om het unieke karakter van je server te tonen. Wie beheert de server, wat is de doelgroep?
-        site_terms: Gebruik je eigen privacybeleid of laat leeg om de standaardwaarde te gebruiken. Kan worden opgemaakt met Markdown.
+        site_extended_description: Alle aanvullende informatie die nuttig kan zijn
+          voor bezoekers en jouw gebruikers. Kan worden opgemaakt met Markdown.
+        site_short_description: Een korte beschrijving om het unieke karakter van
+          je server te tonen. Wie beheert de server, wat is de doelgroep?
+        site_terms: Gebruik je eigen privacybeleid of laat leeg om de standaardwaarde
+          te gebruiken. Kan worden opgemaakt met Markdown.
         site_title: Hoe mensen buiten de domeinnaam naar je server kunnen verwijzen.
-        status_page_url: URL van een pagina waar mensen de status van deze server kunnen zien tijdens een storing
+        status_page_url: URL van een pagina waar mensen de status van deze server
+          kunnen zien tijdens een storing
         theme: Thema die (niet ingelogde) bezoekers en nieuwe gebruikers zien.
-        thumbnail: Een afbeelding van ongeveer een verhouding van 2:1 die naast jouw serverinformatie wordt getoond.
-        timeline_preview: Bezoekers (die niet zijn ingelogd) kunnen de meest recente, op de server aanwezige openbare berichten bekijken.
-        trendable_by_default: Handmatige beoordeling van trends overslaan. Individuele items kunnen later alsnog worden afgekeurd.
-        trends: Trends laten zien welke berichten, hashtags en nieuwsberichten op jouw server aan populariteit winnen.
-        trends_as_landing_page: Toon trending inhoud aan uitgelogde gebruikers en bezoekers in plaats van een beschrijving van deze server. Vereist dat trends zijn ingeschakeld.
+        thumbnail: Een afbeelding van ongeveer een verhouding van 2:1 die naast jouw
+          serverinformatie wordt getoond.
+        timeline_preview: Bezoekers (die niet zijn ingelogd) kunnen de meest recente,
+          op de server aanwezige openbare berichten bekijken.
+        trendable_by_default: Handmatige beoordeling van trends overslaan. Individuele
+          items kunnen later alsnog worden afgekeurd.
+        trends: Trends laten zien welke berichten, hashtags en nieuwsberichten op
+          jouw server aan populariteit winnen.
+        trends_as_landing_page: Toon trending inhoud aan uitgelogde gebruikers en
+          bezoekers in plaats van een beschrijving van deze server. Vereist dat trends
+          zijn ingeschakeld.
       form_challenge:
         current_password: Je betreedt een veilige omgeving
       imports:
@@ -111,8 +195,11 @@ nl:
         text: Dit helpt ons om jouw aanvraag te beoordelen
       ip_block:
         comment: Optioneel. Vergeet niet te onthouden waarom je deze regel hebt toegevoegd.
-        expires_in: Het aantal IP-adressen zijn beperkt. Ze worden soms gedeeld en wisselen vaak van eigenaar. Om deze reden worden onbeperkte IP-blokkades niet aanbevolen.
-        ip: Voer een IPv4- of IPv6-adres in. Je kunt hele reeksen blokkeren met de CIDR-methode. Pas op dat je jezelf niet buitensluit!
+        expires_in: Het aantal IP-adressen zijn beperkt. Ze worden soms gedeeld en
+          wisselen vaak van eigenaar. Om deze reden worden onbeperkte IP-blokkades
+          niet aanbevolen.
+        ip: Voer een IPv4- of IPv6-adres in. Je kunt hele reeksen blokkeren met de
+          CIDR-methode. Pas op dat je jezelf niet buitensluit!
         severities:
           no_access: Toegang tot de hele server blokkeren
           sign_up_block: Nieuwe registraties zijn niet mogelijk
@@ -120,27 +207,39 @@ nl:
         severity: Kies wat er moet gebeuren met aanvragen van dit IP-adres
       rule:
         hint: Optioneel. Verstrek meer details over de regel
-        text: Omschrijf een regel of vereiste voor gebruikers op deze server. Probeer het kort en simpel te houden
+        text: Omschrijf een regel of vereiste voor gebruikers op deze server. Probeer
+          het kort en simpel te houden
       sessions:
-        otp: 'Voer de tweestaps-toegangscode vanaf jouw mobiele telefoon in of gebruik een van jouw herstelcodes:'
-        webauthn: Wanneer het een USB-sleutel is, zorg er dan voor dat je deze in de computer steekt en, wanneer nodig, activeert.
+        otp: 'Voer de tweestaps-toegangscode vanaf jouw mobiele telefoon in of gebruik
+          een van jouw herstelcodes:'
+        webauthn: Wanneer het een USB-sleutel is, zorg er dan voor dat je deze in
+          de computer steekt en, wanneer nodig, activeert.
       settings:
-        indexable: Jouw profielpagina kan in de zoekresultaten van Google, Bing, DuckDuckGo en andere zoekmachines verschijnen.
-        show_application: Je kunt zelf altijd zien met welke app je een bericht hebt geplaatst.
+        indexable: Jouw profielpagina kan in de zoekresultaten van Google, Bing, DuckDuckGo
+          en andere zoekmachines verschijnen.
+        show_application: Je kunt zelf altijd zien met welke app je een bericht hebt
+          geplaatst.
       tag:
-        name: Je kunt elk woord met een hoofdletter beginnen, om zo bijvoorbeeld de tekst leesbaarder te maken
+        name: Je kunt elk woord met een hoofdletter beginnen, om zo bijvoorbeeld de
+          tekst leesbaarder te maken
       user:
-        chosen_languages: Alleen berichten in de aangevinkte talen worden op de openbare tijdlijnen getoond
+        chosen_languages: Alleen berichten in de aangevinkte talen worden op de openbare
+          tijdlijnen getoond
         role: De rol bepaalt welke rechten de gebruiker heeft.
       user_role:
-        color: Kleur die gebruikt wordt voor de rol in de UI, als RGB in hexadecimale formaat
+        color: Kleur die gebruikt wordt voor de rol in de UI, als RGB in hexadecimale
+          formaat
         highlighted: Dit maakt de rol openbaar zichtbaar
-        name: Openbare naam van de rol, wanneer de rol als badge op profielpagina's wordt getoond
+        name: Openbare naam van de rol, wanneer de rol als badge op profielpagina's
+          wordt getoond
         permissions_as_keys: Gebruikers met deze rol hebben toegang tot...
-        position: Een hogere rol beslist in bepaalde situaties over het oplossen van conflicten. Bepaalde acties kunnen alleen worden uitgevoerd op rollen met een lagere prioriteit
+        position: Een hogere rol beslist in bepaalde situaties over het oplossen van
+          conflicten. Bepaalde acties kunnen alleen worden uitgevoerd op rollen met
+          een lagere prioriteit
       webhook:
         events: Selecteer de te verzenden gebeurtenissen
-        template: Maak een eigen JSON payload aan met variabele interpolatie. Laat leeg voor standaard JSON.
+        template: Maak een eigen JSON payload aan met variabele interpolatie. Laat
+          leeg voor standaard JSON.
         url: Waar gebeurtenissen naartoe worden verzonden
     labels:
       account:
@@ -247,7 +346,8 @@ nl:
         activity_api_enabled: Statistieken over gebruikersactiviteit via de API publiceren
         app_icon: App-pictogram
         backups_retention_period: Bewaartermijn gebruikersarchief
-        bootstrap_timeline_accounts: Accounts die altijd aan nieuwe gebruikers worden aanbevolen
+        bootstrap_timeline_accounts: Accounts die altijd aan nieuwe gebruikers worden
+          aanbevolen
         closed_registrations_message: Aangepast bericht wanneer registratie is uitgeschakeld
         content_cache_retention_period: Bewaartermijn voor externe inhoud
         custom_css: Aangepaste CSS
@@ -313,7 +413,8 @@ nl:
         indexable: Zoekmachines jouw profielpagina laten vinden
         show_application: App tonen die je voor het plaatsen van berichten gebruikt
       tag:
-        listable: Toestaan dat deze hashtag in zoekopdrachten en aanbevelingen te zien valt
+        listable: Toestaan dat deze hashtag in zoekopdrachten en aanbevelingen te
+          zien valt
         name: Hashtag
         trendable: Goedkeuren dat deze hashtag onder trends te zien valt
         usable: Berichten toestaan deze hashtag lokaal te gebruiken

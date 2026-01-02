@@ -1050,5 +1050,22 @@
   "visibility_modal.quote_label": "Quem pode citar",
   "visibility_modal.quote_nobody": "Apenas eu",
   "visibility_modal.quote_public": "Qualquer um",
-  "visibility_modal.save": "Salvar"
+  "visibility_modal.save": "Salvar",
+  "carousel.current": "<sr>Slide</sr> {current, number} / {max, number}",
+  "carousel.slide": "Slide {current, number} of {max, number}",
+  "error.no_hashtag_feed_access": "Se cadastre ou faça login para ver e seguir esta hashtag.",
+  "featured_carousel.current": "<sr>Publicação</sr> {current, number} / {max, number}",
+  "footer.about_this_server": "Sobre",
+  "onboarding.follows.search": "Buscar",
+  "status.favourites_count": "{count, plural, one {{counter} favorito} other {{counter} favoritos}}",
+  "status.quotes_count": "{count, plural, one {{counter} citação} other {{counter} citações}}",
+  "status.reblogs_count": "{count, plural, one {{counter} boost} other {{counter} boosts}}",
+  "status.remove_favourite": "Remover dos favoritos",
+  "status.remove_quote": "Remover",
+  "upload_error.quote": "Mídias não podem ser anexadas com enquetes.",
+  "upload_form.drag_and_drop.instructions": "Para pegar um anexo de mídia, pressione espaço ou enter. Enquanto arrastar, use as setas do teclado para mover o anexo de mídia em qualquer direção. Pressione espaço ou insira novamente para soltar o anexo de mídia em sua nova posição, ou pressione escape para cancelar.",
+  "upload_form.drag_and_drop.on_drag_cancel": "O arrastamento foi cancelado. O anexo da mídia {item} foi descartado.",
+  "upload_form.drag_and_drop.on_drag_end": "O anexo {item} foi removido.",
+  "upload_form.drag_and_drop.on_drag_over": "O anexo de mídia {item} foi movido.",
+  "upload_form.drag_and_drop.on_drag_start": "Foi coletado o anexo de mídia {item}."
 }

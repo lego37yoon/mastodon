@@ -4,13 +4,21 @@ pt-PT:
     hints:
       account:
         attribution_domains_as_text: Um por linha. Protege contra falsas atribuições.
-        discoverable: As suas publicações e perfil públicos podem ser destacados ou recomendados em várias áreas do Mastodon e o seu perfil pode ser sugerido a outros utilizadores.
+        discoverable: As suas publicações e perfil públicos podem ser destacados ou
+          recomendados em várias áreas do Mastodon e o seu perfil pode ser sugerido
+          a outros utilizadores.
         display_name: O seu nome completo ou o seu nome divertido.
         fields: A sua página inicial, os seus pronomes, idade e tudo o que quiser.
-        indexable: As suas mensagens públicas podem aparecer nos resultados da pesquisa no Mastodon. Independentemente disso, as pessoas que interagiram com as suas publicações podem ser capazes de as pesquisar.
+        indexable: As suas mensagens públicas podem aparecer nos resultados da pesquisa
+          no Mastodon. Independentemente disso, as pessoas que interagiram com as
+          suas publicações podem ser capazes de as pesquisar.
         note: 'Pode @mencionar outras pessoas e usar #etiquetas.'
-        show_collections: As pessoas podem navegar pelas listas das pessoas que segue e dos seus seguidores. Independentemente disso, as pessoas que segue verão que você as segue.
-        unlocked: As pessoas podem seguir-te sem pedir a tua aprovação. Desmarca se quiseres rever os pedidos para seguir e escolher se aceitas ou rejeitas os novos seguidores.
+        show_collections: As pessoas podem navegar pelas listas das pessoas que segue
+          e dos seus seguidores. Independentemente disso, as pessoas que segue verão
+          que você as segue.
+        unlocked: As pessoas podem seguir-te sem pedir a tua aprovação. Desmarca se
+          quiseres rever os pedidos para seguir e escolher se aceitas ou rejeitas
+          os novos seguidores.
       account_alias:
         acct: Especifique o utilizador@domínio da conta de onde você deseja migrar
       account_migration:
@@ -19,90 +27,166 @@ pt-PT:
         text: Pode usar sintaxe de publicações, como URL, etiquetas e referências
         title: Opcional. Invisível para o destinatário
       admin_account_action:
-        include_statuses: O utilizador verá quais as publicações que foram a razão da moderação ou advertência
-        send_email_notification: O utilizador receberá uma explicação sobre o que aconteceu com a sua conta
-        text_html: Opcional. Pode utilizar sintaxe de escrita. Pode <a href="%{path}">adicionar avisos predefinidos</a> para poupar tempo
+        include_statuses: O utilizador verá quais as publicações que foram a razão
+          da moderação ou advertência
+        send_email_notification: O utilizador receberá uma explicação sobre o que
+          aconteceu com a sua conta
+        text_html: Opcional. Pode utilizar sintaxe de escrita. Pode <a href="%{path}">adicionar
+          avisos predefinidos</a> para poupar tempo
         type_html: Escolhe o que fazer com <strong>%{acct}</strong>
         types:
-          disable: Impede o utilizador de usar a sua conta, mas não elimina ou oculta o seu conteúdo.
-          none: Use isto para enviar um aviso ao utilizador, sem espoletar nenhuma outra ação.
-          sensitive: Forçar todos os anexos multimédia deste utilizador a serem assinalados como sensíveis.
-          silence: Impede que o utilizador possa publicar com visibilidade pública, ocultando as suas publicações e notificações de pessoas que não o seguem. Encerra todas as denúncias contra esta conta.
-          suspend: Evita qualquer interação de ou para esta conta e elimina o seu conteúdo. Reversível num período de 30 dias. Encerra todas as denúncias contra esta conta.
-        warning_preset_id: Opcional. Tu ainda podes adicionar texto personalizado no fim do predefinido
+          disable: Impede o utilizador de usar a sua conta, mas não elimina ou oculta
+            o seu conteúdo.
+          none: Use isto para enviar um aviso ao utilizador, sem espoletar nenhuma
+            outra ação.
+          sensitive: Forçar todos os anexos multimédia deste utilizador a serem assinalados
+            como sensíveis.
+          silence: Impede que o utilizador possa publicar com visibilidade pública,
+            ocultando as suas publicações e notificações de pessoas que não o seguem.
+            Encerra todas as denúncias contra esta conta.
+          suspend: Evita qualquer interação de ou para esta conta e elimina o seu
+            conteúdo. Reversível num período de 30 dias. Encerra todas as denúncias
+            contra esta conta.
+        warning_preset_id: Opcional. Tu ainda podes adicionar texto personalizado
+          no fim do predefinido
       announcement:
         all_day: Quando marcado, apenas as datas do intervalo de tempo serão apresentadas
-        ends_at: Opcional. A mensagem de manutenção deixará de estar publicada neste momento
+        ends_at: Opcional. A mensagem de manutenção deixará de estar publicada neste
+          momento
         scheduled_at: Deixe em branco para publicar a mensagem de manutenção imediatamente
-        starts_at: Opcional. Caso a sua mensagem de manutenção seja vinculada a um intervalo de tempo específico
-        text: Pode utilizar a sintaxe de publicações. Por favor, tenha em consideração o espaço que a mensagem de manutenção ocupará no ecrã do utilizador
+        starts_at: Opcional. Caso a sua mensagem de manutenção seja vinculada a um
+          intervalo de tempo específico
+        text: Pode utilizar a sintaxe de publicações. Por favor, tenha em consideração
+          o espaço que a mensagem de manutenção ocupará no ecrã do utilizador
       appeal:
         text: Só podes recorrer uma única vez de uma reprimenda
       defaults:
         autofollow: As pessoas que aderirem através do convite segui-lo-ão automaticamente
         avatar: WEBP, PNG, GIF ou JPG. No máximo %{size}. Será reduzido para %{dimensions}px
-        bot: Esta conta executa essencialmente ações automatizadas e pode não ser monitorizada
+        bot: Esta conta executa essencialmente ações automatizadas e pode não ser
+          monitorizada
         context: Um ou diversos contextos nos quais o filtro deve ser aplicado
-        current_password: Para fins de segurança, queira inserir a palavra-passe da conta atual
-        current_username: Para confirmar, queira inserir o nome de utilizador da conta atual
-        digest: Enviado após um longo período de inatividade e apenas se foste mencionado na tua ausência
+        current_password: Para fins de segurança, queira inserir a palavra-passe da
+          conta atual
+        current_username: Para confirmar, queira inserir o nome de utilizador da conta
+          atual
+        digest: Enviado após um longo período de inatividade e apenas se foste mencionado
+          na tua ausência
         email: Será enviado um e-mail de confirmação
         header: WEBP, PNG, GIF ou JPG. No máximo %{size}. Será reduzido para %{dimensions}px
         inbox_url: Copie o URL da página inicial do repetidor que quer usar
-        irreversible: Publicações filtradas irão desaparecer irremediavelmente, mesmo que o filtro seja removido posteriormente
+        irreversible: Publicações filtradas irão desaparecer irremediavelmente, mesmo
+          que o filtro seja removido posteriormente
         locale: O idioma da interface de utilizador, e-mails e notificações push
         password: Use pelo menos 8 caracteres
-        phrase: Será correspondido independentemente da capitalização ou do aviso de conteúdo duma publicação
-        scopes: Quais as API a que a aplicação terá permissão para aceder. Se selecionar um âmbito de nível superior, não precisa de selecionar âmbitos individuais.
-        setting_aggregate_reblogs: Não mostrar os novos impulsos para publicações que tenham sido recentemente impulsionadas (apenas afeta os impulsos recentemente recebidos)
-        setting_always_send_emails: Normalmente as notificações por e-mail não serão enviadas quando estiver a utilizar ativamente o Mastodon
-        setting_default_sensitive: Os multimédia sensíveis são ocultados por predefinição e podem ser revelados com um clique/toque
+        phrase: Será correspondido independentemente da capitalização ou do aviso
+          de conteúdo duma publicação
+        scopes: Quais as API a que a aplicação terá permissão para aceder. Se selecionar
+          um âmbito de nível superior, não precisa de selecionar âmbitos individuais.
+        setting_aggregate_reblogs: Não mostrar os novos impulsos para publicações
+          que tenham sido recentemente impulsionadas (apenas afeta os impulsos recentemente
+          recebidos)
+        setting_always_send_emails: Normalmente as notificações por e-mail não serão
+          enviadas quando estiver a utilizar ativamente o Mastodon
+        setting_default_sensitive: Os multimédia sensíveis são ocultados por predefinição
+          e podem ser revelados com um clique/toque
         setting_display_media_default: Esconder multimédia marcada como sensível
         setting_display_media_hide_all: Esconder sempre toda a multimédia
         setting_display_media_show_all: Mostrar sempre a multimédia
-        setting_use_blurhash: Os gradientes são baseados nas cores das imagens escondidas, mas ofuscam quaisquer pormenores
-        setting_use_pending_items: Ocultar as atualizações da cronologia após um clique em vez de percorrer automaticamente a cronologia
+        setting_use_blurhash: Os gradientes são baseados nas cores das imagens escondidas,
+          mas ofuscam quaisquer pormenores
+        setting_use_pending_items: Ocultar as atualizações da cronologia após um clique
+          em vez de percorrer automaticamente a cronologia
         username: Podes utilizar letras, números e traços inferiores (_)
-        whole_word: Quando a palavra-chave ou expressão-chave é somente alfanumérica, ela só será aplicada se corresponder à palavra completa
+        whole_word: Quando a palavra-chave ou expressão-chave é somente alfanumérica,
+          ela só será aplicada se corresponder à palavra completa
       domain_allow:
-        domain: Este domínio será capaz de obter dados desta instância e os dados dele recebidos serão processados e armazenados
+        domain: Este domínio será capaz de obter dados desta instância e os dados
+          dele recebidos serão processados e armazenados
       email_domain_block:
-        domain: Este pode ser o nome de domínio que aparece no endereço de e-mail ou o registo MX por ele utilizado. Eles serão verificados aquando da inscrição.
-        with_dns_records: Será feita uma tentativa de determinar os registos DNS do domínio em questão e os resultados também serão colocados na lista negra
+        domain: Este pode ser o nome de domínio que aparece no endereço de e-mail
+          ou o registo MX por ele utilizado. Eles serão verificados aquando da inscrição.
+        with_dns_records: Será feita uma tentativa de determinar os registos DNS do
+          domínio em questão e os resultados também serão colocados na lista negra
       featured_tag:
         name: 'Eis algumas das etiquetas que utilizou recentemente:'
       filters:
-        action: Escolha qual a ação a executar quando uma publicação corresponde ao filtro
+        action: Escolha qual a ação a executar quando uma publicação corresponde ao
+          filtro
         actions:
-          hide: Ocultar completamente o conteúdo filtrado, comportando-se como se não existisse
-          warn: Ocultar o conteúdo filtrado por trás de um aviso mencionando o título do filtro
+          hide: Ocultar completamente o conteúdo filtrado, comportando-se como se
+            não existisse
+          warn: Ocultar o conteúdo filtrado por trás de um aviso mencionando o título
+            do filtro
       form_admin_settings:
-        activity_api_enabled: Contagem, em blocos semanais, de publicações locais, utilizadores ativos e novos registos
-        app_icon: WEBP, PNG, GIF ou JPG. Substitui o ícone padrão da aplicação em dispositivos móveis por um ícone personalizado.
-        backups_retention_period: Os utilizadores têm a possibilidade de gerar arquivos das suas publicações para descarregar mais tarde. Quando definido para um valor positivo, estes arquivos serão automaticamente eliminados do seu armazenamento após o número de dias especificado.
-        bootstrap_timeline_accounts: Estas contas serão destacadas no topo das recomendações aos novos utilizadores.
+        activity_api_enabled: Contagem, em blocos semanais, de publicações locais,
+          utilizadores ativos e novos registos
+        app_icon: WEBP, PNG, GIF ou JPG. Substitui o ícone padrão da aplicação em
+          dispositivos móveis por um ícone personalizado.
+        backups_retention_period: Os utilizadores têm a possibilidade de gerar arquivos
+          das suas publicações para descarregar mais tarde. Quando definido para um
+          valor positivo, estes arquivos serão automaticamente eliminados do seu armazenamento
+          após o número de dias especificado.
+        bootstrap_timeline_accounts: Estas contas serão destacadas no topo das recomendações
+          aos novos utilizadores.
         closed_registrations_message: Apresentado quando as inscrições estiverem encerradas
-        content_cache_retention_period: Todas as mensagens de outros servidores (incluindo impulsos e respostas) serão eliminadas após o número de dias especificado, independentemente de qualquer interação do utilizador local com essas mensagens. Isto inclui mensagens em que um utilizador local as tenha marcado ou adicionado aos favoritos. As menções privadas entre utilizadores de instâncias diferentes também se perderão e serão impossíveis de restaurar. A utilização desta definição destina-se a instâncias para fins especiais e quebra muitas expectativas dos utilizadores quando implementada para utilização geral.
+        content_cache_retention_period: Todas as mensagens de outros servidores (incluindo
+          impulsos e respostas) serão eliminadas após o número de dias especificado,
+          independentemente de qualquer interação do utilizador local com essas mensagens.
+          Isto inclui mensagens em que um utilizador local as tenha marcado ou adicionado
+          aos favoritos. As menções privadas entre utilizadores de instâncias diferentes
+          também se perderão e serão impossíveis de restaurar. A utilização desta
+          definição destina-se a instâncias para fins especiais e quebra muitas expectativas
+          dos utilizadores quando implementada para utilização geral.
         custom_css: Pode aplicar estilos personalizados na versão web do Mastodon.
-        favicon: WEBP, PNG, GIF ou JPG. Substitui o ícone de favorito padrão do Mastodon por um ícone personalizado.
+        favicon: WEBP, PNG, GIF ou JPG. Substitui o ícone de favorito padrão do Mastodon
+          por um ícone personalizado.
         mascot: Sobrepõe-se à ilustração na interface web avançada.
-        media_cache_retention_period: Os ficheiros multimédia de publicações feitas por utilizadores remotos são armazenados em cache no seu servidor. Quando definido para um valor positivo, os ficheiros multimédia serão eliminados após o número de dias especificado. Se os ficheiros multimédia forem solicitados depois de terem sido eliminados, serão transferidos novamente, se o conteúdo de origem ainda estiver disponível. Devido a restrições sobre a frequência com que os cartões de pré-visualização de links pesquisam sites de terceiros, recomenda-se que este valor seja definido para, pelo menos, 14 dias, ou os cartões de pré-visualização de links não serão atualizados a pedido antes desse período.
-        peers_api_enabled: Uma lista de nomes de domínio que este servidor encontrou no fediverso. Nenhum dado é incluído aqui sobre se você federa com um determinado servidor, apenas que o seu servidor o conhece. Este serviço é utilizado por serviços que recolhem estatísticas na federação, em termos gerais.
-        profile_directory: O diretório de perfis lista todos os utilizadores que optaram por ter a sua conta a ser sugerida a outros.
-        require_invite_text: Quando as incrições exigirem aprovação manual, faça o texto "Por que se quer juntar a nós?" da solicitação de convite ser obrigatório, em vez de opcional
-        site_contact_email: Como as pessoas podem entrar em contacto consigo para obter informações legais ou de apoio técnico.
+        media_cache_retention_period: Os ficheiros multimédia de publicações feitas
+          por utilizadores remotos são armazenados em cache no seu servidor. Quando
+          definido para um valor positivo, os ficheiros multimédia serão eliminados
+          após o número de dias especificado. Se os ficheiros multimédia forem solicitados
+          depois de terem sido eliminados, serão transferidos novamente, se o conteúdo
+          de origem ainda estiver disponível. Devido a restrições sobre a frequência
+          com que os cartões de pré-visualização de links pesquisam sites de terceiros,
+          recomenda-se que este valor seja definido para, pelo menos, 14 dias, ou
+          os cartões de pré-visualização de links não serão atualizados a pedido antes
+          desse período.
+        peers_api_enabled: Uma lista de nomes de domínio que este servidor encontrou
+          no fediverso. Nenhum dado é incluído aqui sobre se você federa com um determinado
+          servidor, apenas que o seu servidor o conhece. Este serviço é utilizado
+          por serviços que recolhem estatísticas na federação, em termos gerais.
+        profile_directory: O diretório de perfis lista todos os utilizadores que optaram
+          por ter a sua conta a ser sugerida a outros.
+        require_invite_text: Quando as incrições exigirem aprovação manual, faça o
+          texto "Por que se quer juntar a nós?" da solicitação de convite ser obrigatório,
+          em vez de opcional
+        site_contact_email: Como as pessoas podem entrar em contacto consigo para
+          obter informações legais ou de apoio técnico.
         site_contact_username: Como as pessoas conseguem chegar até si no Mastodon.
-        site_extended_description: Qualquer informação adicional que possa ser útil para os visitantes e os seus utilizadores. Pode ser estruturada com a sintaxe Markdown.
-        site_short_description: Uma breve descrição para ajudar a identificar de forma única o seu servidor. Quem o está a gerir, e a quem se destina?
-        site_terms: Use a sua própria política de privacidade ou deixe em branco para usar a política padrão. Pode ser estruturada com a sintaxe Markdown.
-        site_title: Como as pessoas podem referir-se ao seu servidor para além do seu nome de domínio.
-        status_page_url: URL de uma página onde as pessoas podem ver o estado deste servidor durante uma interrupção
+        site_extended_description: Qualquer informação adicional que possa ser útil
+          para os visitantes e os seus utilizadores. Pode ser estruturada com a sintaxe
+          Markdown.
+        site_short_description: Uma breve descrição para ajudar a identificar de forma
+          única o seu servidor. Quem o está a gerir, e a quem se destina?
+        site_terms: Use a sua própria política de privacidade ou deixe em branco para
+          usar a política padrão. Pode ser estruturada com a sintaxe Markdown.
+        site_title: Como as pessoas podem referir-se ao seu servidor para além do
+          seu nome de domínio.
+        status_page_url: URL de uma página onde as pessoas podem ver o estado deste
+          servidor durante uma interrupção
         theme: Tema que os visitantes e os novos utilizadores veem.
-        thumbnail: Uma imagem de cerca de 2:1, apresentada ao lado da informação do seu servidor.
-        timeline_preview: Os visitantes sem sessão iniciada poderão consultar as publicações públicas mais recentes disponíveis no servidor.
-        trendable_by_default: Ignorar a revisão manual do conteúdo em destaque. Os itens individuais poderão ainda assim ser posteriormente removidos das tendências.
-        trends: As tendências mostram quais as publicações, etiquetas e notícias que estão a ganhar destaque no seu servidor.
-        trends_as_landing_page: Mostrar conteúdo em destaque a utilizadores sem sessão iniciada e visitantes, ao invés de uma descrição deste servidor. Requer que os destaques estejam ativados.
+        thumbnail: Uma imagem de cerca de 2:1, apresentada ao lado da informação do
+          seu servidor.
+        timeline_preview: Os visitantes sem sessão iniciada poderão consultar as publicações
+          públicas mais recentes disponíveis no servidor.
+        trendable_by_default: Ignorar a revisão manual do conteúdo em destaque. Os
+          itens individuais poderão ainda assim ser posteriormente removidos das tendências.
+        trends: As tendências mostram quais as publicações, etiquetas e notícias que
+          estão a ganhar destaque no seu servidor.
+        trends_as_landing_page: Mostrar conteúdo em destaque a utilizadores sem sessão
+          iniciada e visitantes, ao invés de uma descrição deste servidor. Requer
+          que os destaques estejam ativados.
       form_challenge:
         current_password: Está a entrar numa área segura
       imports:
@@ -111,8 +195,11 @@ pt-PT:
         text: Isto vai ajudar-nos a analisar o seu pedido
       ip_block:
         comment: Opcional. Relembre-se por que adicionou esta regra.
-        expires_in: Os endereços de IP são um recurso limitado, algumas vezes são partilhados e muitas vezes mudam de mãos. Por essa razão, não são recomendados bloqueios de IP indefinidos.
-        ip: Introduza um endereço IPv4 ou IPv6. Pode bloquear intervalos inteiros usando a sintaxe CIDR. Tenha cuidado para não se bloquear a sí mesmo!
+        expires_in: Os endereços de IP são um recurso limitado, algumas vezes são
+          partilhados e muitas vezes mudam de mãos. Por essa razão, não são recomendados
+          bloqueios de IP indefinidos.
+        ip: Introduza um endereço IPv4 ou IPv6. Pode bloquear intervalos inteiros
+          usando a sintaxe CIDR. Tenha cuidado para não se bloquear a sí mesmo!
         severities:
           no_access: Bloquear o acesso a todos os recursos
           sign_up_block: Não serão possíveis novas inscrições
@@ -120,27 +207,38 @@ pt-PT:
         severity: Escolha o que acontecerá com as solicitações deste IP
       rule:
         hint: Opcional. Forneça mais detalhes sobre a regra
-        text: Descreva uma regra ou requisito para os utilizadores nesta instância. Tente mantê-la curta e simples
+        text: Descreva uma regra ou requisito para os utilizadores nesta instância.
+          Tente mantê-la curta e simples
       sessions:
-        otp: 'Insira o código de autenticação de dois fatores gerado pelo seu telemóvel ou use um dos seus códigos de recuperação:'
-        webauthn: Se for uma chave USB tenha certeza de inseri-la e, se necessário, toque nela.
+        otp: 'Insira o código de autenticação de dois fatores gerado pelo seu telemóvel
+          ou use um dos seus códigos de recuperação:'
+        webauthn: Se for uma chave USB tenha certeza de inseri-la e, se necessário,
+          toque nela.
       settings:
-        indexable: A sua página de perfil pode aparecer nos resultados de pesquisa no Google, Bing e outros.
-        show_application: Independentemente disso será sempre capaz de ver em que aplicação publicou a sua mensagem.
+        indexable: A sua página de perfil pode aparecer nos resultados de pesquisa
+          no Google, Bing e outros.
+        show_application: Independentemente disso será sempre capaz de ver em que
+          aplicação publicou a sua mensagem.
       tag:
-        name: Só pode alterar a capitalização das letras, por exemplo, para torná-las mais legíveis
+        name: Só pode alterar a capitalização das letras, por exemplo, para torná-las
+          mais legíveis
       user:
-        chosen_languages: Quando selecionado, só serão mostradas nas cronologias públicas as publicações nos idiomas escolhidos
+        chosen_languages: Quando selecionado, só serão mostradas nas cronologias públicas
+          as publicações nos idiomas escolhidos
         role: A função controla as permissões que o utilizador tem.
       user_role:
-        color: Cor a ser utilizada para a função em toda a interface de utilizador, como RGB no formato hexadecimal
+        color: Cor a ser utilizada para a função em toda a interface de utilizador,
+          como RGB no formato hexadecimal
         highlighted: Isto torna a função visível publicamente
-        name: Nome público da função, se esta estiver definida para ser apresentada com um emblema
+        name: Nome público da função, se esta estiver definida para ser apresentada
+          com um emblema
         permissions_as_keys: Utilizadores com esta função terão acesso a...
-        position: Funções mais altas decidem a resolução de conflitos em certas situações. Certas ações só podem ser executadas com certas funções com uma menor prioridade
+        position: Funções mais altas decidem a resolução de conflitos em certas situações.
+          Certas ações só podem ser executadas com certas funções com uma menor prioridade
       webhook:
         events: Selecione os eventos a enviar
-        template: Componha o seu próprio conteúdo JSON utilizando a interpolação de variáveis. Deixar em branco para o JSON predefinido.
+        template: Componha o seu próprio conteúdo JSON utilizando a interpolação de
+          variáveis. Deixar em branco para o JSON predefinido.
         url: Para onde os eventos serão enviados
     labels:
       account:
@@ -213,13 +311,15 @@ pt-PT:
         setting_default_privacy: Privacidade da publicação
         setting_default_sensitive: Marcar sempre os multimédia como sensíveis
         setting_delete_modal: Solicitar confirmação antes de eliminar uma publicação
-        setting_disable_hover_cards: Desativar visualização de perfil ao passar o cursor
+        setting_disable_hover_cards: Desativar visualização de perfil ao passar o
+          cursor
         setting_disable_swiping: Desativar os movimentos de deslize
         setting_display_media: Visualização de multimédia
         setting_display_media_default: Pré-definição
         setting_display_media_hide_all: Esconder todos
         setting_display_media_show_all: Mostrar todos
-        setting_expand_spoilers: Expandir sempre as publicações marcadas com avisos de conteúdo
+        setting_expand_spoilers: Expandir sempre as publicações marcadas com avisos
+          de conteúdo
         setting_hide_network: Esconder a tua rede
         setting_reduce_motion: Reduzir movimento em animações
         setting_system_font_ui: Usar o tipo de letra padrão do sistema
@@ -244,16 +344,19 @@ pt-PT:
           hide: Ocultar por completo
           warn: Ocultar com um aviso
       form_admin_settings:
-        activity_api_enabled: Publicar estatísticas agregadas sobre a atividade dos utilizadores na API
+        activity_api_enabled: Publicar estatísticas agregadas sobre a atividade dos
+          utilizadores na API
         app_icon: Ícone da aplicação
         backups_retention_period: Período de retenção de arquivos de utilizador
         bootstrap_timeline_accounts: Recomendar sempre estas contas para novos utilizadores
-        closed_registrations_message: Mensagem personalizada quando as inscrições não estiverem disponíveis
+        closed_registrations_message: Mensagem personalizada quando as inscrições
+          não estiverem disponíveis
         content_cache_retention_period: Período de retenção de conteúdos remotos
         custom_css: CSS personalizado
         favicon: Ícone de favoritos
         mascot: Mascote personalizada (legado)
-        media_cache_retention_period: Período de retenção de ficheiros multimédia em cache
+        media_cache_retention_period: Período de retenção de ficheiros multimédia
+          em cache
         peers_api_enabled: Publicar lista de servidores descobertos na API
         profile_directory: Ativar o diretório de perfis
         registrations_mode: Quem se pode inscrever
@@ -313,7 +416,8 @@ pt-PT:
         indexable: Incluir página de perfil nos motores de busca
         show_application: Mostrar de que aplicação criou uma publicação
       tag:
-        listable: Permitir que esta etiqueta apareça em pesquisas e no diretório de perfis
+        listable: Permitir que esta etiqueta apareça em pesquisas e no diretório de
+          perfis
         name: Etiqueta
         trendable: Permitir que esta etiqueta apareça nos destaques
         usable: Permitir que as publicações usem esta etiqueta localmente

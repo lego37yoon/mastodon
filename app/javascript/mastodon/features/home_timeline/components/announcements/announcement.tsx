@@ -36,11 +36,10 @@ export const Announcement: FC<AnnouncementProps> = ({
 
   // But visually show the announcement as read only when it goes out of view.
   const [unread, setUnread] = useState(!read);
-  useEffect(() => {
-    if (!selected && unread !== !read) {
-      setUnread(!read);
-    }
-  }, [selected, unread, read]);
+
+  if (!selected && unread !== !read) {
+    setUnread(!read);
+  }
 
   return (
     <AnimateEmojiProvider className='announcements__item'>
