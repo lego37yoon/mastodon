@@ -2377,8 +2377,14 @@
   }
 
   &__cat-badge {
-    margin-top: -25px;
-    margin-left: 30px;
+    position: relative;
+    top: -2.2em;
+    background: #fff;
+    padding: 0 0.25em;
+    border-radius: 50%;
+    font-size: 0.8em;
+    display: flex;
+    width: min-content;
   }
 }
 
@@ -9073,6 +9079,10 @@ noscript {
 
 .layout-multiple-columns .announcements__container {
   width: 100%;
+}
+
+.status--in-thread .reactions-bar {
+  margin-inline-start: 3rem;
 }
 
 .reactions-bar {
