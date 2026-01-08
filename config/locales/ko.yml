@@ -1787,6 +1787,10 @@ ko:
       body: '당신의 게시물을 %{name} 님이 인용했습니다:'
       subject: "%{name} 님이 내 게시물을 인용했습니다"
       title: 새 인용
+    reaction:
+      body: "%{name} 님이 회원님의 게시물에 반응했어요:"
+      subject: "%{name} 님이 회원님의 게시물에 반응했어요"
+      title: 새 반응
     reblog:
       body: '당신의 게시물을 %{name} 님이 부스트 했어요:'
       subject: "%{name} 님이 내 게시물을 부스트 했어요"
