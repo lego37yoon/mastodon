@@ -391,12 +391,12 @@ class EmojiPickerDropdown extends PureComponent {
     return (
       <div className='emoji-picker-dropdown' onKeyDown={this.handleKeyDown} ref={this.setTargetRef}>
         <IconButton
+          id={`reaction`}
           title={title}
           aria-expanded={active}
           active={active}
           iconComponent={MoodIcon}
           onClick={this.onToggle}
-          inverted
         />
 
         <Overlay show={active} placement={placement} flip target={this.findTarget} popperConfig={{ strategy: 'fixed', onFirstUpdate: this.handleOverlayEnter }}>
