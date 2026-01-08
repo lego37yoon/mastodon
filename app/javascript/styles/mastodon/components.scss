@@ -11050,7 +11050,8 @@ noscript {
     color: $highlight-text-color;
   }
 
-  &--favourite &__icon {
+  &--favourite &__icon,
+  &--reaction &__icon {
     color: $gold-star;
   }
 
