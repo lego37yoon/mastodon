@@ -42,6 +42,7 @@ import {
   toggleReblog,
   pin,
   unpin,
+  addReaction
 } from '../../actions/interactions';
 import { openModal } from '../../actions/modal';
 import { initMuteModal } from '../../actions/mutes';
@@ -251,6 +252,23 @@ class Status extends ImmutablePureComponent {
     }
   };
 
+  handleReactionAdd = (statusId, name, url) => {
+    const { dispatch } = this.props;
+    const { signedIn } = this.props.identity;
+
+    if (signedIn) {
+      dispatch(addReaction(statusId, name, url));
+    } else {
+      dispatch(openModal({
+        modalType: 'INTERACTION',
+        modalProps: {
+          accountId: this.props.status.getIn(['account', 'id']),
+          url: this.props.status.get('uri'),
+        },
+      }));
+    }
+  };
+
   handleDeleteClick = (status, withRedraft = false) => {
     const { dispatch, history } = this.props;
 
@@ -269,13 +287,13 @@ class Status extends ImmutablePureComponent {
           // Error handling - could show error message
         });
     } else {
-      dispatch(openModal({ 
-        modalType: 'CONFIRM_DELETE_STATUS', 
-        modalProps: { 
-          statusId: status.get('id'), 
+      dispatch(openModal({
+        modalType: 'CONFIRM_DELETE_STATUS',
+        modalProps: {
+          statusId: status.get('id'),
           withRedraft,
           onDeleteSuccess: handleDeleteSuccess
-        } 
+        }
       }));
     }
   };
@@ -493,7 +511,7 @@ class Status extends ImmutablePureComponent {
     // Only highlight replies after the initial load
     if (prevProps.descendantsIds.length && isSameStatus) {
       const newRepliesIds = difference(descendantsIds, prevProps.descendantsIds);
-      
+
       if (newRepliesIds.length) {
         this.setState({newRepliesIds});
       }
@@ -621,12 +639,13 @@ class Status extends ImmutablePureComponent {
                   onReport={this.handleReport}
                   onPin={this.handlePin}
                   onEmbed={this.handleEmbed}
+                  onReactionAdd={this.handleReactionAdd}
                 />
               </div>
             </Hotkeys>
 
             {descendants}
-            
+
             <RefreshController
               isLocal={isLocal}
               statusId={status.get('id')}

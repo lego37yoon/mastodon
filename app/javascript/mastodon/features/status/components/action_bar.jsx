@@ -6,6 +6,7 @@ import { defineMessages, injectIntl } from 'react-intl';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import { connect } from 'react-redux';
 
+import AddReactionIcon from '@/material-icons/400-24px/add_reaction.svg?react';
 import BookmarkIcon from '@/material-icons/400-24px/bookmark-fill.svg?react';
 import BookmarkBorderIcon from '@/material-icons/400-24px/bookmark.svg?react';
 import MoreHorizIcon from '@/material-icons/400-24px/more_horiz.svg?react';
@@ -21,6 +22,7 @@ import { Dropdown } from 'mastodon/components/dropdown_menu';
 import { me, quickBoosting } from '../../../initial_state';
 import { BoostButton } from '@/mastodon/components/status/boost_button';
 import { quoteItemState, selectStatusState } from '@/mastodon/components/status/boost_button_utils';
+import EmojiPickerDropdown from "@/mastodon/features/compose/containers/emoji_picker_dropdown_container";
 
 const messages = defineMessages({
   delete: { id: 'status.delete', defaultMessage: 'Delete' },
@@ -54,6 +56,7 @@ const messages = defineMessages({
   openOriginalPage: { id: 'account.open_original_page', defaultMessage: 'Open original page' },
   revokeQuote: { id: 'status.revoke_quote', defaultMessage: 'Remove my post from @{name}’s post' },
   quotePolicyChange: { id: 'status.quote_policy_change', defaultMessage: 'Change who can quote' },
+  react: { id: 'status.react', defaultMessage: 'React' },
 });
 
 const mapStateToProps = (state, { status }) => {
@@ -92,6 +95,7 @@ class ActionBar extends PureComponent {
     onReport: PropTypes.func,
     onPin: PropTypes.func,
     onEmbed: PropTypes.func,
+    onReactionAdd: PropTypes.func,
     intl: PropTypes.object.isRequired,
   };
 
@@ -105,6 +109,10 @@ class ActionBar extends PureComponent {
 
   handleFavouriteClick = () => {
     this.props.onFavourite(this.props.status);
+  };
+
+  handleEmojiPick = data => {
+    this.props.onReactionAdd(this.props.status.get('id'), data.native.replace(/:/g, ''), data.imageUrl);
   };
 
   handleBookmarkClick = (e) => {
@@ -332,6 +340,9 @@ class ActionBar extends PureComponent {
           <BoostButton status={status} />
         </div>
         <div className='detailed-status__button'><IconButton className='star-icon' animate active={status.get('favourited')} title={favouriteTitle} icon='star' iconComponent={status.get('favourited') ? StarIcon : StarBorderIcon} onClick={this.handleFavouriteClick} /></div>
+        <div className='detailed-status__button'>
+          <EmojiPickerDropdown className='status__action-bar__button' onPickEmoji={this.handleEmojiPick} title={intl.formatMessage(messages.react)} icon={AddReactionIcon} disabled={!signedIn} />
+        </div>
         <div className='detailed-status__button'><IconButton className='bookmark-icon' disabled={!signedIn} active={status.get('bookmarked')} title={bookmarkTitle} icon='bookmark' iconComponent={status.get('bookmarked') ? BookmarkIcon : BookmarkBorderIcon} onClick={this.handleBookmarkClick} /></div>
 
         <div className='detailed-status__action-bar-dropdown'>
