@@ -9,11 +9,13 @@ import ReplyIcon from '@/material-icons/400-24px/reply.svg?react';
 import ReplyAllIcon from '@/material-icons/400-24px/reply_all.svg?react';
 import StarIcon from '@/material-icons/400-24px/star-fill.svg?react';
 import StarBorderIcon from '@/material-icons/400-24px/star.svg?react';
+import AddReactionIcon from '@/material-icons/400-24px/add_reaction.svg?react';
 import { replyCompose } from 'mastodon/actions/compose';
-import { toggleFavourite } from 'mastodon/actions/interactions';
+import { addReaction, toggleFavourite } from 'mastodon/actions/interactions';
 import { openModal } from 'mastodon/actions/modal';
 import { IconButton } from 'mastodon/components/icon_button';
 import { BoostButton } from 'mastodon/components/status/boost_button';
+import EmojiPickerDropdown from 'mastodon/features/compose/containers/emoji_picker_dropdown_container';
 import { useIdentity } from 'mastodon/identity_context';
 import type { Account } from 'mastodon/models/account';
 import type { Status } from 'mastodon/models/status';
@@ -43,6 +45,7 @@ const messages = defineMessages({
     defaultMessage: 'Remove from favorites',
   },
   open: { id: 'status.open', defaultMessage: 'Expand this status' },
+  react: { id: 'status.react', defaultMessage: 'React' },
 });
 
 type GetStatusSelector = (
@@ -114,6 +117,21 @@ export const Footer: React.FC<{
     }
   }, [dispatch, status, signedIn]);
 
+  const handleEmojiPick = useCallback(
+    (data: any) => {
+      if (status) {
+        dispatch(
+          addReaction(
+            status.get('id'),
+            data.native.replace(/:/g, ''),
+            data.imageUrl,
+          ),
+        );
+      }
+    },
+    [dispatch, status],
+  );
+
   const handleOpenClick = useCallback(
     (e: React.MouseEvent) => {
       if (e.button !== 0 || !status) {
@@ -180,6 +198,15 @@ export const Footer: React.FC<{
         onClick={handleFavouriteClick}
         counter={status.get('favourites_count') as number}
       />
+
+      <div className='status__action-bar-button'>
+        <EmojiPickerDropdown
+          onPickEmoji={handleEmojiPick}
+          title={intl.formatMessage(messages.react)}
+          icon={AddReactionIcon}
+          disabled={!signedIn}
+        />
+      </div>
 
       {withOpenButton && (
         <IconButton
