@@ -75,7 +75,7 @@ et:
         irreversible: Filtreeritud postitused kaovad taastamatult, isegi kui filter
           on hiljem eemaldatud
         locale: Kasutajaliidese, e-kirjade ja tõuketeadete keel
-        password: Vajalik on vähemalt 8 märki
+        password: Vajalik on vähemalt 8 tähemärki
         phrase: Kattub olenemata postituse teksti suurtähtedest või sisuhoiatusest
         scopes: Milliseid API-sid see rakendus tohib kasutada. Kui valid kõrgeima
           taseme, ei pea üksikuid eraldi valima.
@@ -196,7 +196,7 @@ et:
           voole“ väärtus peab olema „Kõik“.
         min_age: Kasutajad peavad liitumisel kinnitama oma sünnikuupäeva
       form_challenge:
-        current_password: Turvalisse alasse sisenemine
+        current_password: Sisened turvalisse alasse
       imports:
         data: CSV fail eksporditi teisest Mastodoni serverist
       invite_request:
@@ -324,8 +324,8 @@ et:
         avatar: Profiilipilt
         bot: See konto on robot
         chosen_languages: Keelte filtreerimine
-        confirm_new_password: Uue salasõna kinnitamine
-        confirm_password: Salasõna kinnitamine
+        confirm_new_password: Korda uut salasõna
+        confirm_password: Korda salasõna
         context: Filtreeri kontekste
         current_password: Kehtiv salasõna
         data: Andmed
