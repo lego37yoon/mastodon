@@ -379,6 +379,7 @@ en:
         mention: Someone mentioned you
         pending_account: New account needs review
         reblog: Someone boosted your post
+        reaction: Someone reacted your post
         report: New report is submitted
         software_updates:
           all: Notify on all updates

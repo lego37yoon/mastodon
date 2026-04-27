@@ -336,6 +336,7 @@ ko:
         pending_account: 새 계정이 심사가 필요할 때
         quote: 누군가 나를 인용했을 때
         reblog: 누군가 내 게시물을 부스트 했을 때
+        reaction: 누군가 내 게시물에 반응을 남겼을 때
         report: 새 신고가 접수되었을 때
         software_updates:
           all: 모든 업데이트에 대해 알림
