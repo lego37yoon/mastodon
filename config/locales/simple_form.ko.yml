@@ -4,10 +4,10 @@ ko:
     hints:
       account:
         attribution_domains: 한 줄에 하나씩. 가짜 기여로부터 보호합니다.
-        discoverable: 내 공개 게시물과 프로필이 마스토돈의 다양한 추천 기능에 나타날 수 있고 프로필이 다른 사용자에게 제안될 수 있습니다
+        discoverable: 내 공개 게시물과 프로필이 Mastodon의 다양한 추천 기능에 나타날 수 있고 프로필이 다른 사용자에게 제안될 수 있습니다
         display_name: 진짜 이름 또는 재미난 이름.
         fields: 홈페이지, 호칭, 나이, 뭐든지 적고 싶은 것들.
-        indexable: 내 공개 게시물이 마스토돈의 검색 결과에 나타날 수 있습니다. 내 게시물과 상호작용했던 사람들은 이 설정과 관계 없이 그 게시물을 검색할 수 있습니다.
+        indexable: 내 공개 게시물이 Mastodon의 검색 결과에 나타날 수 있습니다. 내 게시물과 상호작용했던 사람들은 이 설정과 관계 없이 그 게시물을 검색할 수 있습니다.
         note: '남을 @mention 하거나 #hashtag 태그를 달 수 있습니다.'
         show_collections: 사람들이 내 계정의 팔로우와 팔로워를 볼 수 있습니다. 내가 팔로우 하는 사람은 이 설정에 관계 없이 내가 팔로우 했다는 사실을 알 수 있습니다.
         unlocked: 사람들이 승인 요청 없이 나를 팔로우 할 수 있습니다. 팔로우 요청을 심사하고 새 팔로워를 승인할지 거부할지 선택하고 싶다면 해제하세요.
@@ -55,11 +55,11 @@ ko:
         password: 최소 8글자
         phrase: 게시물 내용이나 열람주의 내용 안에서 대소문자 구분 없이 매칭 됩니다
         scopes: 애플리케이션에 허용할 API들입니다. 최상위 스코프를 선택하면 개별적인 것은 선택하지 않아도 됩니다.
-        setting_advanced_layout: 고급 웹 인터페이스는 한 번에 여러 정보를 볼 수 있도록 여러 컬럼을 설정해 화면의 가로폭을 가득 채워요. 홈, 알림, 연합 타임라인, 리스트, 해시태그 등을 하나의 화면에서 볼 수 있어요.
+        setting_advanced_layout: 고급 웹 인터페이스는 한 번에 여러 정보를 볼 수 있도록 여러 컬럼을 설정해 화면의 가로폭을 가득 채워요. 홈, 알림, 연합 타임라인, 리스트, 해시태그 등을 하나의 화면에서 볼 수 있어요. 작은 화면에서는 권장하지 않아요.
         setting_aggregate_reblogs: 최근에 부스트 됐던 게시물은 새로 부스트 되어도 보여주지 않기 (새로 받은 부스트에만 적용됩니다)
-        setting_always_send_emails: 기본적으로 마스토돈을 활동적으로 사용하고 있을 때에는 이메일 알림이 보내지지 않습니다
+        setting_always_send_emails: 기본적으로 Mastodon을 활동적으로 사용하고 있을 때에는 이메일 알림이 보내지지 않습니다
         setting_boost_modal: 활성화하면 부스트하기 전에 부스트의 공개설정을 바꿀 수 있는 확인창이 먼저 뜨게 됩니다.
-        setting_default_quote_policy_private: 마스토돈에서 작성된 팔로워 전용 게시물은 다른 사용자가 인용할 수 없습니다.
+        setting_default_quote_policy_private: Mastodon에서 작성된 팔로워 전용 게시물은 다른 사용자가 인용할 수 없습니다.
         setting_default_quote_policy_unlisted: 사람들에게 인용된 경우, 인용한 게시물도 유행 타임라인에서 감추게 됩니다.
         setting_default_sensitive: 민감한 미디어는 기본적으로 가려져 있으며 클릭해서 볼 수 있습니다
         setting_display_media_default: 민감함으로 표시된 미디어 가리기
@@ -91,7 +91,7 @@ ko:
         backups_retention_period: 사용자들은 나중에 다운로드하기 위해 게시물 아카이브를 생성할 수 있습니다. 양수로 설정된 경우 이 아카이브들은 지정된 일수가 지난 후에 저장소에서 자동으로 삭제될 것입니다.
         closed_registrations_message: 새 가입을 차단했을 때 표시됩니다
         content_cache_retention_period: "(부스트 및 답글 포함) 다른 서버의 모든 게시물은 해당 게시물에 대한 로컬 사용자의 상호 작용과 관계없이 지정된 일수가 지나면 삭제됩니다. 여기에는 로컬 사용자가 북마크 또는 즐겨찾기로 표시한 게시물도 포함됩니다. 다른 인스턴스 사용자와 주고 받은 개인 멘션도 손실되며 복원할 수 없습니다. 이 설정은 특수 목적의 인스턴스를 위한 것이며 일반적인 용도의 많은 사용자의 예상이 빗나가게 됩니다."
-        custom_css: 사용자 지정 스타일을 웹 버전의 마스토돈에 지정할 수 있습니다.
+        custom_css: 사용자 지정 스타일을 웹 버전의 Mastodon에 지정할 수 있습니다.
         favicon: WEBP, PNG, GIF 또는 JPG. 기본 파비콘을 대체합니다.
         mascot: 고급 웹 인터페이스의 그림을 대체합니다.
         media_cache_retention_period: 원격 사용자가 작성한 글의 미디어 파일은 이 서버에 캐시됩니다. 양수로 설정하면 지정된 일수 후에 미디어가 삭제됩니다. 삭제된 후에 미디어 데이터를 요청하면 원본 콘텐츠를 사용할 수 있는 경우 다시 다운로드됩니다. 링크 미리 보기 카드가 타사 사이트를 폴링하는 빈도에 제한이 있으므로 이 값을 최소 14일로 설정하는 것이 좋으며, 그렇지 않으면 그 이전에는 링크 미리 보기 카드가 제때 업데이트되지 않을 것입니다.
@@ -100,7 +100,7 @@ ko:
         profile_directory: 프로필 책자는 발견되기를 희망하는 모든 사람들의 목록을 나열합니다.
         require_invite_text: 가입이 수동 승인을 필요로 할 때, "왜 가입하려고 하나요?" 항목을 선택사항으로 두는 것보다는 필수로 두는 것이 낫습니다
         site_contact_email: 사람들이 법적이나 도움 요청을 위해 당신에게 연락할 방법.
-        site_contact_username: 사람들이 마스토돈에서 당신에게 연락할 방법.
+        site_contact_username: 사람들이 Mastodon에서 당신에게 연락할 방법.
         site_extended_description: 방문자와 사용자에게 유용할 수 있는 추가정보들. 마크다운 문법을 사용할 수 있습니다.
         site_short_description: 이 서버를 특별하게 구분할 수 있는 짧은 설명. 누가 운영하고, 누구를 위한 것인가요?
         site_terms: 자신만의 개인정보처리방침을 사용하거나 비워두는 것으로 기본값을 사용할 수 있습니다. 마크다운 문법을 사용할 수 있습니다.
@@ -113,7 +113,7 @@ ko:
       form_challenge:
         current_password: 당신은 보안 구역에 진입하고 있습니다
       imports:
-        data: 다른 마스토돈 서버에서 내보낸 CSV 파일
+        data: 다른 Mastodon 서버에서 내보낸 CSV 파일
       invite_request:
         text: 이 정보는 신청을 검토하는데 도움을 줄 수 있습니다.
       ip_block:
@@ -215,7 +215,7 @@ ko:
         context: 필터 컨텍스트
         current_password: 현재 암호 입력
         data: 데이터
-        display_name: 표시 이름
+        display_name: 표시되는 이름
         email: 이메일 주소
         expires_in: 만기
         fields: 부가 필드
@@ -340,7 +340,7 @@ ko:
         software_updates:
           all: 모든 업데이트에 대해 알림
           critical: 긴급 업데이트에 대해서만 알림
-          label: 새 마스토돈 버전이 있을 때
+          label: 새 Mastodon 버전이 있을 때
           none: 업데이트에 대해 알리지 않기 (비추천)
           patch: 버그픽스 업데이트에 대해 알림
         trending_tag: 검토해야 할 새 유행

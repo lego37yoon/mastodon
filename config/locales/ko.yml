@@ -5,7 +5,7 @@ ko:
       보호하고 누리세요!'
     contact_missing: 미설정
     contact_unavailable: 없음
-    hosted_on: "%{domain}에서 호스팅 되는 마스토돈"
+    hosted_on: "%{domain}에서 호스팅 되는 Mastodon"
     title: 정보
   accounts:
     followers:
@@ -774,7 +774,7 @@ ko:
         moderation: 중재
         special: 특수
       delete: 삭제
-      description_html: "<strong>사용자 역할</strong>을 통해, 사용자들이 마스토돈의 어떤 기능과 영역에 접근할 수
+      description_html: "<strong>사용자 역할</strong>을 통해, 사용자들이 Mastodon의 어떤 기능과 영역에 접근할 수
         있을지 설정할 수 있어요."
       edit: "%{name} 역할 수정"
       everyone: 기본 권한
@@ -825,7 +825,7 @@ ko:
         view_dashboard_description: 사용자가 여러 통계정보를 볼 수 있는 대시보드에 접근할 수 있도록 허용
         view_devops: 데브옵스
         view_devops_description: Sidekiq과 pgHero 대시보드에 접근할 수 있도록 허용
-        view_feeds: 실시간, 해시태그 피드 보기
+        view_feeds: 실시간 및 화제 피드 보기
         view_feeds_description: 서버 설정에 관계 없이 실시간과 해시태그 피드에 접근할 수 있도록 허용
       title: 역할
     rules:
@@ -851,15 +851,15 @@ ko:
         rules_hint: 사용자들이 준수해야 할 규칙들을 위한 전용 공간이에요.
         title: 정보
       allow_referrer_origin:
-        desc: 사용자가 외부 사이트 링크를 클릭한 경우 브라우저는 마스토돈 서버 주소를 리퍼러로 보내게 됩니다. 이 서버가 개인 서버인
+        desc: 사용자가 외부 사이트 링크를 클릭한 경우 브라우저는 Mastodon 서버 주소를 리퍼러로 보내게 됩니다. 이 서버가 개인 서버인
           경우 등 사용자를 식별할 수 있는 경우 이 기능을 비활성화하세요.
-        title: 외부 사이트가 이 마스토돈 서버를 트래픽 소스로 볼 수 있도록 허용
+        title: 외부 사이트가 이 Mastodon 서버를 트래픽 소스로 볼 수 있도록 허용
       appearance:
-        preamble: 마스토돈의 웹 인터페이스를 변경
+        preamble: Mastodon의 웹 인터페이스를 변경
         title: 외관
       branding:
         preamble: 이 서버의 브랜딩은 네트워크의 다른 서버와 차별점을 부여해요. 이 정보는 여러 환경에서 보여질 수 있는데, 예를 들면
-          마스토돈 인터페이스, 네이티브 앱, 다른 웹사이트나 메시지 앱에서 보이는 링크 미리보기, 기타 등등이 있어요. 이러한 이유로 인해,
+          Mastodon 인터페이스, 네이티브 앱, 다른 웹사이트나 메시지 앱에서 보이는 링크 미리보기, 기타 등등이 있어요. 이러한 이유로 인해,
           이 정보를 명확하고 짧고 간결하게 유지하는 것이 가장 좋습니다.
         title: 브랜딩
       captcha_enabled:
@@ -869,7 +869,7 @@ ko:
         title: 새로운 사용자가 계정 확인을 위해서는 CAPTCHA를 풀어야 하도록 해요
       content_retention:
         danger_zone: 위험한 영역
-        preamble: 마스토돈에 저장된 사용자 콘텐츠를 어떻게 다룰지 제어해요.
+        preamble: Mastodon에 저장된 사용자 콘텐츠를 어떻게 다룰지 제어해요.
         title: 콘텐츠 보존기한
       default_noindex:
         desc_html: 이 설정을 개인적으로 바꾸지 않은 모든 사용자들에게 적용 해요
@@ -1015,13 +1015,13 @@ ko:
         message_html: "%{value} 큐에 대한 사이드킥 프로세스가 발견되지 않았어요. 사이드킥 설정을 검토해주세요"
       software_version_check:
         action: 사용 가능한 업데이트 보기
-        message_html: 마스토돈 업데이트가 있어요.
+        message_html: Mastodon 업데이트가 있어요.
       software_version_critical_check:
         action: 사용 가능한 업데이트 보기
-        message_html: 긴급 마스토돈 업데이트가 있으니, 가능한 서둘러 업데이트 해주세요.
+        message_html: 긴급 Mastodon 업데이트가 있으니, 가능한 서둘러 업데이트 해주세요.
       software_version_patch_check:
         action: 사용 가능한 업데이트 보기
-        message_html: 마스토돈 오류 수정 업데이트가 있어요.
+        message_html: Mastodon 오류 수정 업데이트가 있어요.
       upload_check_privacy_error:
         action: 더 많은 정보를 보려면 여기를 확인하세요.
         message_html: "<strong>웹서버가 잘못 설정되어있어요. 사용자의 개인정보가 위험한 상태이에요.</strong>"
@@ -1187,7 +1187,7 @@ ko:
     webhooks:
       add_new: 엔드포인트 추가
       delete: 삭제
-      description_html: "<strong>웹훅</strong>은 선택한 이벤트에 대해 마스토돈이 <strong>실시간 알림</strong>을
+      description_html: "<strong>웹훅</strong>은 선택한 이벤트에 대해 Mastodon이 <strong>실시간 알림</strong>을
         각자의 응용프로그램에게 보냄으로서, 당신의 응용프로그램이 <strong>자동으로 반응</strong>을 할 수 있도록 해요."
       disable: 비활성화
       disabled: 비활성화됨
@@ -1223,7 +1223,7 @@ ko:
       next_steps: 중재 결정사항을 되돌리기 위해서 상소를 승인하거나, 무시할 수 있어요.
       subject: "%{username} 님이 %{instance}에서 발생한 중재 결정에 대해 소명을 제출했어요"
     new_critical_software_updates:
-      body: 마스토돈의 긴급 업데이트가 출시되었으니, 가능한 서둘러 업데이트를 바랍니다!
+      body: Mastodon의 긴급 업데이트가 출시되었으니, 가능한 서둘러 업데이트를 바랍니다!
       subject: "%{instance}에 대해 긴급 업데이트가 있어요!"
     new_pending_account:
       body: 아래에 새 계정에 대한 상세정보가 있어요. 이 가입을 승인하거나 거부할 수 있어요.
@@ -1233,8 +1233,8 @@ ko:
       body_remote: "%{domain}의 누군가가 %{target}을 신고했어요"
       subject: "%{instance}의 새로운 신고(#%{id})"
     new_software_updates:
-      body: 새 마스토돈 버전이 출시되었어요. 업데이트 할 수 있어요!
-      subject: "%{instance}에 대해 새 마스토돈 버전이 사용 가능해요!"
+      body: 새 Mastodon 버전이 출시되었어요. 업데이트 할 수 있어요!
+      subject: "%{instance}에 대해 새 Mastodon 버전이 사용 가능해요!"
     new_trends:
       body: '아래에 있는 항목들은 공개적으로 보여지기 전에 검토를 거쳐야 해요:'
       new_trending_links:
@@ -1261,7 +1261,7 @@ ko:
       곧바로 부스트할 수 있습니다."
     discovery: 발견하기
     localization:
-      body: 마스토돈은 자원봉사자들이 번역했어요
+      body: Mastodon은 자원봉사자들이 번역했어요
       guide_link: https://crowdin.com/project/mastodon
       guide_link_text: 누구나 기여할 수 있어요.
     sensitive_content: 민감한 내용
@@ -1305,8 +1305,8 @@ ko:
       확인 화면이 표시해요.
     description:
       prefix_invited_by_user: "@%{name}님이 이 서버에 초대하셨어요!"
-      prefix_sign_up: 마스토돈에 가입하세요!
-      suffix: 계정 하나로 사람들을 팔로우 하고, 게시물을 작성하며 마스토돈을 포함한 다른 어떤 서버의 사용자와도 메시지를 주고 받을 수
+      prefix_sign_up: Mastodon에 가입하세요!
+      suffix: 계정 하나로 사람들을 팔로우 하고, 게시물을 작성하며 Mastodon을 포함한 다른 어떤 서버의 사용자와도 메시지를 주고 받을 수
         있어요!
     didnt_get_confirmation: 확인 링크를 못 받았나요?
     dont_have_your_security_key: 보안 키가 없나요?
@@ -1358,7 +1358,7 @@ ko:
     sign_up:
       manual_review: "%{domain} 가입은 중재자들의 심사를 거쳐 진행해요. 가입 절차를 원활하게 하기 위해, 간단한 자기소개와
         왜 %{domain}에 계정을 만들려고 하는지 적어주세요."
-      preamble: 이 마스토돈 서버의 계정을 통해, 네트워크에 속한 다른 사람들을, 그들이 어떤 서버에 있든 팔로우 할 수 있어요.
+      preamble: 이 Mastodon 서버의 계정을 통해, 네트워크에 속한 다른 사람들을, 그들이 어떤 서버에 있든 팔로우 할 수 있어요.
       title: "%{domain}에 가입하기 위한 정보들을 입력하세요."
     status:
       account_status: 계정 상태
@@ -1376,7 +1376,7 @@ ko:
       읽었고 동의합니다
   author_attribution:
     example_title: 예시 텍스트
-    hint_html: 마스토돈 밖에서 뉴스나 블로그 글을 쓰시나요? 마스토돈에 공유되었을 때 어떻게 표시될지를 제어하세요.
+    hint_html: Mastodon 밖에서 뉴스나 블로그 글을 쓰시나요? Mastodon에 공유되었을 때 어떻게 표시될지를 제어하세요.
     instructions: '이 코드가 글의 HTML 안에 포함되는지 확인하세요:'
     more_from_html: "%{name}의 게시물 더 보기"
     s_blog: "%{name}의 블로그"
@@ -1480,7 +1480,7 @@ ko:
       content: 죄송해요. 뭔가 잘못된 것 같아요.
       title: 이 페이지는 잘못되었어요
     '503': 이 페이지는 임시적인 서버 문제로 인해 제공 될 수 없어요.
-    noscript_html: 마스토돈을 사용하기 위해서는 자바스크립트를 켜 주세요. 아니면 <a href="%{apps_path}">네이티브
+    noscript_html: Mastodon을 사용하기 위해서는 자바스크립트를 켜 주세요. 아니면 <a href="%{apps_path}">네이티브
       앱</a> 중 하나를 사용할 수 있어요.
   existing_username_validator:
     not_found: 해당 사용자명에 대한 로컬 유저를 찾을 수 없어요
@@ -1698,7 +1698,7 @@ ko:
     unsubscribe:
       action: 네, 구독 취소해요
       complete: 구독 취소됨
-      confirmation_html: 정말로 %{domain}에서 %{email}로 보내는 마스토돈의 %{type}에 대한 구독을 취소하시겠어요?
+      confirmation_html: 정말로 %{domain}에서 %{email}로 보내는 Mastodon의 %{type}에 대한 구독을 취소하시겠어요?
         언제든지 <a href="%{settings_path}">이메일 알림 설정</a>에서 다시 구독할 수 있어요.
       emails:
         notification_emails:
@@ -1709,7 +1709,7 @@ ko:
           reblog: 부스트 알림 이메일
       resubscribe_html: 만약 실수로 구독 취소를 했다면 <a href="%{settings_path}">이메일 알림 설정</a>에서
         다시 구독할 수 있어요.
-      success_html: 이제 더이상 %{domain}의 마스토돈에서 %{email}로 %{type} 알림을 보내지 않아요.
+      success_html: 이제 더이상 %{domain}의 Mastodon에서 %{email}로 %{type} 알림을 보내지 않아요.
       title: 구독 취소
   media_attachments:
     validations:
@@ -1849,7 +1849,7 @@ ko:
     posting_defaults: 게시물 기본설정
     public_timelines: 공개 타임라인
   privacy:
-    hint_html: "<strong>내 프로필과 게시물이 어떻게 발견될지를 제어해요.</strong> 활성화 하면 마스토돈의 다양한 기능들이
+    hint_html: "<strong>내 프로필과 게시물이 어떻게 발견될지를 제어해요.</strong> 활성화 하면 Mastodon의 다양한 기능들이
       내가 더 많은 사람에게 도달할 수 있도록 도와줘요. 이 설정이 내 용도에 맞는지 잠시 검토하세요."
     privacy: 개인정보
     privacy_hint_html: 다른 이들을 위해 노출할 수 있는 정보의 양을 조절해요. 누군가는 다른 이들의 팔로우를 둘러보고 어떤 앱에서
@@ -1858,7 +1858,7 @@ ko:
     reach_hint_html: 새로운 사람들이 나를 발견하고 팔로우하도록 허용할지 여부를 제어해요. 둘러보기 화면에 게시물이 표시되기를 바라나요?
       다른 사람들의 팔로우 추천에 표시되기를 바라나요? 모든 새 팔로워를 자동으로 수락하거나 각 팔로워를 세세하게 제어할까요?
     search: 검색
-    search_hint_html: 내가 어떻게 발견될지를 제어해요. 내가 공개적으로 게시한 것들로 인해 사람들이 날 발견하길 원하나요? 마스토돈
+    search_hint_html: 내가 어떻게 발견될지를 제어해요. 내가 공개적으로 게시한 것들로 인해 사람들이 날 발견하길 원하나요? Mastodon
       바깥의 사람들이 웹에서 검색을 통해 내 프로필을 발견하길 원하나요? 공개적인 정보에 대해서 모든 검색엔진의 검색결과에서 제외하는 것은 보장할
       수 없다는 점에 주의해주세요.
     title: 개인정보와 도달
@@ -1870,7 +1870,7 @@ ko:
       unrecognized_emoji: 인식 되지 않은 에모지이에요
   redirects:
     prompt: 이 링크를 믿을 수 있다면, 클릭해서 계속하세요.
-    title: "%{instance}를 떠나려고 해요."
+    title: "%{instance}(을)를 떠나려고 해요."
   relationships:
     activity: 계정 활동
     confirm_follow_selected_followers: 정말로 선택된 팔로워들을 팔로우하시겠어요?
@@ -1921,14 +1921,14 @@ ko:
       electron: Electron
       firefox: Firefox
       generic: 알 수 없는 브라우저
-      huawei_browser: 화웨이 브라우저
+      huawei_browser: Hauwei Browser
       ie: Microsoft Internet Explorer
       micro_messenger: 마이크로메신저
       nokia: Nokia S40 Ovi 브라우저
       opera: Opera
       otter: Otter
       phantom_js: PhantomJS
-      qq: QQ 브라우저
+      qq: QQ Browser
       safari: Safari
       uc_browser: UC 브라우저
       unknown_browser: 알 수 없는 브라우저
@@ -1936,7 +1936,7 @@ ko:
     current_session: 현재 세션
     date: 날짜
     description: "%{platform}의 %{browser}"
-    explanation: 내 마스토돈 계정에 로그인되어 있는 웹 브라우저 목록이에요.
+    explanation: 내 Mastodon 계정에 로그인되어 있는 웹 브라우저 목록이에요.
     ip: IP
     platforms:
       adobe_air: Adobe Air
@@ -1962,7 +1962,7 @@ ko:
     aliases: 계정 별명
     appearance: 외관
     authorized_apps: 승인된 애플리케이션
-    back: 마스토돈으로 돌아가기
+    back: Mastodon으로 돌아가기
     delete: 계정 삭제
     development: 개발
     edit_profile: 프로필 편집
@@ -2034,9 +2034,9 @@ ko:
       direct: 개인 멘션
       private: 팔로워만
       public: 공개
-      public_long: 마스토돈 내외 모두
+      public_long: Mastodon 내외 모두
       unlisted: 조용한 공개
-      unlisted_long: 마스토돈 검색결과, 유행, 공개 타임라인에서 숨기기
+      unlisted_long: Mastodon 검색결과, 유행, 공개 타임라인에서 숨기기
   statuses_cleanup:
     enabled: 오래된 게시물 자동 삭제
     enabled_hint: 아래의 예외 목록에 해당하지 않는다면, 명시된 기한 이후 당신의 게시물을 자동으로 삭제해요
@@ -2091,9 +2091,9 @@ ko:
     review_link: 이용 약관 검토하기
     title: "%{domain} 도메인의 이용 약관에 변경 있음"
   themes:
-    contrast: 마스토돈 (고대비)
-    default: 마스토돈 (어두움)
-    mastodon-light: 마스토돈 (밝음)
+    contrast: Mastodon (고대비)
+    default: Mastodon (어두움)
+    mastodon-light: Mastodon (밝음)
     system: 자동 (시스템 테마 사용)
     maruburi-dark: 마루부리 (어두움)
     maruburi-light: 마루부리 (밝음)
@@ -2144,7 +2144,7 @@ ko:
       subtitle: 소명이 기각되었어요.
       title: 이의 제기가 거절되었어요.
     backup_ready:
-      explanation: 마스토돈 계정에 대한 전체 백업을 요청했어요
+      explanation: Mastodon 계정에 대한 전체 백업을 요청했어요
       extra: 내려받을 준비가 다 되었어요.
       subject: 아카이브를 다운로드할 수 있어요
       title: 아카이브 테이크아웃
@@ -2225,23 +2225,23 @@ ko:
       edit_profile_title: 프로필 꾸미기
       explanation: 시작하기 전에 몇가지 팁들을 준비했어요
       feature_action: 더 알아보기
-      feature_audience: 마스토돈은 중개자 없이 청중을 관리할 수 있는 특별한 가능성을 제공해요. 자체 인프라에 배포된 마스토돈을
-        사용하면 온라인에 있는 다른 마스토돈 서버에도 팔로우하거나 팔로우할 수 있으며, 본인 외에는 누구의 통제도 받지 않아요.
+      feature_audience: Mastodon은 중개자 없이 청중을 관리할 수 있는 특별한 가능성을 제공해요. 자체 인프라에 배포된 Mastodon을
+        사용하면 온라인에 있는 다른 Mastodon 서버에도 팔로우하거나 팔로우할 수 있으며, 본인 외에는 누구의 통제도 받지 않아요.
       feature_audience_title: 신뢰 있는 청중 구축
       feature_control: 내가 홈 피드에서 무엇을 보고 싶은지는 내가 제일 잘 알아요. 알고리즘이나 시간을 낭비하게 만드는 광고는
-        없어요. 계정 하나로 다른 마스토돈 서버에 있는 누구나 팔로우 하여 그들의 게시물을 시간순으로 받아보고 인터넷의 한 구석을 좀 더 나답게
+        없어요. 계정 하나로 다른 Mastodon 서버에 있는 누구나 팔로우 하여 그들의 게시물을 시간순으로 받아보고 인터넷의 한 구석을 좀 더 나답게
         만들어 보세요.
       feature_control_title: 내 타임라인에 대해 통제권을 유지하세요
-      feature_creativity: 마스토돈은 오디오, 비디오, 사진, 접근성 설명(alt),  투표, 콘텐츠 주의 (블라인드), 움직이는
+      feature_creativity: Mastodon은 오디오, 비디오, 사진, 접근성 설명(alt),  투표, 콘텐츠 주의 (블라인드), 움직이는
         아바타, 커스텀 이모티콘, 썸네일 자르기, 그리고 더 많은 것들을 당신이 온라인에서 당신을 더 잘 드러낼 수 있도록 돕기위해 지원해요.
-        당신이 그림이나 음악을 올리던, 팟캐스트 같은것을 진행하던 마스토돈이 함께해요.
+        당신이 그림이나 음악을 올리던, 팟캐스트 같은것을 진행하던 Mastodon이 함께해요.
       feature_creativity_title: 독보적인 창의성
-      feature_moderation: 마스토돈은 의사 결정권을 사용자에게 돌려줘요. 각 서버는 기업 소셜 미디어처럼 하향식이 아닌 로컬에서
+      feature_moderation: Mastodon은 의사 결정권을 사용자에게 돌려줘요. 각 서버는 기업 소셜 미디어처럼 하향식이 아닌 로컬에서
         시행되는 자체 규칙과 규정을 만들 수 있어 다양한 그룹의 요구에 가장 유연하게 대응할 수 있어요. 동의하는 규칙이 있는 서버에 가입하거나
         직접 서버를 호스팅하세요.
       feature_moderation_title: 올바른 중재
       follow_action: 팔로우
-      follow_step: 흥미로운 사람들을 팔로우하는 것이 마스토돈의 전부이에요.
+      follow_step: 흥미로운 사람들을 팔로우하는 것이 Mastodon의 전부이에요.
       follow_title: 내게 맞는 홈 피드 꾸미기
       follows_subtitle: 잘 알려진 계정들을 팔로우
       follows_title: 누구를 팔로우 할 지
@@ -2254,10 +2254,10 @@ ko:
       post_action: 작성
       post_step: 글, 사진, 영상, 또는 투표로 세상에 인사해보세요.
       post_title: 첫번째 게시물 쓰기
-      share_step: 친구에게 마스토돈에서 나를 찾을 수 있는 방법을 알려주세요.
-      share_title: 마스토돈 프로필을 공유하세요
+      share_step: 친구에게 Mastodon에서 나를 찾을 수 있는 방법을 알려주세요.
+      share_title: Mastodon 프로필을 공유하세요
       sign_in_action: 로그인
-      subject: 마스토돈에 오신 것을 환영해요
+      subject: Mastodon에 오신 것을 환영해요
       title: 환영해요 %{name} 님!
   users:
     follow_limit_reached: 당신은 %{limit}명의 사람을 넘어서 팔로우 할 수 없어요

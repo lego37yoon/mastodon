@@ -229,6 +229,21 @@ br:
       no_file: Restr ebet diuzet
     export_domain_blocks:
       no_file: Restr ebet diuzet
+    fasp:
+      debug:
+        callbacks:
+          delete: Dilemel
+          ip: Chomlec'h IP
+      providers:
+        active: Oberiant
+        delete: Dilemel
+        edit: Kemmañ ar pourvezer
+        name: Anv
+        registrations:
+          confirm: Kadarnaat
+        save: Enrollañ
+        sign_in: Kevreañ
+        status: Statud
     follow_recommendations:
       language: Evit ar yezh
       status: Statud
@@ -302,6 +317,7 @@ br:
       already_suspended_badges:
         local: Astalet endeo war ar servijer-mañ
       are_you_sure: Ha sur oc'h?
+      cancel: Nullañ
       comment:
         none: Hini ebet
       confirm: Kadarnaat
@@ -346,9 +362,15 @@ br:
         view_devops: DevOps
       title: Rolloù
     rules:
+      add_new: Ouzhpennañ ur reolenn
+      add_translation: Ouzhpennañ un droidigezh
       delete: Dilemel
       edit: Kemmañ ar reolenn
+      move_down: D'an traoñ
+      move_up: D'ar c'hrec'h
       title: Reolennoù ar servijer
+      translation: Troidigezh
+      translations: Troidigezhioù
     settings:
       about:
         manage_rules: Merañ reolennoù ar servijer
@@ -359,6 +381,7 @@ br:
       content_retention:
         danger_zone: Takad dañjer
       discovery:
+        privacy: Buhez prevez
         profile_directory: Kavlec'h ar profiloù
         publish_statistics: Embann ar stadegoù
         title: Dizoloadur
@@ -367,6 +390,9 @@ br:
         all: D'an holl dud
         disabled: Da zen ebet
         users: D'an implijerien·ezed lec'hel kevreet
+      landing_page:
+        values:
+          about: Diwar-benn
       title: Arventennoù ar servijer
     site_uploads:
       delete: Dilemel ar restr pellgaset
@@ -378,6 +404,7 @@ br:
       version: Handelv
     statuses:
       account: Aozer·ez
+      application: Arload
       batch:
         report: Disklêriañ
       deleted: Dilamet
@@ -386,11 +413,12 @@ br:
       media:
         title: Media
       metadata: Metaroadennoù
+      no_history: An toud-mañ n'eo ket bet kemmet
       open: Digeriñ ar c'hannad
       original_status: Toud orin
       reblogs: Skignadennoù
       status_changed: Toud kemmet
-      title: Embannadurioù ar gont
+      status_title: Embannadenn gant @%{name}
       trending: Diouzh ar c'hiz
       visibility: Gwelusted
       with_media: Gant mediaoù
@@ -418,8 +446,17 @@ br:
       upload_check_privacy_error_object_storage:
         action: Gwelet amañ evit kaout muioc'h a ditouroù
     tags:
+      name: Anv
       search: Klask
       title: Gerioù-klik
+    terms_of_service:
+      history: Roll-istor
+      preview:
+        send_preview: Kas ur rakwel da %{email}
+      publish: Embann
+      published_on_html: Embannet d'an %{date}
+      save_draft: Enrollañ ar brouilhed
+      title: Divizoù implijout
     title: Merañ
     trends:
       allow: Aotren
@@ -438,6 +475,11 @@ br:
         not_usable: N'haller ket en implijout
         title: Gerioù-klik diouzh ar c'hiz
       trending: Diouzh ar c'hiz
+    username_blocks:
+      add_new: Ouzhpennañ unan nevez
+      delete: Dilemel
+      new:
+        create: Krouiñ ur reolenn
     warning_presets:
       add_new: Ouzhpennañ unan nevez
       delete: Dilemel
@@ -504,6 +546,8 @@ br:
     rules:
       title_invited: Pedet oc'h bet.
     security: Diogelroez
+    sign_in:
+      title: Kevreañ ouzh %{domain}
     status:
       account_status: Statud ar gont
   challenge:
@@ -530,6 +574,7 @@ br:
       x_seconds: "%{count}eil"
   deletes:
     proceed: Dilemel ar gont
+    success_msg: Ho kont a zo bet dilamet gant berzh
   disputes:
     strikes:
       appeal: Ober engalv
@@ -542,6 +587,9 @@ br:
   edit_profile:
     basic_information: Titouroù diavaez
     other: All
+  emoji_styles:
+    auto: Emgefreek
+    twemoji: Twemoji
   exports:
     archive_takeout:
       date: Deiziad
@@ -576,6 +624,7 @@ br:
         title: Toudoù silet
   generic:
     all: Pep tra
+    cancel: Nullañ
     changes_saved_msg: Enrollet eo bet ar cheñchamantoù gant berzh!
     confirm: Kadarnaat
     copy: Eilañ
@@ -627,6 +676,10 @@ br:
     table:
       uses: Implijoù
     title: Pediñ tud
+  link_preview:
+    author_html: Gant %{name}
+    potentially_sensitive_content:
+      hide_button: Kuzhat
   login_activities:
     authentication_methods:
       password: ger-tremen
@@ -651,6 +704,10 @@ br:
       title: Heulier nevez
     mention:
       action: Respont
+    quote:
+      body: 'Meneget eo bet hoc''h embannadur gant %{name}:'
+      subject: Gant %{name} eo bet meneget hoc'h embannadur
+      title: Meneg nevez
     reblog:
       body: 'Skignet eo bet hoc''h embannadur gant %{name}:'
       subject: 'Gant %{name} eo bet skignet hoc''h embannadur '
@@ -730,10 +787,17 @@ br:
     platforms:
       adobe_air: Adobe Air
       android: Android
+      blackberry: BlackBerry
+      chrome_os: ChromeOS
+      firefox_os: Firefox OS
       ios: iOS
+      kai_os: KaiOS
       linux: Linux
       mac: macOS
+      unknown_platform: Savenn dianav
       windows: Windows
+      windows_mobile: Windows Mobile
+      windows_phone: Windows Phone
     revoke: Dizober
   settings:
     account: Kont
@@ -767,17 +831,23 @@ br:
         one: "%{count} skeudenn"
         other: "%{count} skeudenn"
         two: "%{count} skeudenn"
+    content_warnings:
+      show: Diskouez muioc'h
     edited_at_html: Kemmet d'an %{date}
+    errors:
+      quoted_status_not_found: War a seblant, n'eus ket eus an embannadenn emaoc'h o klask menegiñ.
     pin_errors:
       ownership: N'hallit ket spilhennañ embannadurioù ar re all
       reblog: N'haller ket spilhennañ ur skignadenn
+    quote_policies:
+      followers: Heulierien·ezed hepken
+      nobody: Me hepken
+      public: Pep hini
     title: '%{name}: "%{quote}"'
     visibilities:
-      direct: War-eeun
+      direct: Meneg prevez
       private: Heulierien·ezed hepken
       public: Publik
-      public_long: Pep hini a c'hall gwelet
-      unlisted: Anlistennet
   statuses_cleanup:
     keep_direct: Mirout ar c'hannadoù eeun
     keep_media: Derc'hel an embannadurioù gant restroù stag
@@ -796,6 +866,8 @@ br:
       '604800': 1 sizhunvezh
       '63113904': 2 vloavezh
       '7889238': 3 mizvezh
+  terms_of_service:
+    title: Divizoù implijout
   themes:
     contrast: Mastodon (Dargemm kreñv)
     default: Mastodon (Teñval)
@@ -820,6 +892,10 @@ br:
       subject: Prest eo ho tielloù da vezañ pellgarget
     suspicious_sign_in:
       change_password: kemmañ ho ker-tremen
+    terms_of_service_changed:
+      sign_off: Skipailh %{domain}
+      subject: Kemmoù en hon divizoù implijout
+      subtitle: Cheñchet o deus divizoù implijout %{domain}
     warning:
       categories:
         spam: Spam
@@ -849,7 +925,6 @@ br:
       hashtags_title: Gerioù-klik diouzh ar c'hiz
       hashtags_view_more: Gwelet muioc'h a c'herioù-klik diouzh ar c'hiz
       post_title: Grit hoc'h embannadur kentañ
-      share_action: Rannañ
       share_title: Rannit ho kont Mastodon
       sign_in_action: Kevreañ
       subject: Donemat e Mastodon
