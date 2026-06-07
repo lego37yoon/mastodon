@@ -13,6 +13,10 @@ import { autoPlayGif, reduceMotion } from '../initial_state';
 import { assetHost } from '../utils/config';
 
 import { AnimatedNumber } from './animated_number';
+import ReactionReactorListItem from './reaction_reacted_by_item';
+import { Icon } from './icon';
+import { Dropdown } from './dropdown_menu';
+import MoreHorizIcon from '@/material-icons/400-24px/more_horiz.svg?react';
 
 const StatusReactions = ({
   statusId,
@@ -108,28 +112,71 @@ class Reaction extends ImmutablePureComponent {
 
   render() {
     const { reaction } = this.props;
+    const reactedBy = reaction.get('reacted_by');
+    const reactedByList = Array.isArray(reactedBy)
+      ? reactedBy
+      : reactedBy?.toArray
+        ? reactedBy.toArray()
+        : [];
+    const hasReactedBy = reactedByList.length > 0;
 
     return (
-      <animated.button
-        type='button'
-        className={classNames('reactions-bar__item', { active: reaction.get('me') })}
-        onClick={this.handleClick}
-        onMouseEnter={this.handleMouseEnter}
-        onMouseLeave={this.handleMouseLeave}
-        style={this.props.style}
-      >
-        <span className='reactions-bar__item__emoji'>
-          <Emoji
-            hovered={this.state.hovered}
-            emoji={reaction.get('name')}
-            url={reaction.get('url')}
-            staticUrl={reaction.get('static_url')}
-          />
-        </span>
-        <span className='reactions-bar__item__count'>
-          <AnimatedNumber value={reaction.get('count')} />
-        </span>
-      </animated.button>
+      <div className={hasReactedBy ? 'reactions-bar__item--container' : undefined}>
+        <animated.button
+          type='button'
+          className={classNames(
+            'reactions-bar__item',
+            'reactions-bar__item--reaction',
+            {
+              active: reaction.get('me'),
+              'reactions-bar__item--with-reacted-by': hasReactedBy,
+            },
+          )}
+          onClick={this.handleClick}
+          onMouseEnter={this.handleMouseEnter}
+          onMouseLeave={this.handleMouseLeave}
+          style={this.props.style}
+        >
+          <span className='reactions-bar__item__emoji'>
+            <Emoji
+              hovered={this.state.hovered}
+              emoji={reaction.get('name')}
+              url={reaction.get('url')}
+              staticUrl={reaction.get('static_url')}
+            />
+          </span>
+          <span className='reactions-bar__item__count'>
+            <AnimatedNumber value={reaction.get('count')} />
+          </span>
+        </animated.button>
+
+        {hasReactedBy && (
+          <Dropdown
+            items={reactedByList}
+            forceDropdown
+            placement='top'
+            offset={[0, 4]}
+            scrollable={reactedByList.length > 4}
+            renderItem={(account, index, onItemClick) => (
+              <ReactionReactorListItem
+                reactorKey={account.get ? account.get('id') : account?.id}
+                account={account}
+                index={index}
+                onItemClick={onItemClick}
+              />
+            )}
+          >
+            <button
+              type='button'
+              className='reactions-bar__item reactions-bar__item--details'
+              title='Show reacted users'
+              aria-label='Show reacted users'
+            >
+              <Icon id='ellipsis-h' icon={MoreHorizIcon} />
+            </button>
+          </Dropdown>
+        )}
+      </div>
     );
   }
 

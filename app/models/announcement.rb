@@ -83,7 +83,7 @@ class Announcement < ApplicationRecord
 
   def reactions(account = nil)
     grouped_ordered_announcement_reactions.select(
-      [:name, :custom_emoji_id, 'COUNT(*) as count'].tap do |values|
+      [:announcement_id, :name, :custom_emoji_id, 'COUNT(*) as count'].tap do |values|
         values << value_for_reaction_me_column(account)
       end
     ).to_a.tap do |records|

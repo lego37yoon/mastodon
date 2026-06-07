@@ -8,6 +8,7 @@ class StatusReactionValidator < ActiveModel::Validator
   def validate(reaction)
     return if reaction.name.blank?
 
+    reaction.errors.add(:name, I18n.t('reactions.errors.unrecognized_emoji')) if reaction.custom_emoji.present? && reaction.custom_emoji.domain.present?
     reaction.errors.add(:name, I18n.t('reactions.errors.unrecognized_emoji')) if reaction.custom_emoji_id.blank? && !unicode_emoji?(reaction.name)
     reaction.errors.add(:base, I18n.t('reactions.errors.limit_reached')) if reaction.account.local? && new_reaction?(reaction) && limit_reached?(reaction)
   end

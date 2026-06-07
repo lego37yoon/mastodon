@@ -288,7 +288,7 @@ class Status < ApplicationRecord
 
   def reactions(account_id = nil)
     grouped_ordered_status_reactions.select(
-      [:name, :custom_emoji_id, 'COUNT(*) as count'].tap do |values|
+      [:status_id, :name, :custom_emoji_id, 'COUNT(*) as count'].tap do |values|
         values << value_for_reaction_me_column(account_id)
       end
     ).to_a.tap do |records|

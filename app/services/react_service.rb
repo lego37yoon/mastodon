@@ -7,8 +7,8 @@ class ReactService < BaseService
   def call(account, status, emoji)
     authorize_with account, status, :react?
 
-    name, domain = emoji.split('@')
-    return unless domain.nil? || status.local?
+    name, domain = emoji.split('@', 2)
+    return unless domain.nil?
 
     custom_emoji = CustomEmoji.find_by(shortcode: name, domain: domain)
     reaction = StatusReaction.find_by(account: account, status: status, name: name, custom_emoji: custom_emoji)

@@ -9112,6 +9112,32 @@ noscript {
     transition: all 100ms ease-in;
     transition-property: background-color, color;
 
+    &--container {
+      display: inline-flex;
+    }
+
+    &--reaction {
+      border-radius: 3px;
+    }
+
+    &--with-reacted-by {
+      border-radius: 3px 0 0 3px;
+    }
+
+    &--details {
+      margin-inline-start: 1px;
+      border-radius: 0 3px 3px 0;
+      padding-inline: 7px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      .icon {
+        width: 14px;
+        height: 14px;
+      }
+    }
+
     &__emoji {
       display: block;
       margin: 3px 0;
@@ -9159,6 +9185,38 @@ noscript {
     }
   }
 
+  &__reacted-by {
+    &__link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    &__avatar {
+      width: 18px;
+      height: 18px;
+      flex: 0 0 auto;
+
+      img {
+        border-radius: var(--avatar-border-radius);
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &__name {
+      font-size: 13px;
+      line-height: 18px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
   .emoji-picker-dropdown {
     display: flex;
     margin: 2px;
@@ -9195,6 +9253,20 @@ noscript {
   &--empty {
     .emoji-button {
       padding: 0;
+    }
+  }
+
+  &--container {
+    display: inline-flex;
+    align-items: center;
+    margin: 2px;
+
+    .reactions-bar__item {
+      margin: 0;
+    }
+
+    .reactions-bar__item--details {
+      margin-inline-start: 1px;
     }
   }
 }
