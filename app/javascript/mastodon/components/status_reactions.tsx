@@ -1,22 +1,46 @@
 import PropTypes from 'prop-types';
+import type { ComponentProps } from 'react';
 import { PureComponent, useMemo } from 'react';
 
 import classNames from 'classnames';
 
 import ImmutablePropTypes from 'react-immutable-proptypes';
-import ImmutablePureComponent from 'react-immutable-pure-component';
 
 import { animated, useTransition } from '@react-spring/web';
+
+import MoreHorizIcon from '@/material-icons/400-24px/more_horiz.svg?react';
 
 import { unicodeMapping } from '../features/emoji/emoji_unicode_mapping_light';
 import { autoPlayGif, reduceMotion } from '../initial_state';
 import { assetHost } from '../utils/config';
 
 import { AnimatedNumber } from './animated_number';
-import ReactionReactorListItem from './reaction_reacted_by_item';
-import { Icon } from './icon';
 import { Dropdown } from './dropdown_menu';
-import MoreHorizIcon from '@/material-icons/400-24px/more_horiz.svg?react';
+import { Icon } from './icon';
+import { ReactionReactorListItem } from './reaction_reacted_by_item';
+import {
+  getBoolean,
+  getReactedByList,
+  getReactionCount,
+  getReactionName,
+  getString,
+  getVisibleReactions,
+  toDisplayAccount,
+} from './status_reactions_helpers';
+import type {
+  ReactedByAccount,
+  Reaction as ReactionType,
+  Reactions,
+} from './status_reactions_types';
+
+interface StatusReactionsProps {
+  statusId: string;
+  reactions: Reactions;
+  numVisible?: number;
+  addReaction?: (statusId: string, name: string, url: string) => void;
+  canReact: boolean;
+  removeReaction?: (statusId: string, name: string) => void;
+}
 
 const StatusReactions = ({
   statusId,
@@ -25,18 +49,11 @@ const StatusReactions = ({
   addReaction,
   canReact,
   removeReaction,
-}) => {
-  const visibleReactions = useMemo(() => {
-    let visible = reactions
-      .filter(x => x.get('count') > 0)
-      .sort((a, b) => b.get('count') - a.get('count'));
-
-    if (numVisible >= 0) {
-      visible = visible.filter((_, i) => i < numVisible);
-    }
-
-    return visible.toArray();
-  }, [numVisible, reactions]);
+}: StatusReactionsProps) => {
+  const visibleReactions = useMemo(
+    () => getVisibleReactions(reactions, numVisible),
+    [numVisible, reactions],
+  );
 
   const transitions = useTransition(visibleReactions, {
     from: {
@@ -52,14 +69,18 @@ const StatusReactions = ({
       scale: 0,
     },
     immediate: reduceMotion,
-    keys: visibleReactions.map(x => x.get('name')),
+    keys: visibleReactions.map((reaction) => getReactionName(reaction)),
   });
 
   return (
-    <div className={classNames('reactions-bar', { 'reactions-bar--empty': visibleReactions.length === 0 })}>
+    <div
+      className={classNames('reactions-bar', {
+        'reactions-bar--empty': visibleReactions.length === 0,
+      })}
+    >
       {transitions(({ scale }, reaction) => (
         <Reaction
-          key={reaction.get('name')}
+          key={getReactionName(reaction)}
           statusId={statusId}
           reaction={reaction}
           style={{ transform: scale.to((s) => `scale(${s})`) }}
@@ -71,6 +92,7 @@ const StatusReactions = ({
     </div>
   );
 };
+
 StatusReactions.propTypes = {
   statusId: PropTypes.string.isRequired,
   reactions: ImmutablePropTypes.list.isRequired,
@@ -80,8 +102,20 @@ StatusReactions.propTypes = {
   removeReaction: PropTypes.func,
 };
 
-class Reaction extends ImmutablePureComponent {
+interface ReactionProps {
+  statusId: string;
+  reaction: ReactionType;
+  addReaction?: (statusId: string, name: string, url: string) => void;
+  removeReaction?: (statusId: string, name: string) => void;
+  canReact: boolean;
+  style?: ComponentProps<typeof animated.button>['style'];
+}
 
+interface ReactionState {
+  hovered: boolean;
+}
+
+class Reaction extends PureComponent<ReactionProps, ReactionState> {
   static propTypes = {
     statusId: PropTypes.string,
     reaction: ImmutablePropTypes.map.isRequired,
@@ -91,44 +125,63 @@ class Reaction extends ImmutablePureComponent {
     style: PropTypes.object,
   };
 
-  state = {
+  state: ReactionState = {
     hovered: false,
   };
 
   handleClick = () => {
-    const { reaction, statusId, addReaction, removeReaction, canReact } = this.props;
+    const { reaction, statusId, addReaction, removeReaction, canReact } =
+      this.props;
+
     if (!canReact) return;
 
-    if (reaction.get('me') && removeReaction) {
-      removeReaction(statusId, reaction.get('name'));
+    if (getBoolean(reaction, 'me') && removeReaction) {
+      removeReaction(statusId, getReactionName(reaction));
     } else if (addReaction) {
-      addReaction(statusId, reaction.get('name'));
+      addReaction(
+        statusId,
+        getReactionName(reaction),
+        getString(reaction, 'url') ?? '',
+      );
     }
   };
 
-  handleMouseEnter = () => this.setState({ hovered: true });
+  handleMouseEnter = () => {
+    this.setState({ hovered: true });
+  };
 
-  handleMouseLeave = () => this.setState({ hovered: false });
+  handleMouseLeave = () => {
+    this.setState({ hovered: false });
+  };
+
+  renderItem = (account: ReactedByAccount, index: number) => {
+    const displayAccount = toDisplayAccount(account);
+
+    return (
+      <ReactionReactorListItem
+        reactorKey={displayAccount.id}
+        account={displayAccount}
+        index={index}
+      />
+    );
+  };
 
   render() {
     const { reaction } = this.props;
-    const reactedBy = reaction.get('reacted_by');
-    const reactedByList = Array.isArray(reactedBy)
-      ? reactedBy
-      : reactedBy?.toArray
-        ? reactedBy.toArray()
-        : [];
+    const reactedByList = getReactedByList(reaction);
     const hasReactedBy = reactedByList.length > 0;
 
     return (
-      <div className={hasReactedBy ? 'reactions-bar__item--container' : undefined}>
+      <div
+        className={hasReactedBy ? 'reactions-bar__item--container' : undefined}
+      >
         <animated.button
           type='button'
           className={classNames(
             'reactions-bar__item',
             'reactions-bar__item--reaction',
             {
-              active: reaction.get('me'),
+              active: getBoolean(reaction, 'me'),
               'reactions-bar__item--with-reacted-by': hasReactedBy,
             },
           )}
@@ -140,31 +193,24 @@ class Reaction extends ImmutablePureComponent {
           <span className='reactions-bar__item__emoji'>
             <Emoji
               hovered={this.state.hovered}
-              emoji={reaction.get('name')}
-              url={reaction.get('url')}
-              staticUrl={reaction.get('static_url')}
+              emoji={getReactionName(reaction)}
+              url={getString(reaction, 'url')}
+              staticUrl={getString(reaction, 'static_url')}
             />
           </span>
           <span className='reactions-bar__item__count'>
-            <AnimatedNumber value={reaction.get('count')} />
+            <AnimatedNumber value={getReactionCount(reaction)} />
           </span>
         </animated.button>
 
         {hasReactedBy && (
-          <Dropdown
+          <Dropdown<ReactedByAccount>
             items={reactedByList}
             forceDropdown
             placement='top'
             offset={[0, 4]}
             scrollable={reactedByList.length > 4}
-            renderItem={(account, index, onItemClick) => (
-              <ReactionReactorListItem
-                reactorKey={account.get ? account.get('id') : account?.id}
-                account={account}
-                index={index}
-                onItemClick={onItemClick}
-              />
-            )}
+            renderItem={this.renderItem}
           >
             <button
               type='button'
@@ -179,11 +225,16 @@ class Reaction extends ImmutablePureComponent {
       </div>
     );
   }
-
 }
 
-class Emoji extends PureComponent {
+interface EmojiProps {
+  emoji: string;
+  hovered: boolean;
+  url?: string;
+  staticUrl?: string;
+}
 
+class Emoji extends PureComponent<EmojiProps> {
   static propTypes = {
     emoji: PropTypes.string.isRequired,
     hovered: PropTypes.bool.isRequired,
@@ -195,7 +246,7 @@ class Emoji extends PureComponent {
     const { emoji, hovered, url, staticUrl } = this.props;
 
     if (unicodeMapping[emoji]) {
-      const { filename, shortCode } = unicodeMapping[this.props.emoji];
+      const { filename, shortCode } = unicodeMapping[emoji];
       const title = shortCode ? `:${shortCode}:` : '';
 
       return (
@@ -208,7 +259,7 @@ class Emoji extends PureComponent {
         />
       );
     } else {
-      const filename = (autoPlayGif || hovered) ? url : staticUrl;
+      const filename = autoPlayGif || hovered ? url : staticUrl;
       const shortCode = `:${emoji}:`;
 
       return (
@@ -217,12 +268,11 @@ class Emoji extends PureComponent {
           className='emojione custom-emoji'
           alt={shortCode}
           title={shortCode}
-          src={filename}
+          src={filename ?? ''}
         />
       );
     }
   }
-
 }
 
 export default StatusReactions;

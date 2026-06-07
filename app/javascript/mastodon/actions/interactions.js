@@ -76,10 +76,15 @@ const getReactionAccountFromState = (state) => {
 
   return {
     id: account.get('id'),
-    nickname: account.get('display_name') || account.get('username'),
-    profile_url: account.get('url'),
-    avatar_url: account.get('avatar_static') || account.get('avatar'),
-    isCat: account.get('is_cat'),
+    username: account.get('username'),
+    acct: account.get('acct'),
+    display_name: account.get('display_name'),
+    display_name_html: account.get('display_name_html'),
+    url: account.get('url'),
+    avatar: account.get('avatar'),
+    avatar_static: account.get('avatar_static'),
+    emojis: account.get('emojis'),
+    is_cat: account.get('is_cat'),
   };
 };
 

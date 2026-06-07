@@ -57,7 +57,7 @@ export const DetailedStatus: React.FC<{
   pictureInPicture: any;
   onToggleHidden?: (status: any) => void;
   onToggleMediaVisibility?: () => void;
-  onReactionAdd?: (status: any, name: string, url: string) => void;
+  onReactionAdd?: (status: any, name: string) => void;
   onReactionRemove?: (status: any, name: string) => void;
   ancestors?: number;
   multiColumn?: boolean;

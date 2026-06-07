@@ -42,10 +42,15 @@ class REST::ReactionSerializer < ActiveModel::Serializer
       account = reaction.account
       {
         id: account.id.to_s,
-        nickname: account.display_name.presence || account.username,
-        profile_url: ActivityPub::TagManager.instance.url_for(account) || account.url,
-        avatar_url: full_asset_url(account.unavailable? ? account.avatar.default_url : account.avatar_static_url),
-        isCat: account.is_cat,
+        username: account.username,
+        acct: account.pretty_acct,
+        display_name: account.unavailable? ? '' : account.display_name,
+        display_name_html: ERB::Util.html_escape(account_display_name(account)).to_s,
+        url: ActivityPub::TagManager.instance.url_for(account) || ActivityPub::TagManager.instance.uri_for(account),
+        avatar: full_asset_url(account.unavailable? ? account.avatar.default_url : account.avatar_original_url),
+        avatar_static: full_asset_url(account.unavailable? ? account.avatar.default_url : account.avatar_static_url),
+        emojis: account.unavailable? ? [] : account.emojis.map { |emoji| serialized_emoji(emoji) },
+        is_cat: account.unavailable? ? false : account.is_cat,
       }
     end
   end
@@ -68,5 +73,18 @@ class REST::ReactionSerializer < ActiveModel::Serializer
         .includes(:account)
         .to_a
     end
+  end
+
+  def account_display_name(account)
+    account.display_name.presence || account.username
+  end
+
+  def serialized_emoji(emoji)
+    {
+      shortcode: emoji.shortcode,
+      url: full_asset_url(emoji.image.url),
+      static_url: full_asset_url(emoji.image.url(:static)),
+      visible_in_picker: emoji.visible_in_picker,
+    }
   end
 end

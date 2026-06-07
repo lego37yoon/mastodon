@@ -67,7 +67,7 @@ const updateReaction = (state, id, name, updater) => state.update(
       if (index > -1) {
         return reactions.update(index, reaction => updater(reaction));
       } else {
-        return reactions.push(updater(fromJS({ name, count: 0 })));
+        return reactions.push(updater(fromJS({ name, count: 0, reacted_by: [] })));
       }
     },
   ),
@@ -83,18 +83,18 @@ const addReaction = (state, id, name, url, account) => updateReaction(
   id,
   name,
   x => {
-    const reactedBy = x.get('reacted_by');
+    let reactedBy = x.get('reacted_by');
     const reactorId = getReactionId(account);
 
     if (reactorId != null && !reactedBy.some(current => `${getReactionId(current)}` === `${reactorId}`)) {
-      reactedBy.push(account);
+      reactedBy = reactedBy.push(account);
     }
 
     return x.set('me', true)
       .update('count', n => n + 1)
       .update('url', old => old ? old : url)
       .update('static_url', old => old ? old : url)
-      .set('reacted_by', fromJS(reactedBy));
+      .set('reacted_by', reactedBy);
   },
 );
 
