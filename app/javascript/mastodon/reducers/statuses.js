@@ -49,6 +49,15 @@ const deleteStatus = (state, id, references) => {
   return state.delete(id);
 };
 
+const getReactionId = (reactor) => {
+  if (!reactor) {
+    return null;
+  }
+
+  const reactorId = reactor.get ? reactor.get('id') : reactor.id;
+  return reactorId === undefined ? reactor : reactorId;
+};
+
 const updateReaction = (state, id, name, updater) => state.update(
   id,
   status => status.update(
@@ -69,21 +78,38 @@ const updateReactionCount = (state, reaction) => updateReaction(state, reaction.
 // The url parameter is only used when adding a new custom emoji reaction
 // (one that wasn't in the reactions list before) because we don't have its
 // URL yet.  In all other cases, it's undefined.
-const addReaction = (state, id, name, url) => updateReaction(
+const addReaction = (state, id, name, url, account) => updateReaction(
   state,
   id,
   name,
-  x => x.set('me', true)
-    .update('count', n => n + 1)
-    .update('url', old => old ? old : url)
-    .update('static_url', old => old ? old : url),
+  x => {
+    const reactedBy = x.get('reacted_by');
+    const reactorId = getReactionId(account);
+
+    if (reactorId != null && !reactedBy.some(current => `${getReactionId(current)}` === `${reactorId}`)) {
+      reactedBy.push(account);
+    }
+
+    return x.set('me', true)
+      .update('count', n => n + 1)
+      .update('url', old => old ? old : url)
+      .update('static_url', old => old ? old : url)
+      .set('reacted_by', fromJS(reactedBy));
+  },
 );
 
-const removeReaction = (state, id, name) => updateReaction(
+const removeReaction = (state, id, name, accountId) => updateReaction(
   state,
   id,
   name,
-  x => x.set('me', false).update('count', n => n - 1),
+  x => {
+    const reactorId = getReactionId(accountId);
+    const reactedBy = x.get('reacted_by');
+
+    return x.set('me', false)
+      .update('count', n => n - 1)
+      .set('reacted_by', fromJS(reactedBy.filter(current => `${getReactionId(current)}` !== `${reactorId}`)));
+  },
 );
 
 const statusTranslateSuccess = (state, id, translation) => {
@@ -168,10 +194,11 @@ export default function statuses(state = initialState, action) {
     return updateReactionCount(state, action.reaction);
   case REACTION_ADD_REQUEST:
   case REACTION_REMOVE_FAIL:
-    return addReaction(state, action.id, action.name, action.url);
+    return addReaction(state, action.id, action.name, action.url, action.account);
   case REACTION_REMOVE_REQUEST:
+    return removeReaction(state, action.id, action.name, action.accountId);
   case REACTION_ADD_FAIL:
-    return removeReaction(state, action.id, action.name);
+    return removeReaction(state, action.id, action.name, action.account?.id || action.accountId);
   case STATUS_MUTE_SUCCESS:
     return state.setIn([action.id, 'muted'], true);
   case STATUS_UNMUTE_SUCCESS:

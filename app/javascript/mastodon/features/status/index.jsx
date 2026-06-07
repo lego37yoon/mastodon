@@ -42,7 +42,8 @@ import {
   toggleReblog,
   pin,
   unpin,
-  addReaction
+  addReaction,
+  removeReaction,
 } from '../../actions/interactions';
 import { openModal } from '../../actions/modal';
 import { initMuteModal } from '../../actions/mutes';
@@ -258,6 +259,23 @@ class Status extends ImmutablePureComponent {
 
     if (signedIn) {
       dispatch(addReaction(statusId, name, url));
+    } else {
+      dispatch(openModal({
+        modalType: 'INTERACTION',
+        modalProps: {
+          accountId: this.props.status.getIn(['account', 'id']),
+          url: this.props.status.get('uri'),
+        },
+      }));
+    }
+  };
+
+  handleReactionRemove = (statusId, name) => {
+    const { dispatch } = this.props;
+    const { signedIn } = this.props.identity;
+
+    if (signedIn) {
+      dispatch(removeReaction(statusId, name));
     } else {
       dispatch(openModal({
         modalType: 'INTERACTION',
@@ -603,6 +621,8 @@ class Status extends ImmutablePureComponent {
                 <DetailedStatus
                   key={`details-${status.get('id')}`}
                   status={status}
+                  onReactionAdd={this.handleReactionAdd}
+                  onReactionRemove={this.handleReactionRemove}
                   onOpenVideo={this.handleOpenVideo}
                   onOpenMedia={this.handleOpenMedia}
                   onToggleHidden={this.handleToggleHidden}

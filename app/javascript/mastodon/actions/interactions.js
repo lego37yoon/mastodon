@@ -59,6 +59,30 @@ export const REACTION_REMOVE_FAIL    = 'REACTION_REMOVE_FAIL';
 
 export * from "./interactions_typed";
 
+const getReactionAccountFromState = (state) => {
+  const accountId = state?.meta?.get
+    ? state.meta.get('me')
+    : state?.getIn?.(['meta', 'me']);
+  if (!accountId) return null;
+
+  const accountLookupId = `${accountId}`;
+  const accounts = state?.get?.('accounts') || state?.accounts;
+
+  const account = accounts
+    ? (accounts.get?.(accountId) || accounts.get?.(accountLookupId))
+    : (state?.getIn?.(['accounts', accountId]) || state?.getIn?.(['accounts', accountLookupId]));
+
+  if (!account || !account.get) return null;
+
+  return {
+    id: account.get('id'),
+    nickname: account.get('display_name') || account.get('username'),
+    profile_url: account.get('url'),
+    avatar_url: account.get('avatar_static') || account.get('avatar'),
+    isCat: account.get('is_cat'),
+  };
+};
+
 export function favourite(status) {
   return function (dispatch) {
     dispatch(favouriteRequest(status));
@@ -503,7 +527,7 @@ export const addReaction = (statusId, name, url) => (dispatch, getState) => {
     }
   }
   if (!alreadyAdded) {
-    dispatch(addReactionRequest(statusId, name, url));
+    dispatch(addReactionRequest(statusId, name, url, getReactionAccountFromState(getState())));
   }
 
   // encodeURIComponent is required for the Keycap Number Sign emoji, see:
@@ -512,16 +536,17 @@ export const addReaction = (statusId, name, url) => (dispatch, getState) => {
     dispatch(addReactionSuccess(statusId, name));
   }).catch(err => {
     if (!alreadyAdded) {
-      dispatch(addReactionFail(statusId, name, err));
+      dispatch(addReactionFail(statusId, name, err, getReactionAccountFromState(getState())));
     }
   });
 };
 
-export const addReactionRequest = (statusId, name, url) => ({
+export const addReactionRequest = (statusId, name, url, account) => ({
   type: REACTION_ADD_REQUEST,
   id: statusId,
   name,
   url,
+  account,
 });
 
 export const addReactionSuccess = (statusId, name) => ({
@@ -530,27 +555,31 @@ export const addReactionSuccess = (statusId, name) => ({
   name,
 });
 
-export const addReactionFail = (statusId, name, error) => ({
+export const addReactionFail = (statusId, name, error, account) => ({
   type: REACTION_ADD_FAIL,
   id: statusId,
   name,
   error,
+  account,
 });
 
-export const removeReaction = (statusId, name) => (dispatch) => {
-  dispatch(removeReactionRequest(statusId, name));
+export const removeReaction = (statusId, name) => (dispatch, getState) => {
+  const accountId = getState().meta.get('me');
+
+  dispatch(removeReactionRequest(statusId, name, accountId));
 
   api().post(`/api/v1/statuses/${statusId}/unreact/${encodeURIComponent(name)}`).then(() => {
     dispatch(removeReactionSuccess(statusId, name));
   }).catch(err => {
-    dispatch(removeReactionFail(statusId, name, err));
+    dispatch(removeReactionFail(statusId, name, err, accountId));
   });
 };
 
-export const removeReactionRequest = (statusId, name) => ({
+export const removeReactionRequest = (statusId, name, accountId) => ({
   type: REACTION_REMOVE_REQUEST,
   id: statusId,
   name,
+  accountId,
 });
 
 export const removeReactionSuccess = (statusId, name) => ({
@@ -559,8 +588,10 @@ export const removeReactionSuccess = (statusId, name) => ({
   name,
 });
 
-export const removeReactionFail = (statusId, name) => ({
+export const removeReactionFail = (statusId, name, error, accountId) => ({
   type: REACTION_REMOVE_FAIL,
   id: statusId,
   name,
+  error,
+  accountId,
 });

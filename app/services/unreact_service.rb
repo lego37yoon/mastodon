@@ -5,10 +5,22 @@ class UnreactService < BaseService
 
   def call(account, status, emoji)
     name, domain = emoji.split('@', 2)
-    return if domain.present?
+    custom_emoji = if domain.present?
+                     CustomEmoji.find_by(shortcode: name, domain: domain)
+                   else
+                     CustomEmoji.find_by(shortcode: name, domain: nil)
+                   end
 
-    custom_emoji = CustomEmoji.find_by(shortcode: name, domain: domain)
-    reaction = StatusReaction.find_by(account: account, status: status, name: name, custom_emoji: custom_emoji)
+    reaction =
+      if domain.present?
+        return if custom_emoji.nil?
+
+        StatusReaction.find_by(account: account, status: status, name: name, custom_emoji: custom_emoji)
+      else
+        StatusReaction.find_by(account: account, status: status, name: name, custom_emoji: custom_emoji) ||
+          StatusReaction.find_by(account: account, status: status, name: name, custom_emoji: nil)
+      end
+
     return if reaction.nil?
 
     reaction.destroy!
