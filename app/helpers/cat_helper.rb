@@ -8,8 +8,38 @@ module CatHelper
   def nyaify(text)
     return text if text.blank?
 
-    text = text.to_s.dup
+    text = text.to_s
+    entities = Extractor.extract_urls_with_indices(text, extract_url_without_protocol: false)
+                        .concat(Extractor.extract_hashtags_with_indices(text))
 
+    return nyaify_text(text) if entities.empty?
+
+    tokenized_text = +''
+    last_index = 0
+    tokens = {}
+
+    entities.sort_by! { |entity| entity[:indices].first }
+
+    entities.each_with_index do |entity, index|
+      start_index, end_index = entity[:indices]
+      token = "__NYA_PRESERVE_TOKEN_#{index}__"
+
+      tokenized_text << text[last_index...start_index]
+      tokenized_text << token
+      tokens[token] = text[start_index...end_index]
+      last_index = end_index
+    end
+
+    tokenized_text << text[last_index..]
+
+    tokens.reduce(nyaify_text(tokenized_text)) do |memo, (token, raw_segment)|
+      memo.gsub(token, raw_segment)
+    end
+  end
+
+  private
+
+  def nyaify_text(text)
     # ja-JP
     text.gsub!('な', 'にゃ')
     text.gsub!('ナ', 'ニャ')
