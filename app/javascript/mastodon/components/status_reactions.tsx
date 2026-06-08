@@ -137,7 +137,7 @@ class Reaction extends PureComponent<ReactionProps, ReactionState> {
 
     if (getBoolean(reaction, 'me') && removeReaction) {
       removeReaction(statusId, getReactionName(reaction));
-    } else if (addReaction) {
+    } else if (addReaction && !getReactionName(reaction).includes('@')) {
       addReaction(
         statusId,
         getReactionName(reaction),

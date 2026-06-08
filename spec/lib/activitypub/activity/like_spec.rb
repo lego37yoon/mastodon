@@ -39,6 +39,7 @@ RSpec.describe ActivityPub::Activity::Like do
           tag: [
             {
               type: 'Emoji',
+              id: 'https://example.com/emojis/blobcat',
               name: ':blobcat:',
               icon: {
                 url: custom_emoji.image_remote_url,
@@ -63,6 +64,25 @@ RSpec.describe ActivityPub::Activity::Like do
         subject.perform
 
         expect(sender.favourited?(status)).to be false
+      end
+
+      context 'when the custom emoji belongs to another domain' do
+        let(:json) do
+          super().tap do |payload|
+            payload[:tag].first[:id] = 'https://other.example/emojis/blobcat'
+          end.with_indifferent_access
+        end
+
+        it 'does not create a status reaction with the custom emoji' do
+          expect { subject.perform }
+            .to_not change(StatusReaction, :count)
+        end
+
+        it 'creates a favourite instead' do
+          subject.perform
+
+          expect(sender.favourited?(status)).to be true
+        end
       end
     end
   end

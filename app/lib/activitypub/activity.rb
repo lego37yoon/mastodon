@@ -203,6 +203,7 @@ class ActivityPub::Activity
 
     custom_emoji_parser = ActivityPub::Parser::CustomEmojiParser.new(tag)
     return if custom_emoji_parser.shortcode.blank? || custom_emoji_parser.image_remote_url.blank? || !name.eql?(custom_emoji_parser.shortcode)
+    return unless emoji_tag_from_account_domain?(custom_emoji_parser)
 
     emoji = CustomEmoji.find_by(shortcode: custom_emoji_parser.shortcode, domain: @account.domain)
     return emoji unless emoji.nil? ||
@@ -220,5 +221,13 @@ class ActivityPub::Activity
       return
     end
     emoji
+  end
+
+  def emoji_tag_from_account_domain?(custom_emoji_parser)
+    origin_url = custom_emoji_parser.uri.presence || custom_emoji_parser.image_remote_url
+
+    Addressable::URI.parse(origin_url).normalized_host.casecmp(@account.domain).zero?
+  rescue Addressable::URI::InvalidURIError, NoMethodError, TypeError
+    false
   end
 end
