@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe ActivityPub::Activity::Like do
-  let(:sender)    { Fabricate(:account) }
+  let(:sender)    { Fabricate(:remote_account, domain: 'example.com') }
   let(:recipient) { Fabricate(:account) }
   let(:status)    { Fabricate(:status, account: recipient) }
 
@@ -20,12 +20,50 @@ RSpec.describe ActivityPub::Activity::Like do
   describe '#perform' do
     subject { described_class.new(json, sender) }
 
-    before do
-      subject.perform
+    context 'with a regular Like' do
+      before do
+        subject.perform
+      end
+
+      it 'creates a favourite from sender to status' do
+        expect(sender.favourited?(status)).to be true
+      end
     end
 
-    it 'creates a favourite from sender to status' do
-      expect(sender.favourited?(status)).to be true
+    context 'with a Misskey custom emoji reaction' do
+      let!(:custom_emoji) { Fabricate(:custom_emoji, domain: sender.domain, shortcode: 'blobcat', image_remote_url: 'https://example.com/emoji/blobcat.png') }
+      let(:json) do
+        super().merge(
+          content: ':blobcat:',
+          _misskey_reaction: ':blobcat:',
+          tag: [
+            {
+              type: 'Emoji',
+              name: ':blobcat:',
+              icon: {
+                url: custom_emoji.image_remote_url,
+              },
+            },
+          ]
+        ).with_indifferent_access
+      end
+
+      it 'creates a status reaction with the remote custom emoji' do
+        expect { subject.perform }
+          .to change(StatusReaction, :count).by(1)
+
+        expect(status.status_reactions.last).to have_attributes(
+          account: sender,
+          name: 'blobcat',
+          custom_emoji: custom_emoji
+        )
+      end
+
+      it 'does not create a favourite' do
+        subject.perform
+
+        expect(sender.favourited?(status)).to be false
+      end
     end
   end
 end
