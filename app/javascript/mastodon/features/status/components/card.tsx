@@ -13,7 +13,7 @@ import { Blurhash } from 'mastodon/components/blurhash';
 import { Icon } from 'mastodon/components/icon';
 import { MoreFromAuthor } from 'mastodon/components/more_from_author';
 import { RelativeTimestamp } from 'mastodon/components/relative_timestamp';
-import { useBlurhash } from 'mastodon/initial_state';
+import { displayMedia, useBlurhash } from 'mastodon/initial_state';
 import type { Card as CardType } from 'mastodon/models/status';
 
 const IDNA_PREFIX = 'xn--';
@@ -48,8 +48,10 @@ const handleIframeUrl = (html: string, url: string, providerName: string) => {
     iframeUrl.searchParams.set('autoplay', '1');
     iframeUrl.searchParams.set('auto_play', '1');
 
-    if (startTime && providerName === 'YouTube')
-      iframeUrl.searchParams.set('start', startTime);
+    if (providerName === 'YouTube') {
+      iframeUrl.searchParams.set('start', startTime ?? '');
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+    }
 
     iframe.src = iframeUrl.href;
 
@@ -60,6 +62,8 @@ const handleIframeUrl = (html: string, url: string, providerName: string) => {
 
   return html;
 };
+
+const hideAllMedia = displayMedia === 'hide_all';
 
 interface CardProps {
   card: CardType | null;
@@ -85,7 +89,7 @@ const CardVideo: React.FC<Pick<CardProps, 'card'>> = ({ card }) => (
 const Card: React.FC<CardProps> = ({ card, sensitive }) => {
   const [previewLoaded, setPreviewLoaded] = useState(false);
   const [embedded, setEmbedded] = useState(false);
-  const [revealed, setRevealed] = useState(!sensitive);
+  const [revealed, setRevealed] = useState(!sensitive && !hideAllMedia);
 
   const handleEmbedClick = useCallback(() => {
     setEmbedded(true);
@@ -116,7 +120,7 @@ const Card: React.FC<CardProps> = ({ card, sensitive }) => {
       ? decodeIDNA(getHostname(card.get('url')))
       : card.get('provider_name');
   const interactive = card.get('type') === 'video';
-  const language = card.get('language') || '';
+  const language = card.get('language') ?? '';
   const hasImage = (card.get('image')?.length ?? 0) > 0;
   const largeImage =
     (hasImage && card.get('width') > card.get('height')) || interactive;
@@ -129,7 +133,11 @@ const Card: React.FC<CardProps> = ({ card, sensitive }) => {
         {card.get('published_at') && (
           <>
             {' '}
-            · <RelativeTimestamp timestamp={card.get('published_at')} />
+            ·{' '}
+            <RelativeTimestamp
+              // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+              timestamp={card.get('published_at')!}
+            />
           </>
         )}
       </span>
@@ -277,6 +285,7 @@ const Card: React.FC<CardProps> = ({ card, sensitive }) => {
     embed = (
       <div className='status-card__image'>
         {canvas}
+        {revealed ? undefined : spoilerButton}
         {thumbnail}
       </div>
     );

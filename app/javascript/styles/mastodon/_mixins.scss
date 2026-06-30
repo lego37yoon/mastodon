@@ -2,7 +2,6 @@
 @use 'variables' as *;
 
 @mixin search-input {
-  outline: 0;
   box-sizing: border-box;
   width: 100%;
   box-shadow: none;
@@ -10,14 +9,18 @@
   background: var(--input-background-color);
   color: $darker-text-color;
   border-radius: 4px;
-  border: 1px solid var(--background-border-color);
+  border: 1px solid var(--color-border-primary);
   font-size: 17px;
   line-height: normal;
   margin: 0;
+  outline: var(--outline-focus-default);
+  outline-color: transparent;
+  outline-offset: -1px;
+  transition: outline-color 0.15s ease-out;
 }
 
 @mixin search-popout {
-  background: $simple-background-color;
+  background: var(--color-bg-primary);
   border-radius: 4px;
   padding: 10px 14px;
   padding-bottom: 14px;

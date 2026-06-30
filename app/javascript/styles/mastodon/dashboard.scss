@@ -31,7 +31,7 @@
       &:hover,
       &:focus,
       &:active {
-        background: $ui-base-color;
+        background: var(--color-bg-brand-softest);
       }
     }
   }
@@ -101,13 +101,13 @@
     }
 
     &.positive {
-      background: lighten($ui-base-color, 4%);
-      color: $valid-value-color;
+      background: var(--color-bg-success-softest);
+      color: var(--color-text-success);
     }
 
     &.negative {
-      background: lighten($ui-base-color, 4%);
-      color: $error-value-color;
+      background: var(--color-bg-error-softest);
+      color: var(--color-text-error);
     }
 
     span {

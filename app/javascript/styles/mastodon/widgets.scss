@@ -75,7 +75,7 @@
     }
 
     &.active .avatar-stack .account__avatar {
-      border-color: $ui-highlight-color;
+      border-color: var(--color-border-brand);
     }
 
     .trends__item__current {

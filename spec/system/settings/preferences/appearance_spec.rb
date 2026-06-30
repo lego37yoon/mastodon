@@ -18,7 +18,19 @@ RSpec.describe 'Admin::Settings::Appearance' do
     click_on submit_button
 
     expect(page)
-      .to have_content(success_message)
+      .to have_private_cache_control
+
+    check confirm_reblog_field
+    uncheck confirm_delete_field
+
+    check advanced_layout_field
+
+    expect { save_changes }
+      .to change { user.reload.settings['web.reblog_modal'] }.to(true)
+      .and change { user.reload.settings['web.delete_modal'] }.to(false)
+      .and(change { user.reload.settings['web.advanced_layout'] }.to(true))
+    expect(page)
+      .to have_title(I18n.t('settings.appearance'))
   end
 
   def custom_css_field

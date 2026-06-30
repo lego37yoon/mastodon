@@ -2,30 +2,51 @@
 
 class CreateCollectionService
   def call(params, account)
-    tag = params.delete(:tag)
-    account_ids = params.delete(:account_ids)
-    @collection = Collection.new(params.merge({ account:, local: true, tag: find_or_create_tag(tag) }))
-    build_items(account_ids)
+    @account = account
+    @accounts_to_add = Account.find(params.delete(:account_ids) || [])
+    @collection = Collection.new(params.merge({ account:, local: true }))
+    build_items
 
     @collection.save!
+
+    notify_local_users
+    distribute_add_activity
+    distribute_feature_request_activities
+
     @collection
   end
 
   private
 
-  def find_or_create_tag(name)
-    return nil if name.blank?
-
-    Tag.find_or_create_by_names(name).first
+  def distribute_add_activity
+    ActivityPub::CollectionRawDistributionWorker.perform_async(activity_json, @collection.id)
   end
 
-  def build_items(account_ids)
-    return if account_ids.blank?
-
-    account_ids.each do |account_id|
-      account = Account.find(account_id)
-      # TODO: validate preferences
-      @collection.collection_items.build(account:)
+  def distribute_feature_request_activities
+    @collection.collection_items.select(&:local_item_with_remote_account?).each do |collection_item|
+      ActivityPub::FeatureRequestWorker.perform_async(collection_item.id)
     end
+  end
+
+  def build_items
+    return if @accounts_to_add.empty?
+
+    @account.preload_relations!(@accounts_to_add.map(&:id))
+    @accounts_to_add.each do |account_to_add|
+      raise Mastodon::NotPermittedError, I18n.t('accounts.errors.cannot_be_added_to_collections') unless AccountPolicy.new(@account, account_to_add).feature?
+
+      state = account_to_add.local? ? :accepted : :pending
+      @collection.collection_items.build(account: account_to_add, state:)
+    end
+  end
+
+  def notify_local_users
+    @collection.collection_items.select(&:with_local_account?).each do |collection_item|
+      LocalNotificationWorker.perform_async(collection_item.account_id, collection_item.id, collection_item.class.name, 'added_to_collection')
+    end
+  end
+
+  def activity_json
+    ActiveModelSerializers::SerializableResource.new(@collection, serializer: ActivityPub::AddFeaturedCollectionSerializer, adapter: ActivityPub::Adapter).to_json
   end
 end

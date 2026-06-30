@@ -94,6 +94,9 @@ $backdrop-blur-filter: blur(10px) saturate(180%) contrast(75%) brightness(70%);
 // Language codes that uses CJK fonts
 $cjk-langs: ja, ko, zh-CN, zh-HK, zh-TW;
 
+// Language codes that is written vertically
+$vertical-lr-langs: mn-Mong;
+
 // Variables for components
 $media-modal-media-max-width: 100%;
 
@@ -108,8 +111,3 @@ $no-columns-breakpoint: 600px;
 $font-sans-serif: 'IBM Plex Sans KR', 'mastodon-font-sans-serif' !default;
 $font-display: 'mastodon-font-display' !default;
 $font-monospace: 'mastodon-font-monospace' !default;
-
-$emojis-requiring-inversion: 'back' 'copyright' 'curly_loop' 'currency_exchange'
-  'end' 'heavy_check_mark' 'heavy_division_sign' 'heavy_dollar_sign'
-  'heavy_minus_sign' 'heavy_multiplication_x' 'heavy_plus_sign' 'on'
-  'registered' 'soon' 'spider' 'telephone_receiver' 'tm' 'top' 'wavy_dash' !default;

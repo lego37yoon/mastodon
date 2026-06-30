@@ -3,11 +3,7 @@ fo:
   simple_form:
     hints:
       account:
-        attribution_domains_as_text: Eitt á hvørja reglu. Tað verjir fyri skeivum
-          tilsipingum.
-        discoverable: Tínir almennu postar og tín vangi kunnu vera drigin fram og
-          viðmæld ymsa staðni í Mastodon og vangin hjá tær kann vera viðmæltur øðrum
-          brúkarum.
+        attribution_domains: Eitt á hvørja reglu. Tað verjir fyri skeivum tilsipingum.
         display_name: Títt fulla navn og títt stuttliga navn.
         fields: Heimasíðan hjá tær, fornøvn, aldur ella hvat tú vil.
         indexable: Almennu postar tínir kunnu vera sjónligir í leitiúrslitum á Mastodon.
@@ -78,23 +74,19 @@ fo:
           seinni verður strikað
         locale: Málið, sum verður brúkt í brúkaramarkamótinum, teldupostum og skumpiboðum
         password: Skriva minst 8 tekin
-        phrase: Fer at samsvara óanæsð um tað er skrivað við lítlum ella stórum ella
-          um postar hava innihaldsávaringar
-        scopes: Hvørji API nýtsluskipanin fær atgongd til. Velur tú eitt vav á hægsta
-          stigi, so er ikki neyðugt at velja tey einstøku.
-        setting_aggregate_reblogs: Vís ikki nýggjar stimbranir fyri postar, sum nýliga
-          eru stimbraðir (ávirkar einans stimbranir, ið eru móttiknar fyri kortum)
-        setting_always_send_emails: Vanliga vera teldupostfráboðanir ikki sendar,
-          tá tú virkin brúkar Mastodon
-        setting_default_sensitive: Viðkvæmar miðlafílur eru fjaldar og kunnu avdúkast
-          við einum klikki
-        setting_display_media_default: Fjal miðlafílur, sum eru merktar sum viðkvæmar
-        setting_display_media_hide_all: Fjal altíð miðlafílur
-        setting_display_media_show_all: Vís altíð miðlafílur
-        setting_use_blurhash: Gradientar eru grundaðir á litirnar av fjaldu myndunum,
-          men grugga allar smálutir
-        setting_use_pending_items: Fjal tíðarlinjudagføringar aftan fyri eitt klikk
-          heldur enn at skrulla tilføringina sjálvvirkandi
+        phrase: Fer at samsvara óanæsð um tað er skrivað við lítlum ella stórum ella um postar hava innihaldsávaringar
+        scopes: Hvørji API nýtsluskipanin fær atgongd til. Velur tú eitt vav á hægsta stigi, so er ikki neyðugt at velja tey einstøku.
+        setting_advanced_layout: Vís Mastodon í fleiri teigum, soleiðis at tú sær tíðarlinju, fráboðanir og ein triðja teig, sum tú velur. Ikki viðmælt fyri smærri skermar.
+        setting_aggregate_reblogs: Vís ikki nýggjar stimbranir fyri postar, sum nýliga eru stimbraðir (ávirkar einans stimbranir, ið eru móttiknar fyri kortum)
+        setting_always_send_emails: Vanliga vera teldupostfráboðanir ikki sendar, tá tú virkin brúkar Mastodon
+        setting_boost_modal: Tá hetta er virkið opna stimbranir fyrst eitt váttanarvindeyga, har tú kanst broyta hvussu tín stimbran sæst.
+        setting_default_quote_policy_private: Postar, sum einans eru fyri fylgjarar á Mastodon, kunnu ikki siterast av øðrum.
+        setting_default_quote_policy_unlisted: Tá fólk sitera teg, so vera teirra postar eisini fjaldir frá tíðarlinjum við ráki.
+        setting_default_sensitive: Viðkvæmar miðlafílur eru fjaldar og kunnu avdúkast við einum klikki
+        setting_emoji_style: Hvussu kenslutekn vera víst. "Sjálvvirkandi" roynir at brúka upprunalig kenslutekn, men fellir aftur á Twitter kenslutekn í eldri kagum.
+        setting_quick_boosting_html: Tá hetta er virkið, hendir stimbranin beinanvegin tá trýst verður á %{boost_icon} Stimbranar-ímyndin, í staðin fyri at stimbranar/siterings-valmyndin verður latin um. Flytir siteringsmøguleikan til %{options_icon} (Valmøguleikar) valmyndina.
+        setting_use_blurhash: Gradientar eru grundaðir á litirnar av fjaldu myndunum, men grugga allar smálutir
+        setting_use_pending_items: Fjal tíðarlinjudagføringar aftan fyri eitt klikk heldur enn at skrulla tilføringina sjálvvirkandi
         username: Tú kanst brúka bókstavir, tøl og botnstrikur
         whole_word: Tá lyklaorðið ella frasan einans hevur bókstavir og tøl, so verður
           hon einans nýtt, um tú samsvarar við alt orðið
@@ -163,21 +155,12 @@ fo:
         site_terms: Brúka tín egna privatlívspolitikk ella lat vera blankt fyri at
           brúka tann sjálvsetta. Kann skrivast við Markdown syntaksi.
         site_title: Hvussu fólk kunnu vísa til ambætaran hjá tær útyvir at brúka navnaøkið.
-        status_page_url: Slóð til eina síðu, har ið fólk kunnu síggja støðuna á hesum
-          ambætaranum í sambandi við streymslit
-        theme: Uppsetingareyðkenni, sum vitjandi, ið ikki eru ritaði inn, og nýggir
-          brúkarar síggja.
-        thumbnail: Ein mynd í lutfallinum 2:1, sum verður víst saman við ambætaraupplýsingunum
-          hjá tær.
-        timeline_preview: Vitjandi, sum eru ritaði út, fara at kunna blaða ígjøgnum
-          nýggjastu almennu postarnar, sum eru tøkir á ambætaranum.
-        trendable_by_default: Loyp uppum serskilda eftirkannan av tilfari, sum er
-          vælumtókt. Einstakir lutir kunnu framvegis strikast frá listum við vælumtóktum
-          tilfari seinni.
-        trends: Listar við vælumtóktum tilfari vísa, hvørjir postar, frámerki og tíðindasøgur
-          hava framburð á tínum ambætara.
-        trends_as_landing_page: Vís vitjandi og brúkarum, sum ikki eru innritaðir,
-          rák í staðin fyri eina lýsing av ambætaranum. Krevur at rák eru virkin.
+        status_page_url: Slóð til eina síðu, har ið fólk kunnu síggja støðuna á hesum ambætaranum í sambandi við streymslit
+        theme: Uppsetingareyðkenni, sum vitjandi, ið ikki eru ritaði inn, og nýggir brúkarar síggja.
+        thumbnail: Ein mynd í lutfallinum 2:1, sum verður víst saman við ambætaraupplýsingunum hjá tær.
+        trendable_by_default: Loyp uppum serskilda eftirkannan av tilfari, sum er vælumtókt. Einstakir lutir kunnu framvegis strikast frá listum við vælumtóktum tilfari seinni.
+        trends: Listar við vælumtóktum tilfari vísa, hvørjir postar, frámerki og tíðindasøgur hava framburð á tínum ambætara.
+        wrapstodon: Bjóða lokalum brúkarum at gera ein stuttligan samandrátt av teirra Mastodon-nýtslu í árinum. Hendan funkan er tøk millum 10. og 31. desember hvørt ár og verður bjóðað brúkarum, ið hava gjørt í minsta lagi eitt alment ella stilt alment uppslag og hava nýtt í minsta lagi eitt frámerki í árinum.
       form_challenge:
         current_password: Tú ert á veg til eitt trygt øki
       imports:
@@ -214,8 +197,9 @@ fo:
         name: Tú kanst einans broyta millum stórar og smáar stavir, til dømis fyri
           at gera tað meira lesiligt
       user:
-        chosen_languages: Tá hetta er valt, verða einans postar í valdum málum vístir
-          á almennum tíðarlinjum
+        date_of_birth:
+          one: Vit mugu tryggja okkum, at tú er í minsta lagi %{count} fyri at brúka %{domain}. Vit goyma ikki hesar upplýsingar.
+          other: Vit mugu tryggja okkum, at tú er í minsta lagi %{count} ár fyri at brúka %{domain}. Vit goyma ikki hesar upplýsingar.
         role: Leikluturin stýrir hvørji rættindi, brúkarin hevur.
       user_role:
         color: Litur, sum leikluturin hevur í øllum brúkaramarkamótinum, sum RGB og
@@ -224,9 +208,12 @@ fo:
         name: Almenna navnið á leiklutinum, um leikluturin er settur at verða vístur
           sum eitt tignarmerki
         permissions_as_keys: Brúkarar við hesum leiklutinum fara at fáa atgongd til...
-        position: Hægri leiklutur er avgerandi fyri loysn av ósemjum í ávísum støðum.
-          Ávísar atgerðir kunnu einans verða gjørdar móti leiklutum, sum hava eina
-          lægri raðfesting
+        position: Hægri leiklutur er avgerandi fyri loysn av ósemjum í ávísum støðum. Ávísar atgerðir kunnu einans verða gjørdar móti leiklutum, sum hava eina lægri raðfesting
+        require_2fa: Krav verður sett til brúkarar við hesum leiklutinum at seta upp váttan í tveimum stigum fyri at brúka Mastodon
+      username_block:
+        allow_with_approval: Í staðin fyri at forða heilt fyri skráseting, fara samsvarandi skrásetingar at krevja, at tú góðkennir tær
+        comparison: Vinarliga gev Scunthorpe-trupulleikanum gætur, tá tú blokerar lutvís samsvar
+        username: Samsvar vera funnin óansæð stórar og smáar bókstavir og vanligar homoglyffir, sosum "4" fyri "a" og "3" fyri "e"
       webhook:
         events: Vel hendingar at senda
         template: Samanset títt egna JSON farm við at brúka variabul-interpolasjón.
@@ -234,8 +221,7 @@ fo:
         url: Hvar hendingar verða sendar til
     labels:
       account:
-        attribution_domains_as_text: Heimasíður, sum hava loyvi at sipa til tín
-        discoverable: Framheva vanga og postar í uppdagingar-algoritmum
+        attribution_domains: Heimasíður, sum hava loyvi at sipa til tín
         fields:
           name: Spjaldur
           value: Innihald
@@ -283,6 +269,7 @@ fo:
         email: Teldubrævabústaður
         expires_in: Endar aftan á
         fields: Metadátur hjá vanganum
+        filter_action: Filtrera atgerð
         header: Høvd
         honeypot: "%{label} (ikki fylla út)"
         inbox_url: URL'ur hjá innbakkanum hjá reiðlagnum
@@ -298,7 +285,9 @@ fo:
         setting_aggregate_reblogs: Bólka stimbranir í tíðarlinjum
         setting_always_send_emails: Send altíð fráboðanir við telduposti
         setting_auto_play_gif: Spæl teknimyndagjørdar GIFar sjálvvirkandi
-        setting_boost_modal: Vís váttanarmynd, áðrenn tú stimbrar postar
+        setting_boost_modal: Stýr hvussu stimbranir síggjast
+        setting_color_scheme: Litskipan
+        setting_contrast: Kontrastur
         setting_default_language: Mál, sum verður brúkt til postar
         setting_default_privacy: Hvussu privatir eru postar?
         setting_default_sensitive: Merk altíð miðlafílur sum viðkvæmar
@@ -365,7 +354,7 @@ fo:
           tíðarlinjur
         trendable_by_default: Loyv vælumtóktum tilfari uttan at viðgera tað fyrst
         trends: Loyv ráki
-        trends_as_landing_page: Brúka rák sum lendingarsíðu
+        wrapstodon: Ger Wrapstodon virkið
       interactions:
         must_be_follower: Blokera fráboðanum frá teimum, sum ikki fylgja tær
         must_be_following: Blokera fráboðanum frá teimum, tú ikki fylgir
@@ -419,6 +408,11 @@ fo:
         name: Navn
         permissions_as_keys: Loyvi
         position: Raðfesting
+        require_2fa: Krev váttan í tveimum stigum
+      username_block:
+        allow_with_approval: Loyv skrásetingum við góðkenning
+        comparison: Samanberingarmetoda
+        username: Orð, sum skal samsvara
       webhook:
         events: Virknar hendingar
         template: Farmaformur

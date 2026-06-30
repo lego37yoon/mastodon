@@ -14,7 +14,7 @@
     &:active,
     &:focus {
       .card__bar {
-        background: $ui-base-color;
+        background: var(--color-bg-brand-softest);
       }
     }
   }
@@ -206,8 +206,8 @@
 .simple_form .overridden,
 .simple_form .recommended,
 .simple_form .not_recommended {
-  background-color: color.change($ui-secondary-color, $alpha: 0.1);
-  border: 1px solid color.change($ui-secondary-color, $alpha: 0.5);
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-primary);
 }
 
 .account-role {
@@ -240,6 +240,14 @@
 
 .information-badge {
   &.superapp {
+    color: var(--color-text-success);
+    background-color: var(--color-bg-success-softest);
+    border-color: var(--color-border-success-soft);
+  }
+}
+
+.information-badge {
+  &.superapp {
     color: $success-green;
     background-color: color.change($success-green, $alpha: 0.1);
     border-color: color.change($success-green, $alpha: 0.5);
@@ -247,9 +255,9 @@
 }
 
 .simple_form .not_recommended {
-  color: lighten($error-red, 12%);
-  background-color: rgba(lighten($error-red, 12%), 0.1);
-  border-color: rgba(lighten($error-red, 12%), 0.5);
+  color: var(--color-text-error);
+  background-color: var(--color-bg-error-softest);
+  border-color: var(--color-border-error-soft);
 }
 
 .account__header__fields {

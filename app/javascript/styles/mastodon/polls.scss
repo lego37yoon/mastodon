@@ -87,7 +87,7 @@
       padding: 8px 12px;
 
       &:focus {
-        border-color: $ui-highlight-color;
+        border-color: var(--color-border-brand);
       }
 
       @media screen and (width <= 600px) {

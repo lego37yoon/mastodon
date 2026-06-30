@@ -3,9 +3,7 @@ fy:
   simple_form:
     hints:
       account:
-        attribution_domains_as_text: Ien per rigel. Beskermet tsjin falske attribúsjes.
-        discoverable: Jo iepenbiere berjochten kinne útljochte wurde op ferskate plakken
-          binnen Mastodon en jo account kin oanrekommandearre wurde oan oare brûkers.
+        attribution_domains: Ien per rigel. Beskermet tsjin falske attribúsjes.
         display_name: Jo folsleine namme of in aardige bynamme.
         fields: Jo website, persoanlike foarnammewurden, leeftiid, alles wat jo mar
           kwyt wolle.
@@ -85,22 +83,13 @@ fy:
         locale: De taal fan de brûkersomjouwing, e-mailberjochten en pushmeldingen
         password: Brûk op syn minst 8 tekens
         phrase: Komt oerien nettsjinsteande haad-/lytse letters of in ynhâldswarskôging
-        scopes: Ta hokker API’s hat de tapassing tagong. Wannear’t jo in tastimming
-          fan it boppeste nivo kieze, hoege jo gjin yndividuele tastimmingen mear
-          te kiezen.
-        setting_aggregate_reblogs: Gjin nije boosts toane foar berjochten dy’t resintlik
-          noch boost binne (hat allinnich effekt op nij ûntfongen boosts)
-        setting_always_send_emails: Normaliter wurde der gjin e-mailmeldingen ferstjoerd
-          wannear’t jo aktyf Mastodon brûke
-        setting_default_sensitive: Gefoelige media wurdt standert ferstoppe en kin
-          mei ien klik toand wurde
-        setting_display_media_default: As gefoelich markearre media ferstopje
-        setting_display_media_hide_all: Media altyd ferstopje
-        setting_display_media_show_all: Media altyd toane
-        setting_use_blurhash: Dizige kleuroergongen binne basearre op de kleuren fan
-          de ferstoppe media, wêrmei elk detail ferdwynt
-        setting_use_pending_items: De tiidline wurdt bywurke troch op it oantal nije
-          items te klikken, yn stee fan dat dizze automatysk bywurke wurdt
+        scopes: Ta hokker API’s hat de tapassing tagong. Wannear’t jo in tastimming fan it boppeste nivo kieze, hoege jo gjin yndividuele tastimmingen mear te kiezen.
+        setting_aggregate_reblogs: Gjin nije boosts toane foar berjochten dy’t resintlik noch boost binne (hat allinnich effekt op nij ûntfongen boosts)
+        setting_always_send_emails: Normaliter wurde der gjin e-mailmeldingen ferstjoerd wannear’t jo aktyf Mastodon brûke
+        setting_default_sensitive: Gefoelige media wurdt standert ferstoppe en kin mei ien klik toand wurde
+        setting_emoji_style: Wêrmei moatte emojis werjûn wurde. ‘Automatysk’ probearret de systeemeigen emojis te brûken, mar falt werom op Twemoji foar âldere browsers.
+        setting_use_blurhash: Dizige kleuroergongen binne basearre op de kleuren fan de ferstoppe media, wêrmei elk detail ferdwynt
+        setting_use_pending_items: De tiidline wurdt bywurke troch op it oantal nije items te klikken, yn stee fan dat dizze automatysk bywurke wurdt
         username: Jo kinne letters, sifers en ûnderstreekjes brûke
         whole_word: Wannear it trefwurd of part fan de sin alfanumeryk is, wurdt it
           allinnich filtere wannear’t it hiele wurd oerienkomt
@@ -222,8 +211,9 @@ fy:
         name: Jo kinne elk wurd mei in haadletter begjinne, om sa bygelyks de tekst
           mear lêsber te meitsjen
       user:
-        chosen_languages: Allinnich berjochten yn de selektearre talen wurde op de
-          iepenbiere tiidline toand
+        date_of_birth:
+          one: Wy moatte derfoar soargje dat jo op syn minst %{count} binne om %{domain} brûke te meien. Dit wurdt net bewarre.
+          other: Wy moatte derfoar soargje dat jo op syn minst %{count} binne om %{domain} brûke te meien. Dit wurdt net bewarre.
         role: De rol bepaalt hokker rjochten in brûker hat.
       user_role:
         color: Kleur dy’t brûkt wurdt foar de rol yn de UI, as RGB yn heksadesimaal
@@ -242,8 +232,7 @@ fy:
         url: Wêr’t eveneminten nei ta stjoerd wurde
     labels:
       account:
-        attribution_domains_as_text: Websites dy’t jo wurdearring jaan meie
-        discoverable: Profyl en bydragen yn sykalgoritmen opnimme litte
+        attribution_domains: Websites dy’t jo wurdearring jaan meie
         fields:
           name: Label
           value: Ynhâld

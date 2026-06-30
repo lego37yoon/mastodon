@@ -40,8 +40,8 @@
     color: $error-value-color;
   }
 
-  &:hover,
-  &:active {
+  &:not(:disabled):hover,
+  &:not(:disabled):active {
     text-decoration: underline;
   }
 
@@ -84,7 +84,7 @@
 }
 
 .button {
-  background-color: $ui-button-background-color;
+  background-color: var(--color-bg-brand-base);
   border: 10px none;
   border-radius: 4px;
   box-sizing: border-box;
@@ -100,7 +100,7 @@
   letter-spacing: 0;
   line-height: 22px;
   overflow: hidden;
-  padding: 7px 18px;
+  padding: 6px 17px;
   position: relative;
   text-align: center;
   text-decoration: none;
@@ -115,7 +115,8 @@
   }
 
   &:focus-visible {
-    outline: $ui-button-icon-focus-outline;
+    outline: var(--outline-focus-default);
+    outline-offset: 2px;
   }
 
   &--compact {
@@ -165,14 +166,13 @@
   &.button-secondary {
     color: $highlight-text-color;
     background: transparent;
-    padding: 6px 17px;
-    border: 1px solid $highlight-text-color;
+    border-color: var(--color-border-brand);
 
     &:active,
     &:focus,
     &:hover {
-      border-color: lighten($highlight-text-color, 4%);
-      color: lighten($highlight-text-color, 4%);
+      border-color: var(--color-border-brand);
+      color: var(--color-text-brand);
       background-color: transparent;
       text-decoration: none;
     }
@@ -181,8 +181,8 @@
       &:active,
       &:focus,
       &:hover {
-        border-color: $ui-button-destructive-focus-background-color;
-        color: $ui-button-destructive-focus-background-color;
+        border-color: var(--color-border-error);
+        color: var(--color-text-error);
       }
     }
 
@@ -210,7 +210,11 @@
     // visually align its label with its surroundings while maintaining
     // a generous click target
     margin-inline: -6px;
-    border: 1px solid transparent;
+
+    &.button--compact {
+      padding: 5px;
+      margin-inline: -5px;
+    }
 
     &:active,
     &:focus,
@@ -317,12 +321,18 @@
   height: 24px;
   aspect-ratio: 1;
 
-  path {
+  &:not(.icon--no-fill) path {
     fill: currentColor;
   }
 }
 
 .icon-button {
+  --default-icon-color: var(--color-text-secondary);
+  --default-bg-color: transparent;
+  --hover-icon-color: var(--color-text-primary);
+  --hover-bg-color: var(--color-bg-brand-softest);
+  --focus-outline-color: var(--color-border-brand);
+
   display: inline-flex;
   color: $action-button-color;
   border: 0;
@@ -350,7 +360,7 @@
   }
 
   &:focus-visible {
-    outline: $ui-button-icon-focus-outline;
+    outline: 2px solid var(--focus-outline-color);
   }
 
   &.disabled {
@@ -426,7 +436,8 @@
     border-color: $valid-value-color;
     color: $valid-value-color;
     transition: none;
-    background-color: color.change($valid-value-color, $alpha: 0.15);
+    background-color: var(--color-bg-success-softest);
+    border-color: var(--color-border-success-soft);
   }
 }
 
@@ -514,8 +525,8 @@
 
   &__suggestions {
     box-shadow: var(--dropdown-shadow);
-    background: var(--input-background-color);
-    border: 1px solid var(--background-border-color);
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border-primary);
     border-radius: 0 0 4px 4px;
     color: var(--on-input-color);
     font-size: 14px;
@@ -639,21 +650,23 @@
     flex-direction: column;
     flex: 0 1 auto;
     border-radius: 4px;
-    border: 1px solid var(--background-border-color);
-    transition: border-color 300ms linear;
+    border: 1px solid var(--color-border-primary);
     position: relative;
-    background: var(--input-background-color);
+    background: var(--color-bg-secondary);
+    outline: var(--outline-focus-default);
+    outline-color: transparent;
+    outline-offset: -1px;
+    transition: outline-color 0.15s ease-out;
 
-    &.active {
-      transition: none;
-      border-color: $ui-highlight-color;
+    &:has(textarea:focus) {
+      outline-color: var(--color-border-brand);
     }
   }
 
   &__warning {
-    color: $inverted-text-color;
-    background: $ui-primary-color;
-    box-shadow: 0 2px 6px color.change($base-shadow-color, $alpha: 0.3);
+    color: var(--color-text-primary);
+    background: var(--color-bg-warning-softest);
+    border: 1px solid var(--color-border-warning-soft);
     padding: 8px 10px;
     border-radius: 4px;
     font-size: 13px;
@@ -695,8 +708,15 @@
 
     .autosuggest-input {
       flex: 1 1 auto;
-      border: 1px solid var(--background-border-color);
-      border-width: 1px 0;
+      border-block: 1px solid var(--color-border-primary);
+      padding-block: 1px;
+      transition: border-color 0.15s ease-out;
+
+      &:focus-within {
+        padding-block: 0;
+        border-color: var(--color-border-brand);
+        border-block-width: 2px;
+      }
     }
   }
 
@@ -705,6 +725,7 @@
     display: block;
     box-sizing: border-box;
     width: 100%;
+    max-height: 300px;
     margin: 0;
     color: $secondary-text-color;
     background: var(--input-background-color);
@@ -721,9 +742,9 @@
   }
 
   .spoiler-input__input {
-    padding: 12px 12px - 5px;
-    background: color.change($ui-highlight-color, $alpha: 0.05);
-    color: $highlight-text-color;
+    padding: 11px 7px;
+    background: var(--color-bg-brand-softest);
+    color: var(--color-text-brand);
   }
 
   &__dropdowns {
@@ -732,11 +753,6 @@
     gap: 8px;
     margin: 8px;
     flex-wrap: wrap;
-
-    & > div {
-      overflow: hidden;
-      display: flex;
-    }
   }
 
   &__uploads {
@@ -875,7 +891,6 @@
     align-items: center;
     flex: 1 1 auto;
     max-width: 100%;
-    overflow: hidden;
   }
 
   &__buttons {
@@ -993,8 +1008,8 @@
         font-weight: 500;
         line-height: 20px;
         letter-spacing: 0.1px;
-        color: $highlight-text-color;
-        background-color: var(--input-background-color);
+        color: var(--color-text-brand);
+        background-color: var(--color-bg-secondary);
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
@@ -1026,7 +1041,7 @@
   align-items: center;
   gap: 4px;
   background: transparent;
-  color: $highlight-text-color;
+  border: 1px solid var(--color-border-brand);
   border-radius: 6px;
   border: 1px solid $highlight-text-color;
   padding: 4px 8px;
@@ -1036,6 +1051,11 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+
+  &:focus-visible {
+    outline: var(--outline-focus-default);
+    outline-offset: 2px;
+  }
 
   &[disabled] {
     cursor: default;
@@ -1153,6 +1173,7 @@
   font-weight: 400;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-autospace: normal;
   font-size: 15px;
   line-height: 22px;
   padding-top: 2px;
@@ -1187,20 +1208,36 @@
   }
 
   a {
-    color: $secondary-text-color;
-    text-decoration: none;
+    --text-decoration-default: none;
+    --text-decoration-hover: underline;
+
+    [data-contrast='high'] & {
+      --text-decoration-default: underline;
+      --text-decoration-hover: none;
+    }
+
+    color: var(--color-text-status-links);
+    text-decoration: var(--text-decoration-default);
     unicode-bidi: isolate;
 
-    &:hover {
-      text-decoration: underline;
+    &:hover,
+    &:focus,
+    &:active {
+      text-decoration: var(--text-decoration-hover);
     }
 
     &.mention {
-      &:hover {
-        text-decoration: none;
+      text-decoration: none;
 
+      span {
+        text-decoration: var(--text-decoration-default);
+      }
+
+      &:hover,
+      &:focus,
+      &:active {
         span {
-          text-decoration: underline;
+          text-decoration: var(--text-decoration-hover);
         }
       }
     }
@@ -1432,6 +1469,55 @@
   }
 }
 
+@each $lang in $vertical-lr-langs {
+  // writing-mode and width must be applied to a single element. When
+  // this element inherits a text direction that is opposite to its own,
+  // the start of this element's text is cut off.
+
+  // Posts on the timeline
+  .status:not(.status--is-quote)
+    > .status__content
+    > .status__content__text:lang(#{$lang}),
+  .conversation
+    > .conversation__content
+    > .status__content
+    > .status__content__text:lang(#{$lang}) {
+    writing-mode: vertical-lr;
+    width: 100%; // detecting overflow
+    max-width: calc(100% - mod(100%, 22px)); // avoid cut-offs
+    max-height: 209px; // roughly above 500 characters, readable
+    overflow-x: hidden; // read more
+  }
+
+  // Post editor
+  .autosuggest-textarea > .autosuggest-textarea__textarea:lang(#{$lang}) {
+    writing-mode: vertical-lr;
+    min-height: 209px; // writable
+    max-height: 209px; // suppress autosizing by react-textarea-autosize
+    overflow-x: auto;
+    scrollbar-color: unset;
+  }
+
+  // Alt text editor
+  .dialog-modal__content__form
+    > .input
+    > .label_input
+    > textarea#description:lang(#{$lang}) {
+    writing-mode: vertical-lr;
+    min-height: 150px; // writable
+    max-height: 150px; // suppress autosizing by react-textarea-autosize
+    overflow-x: auto;
+  }
+
+  // Detailed posts
+  .detailed-status > .status__content > .status__content__text:lang(#{$lang}) {
+    writing-mode: vertical-lr;
+    width: 100%; // detecting overflow
+    max-height: 50vh;
+    overflow-x: auto;
+  }
+}
+
 .status__content.status__content--collapsed {
   max-height: 22px * 15; // 15 lines is roughly above 500 characters
 }
@@ -1460,6 +1546,15 @@
   &:hover,
   &:active {
     text-decoration: underline;
+  }
+
+  [data-contrast='high'] & {
+    text-decoration: underline;
+
+    &:hover,
+    &:active {
+      text-decoration: none;
+    }
   }
 
   .icon {
@@ -1508,9 +1603,9 @@
 
 .focusable {
   &:focus-visible {
-    outline: 2px solid $ui-button-focus-outline-color;
+    outline: 2px solid var(--color-border-brand);
     outline-offset: -2px;
-    background: color.change($ui-highlight-color, $alpha: 0.05);
+    background: var(--color-bg-brand-softest);
   }
 }
 
@@ -1543,8 +1638,9 @@
   .media-gallery,
   .video-player,
   .audio-player,
-  .attachment-list {
-    margin-top: 16px;
+  .attachment-list,
+  .collection-preview {
+    margin-top: 14px;
   }
 
   &--in-thread {
@@ -1561,6 +1657,7 @@
     & > .picture-in-picture-placeholder,
     & > .more-from-author,
     & > .status-card,
+    & > .collection-preview,
     & > .hashtag-bar,
     & > .content-warning,
     & > .filter-warning,
@@ -1629,7 +1726,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: rgb(from $ui-highlight-color r g b / 20%);
+    background: var(--color-bg-brand-softest);
     opacity: 0;
     animation: fade 0.7s reverse both 0.3s;
     pointer-events: none;
@@ -1641,7 +1738,6 @@
   font-size: 15px;
   line-height: 22px;
   height: 40px;
-  order: 2;
   flex: 0 0 auto;
   color: $dark-text-color;
 }
@@ -1694,7 +1790,6 @@
 
 .status__quote-cancel {
   align-self: self-start;
-  order: 5;
 }
 
 .status__info {
@@ -1716,7 +1811,7 @@
   .detailed-status__display-name {
     color: $dark-text-color;
 
-    span {
+    span:not(.account__avatar) {
       display: inline;
     }
 
@@ -1781,7 +1876,7 @@
 .notification-ungrouped--direct,
 .notification-group--direct,
 .notification-group--annual-report {
-  background: color.change($ui-highlight-color, $alpha: 0.05);
+  background: var(--color-bg-brand-softest);
 
   &:focus {
     background: color.change($ui-highlight-color, $alpha: 0.1);
@@ -1829,7 +1924,8 @@
 
   .media-gallery,
   .video-player,
-  .audio-player {
+  .audio-player,
+  .collection-preview {
     margin-top: 16px;
   }
 
@@ -1919,26 +2015,7 @@
 .detailed-status__wrapper-direct {
   .detailed-status,
   .detailed-status__action-bar {
-    background: color.mix($ui-base-color, $ui-highlight-color, 95%);
-  }
-
-  &:focus-visible {
-    .detailed-status,
-    .detailed-status__action-bar {
-      background: color.mix(
-        lighten($ui-base-color, 4%),
-        $ui-highlight-color,
-        95%
-      );
-    }
-  }
-
-  .detailed-status__action-bar {
-    border-top-color: color.mix(
-      lighten($ui-base-color, 8%),
-      $ui-highlight-color,
-      95%
-    );
+    background: var(--color-bg-brand-softest);
   }
 
   .status__prepend {
@@ -1991,8 +2068,8 @@
   font-weight: 400;
   line-height: 20px;
   letter-spacing: 0.25px;
-  color: $darker-text-color;
-  background: var(--surface-variant-background-color);
+  color: var(--color-text-secondary);
+  background: var(--color-bg-brand-softest);
   border-radius: 8px;
   cursor: default;
 }
@@ -2071,18 +2148,31 @@
 }
 
 .account {
-  padding: 16px;
-  border-bottom: 1px solid var(--background-border-color);
+  --account-outer-spacing: 16px;
+  --account-name-color: var(--color-text-primary);
+  --account-name-size: 14px;
+  --account-handle-color: var(--color-text-secondary);
+  --account-handle-size: 14px;
+  --account-bio-color: var(--color-text-secondary);
+  --account-bio-size: 14px;
+
+  padding: var(--account-outer-spacing);
+
+  // Using :where keeps specificity low, allowing for existing
+  // .account overrides to still apply
+  &:where(:not(&--without-border)) {
+    border-bottom: 1px solid var(--color-border-primary);
+  }
 
   .account__display-name {
     flex: 1 1 auto;
     display: flex;
     align-items: center;
     gap: 10px;
-    color: $darker-text-color;
+    color: var(--account-handle-color);
     overflow: hidden;
     text-decoration: none;
-    font-size: 14px;
+    font-size: var(--account-handle-size);
 
     .display-name {
       margin-bottom: 4px;
@@ -2090,6 +2180,8 @@
 
     .display-name strong {
       display: inline;
+      font-size: var(--account-name-size);
+      color: var(--account-name-color);
     }
   }
 
@@ -2114,7 +2206,7 @@
 
   &__domain-pill {
     display: inline-flex;
-    background: color.change($highlight-text-color, $alpha: 0.2);
+    background: var(--color-bg-brand-softest);
     border-radius: 4px;
     border: 0;
     color: $highlight-text-color;
@@ -2129,7 +2221,7 @@
     }
 
     &__popout {
-      background: var(--dropdown-background-color);
+      background: var(--color-bg-primary);
       backdrop-filter: $backdrop-blur-filter;
       border: 1px solid var(--dropdown-border-color);
       box-shadow: var(--dropdown-shadow);
@@ -2174,8 +2266,8 @@
       }
 
       &__handle {
-        border: 2px dashed $highlight-text-color;
-        background: color.change($highlight-text-color, $alpha: 0.1);
+        border: 2px dashed var(--color-border-on-brand-softer);
+        background: var(--color-bg-brand-softest);
         padding: 12px 8px;
         color: $highlight-text-color;
         border-radius: 4px;
@@ -2227,7 +2319,7 @@
   }
 
   &__note {
-    font-size: 14px;
+    font-size: var(--account-bio-size);
     font-weight: 400;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -2236,7 +2328,7 @@
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     margin-top: 10px;
-    color: $darker-text-color;
+    color: var(--account-bio-color);
 
     &--missing {
       color: $dark-text-color;
@@ -2525,7 +2617,7 @@ a.account__display-name {
   overflow: hidden;
 
   strong,
-  span {
+  span:not(.emojione) {
     display: block;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -2789,6 +2881,7 @@ a.account__display-name {
       font-size: 14px;
       line-height: 20px;
       font-weight: 500;
+      outline-offset: 0;
 
       .display-name__account {
         font-size: 14px;
@@ -2842,7 +2935,7 @@ a.account__display-name {
 }
 
 .dropdown-menu {
-  background: var(--dropdown-background-color);
+  background: var(--color-bg-primary);
   backdrop-filter: $backdrop-blur-filter;
   border: 1px solid var(--dropdown-border-color);
   padding: 4px;
@@ -2941,6 +3034,7 @@ a.account__display-name {
   }
 
   &-subtitle {
+    color: var(--color-text-tertiary);
     font-weight: 400;
   }
 
@@ -2965,10 +3059,14 @@ a.account__display-name {
     &:focus,
     &:hover,
     &:active {
-      &:not(:disabled, [aria-disabled='true']) {
-        background: var(--dropdown-border-color);
+      &:where(:not(:disabled, [aria-disabled='true'])) {
+        background: var(--color-bg-brand-softest);
         outline: 0;
       }
+    }
+
+    &:focus-visible {
+      outline: var(--outline-focus-default);
     }
   }
 
@@ -2978,10 +3076,14 @@ a.account__display-name {
     cursor: default;
 
     &:focus {
-      color: rgb(from $dark-text-color r g b / 70%);
-      background: var(--dropdown-border-color);
+      color: var(--color-text-on-disabled);
+      background: var(--color-bg-disabled);
       outline: 0;
     }
+  }
+
+  button:is(:disabled, [aria-disabled='true']) &-subtitle {
+    color: inherit;
   }
 }
 
@@ -3032,7 +3134,6 @@ a.account__display-name {
 
     &__pane {
       height: 100%;
-      overflow: hidden;
       display: flex;
       justify-content: flex-end;
       min-width: 285px;
@@ -3049,8 +3150,6 @@ a.account__display-name {
     }
 
     &__main {
-      --column-header-height: 62px;
-
       box-sizing: border-box;
       width: 100%;
       flex: 0 1 auto;
@@ -3129,7 +3228,7 @@ a.account__display-name {
     }
 
     &:focus-visible {
-      border-top-color: $ui-button-focus-outline-color;
+      border-top-color: var(--color-border-brand);
       border-radius: 0;
     }
   }
@@ -3144,7 +3243,7 @@ a.account__display-name {
   padding-top: 0;
 
   @media screen and (min-width: $no-gap-breakpoint) {
-    padding-top: 10px;
+    border-top: 10px solid var(--color-bg-primary);
   }
 }
 
@@ -3403,8 +3502,7 @@ a.account__display-name {
 
     .column-header,
     .column-back-button,
-    .scrollable,
-    .error-column {
+    .scrollable {
       border-radius: 0 !important;
     }
 
@@ -3605,6 +3703,8 @@ a.account__display-name {
   text-align: center;
   padding-bottom: 32px;
 
+  h1,
+  h2,
   h3 {
     font-size: 24px;
     line-height: 1.5;
@@ -3642,7 +3742,7 @@ a.account__display-name {
   &.focused {
     transition: none;
     outline: 0;
-    border-color: $highlight-text-color;
+    border-color: var(--color-border-brand);
   }
 
   &.copied {
@@ -3692,7 +3792,11 @@ a.account__display-name {
 
 .compose-panel {
   width: 285px;
-  margin-top: 10px;
+  margin-top: 8px;
+
+  // Padding prevents focus outlines from being cut off
+  margin-inline-start: -2px;
+  padding: 2px;
   display: flex;
   flex-direction: column;
   height: calc(100% - 10px);
@@ -3785,16 +3889,6 @@ a.account__display-name {
     margin-bottom: 12px;
   }
 
-  .getting-started__trends h4 {
-    padding: 10px 12px;
-    padding-inline-start: 16px;
-  }
-
-  .getting-started__trends .trends__item {
-    padding: 10px 12px;
-    padding-inline-start: 16px;
-  }
-
   @media screen and (height <= 930px) {
     &__portal .trends__item:nth-child(n + 5) {
       display: none;
@@ -3822,7 +3916,8 @@ a.account__display-name {
 
 .navigation-panel,
 .compose-panel {
-  hr {
+  hr,
+  li[role='separator'] {
     flex: 0 0 auto;
     border: 0;
     background: transparent;
@@ -3963,6 +4058,11 @@ a.account__display-name {
   &:hover {
     text-decoration: underline;
   }
+
+  &:focus-visible {
+    outline: var(--outline-focus-default);
+    outline-offset: -2px;
+  }
 }
 
 .column-header__back-button {
@@ -4028,15 +4128,14 @@ a.account__display-name {
   height: 20px;
   padding: 0;
   border-radius: 10px;
-  background-color: $ui-primary-color;
-}
+  background-color: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border-primary);
+  box-sizing: border-box;
 
-.react-toggle--focus {
-  outline: $ui-button-focus-outline;
-}
-
-.react-toggle--checked .react-toggle-track {
-  background-color: $ui-highlight-color;
+  .react-toggle--checked & {
+    background-color: var(--color-bg-brand-base);
+    border-color: var(--color-bg-brand-base);
+  }
 }
 
 .react-toggle-track-check,
@@ -4051,7 +4150,8 @@ a.account__display-name {
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background-color: $ui-button-color;
+  background-color: var(--color-text-on-brand-base);
+  box-shadow: 0 2px 4px 0 color-mix(var(--color-black), transparent 75%);
   box-sizing: border-box;
   transition: all 0.25s ease;
   transition-property: border-color, left;
@@ -4089,50 +4189,42 @@ a.account__display-name {
 }
 
 .column-link {
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   gap: 8px;
   width: 100%;
-  padding: 12px;
+  padding: 10px;
+  padding-inline-start: 14px;
+  overflow: hidden;
   font-size: 16px;
   font-weight: 400;
   text-decoration: none;
-  overflow: hidden;
   white-space: nowrap;
   color: $secondary-text-color;
   background: transparent;
-  border: 0;
-  border-left: 4px solid transparent;
-  box-sizing: border-box;
+  border: 2px solid transparent;
+  border-radius: 4px;
 
   &:hover,
-  &:focus,
-  &:active {
-    color: $primary-text-color;
+  &:active,
+  &:focus-visible {
+    color: var(--color-text-primary);
   }
 
   &.active {
     color: $highlight-text-color;
   }
 
-  &:focus {
-    outline: 0;
-  }
-
   &:focus-visible {
-    border-color: $ui-button-focus-outline-color;
-    border-radius: 0;
+    outline: none;
+    border-color: var(--color-border-brand);
+    background: var(--color-bg-brand-softest);
   }
 
   &--logo {
-    background: transparent;
-    padding: 10px;
-
-    &:hover,
-    &:focus,
-    &:active {
-      background: transparent;
-    }
+    padding: 8px;
+    padding-inline-start: 12px;
   }
 }
 
@@ -4145,16 +4237,6 @@ a.account__display-name {
   background: $ui-base-color;
   padding: 4px 8px;
   margin: -6px 10px;
-}
-
-.column-subheading {
-  background: var(--surface-background-color);
-  color: $darker-text-color;
-  padding: 8px 20px;
-  font-size: 12px;
-  font-weight: 500;
-  text-transform: uppercase;
-  cursor: default;
 }
 
 .getting-started__wrapper {
@@ -4171,24 +4253,29 @@ a.account__display-name {
   border: 1px solid var(--background-border-color);
   border-top: 0;
 
+  &__trends-heading {
+    border-bottom: 1px solid var(--color-border-primary);
+    padding: 10px;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 500;
+
+    .navigation-panel & {
+      padding: 10px 12px;
+      padding-inline-start: 16px;
+    }
+
+    a {
+      color: var(--color-text-secondary);
+      text-decoration: none;
+    }
+  }
+
   &__trends {
     flex: 0 1 auto;
     opacity: 1;
     animation: fade 150ms linear;
     margin-top: 10px;
-
-    h4 {
-      border-bottom: 1px solid var(--background-border-color);
-      padding: 10px;
-      font-size: 12px;
-      text-transform: uppercase;
-      font-weight: 500;
-
-      a {
-        color: $darker-text-color;
-        text-decoration: none;
-      }
-    }
 
     .trends__item {
       border-bottom: 0;
@@ -4196,6 +4283,11 @@ a.account__display-name {
 
       &__current {
         color: $darker-text-color;
+      }
+
+      .navigation-panel & {
+        padding: 10px 12px;
+        padding-inline-start: 16px;
       }
     }
   }
@@ -4251,7 +4343,8 @@ a.account__display-name {
     cursor: pointer;
 
     & > div {
-      background: color.change($base-shadow-color, $alpha: 0.6);
+      color: var(--color-text-on-media);
+      background: rgb(from var(--color-bg-media) r g b / 60%);
       border-radius: 8px;
       padding: 12px 9px;
       backdrop-filter: $backdrop-blur-filter;
@@ -4264,7 +4357,7 @@ a.account__display-name {
     button,
     a {
       display: inline;
-      color: $secondary-text-color;
+      color: var(--color-text-on-media);
       background: transparent;
       border: 0;
       padding: 0 8px;
@@ -4275,7 +4368,7 @@ a.account__display-name {
       &:hover,
       &:active,
       &:focus {
-        color: $primary-text-color;
+        color: var(--color-text-on-media);
       }
     }
 
@@ -4504,7 +4597,7 @@ a.status-card {
     }
 
     &:focus-visible {
-      outline: 2px solid $ui-button-focus-outline-color;
+      outline: var(--outline-focus-default);
       outline-offset: -2px;
     }
   }
@@ -4592,7 +4685,7 @@ a.status-card {
   z-index: 1;
 
   &.active {
-    box-shadow: 0 1px 0 color.change($highlight-text-color, $alpha: 0.3);
+    box-shadow: 0 1px 0 var(--color-bg-brand-softest);
 
     &::before {
       display: block;
@@ -4655,15 +4748,21 @@ a.status-card {
   border: 1px solid var(--background-border-color);
   border-radius: 4px 4px 0 0;
   flex: 0 0 auto;
-  cursor: pointer;
   position: relative;
   z-index: 2;
   outline: 0;
+
+  &__title-wrapper {
+    display: flex;
+    flex-grow: 1;
+    min-width: 0;
+  }
 
   &__title {
     display: flex;
     align-items: center;
     gap: 5px;
+    flex-grow: 1;
     margin: 0;
     border: 0;
     padding: 13px;
@@ -4672,10 +4771,11 @@ a.status-card {
     background: transparent;
     font: inherit;
     text-align: start;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    flex: 1;
+    min-width: 0;
+
+    &--with-back-button {
+      padding-inline-start: 0;
+    }
 
     &:focus-visible {
       outline: $ui-button-icon-focus-outline;
@@ -4686,8 +4786,10 @@ a.status-card {
     }
   }
 
-  .column-header__back-button + &__title {
-    padding-inline-start: 0;
+  &__text {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
   }
 
   .column-header__back-button {
@@ -4702,8 +4804,8 @@ a.status-card {
 
   &.active {
     .column-header__icon {
-      color: $highlight-text-color;
-      text-shadow: 0 0 10px color.change($highlight-text-color, $alpha: 0.4);
+      color: var(--color-text-brand);
+      text-shadow: 0 0 10px var(--color-bg-brand-softest);
     }
   }
 
@@ -5071,6 +5173,13 @@ a.status-card {
         background-color: color.change($black, $alpha: 0.9);
       }
     }
+
+    &:focus-visible {
+      .spoiler-button__overlay__label {
+        outline: 2px solid var(--color-text-on-media);
+        outline-offset: -4px;
+      }
+    }
   }
 }
 
@@ -5192,8 +5301,12 @@ a.status-card {
         &:hover,
         &:active,
         &:focus {
-          background: lighten($ui-base-color, 12%);
-          color: lighten($darker-text-color, 4%);
+          background: var(--color-bg-brand-softest);
+          color: color-mix(
+            in oklab,
+            var(--color-text-primary),
+            var(--color-text-secondary)
+          );
         }
       }
     }
@@ -5225,7 +5338,7 @@ a.status-card {
       @include search-popout;
 
       padding: 0;
-      background: $ui-secondary-color;
+      background: var(--color-bg-primary);
     }
 
     &__menu-list {
@@ -5313,51 +5426,6 @@ a.status-card {
   margin-bottom: 0;
 }
 
-.error-column {
-  padding: 20px;
-  border: 1px solid var(--background-border-color);
-  border-radius: 4px;
-  display: flex;
-  flex: 1 1 auto;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  cursor: default;
-
-  &__image {
-    width: 70%;
-    max-width: 350px;
-    margin-top: -50px;
-  }
-
-  &__message {
-    text-align: center;
-    color: $darker-text-color;
-    font-size: 15px;
-    line-height: 22px;
-
-    h1 {
-      font-size: 28px;
-      line-height: 33px;
-      font-weight: 700;
-      margin-bottom: 15px;
-      color: $primary-text-color;
-    }
-
-    p {
-      max-width: 48ch;
-    }
-
-    &__actions {
-      margin-top: 30px;
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      justify-content: center;
-    }
-  }
-}
-
 @keyframes heartbeat {
   0% {
     transform: scale(1);
@@ -5394,7 +5462,7 @@ a.status-card {
   position: relative;
   margin-top: 5px;
   z-index: 2;
-  background: var(--dropdown-background-color);
+  background: var(--color-bg-primary);
   backdrop-filter: $backdrop-blur-filter;
   border: 1px solid var(--dropdown-border-color);
   box-shadow: var(--dropdown-shadow);
@@ -5421,8 +5489,8 @@ a.status-card {
   z-index: 4;
   top: -5px;
   inset-inline-start: -9px;
-  background: var(--dropdown-background-color);
-  border: 1px solid var(--dropdown-border-color);
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border-primary);
   border-radius: 4px;
   box-shadow: var(--dropdown-shadow);
   overflow: hidden;
@@ -5488,8 +5556,8 @@ a.status-card {
   inset-inline-start: 0;
   z-index: -1;
   border-radius: 4px;
-  background: $ui-base-color;
-  box-shadow: 0 0 5px color.change($base-shadow-color, $alpha: 0.2);
+  background: var(--color-bg-primary);
+  box-shadow: 0 0 5px var(--color-shadow-primary);
 }
 
 .upload-area__content {
@@ -5593,9 +5661,9 @@ a.status-card {
 .language-dropdown__dropdown,
 .visibility-dropdown__dropdown {
   box-shadow: var(--dropdown-shadow);
-  background: var(--dropdown-background-color);
-  backdrop-filter: $backdrop-blur-filter;
-  border: 1px solid var(--dropdown-border-color);
+  background: var(--color-bg-primary);
+  backdrop-filter: var(--backdrop-blur-filter);
+  border: 1px solid var(--color-border-primary);
   padding: 4px;
   border-radius: 4px;
   overflow: hidden;
@@ -5711,7 +5779,7 @@ a.status-card {
 
     .emoji-mart-search {
       padding: 10px;
-      background: var(--dropdown-background-color);
+      background: var(--color-bg-primary);
 
       input {
         padding: 8px 12px;
@@ -5744,7 +5812,7 @@ a.status-card {
 
     .emoji-mart-scroll {
       padding: 0 10px 10px;
-      background: var(--dropdown-background-color);
+      background: var(--color-bg-primary);
     }
 
     &__results {
@@ -5791,16 +5859,8 @@ a.status-card {
 
 .visibility-modal {
   &__quote-warning {
-    color: var(--nested-card-text);
-    background:
-      /* This is a bit of a silly hack for layering two background colours
-       * since --nested-card-background is too transparent for a tooltip */
-      linear-gradient(
-        var(--nested-card-background),
-        var(--nested-card-background)
-      ),
-      linear-gradient(var(--background-color), var(--background-color));
-    border: var(--nested-card-border);
+    color: var(--color-text-primary);
+    background: var(--color-bg-warning-softest);
     padding: 16px;
     border-radius: 4px;
 
@@ -5836,9 +5896,9 @@ a.status-card {
   &__button {
     display: flex;
     align-items: center;
-    color: $primary-text-color;
-    background: var(--input-background-color);
-    border: 1px solid var(--background-border-color);
+    color: var(--color-text-primary);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border-primary);
     padding: 8px 12px;
     width: 100%;
     text-align: left;
@@ -5878,10 +5938,10 @@ a.status-card {
     display: none;
     position: absolute;
     inset-inline-start: 0;
-    margin-top: -2px;
+    margin-top: 1px;
     width: 100%;
-    background: var(--input-background-color);
-    border: 1px solid var(--background-border-color);
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border-primary);
     border-radius: 0 0 4px 4px;
     box-shadow: var(--dropdown-shadow);
     z-index: 99;
@@ -5898,7 +5958,8 @@ a.status-card {
 
     .icon-button {
       padding: 0;
-      color: $darker-text-color;
+
+      --default-icon-color: inherit;
     }
 
     .icon {
@@ -5951,7 +6012,10 @@ a.status-card {
           color: $primary-text-color;
 
           .icon-button {
-            color: $primary-text-color;
+            --default-icon-color: inherit;
+            --default-bg-color: transparent;
+            --hover-icon-color: inherit;
+            --hover-bg-color: var(--color-bg-brand-base-hover);
           }
         }
 
@@ -5969,14 +6033,8 @@ a.status-card {
     }
   }
 
-  &.active {
-    .search__input {
-      border-radius: 4px 4px 0 0;
-    }
-
-    .search__popout {
-      display: block;
-    }
+  &.active .search__popout {
+    display: block;
   }
 }
 
@@ -5988,14 +6046,8 @@ a.status-card {
   padding-inline-start: 16px + 15px + 8px;
   line-height: normal;
 
-  &::-moz-focus-inner {
-    border: 0;
-  }
-
-  &::-moz-focus-inner,
-  &:focus,
-  &:active {
-    outline: 0 !important;
+  &:focus {
+    outline-color: var(--color-border-brand);
   }
 }
 
@@ -6050,7 +6102,7 @@ a.status-card {
   }
 
   &:focus-visible {
-    box-shadow: 0 0 0 2px $ui-button-focus-outline-color;
+    box-shadow: 0 0 0 2px var(--color-border-brand);
   }
 
   &[aria-hidden='true'] {
@@ -6154,6 +6206,10 @@ a.status-card {
 
   @media screen and (width <= $mobile-breakpoint) {
     margin-top: auto;
+
+    &.video-modal {
+      margin-top: 0;
+    }
   }
 }
 
@@ -6283,7 +6339,10 @@ a.status-card {
     padding: 16px;
 
     .icon-button {
-      color: $white;
+      --default-icon-color: var(--color-text-on-media);
+      --default-bg-color: transparent;
+      --hover-icon-color: var(--color-text-on-media);
+      --hover-bg-color: rgb(from var(--color-text-on-media) r g b / 10%);
 
       .icon {
         filter: var(--overlay-icon-shadow);
@@ -6315,17 +6374,11 @@ a.status-card {
       }
 
       &.star-icon.active {
-        color: $gold-star;
-
-        &:hover,
-        &:focus,
-        &:active {
-          background: color.change($gold-star, $alpha: 0.15);
-        }
-
-        &:focus {
-          background: color.change($gold-star, $alpha: 0.3);
-        }
+        --default-icon-color: var(--color-text-favourite-highlight);
+        --hover-icon-color: var(--color-text-favourite-highlight);
+        --hover-bg-color: rgb(
+          from var(--color-text-favourite-highlight) r g b / 10%
+        );
       }
 
       &.disabled {
@@ -6423,7 +6476,7 @@ a.status-card {
 
   &__top {
     border-radius: 16px 16px 0 0;
-    border-bottom: 0;
+    border-bottom-width: 0;
     gap: 16px;
   }
 
@@ -6475,15 +6528,19 @@ a.status-card {
     line-height: 20px;
     color: $darker-text-color;
 
-    h1 {
+    /*
+     * Using the :where selector to lower specificity and allow for
+     * easy customisation of modal heading styles
+     */
+    :where(h1) {
       font-size: 16px;
       line-height: 24px;
       color: $primary-text-color;
       font-weight: 500;
+    }
 
-      &:not(:only-child) {
-        margin-bottom: 8px;
-      }
+    :where(h1:not(:only-child)) {
+      margin-bottom: 8px;
     }
 
     strong {
@@ -6538,14 +6595,16 @@ a.status-card {
   &__bullet-points {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 16px;
     font-size: 16px;
     line-height: 24px;
 
+    & > li,
     & > div {
       display: flex;
       gap: 16px;
-      align-items: center;
+      align-items: start;
+      text-wrap: pretty;
 
       strong {
         font-weight: 700;
@@ -6558,7 +6617,7 @@ a.status-card {
 
     &__icon {
       width: 40px;
-      height: 40px;
+      height: 24px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -6637,7 +6696,7 @@ a.status-card {
   width: 588px;
   max-height: 80vh;
   flex-direction: column;
-  background: var(--modal-background-color);
+  background: var(--color-bg-primary);
   backdrop-filter: $backdrop-blur-filter;
   border: 1px solid var(--modal-border-color);
   border-radius: 16px;
@@ -6721,7 +6780,7 @@ a.status-card {
   }
 
   &__popout {
-    background: var(--dropdown-background-color);
+    background: var(--color-bg-primary);
     backdrop-filter: $backdrop-blur-filter;
     border: 1px solid var(--dropdown-border-color);
     box-shadow: var(--dropdown-shadow);
@@ -6993,8 +7052,8 @@ a.status-card {
   }
 
   .button.button-secondary {
-    border-color: $ui-button-destructive-background-color;
-    color: $ui-button-destructive-background-color;
+    border-color: var(--color-border-error);
+    color: var(--color-text-error);
     flex: 0 0 auto;
 
     &:hover,
@@ -7081,7 +7140,7 @@ a.status-card {
 
 .actions-modal {
   border-radius: 8px 8px 0 0;
-  background: var(--dropdown-background-color);
+  background: var(--color-bg-primary);
   backdrop-filter: $backdrop-blur-filter;
   border-color: var(--dropdown-border-color);
   box-shadow: var(--dropdown-shadow);
@@ -7110,7 +7169,7 @@ a.status-card {
     &:hover,
     &:active,
     &:focus {
-      background: var(--dropdown-border-color);
+      background: var(--color-bg-brand-softest);
     }
   }
 }
@@ -7214,6 +7273,13 @@ a.status-card {
     font-size: 14px;
     font-weight: 700;
     line-height: 20px;
+
+    &:focus-visible {
+      outline: none;
+      box-shadow:
+        inset 0 0 0 2px var(--color-text-on-media),
+        0 0 0 2px var(--color-bg-media);
+    }
   }
 }
 
@@ -7243,6 +7309,13 @@ a.status-card {
   cursor: pointer;
   pointer-events: auto;
 
+  &:focus-visible {
+    outline: none;
+    box-shadow:
+      inset 0 0 0 2px var(--color-text-on-media),
+      0 0 0 2px var(--color-bg-media);
+  }
+
   &--non-interactive {
     pointer-events: none;
   }
@@ -7266,17 +7339,20 @@ a.status-card {
   max-height: 30em;
   overflow-y: auto;
 
+  &:focus-visible {
+    box-shadow:
+      var(--dropdown-shadow),
+      inset 0 0 0 2px var(--color-text-on-media);
+
+    // Extend background color for better visibility of the
+    // inset box-shadow "outline"
+    outline: 2px solid var(--color-bg-media);
+  }
+
   &--solid {
-    color: var(--nested-card-text);
-    background:
-      /* This is a bit of a silly hack for layering two background colours
-       * since --nested-card-background is too transparent for a tooltip */
-      linear-gradient(
-        var(--nested-card-background),
-        var(--nested-card-background)
-      ),
-      linear-gradient(var(--background-color), var(--background-color));
-    border: var(--nested-card-border);
+    color: var(--color-text-primary);
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border-primary);
   }
 
   h4 {
@@ -7371,6 +7447,24 @@ a.status-card {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   gap: 2px;
+
+  &--layout-1 {
+    // The size of single images is determined by their
+    // aspect-ratio, applied via inline style attribute
+    width: initial;
+
+    // Prevent extremely tall images from essentially becoming invisible
+    min-width: 120px;
+    max-height: var(--max-media-height-small);
+
+    @container (width > 500px) {
+      max-height: var(--max-media-height-large);
+    }
+
+    .detailed-status & {
+      max-height: calc(2 * var(--max-media-height-large));
+    }
+  }
 
   &--layout-2 {
     & > .media-gallery__item:nth-child(1) {
@@ -7495,6 +7589,7 @@ a.status-card {
   color: $secondary-text-color;
   position: relative;
   z-index: -1;
+  border-radius: inherit;
 
   &,
   img {
@@ -7504,6 +7599,23 @@ a.status-card {
 
   img {
     object-fit: cover;
+  }
+
+  &:focus {
+    outline: none;
+    border-radius: inherit;
+  }
+
+  // Double focus outline for better visibility on photos
+  &:focus-visible::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    z-index: 1;
+    border-radius: inherit;
+    border: 2px solid var(--color-text-inverted);
+    outline: 2px solid var(--color-bg-inverted);
+    pointer-events: none;
   }
 }
 
@@ -7696,8 +7808,9 @@ a.status-card {
 .video-player {
   overflow: hidden;
   position: relative;
-  background: $base-shadow-color;
-  max-width: 100%;
+  color: var(--color-text-on-media);
+  background: var(--color-bg-media);
+  max-height: var(--max-media-height-small);
   border-radius: 8px;
   box-sizing: border-box;
   color: $white;
@@ -7706,6 +7819,10 @@ a.status-card {
   outline: 1px solid var(--media-outline-color);
   outline-offset: -1px;
   z-index: 2;
+
+  @container (width > 500px) {
+    max-height: var(--max-media-height-large);
+  }
 
   video {
     display: block;
@@ -8215,7 +8332,7 @@ a.status-card {
 
     &.checked,
     &.indeterminate {
-      border-color: $ui-highlight-color;
+      border-color: var(--color-border-brand);
     }
 
     .icon {
@@ -8288,47 +8405,6 @@ noscript {
   }
 }
 
-.moved-account-banner,
-.follow-request-banner,
-.account-memorial-banner {
-  padding: 20px;
-  background: var(--surface-background-color);
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-
-  &__message {
-    color: $darker-text-color;
-    padding: 8px 0;
-    padding-top: 0;
-    padding-bottom: 4px;
-    font-size: 14px;
-    font-weight: 500;
-    text-align: center;
-    margin-bottom: 16px;
-  }
-
-  &__action {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
-    width: 100%;
-  }
-
-  .detailed-status__display-name {
-    margin-bottom: 0;
-  }
-}
-
-.follow-request-banner .button {
-  width: 100%;
-}
-
-.account-memorial-banner__message {
-  margin-bottom: 0;
-}
-
 .column-inline-form {
   padding: 15px;
   display: flex;
@@ -8386,397 +8462,6 @@ noscript {
   }
 }
 
-.account__header__content {
-  color: $darker-text-color;
-  font-size: 14px;
-  font-weight: 400;
-  overflow: hidden;
-  word-break: normal;
-  overflow-wrap: break-word;
-
-  p {
-    margin-bottom: 20px;
-    unicode-bidi: plaintext;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-
-  a {
-    color: inherit;
-    text-decoration: underline;
-
-    &:hover {
-      text-decoration: none;
-    }
-  }
-}
-
-.account__header {
-  overflow: hidden;
-  container: account-header / inline-size;
-
-  &.inactive {
-    opacity: 0.5;
-
-    .account__header__image,
-    .account__avatar {
-      filter: grayscale(100%);
-    }
-  }
-
-  &__info {
-    position: absolute;
-    top: 20px;
-    inset-inline-end: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2px;
-  }
-
-  &__image {
-    overflow: hidden;
-    height: 145px;
-    position: relative;
-    background: darken($ui-base-color, 4%);
-    border-bottom: 1px solid var(--background-border-color);
-
-    img {
-      object-fit: cover;
-      display: block;
-      width: 100%;
-      height: 100%;
-      margin: 0;
-    }
-  }
-
-  &__bar {
-    position: relative;
-    padding: 0 20px;
-    border-bottom: 1px solid var(--background-border-color);
-
-    .avatar {
-      display: block;
-      flex: 0 0 auto;
-
-      .account__avatar {
-        background: var(--background-color);
-        border: 1px solid var(--background-border-color);
-        border-radius: var(--avatar-border-radius);
-      }
-    }
-  }
-
-  &__badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-
-    .account-role {
-      line-height: unset;
-    }
-  }
-
-  &__tabs {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    margin-top: -55px;
-    padding-top: 10px;
-    gap: 8px;
-    overflow: hidden;
-    margin-inline-start: -2px; // aligns the pfp with content below
-
-    &__name {
-      margin-top: 16px;
-      margin-bottom: 16px;
-
-      .emojione {
-        width: 22px;
-        height: 22px;
-      }
-
-      h1 {
-        font-size: 17px;
-        line-height: 22px;
-        color: $primary-text-color;
-        font-weight: 600;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-
-        small {
-          display: flex;
-          align-items: center;
-          gap: 4px;
-          font-size: 14px;
-          line-height: 20px;
-          color: $darker-text-color;
-          font-weight: 400;
-          overflow: hidden;
-          text-overflow: ellipsis;
-
-          span {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            user-select: all;
-          }
-
-          .icon-lock {
-            height: 18px;
-            width: 18px;
-          }
-        }
-      }
-    }
-
-    .spacer {
-      flex: 1 1 auto;
-    }
-  }
-
-  &__follow-button {
-    flex-grow: 1;
-  }
-
-  &__buttons {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-
-    $button-breakpoint: 420px;
-    $button-fallback-breakpoint: #{$button-breakpoint} + 55px;
-
-    &--desktop {
-      margin-top: 55px;
-
-      @container (width < #{$button-breakpoint}) {
-        display: none;
-      }
-
-      @supports (not (container-type: inline-size)) {
-        @media (max-width: #{$button-fallback-breakpoint}) {
-          display: none;
-        }
-      }
-    }
-
-    &--mobile {
-      margin-block: 16px;
-
-      @container (width >= #{$button-breakpoint}) {
-        display: none;
-      }
-
-      @supports (not (container-type: inline-size)) {
-        @media (min-width: (#{$button-fallback-breakpoint} + 1px)) {
-          display: none;
-        }
-      }
-    }
-
-    .button {
-      flex-shrink: 1;
-      white-space: nowrap;
-      min-width: 80px;
-    }
-
-    .icon-button {
-      border: 1px solid var(--background-border-color);
-      border-radius: 4px;
-      box-sizing: content-box;
-      padding: 5px;
-
-      .icon {
-        width: 24px;
-        height: 24px;
-      }
-
-      &.copied {
-        border-color: $valid-value-color;
-      }
-    }
-  }
-
-  &__bio {
-    .account__header__content {
-      color: $primary-text-color;
-    }
-
-    .account__header__fields {
-      margin: 0;
-      margin-top: 16px;
-      border-radius: 4px;
-      border: 1px solid var(--background-border-color);
-
-      dl {
-        display: block;
-        padding: 11px 16px;
-        border-bottom-color: var(--background-border-color);
-      }
-
-      dd,
-      dt {
-        font-size: 13px;
-        line-height: 18px;
-        padding: 0;
-        text-align: initial;
-      }
-
-      dt {
-        width: auto;
-        background: transparent;
-        text-transform: uppercase;
-        color: $dark-text-color;
-      }
-
-      dd {
-        color: $darker-text-color;
-      }
-
-      a {
-        color: lighten($ui-highlight-color, 8%);
-      }
-
-      .icon {
-        width: 18px;
-        height: 18px;
-      }
-
-      .verified {
-        border: 1px solid color.change($valid-value-color, $alpha: 0.5);
-        margin-top: -1px;
-        margin-inline: -1px;
-
-        &:first-child {
-          border-top-left-radius: 4px;
-          border-top-right-radius: 4px;
-        }
-
-        &:last-child {
-          border-bottom-left-radius: 4px;
-          border-bottom-right-radius: 4px;
-          margin-bottom: -1px;
-        }
-
-        dt,
-        dd {
-          color: $valid-value-color;
-        }
-
-        dd {
-          display: flex;
-          align-items: center;
-          gap: 4px;
-
-          span {
-            display: flex;
-          }
-        }
-
-        a {
-          color: $valid-value-color;
-        }
-      }
-    }
-  }
-
-  &__extra {
-    margin-top: 16px;
-
-    &__links {
-      font-size: 14px;
-      color: $darker-text-color;
-      margin: 0 -10px;
-      padding-top: 16px;
-      padding-bottom: 10px;
-
-      a {
-        display: inline-block;
-        color: $darker-text-color;
-        text-decoration: none;
-        padding: 5px 10px;
-        font-weight: 500;
-
-        strong {
-          font-weight: 700;
-          color: $primary-text-color;
-        }
-      }
-    }
-  }
-
-  &__account-note {
-    color: $primary-text-color;
-    font-size: 14px;
-    font-weight: 400;
-    margin-bottom: 10px;
-
-    &__loading-indicator-wrapper {
-      position: relative;
-      height: 37px;
-
-      .loading-indicator {
-        left: 10px;
-      }
-
-      .circular-progress {
-        width: 14px;
-        height: 14px;
-      }
-    }
-
-    label {
-      display: block;
-      font-size: 12px;
-      font-weight: 500;
-      color: $darker-text-color;
-      text-transform: uppercase;
-      margin-bottom: 5px;
-    }
-
-    textarea {
-      display: block;
-      box-sizing: border-box;
-      width: calc(100% + 20px);
-      color: $secondary-text-color;
-      background: transparent;
-      padding: 10px;
-      margin: 0 -10px;
-      font-family: inherit;
-      font-size: 14px;
-      resize: none;
-      border: 0;
-      outline: 0;
-      border-radius: 4px;
-
-      &::placeholder {
-        color: $dark-text-color;
-        opacity: 1;
-      }
-
-      &:focus {
-        background: $ui-base-color;
-      }
-    }
-  }
-
-  &__familiar-followers {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-block: 16px;
-    color: $darker-text-color;
-
-    a:any-link {
-      font-weight: 500;
-      text-decoration: none;
-      color: $primary-text-color;
-    }
-  }
-}
-
 .account__contents {
   overflow: hidden;
 }
@@ -8784,6 +8469,7 @@ noscript {
 .account__details {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   column-gap: 1em;
 }
 
@@ -9005,10 +8691,25 @@ noscript {
 }
 
 .announcements {
-  background: lighten($ui-base-color, 8%);
-  font-size: 13px;
-  display: flex;
-  align-items: flex-end;
+  width: calc(100% - 124px);
+  flex: 0 0 auto;
+  position: relative;
+  overflow: hidden;
+
+  .layout-multiple-columns & {
+    width: 100%;
+  }
+
+  @media screen and (max-width: (124px + 300px)) {
+    width: 100%;
+  }
+
+  &__root {
+    background: var(--color-bg-brand-softest);
+    font-size: 13px;
+    display: flex;
+    align-items: flex-end;
+  }
 
   &__mastodon {
     width: 124px;
@@ -9099,9 +8800,13 @@ noscript {
 
   &__item {
     flex-shrink: 0;
-    background: lighten($ui-base-color, 12%);
-    color: $darker-text-color;
-    border: 0;
+    background: var(--color-bg-brand-softest);
+    color: color-mix(
+      in oklab,
+      var(--color-text-primary),
+      var(--color-text-secondary)
+    );
+    border: 1px solid var(--color-border-brand-soft);
     border-radius: 3px;
     margin: 2px;
     cursor: pointer;
@@ -9174,6 +8879,9 @@ noscript {
     }
 
     &.active {
+      color: var(--color-text-brand);
+      background-color: var(--color-bg-brand-softest);
+      border-color: var(--color-border-brand);
       transition: all 100ms ease-in;
       transition-property: background-color, color;
       background-color: color.mix(
@@ -9276,10 +8984,6 @@ noscript {
 .conversation {
   position: relative;
 
-  // When scrolling these elements into view, take into account
-  // the column header height
-  scroll-margin-top: var(--column-header-height, 0);
-
   &.unread {
     &::before {
       content: '';
@@ -9288,7 +8992,7 @@ noscript {
       inset-inline-start: 0;
       width: 100%;
       height: 100%;
-      border-inline-start: 4px solid $highlight-text-color;
+      border-inline-start: 4px solid var(--color-border-brand);
       pointer-events: none;
     }
   }
@@ -9727,6 +9431,8 @@ noscript {
     padding-bottom: 32px;
   }
 
+  h1,
+  h2,
   h3 {
     font-size: 22px;
     line-height: 33px;
@@ -9757,6 +9463,8 @@ noscript {
   &__lead {
     margin-bottom: 20px;
 
+    h1,
+    h2,
     h3 {
       margin-bottom: 15px;
     }
@@ -9776,6 +9484,10 @@ noscript {
       line-height: 18px;
       display: flex;
       align-items: center;
+
+      &:has(input:focus) {
+        outline-color: var(--color-border-brand);
+      }
 
       input {
         background: transparent;
@@ -9801,22 +9513,18 @@ noscript {
     }
 
     .search__popout {
-      margin-top: -1px;
+      margin-top: 1px;
       padding-top: 5px;
       padding-bottom: 5px;
       border: 1px solid var(--background-border-color);
     }
 
     &.invalid &__input {
-      border-color: $error-red;
+      border-color: var(--color-border-error);
     }
 
     &.expanded .search__popout {
       display: block;
-    }
-
-    &.expanded &__input {
-      border-radius: 4px 4px 0 0;
     }
   }
 
@@ -9828,6 +9536,8 @@ noscript {
       flex: 1;
       box-sizing: border-box;
 
+      h1,
+      h2,
       h3 {
         margin-bottom: 20px;
       }
@@ -10122,8 +9832,8 @@ noscript {
   margin: 10px;
   margin-bottom: 5px;
   border-radius: 8px;
-  border: 1px solid $highlight-text-color;
-  background: color.change($highlight-text-color, $alpha: 0.15);
+  border: 1px solid var(--color-border-brand-soft);
+  background: var(--color-bg-brand-softest);
   overflow: hidden;
   flex-shrink: 0;
 
@@ -10194,8 +9904,8 @@ noscript {
 }
 
 .warning-banner {
-  border: 1px solid $warning-red;
-  background: color.change($warning-red, $alpha: 0.15);
+  border: 1px solid var(--color-border-error-soft);
+  background: var(--color-bg-error-softest);
 
   &__message {
     h1 {
@@ -10237,41 +9947,6 @@ noscript {
 
   &.loaded img {
     opacity: 1;
-  }
-}
-
-.link-footer {
-  flex: 0 0 auto;
-  padding-top: 20px;
-  z-index: 1;
-  font-size: 13px;
-
-  .column & {
-    padding: 15px;
-  }
-
-  p {
-    color: $dark-text-color;
-    margin-bottom: 20px;
-
-    .version {
-      white-space: nowrap;
-    }
-
-    strong {
-      font-weight: 500;
-    }
-
-    a {
-      color: $dark-text-color;
-      text-decoration: underline;
-
-      &:hover,
-      &:focus,
-      &:active {
-        text-decoration: none;
-      }
-    }
   }
 }
 
@@ -10411,18 +10086,6 @@ noscript {
     }
   }
 
-  .link-footer {
-    padding: 0;
-    margin-top: 60px;
-    text-align: center;
-    font-size: 15px;
-    line-height: 22px;
-
-    @media screen and (min-width: $no-gap-breakpoint) {
-      display: none;
-    }
-  }
-
   .account {
     padding: 0;
     border: 0;
@@ -10520,6 +10183,10 @@ noscript {
   display: flex;
   flex-direction: column;
   gap: 4px;
+
+  &:empty {
+    display: none;
+  }
 }
 
 .notification-bar {
@@ -10531,8 +10198,8 @@ noscript {
   width: auto;
   padding: 15px;
   margin: 0;
-  color: $white;
-  background: color.change($black, $alpha: 0.85);
+  color: var(--color-text-inverted);
+  background: var(--color-bg-inverted);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(lighten($classic-base-color, 4%), 0.85);
   border-radius: 8px;
@@ -10578,15 +10245,19 @@ noscript {
   background: transparent;
   text-transform: uppercase;
   cursor: pointer;
-  color: $blurple-300;
+  color: var(--color-text-brand-on-inverted);
   font-weight: 700;
   border-radius: 4px;
   padding: 0 4px;
 
   &:hover,
-  &:focus,
   &:active {
-    background: color.change($white, $alpha: 0.15);
+    background: rgb(from var(--color-text-inverted) r g b / 10%);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-text-brand-on-inverted);
+    outline-offset: 2px;
   }
 }
 
@@ -10684,14 +10355,17 @@ noscript {
     color: inherit;
     text-decoration: none;
     padding: 4px 12px;
-    background: var(--surface-variant-background-color);
+    background: var(--color-bg-brand-softest);
     border-radius: 4px;
     font-weight: 500;
 
     &:hover,
     &:focus,
-    &:active {
-      background: var(--surface-variant-active-background-color);
+    &:active,
+    .focusable:focus-visible &,
+    .detailed-status__wrapper-direct .detailed-status &,
+    .status__wrapper-direct & {
+      background: var(--color-bg-brand-soft);
     }
   }
 
@@ -10709,11 +10383,17 @@ noscript {
   gap: 12px;
   padding: 16px 0;
   padding-bottom: 0;
-  border-bottom: 1px solid var(--background-border-color);
-  background: color.change($ui-highlight-color, $alpha: 0.05);
+  border-bottom: 1px solid var(--color-border-primary);
+  background: var(--color-bg-brand-softest);
 
   &.focusable:focus-visible {
-    background: color.change($ui-highlight-color, $alpha: 0.05);
+    background: var(--color-bg-brand-softest);
+  }
+
+  &__title {
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 500;
   }
 
   &__header {
@@ -10721,12 +10401,6 @@ noscript {
     align-items: center;
     justify-content: space-between;
     padding: 0 16px;
-
-    h3 {
-      font-size: 15px;
-      line-height: 22px;
-      font-weight: 500;
-    }
 
     &__actions {
       display: flex;
@@ -10744,14 +10418,15 @@ noscript {
     position: relative;
 
     &__scroll-button {
+      --scroll-button-bg: var(--color-bg-brand-base);
+
       position: absolute;
       height: 100%;
       background: transparent;
       border: none;
       cursor: pointer;
       top: 0;
-      color: $primary-text-color;
-      opacity: 0.5;
+      color: var(--color-text-primary);
 
       &.left {
         left: 0;
@@ -10763,7 +10438,8 @@ noscript {
 
       &__icon {
         border-radius: 50%;
-        background: $ui-highlight-color;
+        color: var(--color-text-on-brand-base);
+        background: var(--scroll-button-bg);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -10779,11 +10455,7 @@ noscript {
       &:hover,
       &:focus,
       &:active {
-        opacity: 1;
-
-        .inline-follow-suggestions__body__scroll-button__icon {
-          background: lighten($ui-highlight-color, 4%);
-        }
+        --scroll-button-bg: var(--color-bg-brand-base-hover);
       }
     }
 
@@ -10855,23 +10527,7 @@ noscript {
           }
 
           &__source {
-            display: inline-flex;
-            align-items: center;
-            color: $dark-text-color;
-            gap: 4px;
-            overflow: hidden;
-            white-space: nowrap;
             cursor: help;
-
-            > span {
-              overflow: hidden;
-              text-overflow: ellipsis;
-            }
-
-            .icon {
-              width: 16px;
-              height: 16px;
-            }
           }
         }
 
@@ -10895,11 +10551,6 @@ noscript {
             font-size: 14px;
             color: $darker-text-color;
           }
-        }
-
-        .verified-badge {
-          font-size: 14px;
-          max-width: 100%;
         }
 
         .button {
@@ -11060,9 +10711,9 @@ noscript {
 .more-from-author {
   box-sizing: border-box;
   font-size: 14px;
-  color: $darker-text-color;
-  background: var(--surface-background-color);
-  border: 1px solid var(--background-border-color);
+  color: var(--color-text-secondary);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-primary);
   border-top: 0;
   border-radius: 0 0 8px 8px;
   padding: 15px;
@@ -11075,12 +10726,6 @@ noscript {
     width: 16px;
     height: 16px;
     color: $darker-text-color;
-  }
-
-  & > span {
-    display: flex;
-    align-items: center;
-    gap: 8px;
   }
 
   a {
@@ -11346,6 +10991,7 @@ noscript {
   .picture-in-picture-placeholder,
   .more-from-author,
   .status-card,
+  .collection-preview,
   .hashtag-bar,
   .content-warning,
   .filter-warning {
@@ -11378,7 +11024,7 @@ noscript {
     inset-inline-start: 0;
     width: 100%;
     height: 100%;
-    border-inline-start: 4px solid $highlight-text-color;
+    border-inline-start: 4px solid var(--color-border-brand);
     pointer-events: none;
   }
 }
@@ -11446,6 +11092,7 @@ noscript {
     -webkit-box-orient: vertical;
     max-height: 2 * 20px;
     overflow: hidden;
+    overflow-wrap: anywhere;
 
     p {
       margin-bottom: 0;
@@ -11574,9 +11221,9 @@ noscript {
 .content-warning {
   display: block;
   box-sizing: border-box;
-  background: var(--nested-card-background);
-  color: var(--nested-card-text);
-  border: var(--nested-card-border);
+  color: var(--color-text-primary);
+  background: var(--color-bg-brand-softest);
+  border: 1px solid var(--color-border-brand-soft);
   border-radius: 8px;
   padding: 8px (5px + 8px);
   position: relative;
@@ -11690,6 +11337,9 @@ noscript {
 
 .column-footer {
   padding: 16px;
+  position: sticky;
+  bottom: 0;
+  background: var(--color-bg-primary);
 }
 
 .lists-scrollable {

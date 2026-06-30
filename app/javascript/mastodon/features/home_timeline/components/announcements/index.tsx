@@ -11,6 +11,7 @@ import elephantUIPlane from '@/images/elephant_ui_plane.svg';
 import { CustomEmojiProvider } from '@/mastodon/components/emoji/context';
 import { IconButton } from '@/mastodon/components/icon_button';
 import { mascot, reduceMotion } from '@/mastodon/initial_state';
+import { useCustomEmojis } from '@/mastodon/hooks/useCustomEmojis';
 import { createAppSelector, useAppSelector } from '@/mastodon/store';
 import ChevronLeftIcon from '@/material-icons/400-24px/chevron_left.svg?react';
 import ChevronRightIcon from '@/material-icons/400-24px/chevron_right.svg?react';
@@ -34,7 +35,7 @@ export const Announcements: FC = () => {
   const intl = useIntl();
 
   const announcements = useAppSelector(announcementSelector);
-  const emojis = useAppSelector((state) => state.custom_emojis);
+  const emojis = useCustomEmojis();
 
   const [index, setIndex] = useState(0);
   const handleChangeIndex = useCallback(

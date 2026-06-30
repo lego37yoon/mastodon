@@ -11,9 +11,7 @@ br:
         header: WEBP, PNG, GIF pe JPG. Bihanoc'h eget %{size}. A vo izelaet betek
           %{dimensions}px
         password: Implijit 8 lizherennoù d'an neubeutañ
-        setting_default_sensitive: Ar mediaoù kizidik a zo kuzhet dre ziouer ha gallout
-          a reont bezañ diguzhet dre ur c'hlik
-        setting_display_media_default: Kuzhat mediaoù aroueziet evel kizidik
+        setting_default_sensitive: Ar mediaoù kizidik a zo kuzhet dre ziouer ha gallout a reont bezañ diguzhet dre ur c'hlik
       form_admin_settings:
         theme: Neuz a vez gwelet gant an implijerien·ezed nevez pe digevreet.
       form_challenge:
@@ -105,6 +103,9 @@ br:
         trendable: Aotren ar ger-klik-mañ da zont war wel dindan tuadurioù
         usable: Aotren an embannadurioù da implijout ar ger-klik-mañ ent-lec'hel
       user:
+        date_of_birth_1i: Bloavezh
+        date_of_birth_2i: Mizvezh
+        date_of_birth_3i: Deiz
         role: Roll
         time_zone: Gwerzhid eur
       user_role:

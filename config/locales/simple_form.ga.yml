@@ -3,11 +3,8 @@ ga:
   simple_form:
     hints:
       account:
-        attribution_domains_as_text: Ceann in aghaidh an líne. Cosnaíonn sé ó sannadh
-          bréagach.
-        discoverable: Seans go mbeidh do phostálacha poiblí agus do phróifíl le feiceáil
-          nó molta i réimsí éagsúla de Mastodon agus is féidir do phróifíl a mholadh
-          d’úsáideoirí eile.
+        attribution_domains: Ceann in aghaidh an líne. Cosnaíonn sé ó sannadh bréagach.
+        discoverable: D’fhéadfá a bheith le feiceáil i mbailiúcháin arna gcruthú ag úsáideoirí eile. D’fhéadfaí tú féin agus do phoist phoiblí a mholadh d’úsáideoirí in eispéiris fionnachtana eile ar fud Mastodon freisin.
         display_name: D'ainm iomlán nó d'ainm spraoi.
         fields: Do leathanach baile, forainmneacha, aois, rud ar bith is mian leat.
         indexable: Seans go mbeidh do phostálacha poiblí le feiceáil sna torthaí cuardaigh
@@ -82,23 +79,22 @@ ga:
           an scagaire níos déanaí
         locale: Teanga an chomhéadain úsáideora, r-phoist agus fógraí brú
         password: Úsáid ar a laghad 8 gcarachtar
-        phrase: Déanfar é a mheaitseáil beag beann ar chásáil an téacs nó ar an ábhar
-          atá ag tabhairt foláireamh do phostáil
-        scopes: Cé na APIanna a mbeidh cead ag an bhfeidhmchlár rochtain a fháil orthu.
-          Má roghnaíonn tú raon feidhme barrleibhéil, ní gá duit cinn aonair a roghnú.
-        setting_aggregate_reblogs: Ná taispeáin treisithe nua do phoist a treisíodh
-          le déanaí (ní dhéanann difear ach do threisithe nuafhaighte)
-        setting_always_send_emails: Go hiondúil ní sheolfar fógraí ríomhphoist agus
-          tú ag úsáid Mastodon go gníomhach
-        setting_default_sensitive: Tá meáin íogair i bhfolach de réir réamhshocraithe
-          agus is féidir iad a nochtadh le cliceáil
-        setting_display_media_default: Folaigh meáin atá marcáilte mar íogair
-        setting_display_media_hide_all: Folaigh meáin i gcónaí
-        setting_display_media_show_all: Taispeáin meáin i gcónaí
-        setting_use_blurhash: Tá grádáin bunaithe ar dhathanna na n-amharcanna ceilte
-          ach cuireann siad salach ar aon mhionsonraí
-        setting_use_pending_items: Folaigh nuashonruithe amlíne taobh thiar de chlic
-          seachas an fotha a scrollú go huathoibríoch
+        phrase: Déanfar é a mheaitseáil beag beann ar chásáil an téacs nó ar an ábhar atá ag tabhairt foláireamh do phostáil
+        scopes: Cé na APIanna a mbeidh cead ag an bhfeidhmchlár rochtain a fháil orthu. Má roghnaíonn tú raon feidhme barrleibhéil, ní gá duit cinn aonair a roghnú.
+        setting_advanced_layout: Taispeáin Mastodon mar leagan amach ilcholún, rud a ligeann duit an t-amlíne, fógraí, agus tríú colún de do rogha féin a fheiceáil. Ní mholtar é seo do scáileáin níos lú.
+        setting_aggregate_reblogs: Ná taispeáin treisithe nua do phoist a treisíodh le déanaí (ní dhéanann difear ach do threisithe nuafhaighte)
+        setting_always_send_emails: Go hiondúil ní sheolfar fógraí ríomhphoist agus tú ag úsáid Mastodon go gníomhach
+        setting_boost_modal: Nuair a bheidh sé cumasaithe, osclóidh borradh dialóg deimhnithe ar dtús inar féidir leat infheictheacht do bhorrtha a athrú.
+        setting_default_quote_policy_private: Ní féidir le daoine eile poist atá scríofa ar Mastodon agus atá dírithe ar leanúna amháin a lua.
+        setting_default_quote_policy_unlisted: Nuair a luann daoine thú, beidh a bpost i bhfolach ó amlínte treochta freisin.
+        setting_default_sensitive: Tá meáin íogair i bhfolach de réir réamhshocraithe agus is féidir iad a nochtadh le cliceáil
+        setting_display_media_default: Tabhair rabhadh sula dtaispeántar meáin atá marcáilte mar íogair
+        setting_display_media_hide_all: Rabhadh sula dtaispeántar na meáin go léir
+        setting_display_media_show_all: Taispeáin na meáin go léir gan rabhadh, lena n-áirítear meáin atá marcáilte mar íogair
+        setting_emoji_style: Conas emojis a thaispeáint. Déanfaidh "Auto" iarracht emoji dúchasacha a úsáid, ach titeann sé ar ais go Twemoji le haghaidh seanbhrabhsálaithe.
+        setting_quick_boosting_html: Nuair a bhíonn sé cumasaithe, má chliceálann tú ar an deilbhín Treisithe %{boost_icon}, treiseofar láithreach é in ionad an roghchlár anuas treisithe/lua a oscailt. Bogann sé seo an gníomh lua go dtí an roghchlár %{options_icon} (Roghanna).
+        setting_use_blurhash: Tá grádáin bunaithe ar dhathanna na n-amharcanna ceilte ach cuireann siad salach ar aon mhionsonraí
+        setting_use_pending_items: Folaigh nuashonruithe amlíne taobh thiar de chlic seachas an fotha a scrollú go huathoibríoch
         username: Is féidir leat litreacha, uimhreacha, agus béim a úsáid
         whole_word: Nuair a bhíonn an eochairfhocal nó frása alfa-uimhriúil amháin,
           ní chuirfear i bhfeidhm é ach amháin má mheaitseálann sé an focal iomlán
@@ -133,19 +129,11 @@ ga:
         bootstrap_timeline_accounts: Cuirfear na cuntais seo ar bharr na moltaí a
           leanann úsáideoirí nua.
         closed_registrations_message: Ar taispeáint nuair a dhúntar clárúcháin
-        content_cache_retention_period: Scriosfar gach postáil ó fhreastalaithe eile
-          (lena n-áirítear treisithe agus freagraí) tar éis an líon sonraithe laethanta,
-          gan aird ar aon idirghníomhaíocht úsáideora áitiúil leis na postálacha sin.
-          Áirítear leis seo postálacha ina bhfuil úsáideoir áitiúil tar éis é a mharcáil
-          mar leabharmharcanna nó mar cheanáin. Caillfear tagairtí príobháideacha
-          idir úsáideoirí ó chásanna éagsúla freisin agus ní féidir iad a athchóiriú.
-          Tá úsáid an tsocraithe seo beartaithe le haghaidh cásanna sainchuspóra agus
-          sáraítear go leor ionchais úsáideoirí nuair a chuirtear i bhfeidhm é le
-          haghaidh úsáid ghinearálta.
-        custom_css: Is féidir leat stíleanna saincheaptha a chur i bhfeidhm ar an
-          leagan gréasáin de Mastodon.
-        favicon: WEBP, PNG, GIF nó JPG. Sáraíonn sé an favicon Mastodon réamhshocraithe
-          le deilbhín saincheaptha.
+        content_cache_retention_period: Scriosfar gach postáil ó fhreastalaithe eile (lena n-áirítear treisithe agus freagraí) tar éis an líon sonraithe laethanta, gan aird ar aon idirghníomhaíocht úsáideora áitiúil leis na postálacha sin. Áirítear leis seo postálacha ina bhfuil úsáideoir áitiúil tar éis é a mharcáil mar leabharmharcanna nó mar cheanáin. Caillfear tagairtí príobháideacha idir úsáideoirí ó chásanna éagsúla freisin agus ní féidir iad a athchóiriú. Tá úsáid an tsocraithe seo beartaithe le haghaidh cásanna sainchuspóra agus sáraítear go leor ionchais úsáideoirí nuair a chuirtear i bhfeidhm é le haghaidh úsáid ghinearálta.
+        custom_css: Is féidir leat stíleanna saincheaptha a chur i bhfeidhm ar an leagan gréasáin de Mastodon.
+        email_footer_text: Téacs roghnach a thaispeántar i mbunús ríomhphoist nuachtlitir amháin.
+        favicon: WEBP, PNG, GIF nó JPG. Sáraíonn sé an favicon Mastodon réamhshocraithe le deilbhín saincheaptha.
+        landing_page: Roghnaíonn sé seo an leathanach a fheiceann cuairteoirí nua nuair a shroicheann siad do fhreastalaí den chéad uair. Má roghnaíonn tú "Treochtaí", ní mór treochtaí a chumasú sna Socruithe Fionnachtana. Má roghnaíonn tú "Fotha Áitiúil", ní mór "Rochtain ar fhothaí beo ina bhfuil poist áitiúla" a shocrú go "Gach Duine" sna Socruithe Fionnachtana.
         mascot: Sáraíonn sé an léaráid san ardchomhéadan gréasáin.
         media_cache_retention_period: Déantar comhaid meán ó phoist a dhéanann cianúsáideoirí
           a thaisceadh ar do fhreastalaí. Nuair a bheidh luach dearfach socraithe,
@@ -182,15 +170,10 @@ ga:
           seo a fheiceáil le linn briseadh amach
         theme: Téama a fheiceann cuairteoirí logáilte amach agus úsáideoirí nua.
         thumbnail: Íomhá thart ar 2:1 ar taispeáint taobh le faisnéis do fhreastalaí.
-        timeline_preview: Beidh cuairteoirí logáilte amach in ann na postálacha poiblí
-          is déanaí atá ar fáil ar an bhfreastalaí a bhrabhsáil.
-        trendable_by_default: Léim ar athbhreithniú láimhe ar ábhar treochta. Is féidir
-          míreanna aonair a bhaint as treochtaí fós tar éis an fhíric.
-        trends: Léiríonn treochtaí cé na postálacha, hashtags agus scéalta nuachta
-          atá ag tarraingt ar do fhreastalaí.
-        trends_as_landing_page: Taispeáin inneachar treochta d'úsáideoirí agus do
-          chuairteoirí atá logáilte amach in ionad cur síos ar an bhfreastalaí seo.
-          Éilíonn treochtaí a chumasú.
+        thumbnail_description: Cur síos ar an íomhá chun cabhrú le daoine le lagú radhairc a hábhar a thuiscint.
+        trendable_by_default: Léim ar athbhreithniú láimhe ar ábhar treochta. Is féidir míreanna aonair a bhaint as treochtaí fós tar éis an fhíric.
+        trends: Léiríonn treochtaí cé na postálacha, hashtags agus scéalta nuachta atá ag tarraingt ar do fhreastalaí.
+        wrapstodon: Iarr ar úsáideoirí áitiúla achoimre spraíúil a ghiniúint ar a n-úsáid Mastodon i rith na bliana. Bíonn an ghné seo ar fáil idir an 10ú agus an 31ú Nollaig gach bliain, agus tairgtear é d’úsáideoirí a rinne post Poiblí nó Ciúin Poiblí amháin ar a laghad agus a d’úsáid hais clib amháin ar a laghad laistigh den bhliain.
       form_challenge:
         current_password: Tá tú ag dul isteach i limistéar slán
       imports:
@@ -220,26 +203,33 @@ ga:
         webauthn: Más eochair USB atá ann déan cinnte é a chur isteach agus, más gá,
           tapáil í.
       settings:
-        indexable: Seans go mbeidh do leathanach próifíle le feiceáil i dtorthaí cuardaigh
-          ar Google, Bing agus eile.
-        show_application: Beidh tú in ann a fheiceáil i gcónaí cén aip a d’fhoilsigh
-          do phostáil beag beann ar.
+        email_subscriptions: Coinnítear síntiúsóirí reatha ach cuirtear stop le ríomhphoist a sheoladh má dhíchumasaítear iad.
+        indexable: Seans go mbeidh do leathanach próifíle le feiceáil i dtorthaí cuardaigh ar Google, Bing agus eile.
+        show_application: Beidh tú in ann a fheiceáil i gcónaí cén aip a d’fhoilsigh do phostáil beag beann ar.
       tag:
         name: Ní féidir leat ach cásáil na litreacha a athrú, mar shampla, chun é
           a dhéanamh níos inléite
       user:
-        chosen_languages: Nuair a dhéantar iad a sheiceáil, ní thaispeánfar ach postálacha
-          i dteangacha roghnaithe in amlínte poiblí
+        chosen_languages: Nuair a bheidh sé seo seiceáilte, ní thaispeánfar ach poist i dteangacha roghnaithe in amlínte poiblí. Ní dhéanann an socrú seo difear d’amlíne Baile agus do liostaí.
+        date_of_birth:
+          few: Caithfimid a chinntiú go bhfuil tú %{count} ar a laghad chun %{domain} a úsáid. Ní stórálfaimid é seo.
+          many: Caithfimid a chinntiú go bhfuil tú %{count} ar a laghad chun %{domain} a úsáid. Ní stórálfaimid é seo.
+          one: Caithfimid a chinntiú go bhfuil tú %{count} ar a laghad chun %{domain} a úsáid. Ní stórálfaimid é seo.
+          other: Caithfimid a chinntiú go bhfuil tú %{count} ar a laghad chun %{domain} a úsáid. Ní stórálfaimid é seo.
+          two: Caithfimid a chinntiú go bhfuil tú %{count} ar a laghad chun %{domain} a úsáid. Ní stórálfaimid é seo.
         role: Rialaíonn an ról na ceadanna atá ag an úsáideoir.
       user_role:
+        collection_limit: Cuireann sé teorainn le líon na mbailiúchán is féidir le húsáideoir aonair leis an ról seo a chruthú. Tabhair faoi deara, le do thoil, nuair a laghdaíonn tú an líon seo, nach gcaillfidh úsáideoirí atá ag an teorainn seo cheana féin aon bhailiúcháin. Ach ní bheidh siad in ann cinn bhreise a chruthú.
         color: Dath le húsáid don ról ar fud an Chomhéadain, mar RGB i bhformáid heicsidheachúlach
         highlighted: Déanann sé seo an ról le feiceáil go poiblí
         name: Ainm poiblí an róil, má tá an ról socraithe le taispeáint mar shuaitheantas
-        permissions_as_keys: Beidh rochtain ag úsáideoirí a bhfuil an ról seo acu
-          ar...
-        position: Cinneann ról níos airde réiteach coinbhleachta i gcásanna áirithe.
-          Ní féidir gníomhartha áirithe a dhéanamh ach amháin ar róil a bhfuil tosaíocht
-          níos ísle acu
+        permissions_as_keys: Beidh rochtain ag úsáideoirí a bhfuil an ról seo acu ar...
+        position: Cinneann ról níos airde réiteach coinbhleachta i gcásanna áirithe. Ní féidir gníomhartha áirithe a dhéanamh ach amháin ar róil a bhfuil tosaíocht níos ísle acu
+        require_2fa: Beidh ar úsáideoirí leis an ról seo fíordheimhniú dhá fhachtóir a shocrú chun Mastodon a úsáid
+      username_block:
+        allow_with_approval: In ionad cosc iomlán a chur ar chlárú, beidh ort do cheadú a fháil chun clárúcháin a mheaitseáil
+        comparison: Tabhair aird ar Fhadhb Scunthorpe agus tú ag blocáil cluichí páirteacha
+        username: Déanfar é a mheaitseáil beag beann ar an gcásáil agus homaiglifí coitianta cosúil le "4" in ionad "a" nó "3" in ionad "e"
       webhook:
         events: Roghnaigh imeachtaí le seoladh
         template: Cum do phálasta JSON féin ag baint úsáide as idirshuíomh athróg.
@@ -247,9 +237,8 @@ ga:
         url: An áit a seolfar imeachtaí chuig
     labels:
       account:
-        attribution_domains_as_text: Tá cead ag suíomhanna Gréasáin creidmheas a thabhairt
-          duit
-        discoverable: Próifíl gné agus postálacha in halgartaim fionnachtana
+        attribution_domains: Tá cead ag suíomhanna Gréasáin creidmheas a thabhairt duit
+        discoverable: Cuir mé i láthair i dtaithí fionnachtana
         fields:
           name: Lipéad
           value: Ábhar
@@ -297,6 +286,7 @@ ga:
         email: Seoladh ríomhphoist
         expires_in: In éag tar éis
         fields: Réimsí breise
+        filter_action: Gníomh scagaire
         header: Ceanntásc
         honeypot: "%{label} (ná líon isteach)"
         inbox_url: URL an bhosca isteach sealaíochta
@@ -312,7 +302,9 @@ ga:
         setting_aggregate_reblogs: Treisithe grúpa i línte ama
         setting_always_send_emails: Seol fógraí ríomhphoist i gcónaí
         setting_auto_play_gif: Gifs beoite go huathoibríoch a imirt
-        setting_boost_modal: Taispeáin dialóg deimhnithe roimh threisiú
+        setting_boost_modal: Rialú a fheabhsaíonn infheictheacht
+        setting_color_scheme: Scéim dathanna
+        setting_contrast: Codarsnacht
         setting_default_language: Teanga postála
         setting_default_privacy: Postáil príobháideachta
         setting_default_sensitive: Marcáil na meáin mar íogair i gcónaí
@@ -359,6 +351,7 @@ ga:
           sínithe suas ar fáil
         content_cache_retention_period: Tréimhse choinneála inneachair cianda
         custom_css: CSS saincheaptha
+        email_footer_text: Téacs breise sa bhuntásc
         favicon: Favicon
         mascot: Mascóg saincheaptha (oidhreacht)
         media_cache_retention_period: Tréimhse choinneála taisce meán
@@ -377,10 +370,13 @@ ga:
         status_page_url: URL an leathanaigh stádais
         theme: Téama réamhshocraithe
         thumbnail: Mionsamhail freastalaí
-        timeline_preview: Ceadaigh rochtain neamhdheimhnithe ar amlínte poiblí
+        thumbnail_description: Téacs malartach mionsamhail
         trendable_by_default: Ceadaigh treochtaí gan athbhreithniú roimh ré
         trends: Cumasaigh treochtaí
-        trends_as_landing_page: Úsáid treochtaí mar an leathanach tuirlingthe
+        wrapstodon: Cumasaigh Wrapstodon
+      form_email_subscriptions_confirmation:
+        agreement_email_volume: Tuigim go bhféadfadh an ghné seo a chumasú líon na ríomhphoist a sheoltar ón bhfreastalaí a mhéadú go suntasach agus gurb mise amháin atá freagrach as aon chostais a thabhaítear.
+        agreement_privacy_and_terms: Tá an Polasaí Príobháideachais agus na Téarmaí Seirbhíse nuashonraithe agam.
       interactions:
         must_be_follower: Cuir bac ar fhógraí ó dhaoine nach leantóirí iad
         must_be_following: Cuir bac ar fhógraí ó dhaoine nach leanann tú
@@ -419,6 +415,7 @@ ga:
         hint: Eolas breise
         text: Riail
       settings:
+        email_subscriptions: Cumasaigh clárúcháin ríomhphoist
         indexable: Cuir leathanach próifíle san innill chuardaigh
         show_application: Taispeáin cén aip ónar sheol tú postáil
       tag:
@@ -430,11 +427,17 @@ ga:
         role: Ról
         time_zone: Crios ama
       user_role:
+        collection_limit: Uasmhéid na mBailiúchán in aghaidh an úsáideora
         color: Dath suaitheantas
         highlighted: Taispeáin ról mar shuaitheantas ar phróifílí úsáideora
         name: Ainm
         permissions_as_keys: Ceadanna
         position: Tosaíocht
+        require_2fa: Éiligh fíordheimhniú dhá fhachtóir
+      username_block:
+        allow_with_approval: Ceadaigh clárúcháin le ceadú
+        comparison: Modh comparáide
+        username: Focal le meaitseáil
       webhook:
         events: Imeachtaí cumasaithe
         template: Teimpléad pá-ualach

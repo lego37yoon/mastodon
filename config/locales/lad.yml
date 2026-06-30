@@ -12,10 +12,7 @@ lad:
     followers:
       one: Suivante
       other: Suivantes
-    following: Sigiendo
-    instance_actor_flash: Este kuento es un aktor virtual utilizado para reprezentar
-      al sirvidor en si mezmo i no a dingun utilizador individual. Se utiliza para
-      butos de la federasyon i no se deve suspender.
+    instance_actor_flash: Este kuento es un aktor virtual utilizado para reprezentar al sirvidor en si mezmo i no a dingun utilizador individual. Se utiliza para butos de la federasyon i no se deve suspender.
     last_active: ultima koneksyon
     link_verified_on: La propiedad de este atadijo fue verifikada el %{date}
     nothing_here: No ay niente aki!
@@ -55,6 +52,7 @@ lad:
         label: Troka rolo
         no_role: Sin rolo
         title: Troka rolo para %{username}
+      collections: Koleksyones
       confirm: Konfirma
       confirmed: Konfirmado
       confirming: Konfirmando
@@ -355,6 +353,16 @@ lad:
       unpublish: Retira publikasyon
       unpublished_msg: Pregon retirado kon sukseso!
       updated_msg: Pregon aktualizado kon sukseso!
+    collections:
+      back_to_account: Retorna a la pajina del kuento
+      back_to_report: Retorna a la pajina del raporto
+      batch:
+        add_to_report: 'Adjusta al raporto #%{id}'
+        report: Raporto
+      no_collection_selected: No se troko dinguna koleksyon porke no eskojites dinguna
+      open: Avre
+      title: Koleksyones de kuentos - @%{name}
+      view_publicly: Ve puvlikamente
     critical_update_pending: Aktualizasyon kritika esta asperando
     custom_emojis:
       assign_category: Asinya kategoria
@@ -503,13 +511,19 @@ lad:
       no_email_domain_block_selected: No se tienen trokado blokos de domeno porke
         dinguno a sido eskojido
       not_permitted: Sin permiso
-      resolved_dns_records_hint_html: El nombre de domeno rezolve los sigientes domenos
-        MX, los kualos son responsavles en ultima instansya de achetar la posta elektronika.
-        Blokar un domeno MX blokara los rejistros de kualkier adreso de posta elektronika
-        ke utilize el mezmo domeno MX, inkluzo si el nombre de domeno vizivle es desferente.
-        <strong>Tenga kudiado de no blokar los prinsipales domenos de posta elektronika.</strong>
+      reset: Reinisya
+      resolved_dns_records_hint_html: El nombre de domeno rezolve los sigientes domenos MX, los kualos son responsavles en ultima instansya de achetar la posta elektronika. Blokar un domeno MX blokara los rejistros de kualkier adreso de posta elektronika ke utilize el mezmo domeno MX, inkluzo si el nombre de domeno vizivle es desferente. <strong>Tenga kudiado de no blokar los prinsipales domenos de posta elektronika.</strong>
       resolved_through_html: Rezolvido por %{domain}
+      search: Bushka
       title: Domenos de posta blokados
+    email_subscriptions:
+      accounts:
+        account: Kuento
+      danger_zone:
+        disable_feature:
+          action: Inkapasita
+      roles:
+        title: Rolos
     export_domain_allows:
       new:
         title: Importa permisos de domeno
@@ -688,29 +702,13 @@ lad:
       action_log: Defter de revizyon
       action_taken_by: Aksyon tomada por
       actions:
-        delete_description_html: Los mesajes denunsiados seran supremidos i se enrejistrara
-          un amonestamiento para ayudarte kon las futuras infraksyones por el mezmo
-          kuento.
-        mark_as_sensitive_description_html: Las dosyas de multimedia en los mesajes
-          enformados se markaran komo sensivles i se aplikara un amonestamiento para
-          ayudarte kon las futuras infraksyones del mezmo kuento.
-        other_description_html: Ve mas opsiones para kontrolar el komporto del kuento
-          i personalizar la komunikasyon del kuento raportado.
-        resolve_description_html: No se tomaran aksyones kontra el kuento denunsiado,
-          no se enrejistrara el amonestamiento, i se serrara el raporto.
-        silence_description_html: El profil sera vizivle solo para akeyos ke ya lo
-          sigan o lo bushken manualmente, limitando seriamente su alkanse. Siempre
-          puede ser revertido.
-        suspend_description_html: El profil i todos sus kontenidos seran inaksesivles
-          asta ke sean enfin supremidos. La enteraksion kon el kuento sera emposivle.
-          Reversivle durante un tiempo de 30 diyas.
-      actions_description_html: Dechide kualas mizuras tomar para rezolver esta denunsia.
-        Si tomas una aksion punitiva kontra el kuento denunsiada, se le embiara a
-        dicho kuento un avizo por posta elektronika, ekseptado kuando se eskoja la
-        kategoria <strong>Spam</strong>.
-      actions_description_remote_html: Dechide ke fazer para rezolver este raporto.
-        Esto solo va afektar komo <strong>tu</strong> sirvidor komunike kon este kuento
-        remoto i ke faze kon su kontenido.
+        mark_as_sensitive_description_html: Las dosyas de multimedia en los mesajes enformados se markaran komo sensivles i se aplikara un amonestamiento para ayudarte kon las futuras infraksyones del mezmo kuento.
+        other_description_html: Ve mas opsiones para kontrolar el komporto del kuento i personalizar la komunikasyon del kuento raportado.
+        resolve_description_html: No se tomaran aksyones kontra el kuento denunsiado, no se enrejistrara el amonestamiento, i se serrara el raporto.
+        silence_description_html: El profil sera vizivle solo para akeyos ke ya lo sigan o lo bushken manualmente, limitando seriamente su alkanse. Siempre puede ser revertido.
+        suspend_description_html: El profil i todos sus kontenidos seran inaksesivles asta ke sean enfin supremidos. La enteraksion kon el kuento sera emposivle. Reversivle durante un tiempo de 30 diyas.
+      actions_description_html: Dechide kualas mizuras tomar para rezolver esta denunsia. Si tomas una aksion punitiva kontra el kuento denunsiada, se le embiara a dicho kuento un avizo por posta elektronika, ekseptado kuando se eskoja la kategoria <strong>Spam</strong>.
+      actions_description_remote_html: Dechide ke fazer para rezolver este raporto. Esto solo va afektar komo <strong>tu</strong> sirvidor komunike kon este kuento remoto i ke faze kon su kontenido.
       add_to_report: Adjusta mas al raporto
       already_suspended_badges:
         local: Ya suspendido en este sirvidor
@@ -729,7 +727,6 @@ lad:
       confirm: Konfirma
       confirm_action: Konfirma la aksyon de moderasyon kontra @%{acct}
       created_at: Raportado
-      delete_and_resolve: Efasa publikasyones
       forwarded: Reembiado
       forwarded_replies_explanation: Este raporto vyene de un utilizador remoto i
         es sovre kontenido remoto. Tiene sido reembiado a ti porke el kontenido raportado
@@ -760,9 +757,7 @@ lad:
       resolved_msg: Tienes rezolvido la denunsia djustamente!
       skip_to_actions: Va direktamente a las aksyones
       status: Estado
-      statuses: Kontenido raportado
-      statuses_description_html: El kontenido ofensivo se sitara en la komunikasyon
-        kon el kuento raportado
+      statuses_description_html: El kontenido ofensivo se sitara en la komunikasyon kon el kuento raportado
       summary:
         action_preambles:
           delete_html: 'Vas <strong>kitar</strong> algunas de las publikasyones de
@@ -808,6 +803,7 @@ lad:
       categories:
         administration: Administrasyon
         devops: DevOps
+        email: Posta elektronika
         invites: Envytasyones
         moderation: Moderasyon
         special: Espesial
@@ -955,6 +951,9 @@ lad:
         all: A todos
         disabled: A dinguno
         users: Para los utilizadores lokales ke entrado en su kuento
+      feed_access:
+        modes:
+          public: Todos
       registrations:
         moderation_recommandation: Por favor, asigurate ke tyenes una taifa de moderasyon
           adekuada i reaktiva antes de avrir los enrejistramyentos a todos!
@@ -1366,7 +1365,6 @@ lad:
   application_mailer:
     notification_preferences: Troka preferensyas de posta
     salutation: "%{name},"
-    settings: 'Troka preferensyas de posta: %{link}'
     unsubscribe: Dezabona
     view: 'Mira:'
     view_profile: Ve profil
@@ -1492,6 +1490,10 @@ lad:
       durante la sigiente ora."
     invalid_password: Kod inkorekto
     prompt: Konfirma kod para segir
+  color_scheme:
+    auto: Otomatiko
+  contrast:
+    auto: Otomatiko
   crypto:
     errors:
       invalid_key: no es una yave Ed25519 o Curve25519 valida
@@ -1567,11 +1569,20 @@ lad:
       your_appeal_pending: Tienes enviado una apelasyon
       your_appeal_rejected: Tu apelasyon fue refuzada
   edit_profile:
-    basic_information: Enformasyon bazika
-    hint_html: "<strong>Personaliza lo ke la djente ve en tu profil publiko i kon
-      tus publikasyones.</strong> Es mas probavle ke otras personas te sigan i enteraktuen
-      kontigo kuando kompletas tu profil i foto."
     other: Otros
+  email_subscription_mailer:
+    confirmation:
+      action: Konfirma tu adreso de posta elektronika
+  email_subscriptions:
+    active: Aktivo
+    confirmations:
+      show:
+        unsubscribe: Dezabona
+    status: Estado
+  emoji_styles:
+    auto: Otomatiko
+    native: Nativo
+    twemoji: Twemoji
   errors:
     '400': La solisitasyon ke enviates no fue valida o fue malformada.
     '403': No tienes permiso para ver esta pajina.
@@ -1611,12 +1622,8 @@ lad:
     mutes: Silensias
     storage: Magazinaje de multimedia
   featured_tags:
-    add_new: Adjusta muevo
     errors:
       limit: Tienes alkansado el karar maksimo de etiketas
-    hint_html: "<strong>Avalia tus etiketas mas importantes en tu profil.</strong>
-      Se amostran de forma prominente en tu profil publiko i permeten a los utilizadores
-      navigar por tus publikasyones publikas espesifikamente basho akeyas etiketas."
   filters:
     contexts:
       account: Profiles
@@ -1805,25 +1812,6 @@ lad:
       %{ip} (%{browser})
     successful_sign_in_html: Prova de sesion reushida kon %{method} dizde %{ip} (%{browser})
     title: Estoria de autentifikasyon
-  mail_subscriptions:
-    unsubscribe:
-      action: Si, dezabona
-      complete: Dezabonado
-      confirmation_html: Estas siguro de ke ya no keres risivir %{type} de Mastodon
-        en %{domain} a tu posta elektronika %{email}? Syempre podras reabonarte dizde
-        las <a href="%{settings_path}"> opsyones de avizos por posta.</a>.
-      emails:
-        notification_emails:
-          favourite: avizos de favoritos por posta
-          follow: avizos de segidores por posta
-          follow_request: avizos de solisitasyones de segimyento por posta
-          mention: avizos de enmentaduras por posta
-          reblog: avizos de repartajasyones por posta
-      resubscribe_html: Si tyenes deabonado por yerro, puedes reabonar en tus <a href="%{settings_path}">opsyones
-        de avizos por posta elektronika</a>.
-      success_html: Ya no risiviras %{type} de Mastodon en %{domain} a tu posta en
-        %{email}.
-      title: Dezabona
   media_attachments:
     validations:
       images_and_video: No se puede adjuntar un video a un estado ke ya kontenga imajes
@@ -2179,16 +2167,9 @@ lad:
       de tiempo espesifikado, a manko ke koensiden kon alguna de las eksepsiones detalyadas
       debasho
     exceptions: Eksepsiones
-    explanation: Porke la efasasion de mesajes es una operasyon kostoza, esto se faze
-      avagar, a lo longo de un tiempo, kuando el sirvidor no esta okupado. Por esta
-      razon, puede ser ke tus publikasyones sean efasadas un tiempo dempues de ke
-      alkansen el limito de tiempo espesifikado.
     ignore_favs: Ignora favoritos
     ignore_reblogs: Ignora repartajasyones
     interaction_exceptions: Eksepsiones bazadas en enteraksyones
-    interaction_exceptions_explanation: Akodrate ke no ay garantiya de ke se supremen
-      las publikasyones ke estan por debasho de los limitos de favoritos o de repartajasiones
-      si los tienen superado en algun momento.
     keep_direct: Manten enmentaduras privadas
     keep_direct_hint: No efasa dingunos mesajes privados
     keep_media: Manten publikasyones kon atamientos
@@ -2227,9 +2208,7 @@ lad:
   tags:
     does_not_match_previous_name: no koensida kon el nombre anterior
   themes:
-    contrast: Mastodon (alto kontraste)
-    default: Mastodon (eskuro)
-    mastodon-light: Mastodon (klaro)
+    default: Mastodon
   time:
     formats:
       default: "%d de %b del %Y, %H:%M"
@@ -2261,6 +2240,9 @@ lad:
       a salvo</strong>. Por enshemplo, puedes imprimirlos i guadrarlos kon otros dokumentos
       emportantes.
     webauthn: Yaves de sigurita
+  unsubscriptions:
+    show:
+      action: Dezabona
   user_mailer:
     appeal_approved:
       action: Preferensyas de kuento

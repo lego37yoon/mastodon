@@ -1,5 +1,3 @@
-import { injectIntl } from 'react-intl';
-
 import { connect } from 'react-redux';
 
 import {
@@ -45,6 +43,7 @@ import {
   undoStatusTranslation,
 } from '../actions/statuses';
 import { setStatusQuotePolicy } from '../actions/statuses_typed';
+import { injectIntl } from '../components/intl';
 import Status from '../components/status';
 import { deleteModal } from '../initial_state';
 import { makeGetStatus, makeGetPictureInPicture } from '../selectors';
@@ -79,7 +78,7 @@ const mapDispatchToProps = (dispatch, { contextType }) => ({
   onReblog (status, e) {
     dispatch(toggleReblog(status.get('id'), e.shiftKey));
   },
-  
+
   onQuote (status) {
     dispatch(quoteComposeById(status.get('id')));
   },
@@ -241,10 +240,11 @@ const mapDispatchToProps = (dispatch, { contextType }) => ({
     dispatch(deployPictureInPicture({statusId: status.get('id'), accountId: status.getIn(['account', 'id']), playerType: type, props: mediaProps}));
   },
 
-  onInteractionModal (status) {
+  onInteractionModal (status, intent) {
     dispatch(openModal({
       modalType: 'INTERACTION',
       modalProps: {
+        intent,
         accountId: status.getIn(['account', 'id']),
         url: status.get('uri'),
       },
