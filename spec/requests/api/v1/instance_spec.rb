@@ -20,6 +20,15 @@ RSpec.describe 'Instances' do
         expect(response.parsed_body)
           .to be_present
           .and include(title: 'Mastodon')
+          .and include(
+            configuration: include(
+              statuses: include(
+                max_characters: StatusLengthValidator::MAX_CHARS,
+                max_media_attachments: Status::MEDIA_ATTACHMENTS_LIMIT,
+                characters_reserved_per_url: StatusLengthValidator::URL_PLACEHOLDER_CHARS
+              )
+            )
+          )
       end
     end
 
