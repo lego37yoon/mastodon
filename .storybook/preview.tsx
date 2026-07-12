@@ -26,6 +26,18 @@ import { modes } from './modes';
 import '../app/javascript/styles/application.scss';
 import './styles.css';
 
+const getReduxPath = (reduxPath: unknown) => {
+  if (Array.isArray(reduxPath)) {
+    return reduxPath.map(String);
+  }
+
+  if (typeof reduxPath === 'string') {
+    return reduxPath.split('.');
+  }
+
+  return undefined;
+};
+
 // Disabling locales in Storybook as it's breaking with Vite 8.
 // const localeFiles = import.meta.glob('@/mastodon/locales/*.json', {
 //   query: { as: 'json' },
@@ -74,19 +86,20 @@ const preview: Preview = {
 
       const argsState: Record<string, unknown> = {};
       for (const [key, value] of Object.entries(args)) {
-        const argType = argTypes[key];
-        if (argType?.reduxPath) {
-          const reduxPath = Array.isArray(argType.reduxPath)
-            ? argType.reduxPath.map((p) => p.toString())
-            : argType.reduxPath.split('.');
+        const argType = argTypes[key] as { reduxPath?: unknown } | undefined;
+        const reduxPath = getReduxPath(argType?.reduxPath);
 
-          reduxPath.reduce((acc, key, i) => {
-            if (acc[key] === undefined) {
-              acc[key] = {};
-            }
+        if (reduxPath) {
+          reduxPath.reduce<Record<string, unknown>>((acc, key, i) => {
             if (i === reduxPath.length - 1) {
               acc[key] = value;
+              return acc;
             }
+
+            if (typeof acc[key] !== 'object' || acc[key] === null) {
+              acc[key] = {};
+            }
+
             return acc[key] as Record<string, unknown>;
           }, argsState);
         }

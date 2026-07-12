@@ -433,7 +433,6 @@
   }
 
   &.copied {
-    border-color: $valid-value-color;
     color: $valid-value-color;
     transition: none;
     background-color: var(--color-bg-success-softest);
@@ -1041,7 +1040,6 @@
   align-items: center;
   gap: 4px;
   background: transparent;
-  border: 1px solid var(--color-border-brand);
   border-radius: 6px;
   border: 1px solid $highlight-text-color;
   padding: 4px 8px;
@@ -1730,6 +1728,7 @@
     content: '';
     position: absolute;
     inset: 0;
+    z-index: -1;
     background: var(--color-bg-brand-softest);
     opacity: 0;
     animation: fade 0.7s reverse both 0.3s;
@@ -4205,16 +4204,15 @@ a.account__display-name {
   align-items: center;
   gap: 8px;
   width: 100%;
-  padding: 10px;
-  padding-inline-start: 14px;
-  overflow: hidden;
+  padding: 12px;
+  padding-inline-start: 16px;
   font-size: 16px;
   font-weight: 400;
   text-decoration: none;
   white-space: nowrap;
   color: $secondary-text-color;
   background: transparent;
-  border: 2px solid transparent;
+  border: none;
   border-radius: 4px;
 
   &:hover,
@@ -4228,14 +4226,14 @@ a.account__display-name {
   }
 
   &:focus-visible {
-    outline: none;
-    border-color: var(--color-border-brand);
+    outline: var(--outline-focus-default);
+    outline-offset: -2px;
     background: var(--color-bg-brand-softest);
   }
 
   &--logo {
-    padding: 8px;
-    padding-inline-start: 12px;
+    padding: 10px;
+    padding-inline-start: 14px;
   }
 }
 
@@ -7820,7 +7818,6 @@ a.status-card {
 .video-player {
   overflow: hidden;
   position: relative;
-  color: var(--color-text-on-media);
   background: var(--color-bg-media);
   max-height: var(--max-media-height-small);
   border-radius: 8px;
@@ -8891,8 +8888,6 @@ noscript {
     }
 
     &.active {
-      color: var(--color-text-brand);
-      background-color: var(--color-bg-brand-softest);
       border-color: var(--color-border-brand);
       transition: all 100ms ease-in;
       transition-property: background-color, color;
