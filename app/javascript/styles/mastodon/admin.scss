@@ -1,6 +1,7 @@
 @use 'sass:color';
 @use 'sass:math';
 @use 'functions' as *;
+@use 'mixins';
 @use 'variables' as *;
 
 $no-columns-breakpoint: 890px;
@@ -2440,14 +2441,8 @@ a.sparkline {
     width: 200px;
   }
 
-  // FIXME: This is duplicated with empty_message.module.scss
   [data-color-scheme='dark'] & svg {
-    --color-skin-1: #3a3a50;
-    --color-skin-2: #67678e;
-    --color-skin-3: #44445f;
-    --color-outline: #21212c;
-    --color-shadow: #181820;
-    --color-highlight: #b2b1c8;
+    @include mixins.elephant-dark-palette;
   }
 }
 
