@@ -214,15 +214,16 @@ export function useOverflowObservers({
 
   // Watch the wrapper for size changes, and recalculate when it resizes.
   const wrapperRef = useRef<HTMLElement | null>(null);
+  /* eslint-disable react-hooks/immutability -- https://github.com/facebook/react/issues/34955 */
   const wrapperRefCallback = useCallback(
     (node: HTMLElement | null) => {
       if (node) {
-        wrapperRef.current = node; // eslint-disable-line react-hooks/immutability -- https://github.com/facebook/react/issues/34955
+        wrapperRef.current = node;
         handleObserve();
         if (typeof onWrapperRef === 'function') {
           onWrapperRef(node);
         } else if (onWrapperRef && 'current' in onWrapperRef) {
-          onWrapperRef.current = node; // eslint-disable-line react-hooks/immutability -- https://github.com/facebook/react/issues/34955
+          onWrapperRef.current = node;
         }
       }
     },
@@ -238,12 +239,13 @@ export function useOverflowObservers({
         if (typeof onListRef === 'function') {
           onListRef(node);
         } else if (onListRef && 'current' in onListRef) {
-          onListRef.current = node; // eslint-disable-line react-hooks/immutability -- https://github.com/facebook/react/issues/34955
+          onListRef.current = node;
         }
       }
     },
     [handleObserve, onListRef],
   );
+  /* eslint-enable react-hooks/immutability */
 
   return {
     wrapperRefCallback,
