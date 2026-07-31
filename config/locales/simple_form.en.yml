@@ -127,8 +127,6 @@ en:
           to restore. Use of this setting is intended for special purpose instances
           and breaks many user expectations when implemented for general purpose use.
         custom_css: You can apply custom styles on the web version of Mastodon.
-        favicon: WEBP, PNG, GIF or JPG. Overrides the default Mastodon favicon with
-          a custom icon.
         email_footer_text: Optional text that appears in the footer of newsletter emails only.
         favicon: WEBP, PNG, GIF or JPG. Overrides the default Mastodon favicon with a custom icon.
         landing_page: Selects what page new visitors see when they first arrive on your server. If you select "Trends", then trends needs to be enabled in the Discovery Settings. If you select "Local feed", then "Access to live feeds featuring local posts" needs to be set to "Everyone" in the Discovery Settings.
@@ -163,10 +161,6 @@ en:
         thumbnail: A roughly 2:1 image displayed alongside your server information.
         timeline_preview: Logged out visitors will be able to browse the most recent
           public posts available on the server.
-        trendable_by_default: Skip manual review of trending content. Individual items
-          can still be removed from trends after the fact.
-        trends: Trends show which posts, hashtags and news stories are gaining traction
-          on your server.
         trends_as_landing_page: Show trending content to logged-out users and visitors
           instead of a description of this server. Requires trends to be enabled.
         thumbnail_description: A description of the image to help people with visual impairments understand its content.
@@ -199,10 +193,6 @@ en:
           your recovery codes:'
         webauthn: If it's an USB key be sure to insert it and, if necessary, tap it.
       settings:
-        indexable: Your profile page may appear in search results on Google, Bing,
-          and others.
-        show_application: You will always be able to see which app published your
-          post regardless.
         email_subscriptions: Disabling retains existing subscribers but stops sending emails.
         indexable: Your profile page may appear in search results on Google, Bing, and others.
         show_application: You will always be able to see which app published your post regardless.

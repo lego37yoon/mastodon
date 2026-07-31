@@ -957,31 +957,6 @@ pt-PT:
         all: Para toda a gente
         disabled: Para ninguém
         users: Para utilizadores locais que se encontrem autenticados
-      registrations:
-        moderation_recommandation: Certifique-se de que dispõe de uma equipa de moderação
-          adequada e reativa antes de abrir as inscrições a todos!
-        preamble: Controle quem pode criar uma conta no seu servidor.
-        title: Inscrições
-      registrations_mode:
-        modes:
-          approved: Registo sujeito a aprovação
-          none: Ninguém se pode registar
-          open: Qualquer pessoa se pode registar
-        warning_hint: Recomendamos a utilização de “É necessária aprovação para o
-          registo”, a menos que esteja confiante de que a sua equipa de moderação
-          pode tratar o spam e os registos maliciosos de forma atempada.
-      security:
-        authorized_fetch: Exigir autenticação de servidores federados
-        authorized_fetch_hint: Exigir autenticação de servidores federados permite
-          uma aplicação mais rigorosa de bloqueios tanto ao nível do utilizador como
-          do servidor. No entanto, isso é feito à custa de uma diminuição de desempenho,
-          reduz o alcance das suas respostas e pode introduzir problemas de compatibilidade
-          com alguns serviços federados. Além disso, isso não impede os atores mais
-          empenhados de aceder às suas publicações e contas públicas.
-        authorized_fetch_overridden_hint: Atualmente não pode alterar esta configuração
-          porque ela é substituída por uma variável de ambiente.
-        federation_authentication: Imposição de autenticação da federação
-      title: Definições do servidor
       allow_referrer_origin:
         desc: Quando os seus utilizadores clicam em hiperligações para sites externos,
           o navegador destes pode enviar o endereço do seu servidor Mastodon como
@@ -2086,10 +2061,6 @@ pt-PT:
       subject: Recebeste um aviso da moderação
     poll:
       subject: A sondagem de %{name} terminou
-    quote:
-      body: 'A sua publicação foi citada por %{name}:'
-      subject: "%{name} citou a sua publicação"
-      title: Nova citação
     quoted_update:
       subject: "%{name} editou uma publicação que citou"
     reblog:

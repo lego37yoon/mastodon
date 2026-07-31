@@ -3,7 +3,6 @@ nn:
   simple_form:
     hints:
       account:
-        attribution_domains: Ein per line. Vernar mot falske krediteringar.
         discoverable: Du kan bli omtala i samlingar som andre folk lagar. Du og dei offentlege innlegga dine kan òg bli føreslegne til folk når dei oppdagar kva som finst på Mastodon.
         display_name: Ditt fulle namn eller ditt tøysenamn.
         fields: Heimesida di, pronomen, alder, eller kva du måtte ynskje.
@@ -73,18 +72,12 @@ nn:
         password: Nytt minst 8 teikn
         phrase: Vil bli samsvart med, uansett bruk av store/små bokstaver eller innholdsadvarselen til en tut
         scopes: API-ane som programmet vil få tilgjenge til. Ettersom du vel eit toppnivåomfang tarv du ikkje velja einskilde API-ar.
-        setting_advanced_layout: Vis Mastodon i fleire spalter, slik at du kan sjå tidslina, varsel og ei tredje spalte du vel sjølv. Ikkje tilrådd for mindre skjermar.
         setting_aggregate_reblogs: Ikkje vis nye framhevingar for tut som nyleg har vorte heva fram (Påverkar berre nylege framhevingar)
         setting_always_send_emails: Vanlegvis vil ikkje e-postvarsel bli sendt når du brukar Mastodon aktivt
-        setting_boost_modal: Når du har skrudd på dette, vil framheving fyrst opna ei stadfestingsrute der du vel korleis du vil visa innlegget ditt.
-        setting_default_quote_policy_private: Innlegg som er skrivne på Mastodon og berre for fylgjarar kan ikkje siterast av andre.
-        setting_default_quote_policy_unlisted: Når folk siterer deg, vil innlegget deira ikkje syna på populære tidsliner.
         setting_default_sensitive: Sensitive media vert gøymde som standard, og du syner dei ved å klikka på dei
         setting_display_media_default: Åtvar før du viser medium merkte som ømtolige
         setting_display_media_hide_all: Åtvar før du viser alle medium
         setting_display_media_show_all: Vis alle medium utan åtvaring, òg dei som er merkte som ømtolige
-        setting_emoji_style: Korleis du skal visa smilefjes. «Auto» prøver å visa innebygde smilefjes, men bruker Twemoji som reserveløysing for eldre nettlesarar.
-        setting_quick_boosting_html: Når dette er skrudd på og du klikkar på %{boost_icon} framhev-ikonet, vil du framheva innlegget med ein gong i staden for å opna framhev/siter-menyen. Du finn siteringa i %{options_icon} (Val)-menyen.
         setting_use_blurhash: Overgangar er basert på fargane til skjulte grafikkelement, men gjer detaljar utydelege
         setting_use_pending_items: Gøym tidslineoppdateringar bak eit klikk, i staden for å rulla ned automatisk
         username: Du kan bruka bokstavar, tal og understrekar
@@ -215,9 +208,6 @@ nn:
           det meir leseleg
       user:
         chosen_languages: Viss du vel dette, vil du berre sjå innlegg på dei valde språka på offentlege tidsliner. Denne innstillinga påverkar ikkje heimetidslina eller listene dine.
-        date_of_birth:
-          one: Me må sikra oss at du er minst %{count} for å bruka %{domain}. Me lagrar ikkje dette.
-          other: Me må sikra oss at du er minst %{count} for å bruka %{domain}. Me lagrar ikkje dette.
         role: Rolla kontrollerer kva løyve brukaren har.
         date_of_birth:
           one: Me må sikra oss at du er minst %{count} for å bruka %{domain}. Me lagrar
@@ -232,10 +222,6 @@ nn:
         permissions_as_keys: Brukarar med denne rolla vil ha tilgang til...
         position: Høgare rolle avgjer konfliktløysing i visse situasjonar. Visse handlingar kan berre utførast på roller med lågare prioritet
         require_2fa: Brukarar med denne rolla må setja opp tofaktorinnlogging for å bruka Mastodon
-      username_block:
-        allow_with_approval: I staden for å hindra registreringar i det heile, må du godkjenna registreringar som passar
-        comparison: Ver merksam på Scunthorpe-problemet når du blokkerer delvise treff
-        username: Vil passa uansett store og små bokstavar og vanlege homoglyfar som «4» for «a» eller «3» for «e»
       webhook:
         events: Vel hendingar å senda
         template: Skriv di eiga JSON nyttelast ved å bruka variabel interpolering.
@@ -275,7 +261,6 @@ nn:
           «4» for «a» eller «3» for «e»
     labels:
       account:
-        attribution_domains: Nettstader som har lov å kreditera deg
         discoverable: Lat folk oppdaga meg
         fields:
           name: Merkelapp
@@ -471,16 +456,6 @@ nn:
         name: Emneknagg
         trendable: Tillat denne emneknaggen til å synast under trendar
         usable: Godta at innlegga kan bruka denne emneknaggen lokalt
-      user:
-        role: Rolle
-        time_zone: Tidssone
-        date_of_birth_2i: Månad
-      user_role:
-        color: Emblemfarge
-        highlighted: Vis rolle som emblem på brukarprofil
-        name: Namn
-        permissions_as_keys: Løyve
-        position: Prioritet
       webhook:
         events: Aktiverte hendingar
         template: Nyttelastmal

@@ -791,7 +791,6 @@ ja:
       discovery:
         follow_recommendations: おすすめフォロー
         preamble: 必ずしも知っている人がMastodonに居ない新規ユーザーに定着してもらうには、興味深いコンテンツを表示することが役に立ちます。あなたのサーバーの種々のディスカバリー機能の動作を設定してください。
-        privacy: プライバシー
         profile_directory: ディレクトリ
         public_timelines: 公開タイムライン
         publish_discovered_servers: 接続しているサーバーを公開する
@@ -1380,10 +1379,6 @@ ja:
       your_appeal_rejected: 申し立ては拒否されました
   edit_profile:
     other: その他
-  emoji_styles:
-    auto: 自動
-    native: ネイティブ
-    twemoji: Twemoji
   errors:
     '400': 送信されたリクエストは無効であるか、または不正なフォーマットです。
     '403': このページを表示する権限がありません。
@@ -1885,15 +1880,6 @@ ja:
       limit: 固定できる投稿数の上限に達しました
       ownership: 他人の投稿を固定することはできません
       reblog: ブーストを固定することはできません
-    title: '%{name}: "%{quote}"'
-    visibilities:
-      direct: ダイレクト
-      private: フォロワー限定
-      private_long: フォロワーにのみ表示されます
-      public: 公開
-      public_long: 誰でも見ることができ、かつ公開タイムラインに表示されます
-      unlisted: 非収載
-      unlisted_long: 誰でも見ることができますが、公開タイムラインには表示されません
     quote_policies:
       followers: フォロワーのみ
       nobody: 自分のみ
@@ -1948,13 +1934,6 @@ ja:
       too_late: 異議申立をするには遅すぎます
   tags:
     does_not_match_previous_name: 以前の名前と一致しません
-  terms_of_service:
-    title: サービス利用規約
-  terms_of_service_interstitial:
-    future_preamble_html: サービス利用規約にいくつかの変更が加えられています。これは <strong>%{date}</strong>に適用されます。 更新された条件を確認することをお勧めします。
-    past_preamble_html: 前回の訪問時から利用規約が変更されました。更新された条件を確認することをお勧めします。
-    review_link: 利用規約を確認する
-    title: "%{domain} の利用規約が変更されています"
   time:
     formats:
       default: "%Y年%m月%d日 %H:%M"

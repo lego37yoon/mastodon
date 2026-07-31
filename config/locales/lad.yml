@@ -951,9 +951,6 @@ lad:
         all: A todos
         disabled: A dinguno
         users: Para los utilizadores lokales ke entrado en su kuento
-      feed_access:
-        modes:
-          public: Todos
       registrations:
         moderation_recommandation: Por favor, asigurate ke tyenes una taifa de moderasyon
           adekuada i reaktiva antes de avrir los enrejistramyentos a todos!
@@ -1579,10 +1576,6 @@ lad:
       show:
         unsubscribe: Dezabona
     status: Estado
-  emoji_styles:
-    auto: Otomatiko
-    native: Nativo
-    twemoji: Twemoji
   errors:
     '400': La solisitasyon ke enviates no fue valida o fue malformada.
     '403': No tienes permiso para ver esta pajina.

@@ -3,7 +3,6 @@ gd:
   simple_form:
     hints:
       account:
-        attribution_domains: Loidhne fa leth do gach fear. Dìonaidh seo o iomraidhean meallta.
         discoverable: Dh’fhaoidte gun dèid do bhrosnachadh ann an cruinneachaidhean a chruthaich càch. Dh’fhaoidte gun dèid thu fhèin ’s na postaichean poblach agad a mholadh do dhaoine ann an àrainneachdan rùrachaidh eile air feadh Mastodon.
         display_name: D’ ainm slàn no spòrsail.
         fields: An duilleag-dhachaigh agad, roimhearan, aois, rud sam bith a thogras
@@ -90,18 +89,12 @@ gd:
         password: Cleachd co-dhiù 8 caractaran
         phrase: Thèid a mhaidseadh gun aire air litrichean mòra ’s beaga no air rabhadh susbainte puist
         scopes: Na APIan a dh’fhaodas an aplacaid inntrigeadh. Ma thaghas tu sgòp air ìre as àirde, cha leig thu leas sgòpaichean fa leth a thaghadh.
-        setting_advanced_layout: Seall Mastodon ’na ioma-cholbh ach am faic thu an loidhne-ama, na brathan agus treas colbh a thaghas tu fhèin. Cha mholamaid seo air sgrìnichean beaga.
         setting_aggregate_reblogs: Na seall brosnachaidhean ùra do phostaichean a chaidh a bhrosnachadh o chionn goirid (cha doir seo buaidh ach air brosnachaidhean ùra o seo a-mach)
         setting_always_send_emails: Mar as àbhaist, cha dèid brathan puist-d a chur nuair a a bhios tu ri Mastodon gu cunbhalach
-        setting_boost_modal: Ma tha seo an comas, thèid còmhradh dearbhaidh a shealltainn far an urrainn dhut faicsinneachd a’ phuist agad atharrachadh nuair a bhios tu ri brosnachadh.
-        setting_default_quote_policy_private: Chan urrainn do chàch postaichean dhan luchd-leantainn a-mhàin a chaidh a sgrìobhadh le Mastodon a luaidh.
-        setting_default_quote_policy_unlisted: Nuair a luaidheas daoine thu, thèid am post aca-san fhalach o loidhnichean-ama nan treandaichean.
         setting_default_sensitive: Thèid meadhanan frionasach fhalach a ghnàth is gabhaidh an nochdadh le briogadh orra
         setting_display_media_default: Thoir rabhadh mus dèid meadhanan ris a bheil comharra gu bheil iad frionasach a shealltainn
         setting_display_media_hide_all: Thoir rabhadh mus dèid meadhan sam bith a shealltainn
         setting_display_media_show_all: Seall meadhan sam bith gun rabhadh, a’ gabhail a-staigh nam meadhanan ris a bheil comharra gu bheil iad frionasach
-        setting_emoji_style: An dòigh air an dèid emojis a shealltainn. Feuchaidh “Fèin-obrachail” ris na h-emojis tùsail a chleachdadh ach thèid Twemoji a chleachdadh ’nan àite air seann-bhrabhsairean.
-        setting_quick_boosting_html: Ma tha seo an comas, ma nì thu briogadh air ìomhaigheag %{boost_icon} a’ bhrosnachaidh, thèid a bhrosnachadh sa bhad seach a bhith a’ fosgladh clàr-taice teàrnach a’ bhrosnachaidh/luaidh. Thèid gnìomh an luaidh a ghluasad gu clàr-taice %{options_icon} nan roghainnean.
         setting_use_blurhash: Tha caiseadan stèidhichte air dathan nan nithean lèirsinneach a chaidh fhalach ach chan fhaicear am mion-fhiosrachadh
         setting_use_pending_items: Falaich ùrachaidhean na loidhne-ama air cùlaibh briogaidh seach a bhith a’ sgroladh nam postaichean gu fèin-obrachail
         username: Faodaidh tu litrichean, àireamhan is fo-loidhnichean a chleachdadh
@@ -232,11 +225,6 @@ gd:
           a chleachdadh ach an gabh a leughadh nas fhasa
       user:
         chosen_languages: Nuair a bhios cromag ris, cha nochd ach postaichean sna cànain a thagh thu air loidhnichean-ama poblach. Cha doir an roghainn seo buaidh air loidhne-ama na dachaighe no air na liostaichean agad.
-        date_of_birth:
-          few: Feumaidh sinn dèanamh cinnteach gu bheil thu %{count} bliadhnaichean a dh’aois air a char as lugha mus cleachd thu %{domain}. Cha chlàraich sinn seo.
-          one: Feumaidh sinn dèanamh cinnteach gu bheil thu %{count} bhliadhna a dh’aois air a char as lugha mus cleachd thu %{domain}. Cha chlàraich sinn seo.
-          other: Feumaidh sinn dèanamh cinnteach gu bheil thu %{count} bliadhna a dh’aois air a char as lugha mus cleachd thu %{domain}. Cha chlàraich sinn seo.
-          two: Feumaidh sinn dèanamh cinnteach gu bheil thu %{count} bhliadhna a dh’aois air a char as lugha mus cleachd thu %{domain}. Cha chlàraich sinn seo.
         role: Stiùiridh an dreuchd dè na ceadan a bhios aig cleachdaiche.
         date_of_birth:
           few: Feumaidh sinn dèanamh cinnteach gu bheil thu %{count} bliadhnaichean
@@ -257,10 +245,6 @@ gd:
         permissions_as_keys: Gheibh na cleachdaichean aig a bheil an dreuchd seo inntrigeadh dha…
         position: Ma tha còmhstri ann, buannaichidh an dreuchd as àirde ann an cuid a shuidheachaidhean. Tha gnìomhan sònraichte ann nach urrainn ach dreuchdan le prìomhachas ìosail a ghabhail
         require_2fa: Feumaidh cleachdaichean aig a bheil an dreachd seo dearbhadh dà-cheumnach a shuidheachadh airson Mastodon a chleachdadh
-      username_block:
-        allow_with_approval: An àite bacadh clàraidh gu tur, bidh clàraidhean a mhaidsicheas feumach air d’ aonta
-        comparison: Thoir an aire air an Scunthorpe Problem nuair a bhacas tu maidsichean pàirteach
-        username: Bidh am maidseadh coma mu litrichean mòra ’s beaga agus co-ghlifichean cumanta a leithid “4” an àite “a” no “3” an àite “e”
       webhook:
         events: Tagh na tachartasan a thèid a chur
         template: Cruthaich an JSON payload agad fhèin le eadar-phòlachadh chaochladairean.
@@ -306,7 +290,6 @@ gd:
           cumanta a leithid “4” an àite “a” no “3” an àite “e”
     labels:
       account:
-        attribution_domains: Na làraichean-lìn a dh’fhaodas iomradh a thoirt ort
         discoverable: Brosnaich mi ann an àrainneachdan rùrachaidh
         fields:
           name: Leubail
@@ -505,16 +488,6 @@ gd:
         name: Taga hais
         trendable: Faodaidh an taga hais seo nochdadh am measg nan treandaichean
         usable: Faodaidh postaichean an taga hais seo a chleachdadh gu h-ionadail
-      user:
-        role: Dreuchd
-        time_zone: Roinn-tìde
-        date_of_birth_2i: Mìos
-      user_role:
-        color: Dathan na baidse
-        highlighted: Seall an dreuchd ’na baidse air pròifilean nan cleachdaichean
-        name: Ainm
-        permissions_as_keys: Ceadan
-        position: Prìomhachas
       webhook:
         events: Na tachartas an comas
         template: Teamplaid payload

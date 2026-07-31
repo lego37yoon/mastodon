@@ -1074,31 +1074,6 @@ cs:
         all: Všem
         disabled: Nikomu
         users: Přihlášeným místním uživatelům
-      registrations:
-        moderation_recommandation: Před otevřením registrací všem se ujistěte, že
-          máte vhodný a reaktivní moderační tým!
-        preamble: Mějte pod kontrolou, kdo může vytvořit účet na vašem serveru.
-        title: Registrace
-      registrations_mode:
-        modes:
-          approved: Schválení požadované pro registraci
-          none: Nikdo se nemůže registrovat
-          open: Kdokoliv se může registrovat
-        warning_hint: Doporučujeme použít "Schválení požadované pro registraci", pokud
-          si nejste jistí, že váš moderační tým dokáže včas zpracovat spam a škodlivé
-          registrace.
-      security:
-        authorized_fetch: Vyžadovat autentizaci od federovaných serverů
-        authorized_fetch_hint: Vyžadování ověřování pravosti od federalizovaných serverů
-          umožňuje přísnější prosazování uživatelských i serverních bloků. K tomu
-          však dochází k snížení výkonu, snižení dosah vašich odpovědí a můžou se
-          zavést problémy s kompatibilitou s některými federálními službami. Kromě
-          toho to nebude bránit oddaným uživatelům či robotům v načítání vašich veřejných
-          příspěvků a účtů.
-        authorized_fetch_overridden_hint: Momentálně nemůžete změnit toto nastavení,
-          protože je přepsáno proměnnou prostředí.
-        federation_authentication: Uplatnění ověřování pravosti federace
-      title: Nastavení serveru
       allow_referrer_origin:
         desc: Když vaši uživatelé kliknou na odkazy na externí stránky, jejich prohlížeč
           může odeslat adresu vašeho Mastodon serveru, jako odkazujícího serveru.
@@ -2236,10 +2211,6 @@ cs:
       subject: Obdrželi jste moderační varování
     poll:
       subject: Anketa od %{name} skončila
-    quote:
-      body: 'Váš příspěvek citoval účet %{name}:'
-      subject: "%{name} citovali váš příspěvek"
-      title: Nová citace
     quoted_update:
       subject: "%{name} upravili příspěvek, který jste citovali"
     reblog:

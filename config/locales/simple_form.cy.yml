@@ -3,7 +3,6 @@ cy:
   simple_form:
     hints:
       account:
-        attribution_domains: Un i bob llinell. Yn diogelu rhag priodoli ffug.
         discoverable: Efallai y byddwch chi'n cael eich cynnwys mewn casgliadau wedi'u creu gan ddefnyddwyr eraill. Efallai y byddwch chi a'ch postiadau cyhoeddus hefyd yn cael eu hawgrymu i ddefnyddwyr mewn profiadau darganfod eraill ledled Mastodon.
         display_name: Eich enw llawn neu'ch enw hwyl.
         fields: Eich tudalen cartref, rhagenwau, oed, neu unrhyw beth.
@@ -79,18 +78,12 @@ cy:
         password: Defnyddiwch o leiaf 8 nod
         phrase: Caiff ei gyfateb heb ystyriaeth o briflythrennu mewn testun neu rhybudd ynghylch cynnwys postiad
         scopes: Pa APIs y bydd y rhaglen yn cael mynediad iddynt. Os dewiswch gwmpas lefel uchaf, nid oes angen i chi ddewis rhai unigol.
-        setting_advanced_layout: Dangos Mastodon fel cynllun aml-golofn, sy'n eich galluogi i weld y llinell amser, hysbysiadau, a thrydedd golofn o'ch dewis chi. Nid gyfer sgriniau llai.
         setting_aggregate_reblogs: Peidiwch â dangos hybiau newydd ar bostiadau sydd wedi cael eu hybu'n ddiweddar (dim ond yn effeithio ar hybiau newydd ei dderbyn)
         setting_always_send_emails: Fel arfer ni fydd hysbysiadau e-bost yn cael eu hanfon pan fyddwch chi wrthi'n defnyddio Mastodon
-        setting_boost_modal: Pan fydd wedi'i alluogi, bydd hybu'n agor deialog cadarnhau yn gyntaf lle gallwch newid gwelededd eich hwb.
-        setting_default_quote_policy_private: Does dim modd dyfynnu postiadau sydd wedi'u hysgrifennu ar Mastodon ar gyfer dim ond dilynwyr.
-        setting_default_quote_policy_unlisted: Pan fydd pobl yn eich dyfynnu, bydd eu postiad hefyd yn cael ei guddio rhag llinellau amser sy'n trendio.
         setting_default_sensitive: Mae cyfryngau sensitif wedi'u cuddio yn rhagosodedig a gellir eu datgelu trwy glicio
         setting_display_media_default: Rhybuddio cyn dangos cyfryngau sydd wedi'u marcio fel rhai sensitif
         setting_display_media_hide_all: Rhybuddio cyn dangos yr holl gyfryngau
         setting_display_media_show_all: Dangos yr holl gyfryngau heb rybudd, gan gynnwys cyfryngau sydd wedi'u marcio fel rhai sensitif
-        setting_emoji_style: Sut i arddangos emojis. Bydd "Awto" yn ceisio defnyddio emoji cynhenid, ond mae'n disgyn yn ôl i Twemoji ar gyfer porwyr traddodiadol.
-        setting_quick_boosting_html: Pan fydd wedi'i alluogi, bydd clicio ar yr eicon Hwb %{boost_icon} yn rhoi hwb ar unwaith yn lle agor y gwymplen hwb/dyfynnu. Mae'n symud y weithred dyfynnu i'r ddewislen %{options_icon} (Dewisiadau).
         setting_use_blurhash: Mae graddiannau wedi'u seilio ar liwiau'r delweddau cudd ond maen nhw'n cuddio unrhyw fanylion
         setting_use_pending_items: Cuddio diweddariadau llinell amser y tu ôl i glic yn lle sgrolio'n awtomatig
         username: Gallwch ddefnyddio nodau, rhifau a thanlinellau
@@ -232,13 +225,6 @@ cy:
           er enghraifft
       user:
         chosen_languages: Pan gaiff ei dicio, dim ond postiadau mewn ieithoedd penodol fydd yn cael eu dangos mewn llinellau amser cyhoeddus. Dyw'r gosodiad hwn ddim yn effeithio ar eich llinell amser a'ch rhestrau Cartref.
-        date_of_birth:
-          few: Mae'n rhaid i ni sicrhau eich bod chi yn o leiaf %{count} oed i ddefnyddio %{domain}. Fyddwn ni ddim yn cadw hyn.
-          many: Mae'n rhaid i ni sicrhau eich bod chi yn o leiaf %{count} oed i ddefnyddio %{domain}. Fyddwn ni ddim yn cadw hyn.
-          one: Mae'n rhaid i ni sicrhau eich bod chi yn o leiaf %{count} oed i ddefnyddio %{domain}. Fyddwn ni ddim yn cadw hyn.
-          other: Mae'n rhaid i ni sicrhau eich bod chi yn o leiaf %{count} oed i ddefnyddio %{domain}. Fyddwn ni ddim yn cadw hyn.
-          two: Mae'n rhaid i ni sicrhau eich bod chi yn o leiaf %{count} oed i ddefnyddio %{domain}. Fyddwn ni ddim yn cadw hyn.
-          zero: Mae'n rhaid i ni sicrhau eich bod chi yn o leiaf %{count} oed i ddefnyddio %{domain}. Fyddwn ni ddim yn cadw hyn.
         role: Mae'r rôl yn rheoli pa ganiatâd sydd gan y defnyddiwr.
         date_of_birth:
           few: Mae'n rhaid i ni sicrhau eich bod chi yn o leiaf %{count} oed i ddefnyddio
@@ -261,10 +247,6 @@ cy:
         permissions_as_keys: Bydd defnyddwyr sydd â'r rôl hon yn cael mynediad at...
         position: Mae rôl uwch yn penderfynu ar ddatrys gwrthdrawiadau mewn rhai sefyllfaoedd. Dim ond ar rolau â blaenoriaeth is y gellir cyflawni rhai gweithredoedd
         require_2fa: Bydd gofyn i ddefnyddwyr sydd â'r rôl hon osod dilysiad dau ffactor i ddefnyddio Mastodon
-      username_block:
-        allow_with_approval: Yn lle atal cofrestru’n llwyr, bydd angen eich cymeradwyaeth rhag cofrestru cyfatebol
-        comparison: Byddwch yn ymwybodol o Broblem Scunthorpe wrth rwystro cyfatebion rhannol
-        username: Bydd yn cael ei gyfatebu waeth beth fo'r nodau bach a mawr a homoglyffau cyffredin fel "4" ar gyfer "a" neu "3" ar gyfer "e"
       webhook:
         events: Dewiswch ddigwyddiadau i'w hanfon
         template: Cyfansoddwch eich llwyth tâl JSON eich hun gan ddefnyddio rhyngosod
@@ -308,7 +290,6 @@ cy:
           cyffredin fel "4" ar gyfer "a" neu "3" ar gyfer "e"
     labels:
       account:
-        attribution_domains: Gwefannau sy'n cael caniatâd i'ch cydnabod chi
         discoverable: Dangoswch fi mewn profiadau darganfod
         fields:
           name: Label
@@ -502,18 +483,6 @@ cy:
         name: Hashnod
         trendable: Caniatáu i'r hashnod hwn ymddangos o dan bynciau llosg
         usable: Caniatáu i bostiadau ddefnyddio'r hashnod hwn yn lleol
-      user:
-        role: Rôl
-        time_zone: Cylchfa amser
-        date_of_birth_1i: Blwyddyn
-        date_of_birth_2i: Mis
-        date_of_birth_3i: Diwrnod
-      user_role:
-        color: Lliw bathodyn
-        highlighted: Dangos rôl fel bathodyn ar broffiliau defnyddwyr
-        name: Enw
-        permissions_as_keys: Caniatâd
-        position: Blaenoriaeth
       webhook:
         events: Digwyddiadau wedi'u galluogi
         template: Templed prif lwyth
