@@ -1014,7 +1014,6 @@ cy:
         preamble: Mae amlygu cynnwys diddorol yn allweddol ar gyfer derbyn defnyddwyr newydd nad ydynt efallai'n gyfarwydd ag unrhyw un Mastodon. Rheolwch sut mae nodweddion darganfod amrywiol yn gweithio ar eich gweinydd.
         profile_directory: Cyfeiriadur proffiliau
         public_timelines: Ffrydiau cyhoeddus
-        publish_discovered_servers: Cyhoeddi gweinyddion a ddarganfuwyd
         publish_statistics: Cyhoeddi ystadegau
         title: Darganfod
         trends: Tueddiadau
@@ -1397,12 +1396,9 @@ cy:
     remove: Dadgysylltu'r enw arall
   appearance:
     advanced_settings: Gosodiadau uwch
-    advanced_web_interface: Rhyngwyneb gwe uwch
-    advanced_web_interface_hint: 'Os ydych chi am ddefnyddio lled eich sgrin gyfan, mae''r rhyngwyneb gwe datblygedig yn caniatáu i chi ffurfweddu llawer o wahanol golofnau i weld faint bynnag o wybodaeth ar yr un pryd ag y dymunwch: Cartref, hysbysiadau, ffrydiau ffederaleiddiwyd, faint bynnag o restrau a hashnodau.'
     animations_and_accessibility: Animeiddiadau a hygyrchedd
     boosting_preferences: Dewisiadau hybu
     boosting_preferences_info_html: "<strong>Awgrym:</strong> Beth bynnag yw'r gosodiadau, bydd <kbd>Shift</kbd> + <kbd>Clici</kbd> ar yr eicon Hybu %{icon} yn hybu'n syth."
-    confirmation_dialogs: Deialogau cadarnhau
     discovery: Darganfod
     localization:
       body: Mae Mastodon yn cael ei gyfieithu gan wirfoddolwyr.
@@ -1458,7 +1454,6 @@ cy:
     migrate_account: Symud i gyfrif gwahanol
     migrate_account_html: Os hoffech chi ailgyfeirio'r cyfrif hwn at un gwahanol, mae modd <a href="%{path}">ei ffurfweddu yma</a>.
     or_log_in_with: Neu mewngofnodwch gyda
-    privacy_policy_agreement_html: Rwyf wedi darllen ac yn cytuno i'r <a href="%{privacy_policy_path}" target="_blank">polisi preifatrwydd</a>
     progress:
       confirm: Cadarnhau'r e-bost
       details: Eich manylion
@@ -2547,7 +2542,6 @@ cy:
       post_action: Creu
       post_step: Dywedwch helo wrth y byd gyda thestun, lluniau, fideos neu arolygon barn.
       post_title: Creu'ch postiad cyntaf
-      share_action: Rhannu
       share_step: Gadewch i'ch ffrindiau wybod sut i ddod o hyd i chi ar Mastodon.
       share_title: Rhannwch eich proffil Mastodon
       sign_in_action: Mewngofnodi

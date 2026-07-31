@@ -713,7 +713,6 @@ ms:
         preamble: Memaparkan kandungan yang menarik adalah penting dalam memasukkan pengguna baharu yang mungkin tidak mengenali sesiapa Mastodon. Kawal cara pelbagai ciri penemuan berfungsi pada server anda.
         profile_directory: Direktori profil
         public_timelines: Garis masa awam
-        publish_discovered_servers: Terbitkan pelayan yang ditemui
         publish_statistics: Terbitkan statistik
         title: Penemuan
         trends: Sohor kini
@@ -955,10 +954,7 @@ ms:
     hint_html: Jika anda ingin beralih dari akaun lain ke akaun ini, di sini anda boleh membuat alias, yang diperlukan sebelum anda boleh meneruskan dengan memindahkan pengikut dari akaun lama ke akaun ini. Tindakan ini dengan sendirinya <strong>tidak berbahaya dan boleh diterbalikkan</strong>. <strong>Penghijrahan akaun dimulakan daripada akaun lama</strong>.
     remove: Nyahpaut alias
   appearance:
-    advanced_web_interface: Antara muka web lanjutan
-    advanced_web_interface_hint: 'Jika anda ingin menggunakan keseluruhan lebar skrin anda, antara muka web lanjutan membolehkan anda mengkonfigurasi banyak lajur berbeza untuk melihat seberapa banyak maklumat pada masa yang sama seperti yang anda mahu: Laman Utama, pemberitahuan, garis masa bersekutu, sebarang bilangan senarai dan hashteg.'
     animations_and_accessibility: Animasi dan kebolehaksesan
-    confirmation_dialogs: Dialog pengesahan
     discovery: Penemuan
     localization:
       body: Mastodon diterjemahkan oleh sukarelawan.
@@ -1003,7 +999,6 @@ ms:
     migrate_account: Pindah kepada akaun lain
     migrate_account_html: Jika anda ingin mengubah hala akaun ini kepada akaun lain, anda boleh <a href="%{path}">konfigurasikannya di sini</a>.
     or_log_in_with: Atau daftar masuk dengan
-    privacy_policy_agreement_html: Saya telah membaca dan bersetuju menerima <a href="%{privacy_policy_path}" target="_blank">dasar privasi</a>
     progress:
       details: Maklumat anda
       review: Ulasan kami

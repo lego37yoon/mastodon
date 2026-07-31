@@ -982,7 +982,6 @@ cs:
         preamble: Povrchový zajímavý obsah je užitečný pro zapojení nových uživatelů, kteří možná neznají žádného Mastodona. Mějte pod kontrolou, jak různé objevovací funkce fungují na vašem serveru.
         profile_directory: Adresář profilů
         public_timelines: Veřejné časové osy
-        publish_discovered_servers: Zveřejnit objevené servery
         publish_statistics: Zveřejnit statistiku
         title: Objevujte
         trends: Trendy
@@ -1354,12 +1353,9 @@ cs:
     remove: Odpojit alias
   appearance:
     advanced_settings: Pokročilá nastavení
-    advanced_web_interface: Pokročilé webové rozhraní
-    advanced_web_interface_hint: 'Chcete-li využít celé šířky vaší obrazovky, dovolí vám pokročilé webové rozhraní nastavit si mnoho různých sloupců, takže ve stejnou chvíli uvidíte tolik informací, kolik chcete: domovskou časovou osu, oznámení, federovanou časovou osu a libovolný počet seznamů a hashtagů.'
     animations_and_accessibility: Animace a přístupnost
     boosting_preferences: Předvolby boostování
     boosting_preferences_info_html: "<strong>Tip:</strong> Bez ohledu na nastavení <kbd>Shift</kbd> + <kbd>Klik</kbd> na ikonu %{icon} Boost okamžitě boostne."
-    confirmation_dialogs: Potvrzovací dialogy
     discovery: Objevování
     localization:
       body: Mastodon je překládán dobrovolníky.
@@ -1415,7 +1411,6 @@ cs:
     migrate_account: Přesunout se na jiný účet
     migrate_account_html: Zde můžete <a href="%{path}">nastavit přesměrování tohoto účtu na jiný</a>.
     or_log_in_with: Nebo se přihlaste pomocí
-    privacy_policy_agreement_html: Četl jsem a souhlasím se zásadami <a href="%{privacy_policy_path}" target="_blank">ochrany osobních údajů</a>
     progress:
       confirm: Potvrdit e-mail
       details: Vaše údaje
@@ -2340,7 +2335,6 @@ cs:
       post_action: Sepsat
       post_step: Řekněte světu ahoj pomocí textu, fotografií, videí nebo anket.
       post_title: Vytvořte svůj první příspěvek
-      share_action: Sdílet
       share_step: Dejte přátelům vědět, jak vás mohou na Mastodonu najít.
       share_title: Sdílejte svůj Mastodon profil
       sign_in_action: Přihlásit se

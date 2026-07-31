@@ -950,7 +950,6 @@ nn:
         preamble: Å framheva interessant innhald er vitalt i mottakinga av nye brukarar som ikkje nødvendigvis kjenner nokon på Mastodon. Kontroller korleis oppdagingsfunksjonane på tenaren din fungerar.
         profile_directory: Profilkatalog
         public_timelines: Offentlege tidsliner
-        publish_discovered_servers: Publiser oppdaga tenarar
         publish_statistics: Publiser statistikk
         title: Oppdaging
         trends: Populært
@@ -1313,12 +1312,9 @@ nn:
     remove: Fjern aliaslenking
   appearance:
     advanced_settings: Avanserte innstillingar
-    advanced_web_interface: Avansert nettgrensesnitt
-    advanced_web_interface_hint: 'Om du vil bruke heile skjermbreidda di, let det avanserte nettgrensesnittet deg setje opp mange ulike kolonnar for å sjå så mykje informasjon du vil på ein gong: Heim, varsel, samla tidslinje, og kva som helst antall lister og emneknaggar.'
     animations_and_accessibility: Animasjonar og tilgjengelegheit
     boosting_preferences: Innstillingar for framheving
     boosting_preferences_info_html: "<strong>Tips:</strong> Å trykkja <kbd>Shift</kbd> + <kbd>klikk</kbd> på %{icon} framhev-ikonet vil framheva innlegget uansett innstillingar."
-    confirmation_dialogs: Bekreftelsesdialoger
     discovery: Oppdaging
     localization:
       body: Mastodon er omsett av friviljuge.
@@ -1374,7 +1370,6 @@ nn:
     migrate_account: Flytt til ein annan konto
     migrate_account_html: Om du vil visa denne kontoen til ein anna, kan du <a href="%{path}">skipe det her</a>.
     or_log_in_with: Eller logg inn med
-    privacy_policy_agreement_html: Jeg har lest og godtar <a href="%{privacy_policy_path}" target="_blank">retningslinjer for personvern</a>
     progress:
       confirm: Stadfest e-post
       details: Opplysingane dine
@@ -2347,7 +2342,6 @@ nn:
       post_action: Skriv
       post_step: Sei hei til verda med tekst, bilete, filmar eller meiningsmålingar.
       post_title: Skriv ditt fyrste innlegg
-      share_action: Del
       share_step: Fortel venene dine korleis dei finn deg på Mastodon.
       share_title: Del Mastodon-profilen din
       sign_in_action: Logg inn

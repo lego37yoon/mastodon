@@ -822,7 +822,6 @@ ja:
         privacy: プライバシー
         profile_directory: ディレクトリ
         public_timelines: 公開タイムライン
-        publish_discovered_servers: 接続しているサーバーを公開する
         publish_statistics: 統計情報を公開する
         title: 見つける
         trends: トレンド
@@ -1166,12 +1165,9 @@ ja:
     remove: エイリアスを削除
   appearance:
     advanced_settings: 詳細設定
-    advanced_web_interface: 上級者向けUI
-    advanced_web_interface_hint: ディスプレイを幅いっぱいまで活用したい場合、上級者向け UI をおすすめします。ホーム、通知、連合タイムライン、更にはリストやハッシュタグなど、様々な異なるカラムから望む限りの情報を一度に受け取れるような設定が可能になります。
     animations_and_accessibility: アニメーションとアクセシビリティー
     boosting_preferences: ブースト設定
     boosting_preferences_info_html: "<strong>Tip:</strong> 設定に関係なく、<kbd>Shift</kbd> を押しながら %{icon} Boostアイコンを<kbd>クリック</kbd>すると、すぐにブーストされます。"
-    confirmation_dialogs: 確認ダイアログ
     discovery: 見つける
     localization:
       body: Mastodonは有志によって翻訳されています。
@@ -1227,7 +1223,6 @@ ja:
     migrate_account: 別のアカウントに引っ越す
     migrate_account_html: 引っ越し先を明記したい場合は<a href="%{path}">こちら</a>で設定できます。
     or_log_in_with: または次のサービスでログイン
-    privacy_policy_agreement_html: <a href="%{privacy_policy_path}" target="_blank">プライバシーポリシー</a>を読み、同意します
     progress:
       confirm: メールアドレスの確認
       details: ユーザー情報
@@ -2069,7 +2064,6 @@ ja:
       post_action: 作成
       post_step: 試しになにか書いてみましょう。写真、ビデオ、アンケートなど、なんでも大丈夫です.
       post_title: はじめての投稿
-      share_action: 共有
       share_step: Mastodon アカウントをほかの人に紹介しましょう。
       share_title: プロフィールをシェアする
       sign_in_action: ログイン

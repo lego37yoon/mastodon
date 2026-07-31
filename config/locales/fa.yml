@@ -912,7 +912,6 @@ fa:
         preamble: ارائه محتوای جالب در جذب کاربران جدیدی که ممکن است کسی ماستودون را نشناسند، مفید است. نحوه عملکرد ویژگی‌های کشف مختلف روی سرور خود را کنترل کنید.
         profile_directory: شاخهٔ نمایه
         public_timelines: خط زمانی‌های عمومی
-        publish_discovered_servers: انتشار کارسازهای کشف شده
         publish_statistics: انتشار آمار
         title: کشف
         trends: پرطرفدارها
@@ -1263,12 +1262,9 @@ fa:
     remove: حذف ارتباط نام مستعار
   appearance:
     advanced_settings: تنظیمات پیش‌رفته
-    advanced_web_interface: رابط کاربری پیشرفته
-    advanced_web_interface_hint: اگر می‌خواهید از تمامی پهنای صفحه‌تان استفاده کنید، رابط پیش‌رفتهٔ وب می‌گذارد هر چند ستون را که می‌خواهید، برای دیدن اطّلاعات بیش‌تر در یک زمان، پیکربندی کنید:‌خانه، آگاهی‌ها، خط زمانی عمومی،‌ هرتعدادی از سیاهه‌ها و برچسب‌ها.
     animations_and_accessibility: پویانمایی‌های و دسترسی‌پذیری
     boosting_preferences: ترجیحات تقویت
     boosting_preferences_info_html: "<strong>نکته:</strong> فارغ از تنظیمات، <kbd>تبدیل</kbd> + <kbd>کلیک</kbd> روی %{icon} نقشک تقویت بلافاصله تقویت خواهد کرد."
-    confirmation_dialogs: پیغام‌های تأیید
     discovery: کاوش
     localization:
       body: ماستودون توسط داوطلبان ترجمه شده است.
@@ -1324,7 +1320,6 @@ fa:
     migrate_account: نقل مکان به یک حساب دیگر
     migrate_account_html: اگر می‌خواهید این حساب را به حساب دیگری منتقل کنید، <a href="%{path}">این‌جا را کلیک کنید</a>.
     or_log_in_with: یا ورود به وسیلهٔ
-    privacy_policy_agreement_html: <a href="%{privacy_policy_path}" target="_blank">سیاست محرمانگی</a> را خوانده و پذیرفته‌ام
     progress:
       confirm: تأیید رایانامه
       details: جزئیات شما
@@ -2260,7 +2255,6 @@ fa:
       post_action: ایجاد
       post_step: سلام کردن به جهان با متن، عکس، ویدیو یا نظرسنجی.
       post_title: ساخت نخستین نظرسنجیتان
-      share_action: هم‌رسانی
       share_step: بگذارید دوستانتان بدانند چگونه روی ماستودون بیابندتان.
       share_title: هم‌رسانی نمایهٔ ماستودونتان
       sign_in_action: ورود
