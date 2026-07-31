@@ -61,14 +61,44 @@ RSpec.describe MigrateSmoreThemes do
       end
     end
 
-    it 'converts a persisted legacy site theme' do
+    it 'converts every persisted legacy site theme' do
+      expected_themes = {
+        'ridibatang-light' => 'ridibatang',
+        'ridibatang-dark' => 'ridibatang',
+        'maruburi-light' => 'maruburi',
+        'maruburi-dark' => 'maruburi',
+        'mastodon-light' => 'default',
+        'contrast' => 'default',
+      }
       setting = described_class::Setting.find_or_create_by!(var: 'theme')
-      setting.update_column(:value, 'maruburi-light'.to_yaml)
 
-      migration.up
+      expected_themes.each do |legacy_theme, expected_theme|
+        setting.update_column(:value, legacy_theme.to_yaml)
 
-      migrated_setting = described_class::Setting.find_by(var: 'theme')
-      expect(YAML.safe_load(migrated_setting.attributes['value'])).to eq 'maruburi'
+        migration.up
+
+        expect(YAML.safe_load(setting.reload.attributes['value'])).to eq expected_theme
+      end
+    end
+
+    it 'preserves site themes that do not need migration' do
+      themes = %w(default smore ridibatang maruburi) + ['', nil]
+      setting = described_class::Setting.find_or_create_by!(var: 'theme')
+
+      themes.each do |theme|
+        original_value = theme&.to_yaml
+        setting.update_column(:value, original_value)
+
+        migration.up
+
+        expect(setting.reload.attributes['value']).to eq original_value
+      end
+    end
+
+    it 'does not create a missing site theme setting' do
+      described_class::Setting.where(var: 'theme').delete_all
+
+      expect { migration.up }.to_not(change { described_class::Setting.exists?(var: 'theme') })
     end
   end
 end
