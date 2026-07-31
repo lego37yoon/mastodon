@@ -4,12 +4,12 @@ import { defineMessages, useIntl } from 'react-intl';
 
 import { useHistory } from 'react-router-dom';
 
+import AddReactionIcon from '@/material-icons/400-24px/add_reaction.svg?react';
 import OpenInNewIcon from '@/material-icons/400-24px/open_in_new.svg?react';
 import ReplyIcon from '@/material-icons/400-24px/reply.svg?react';
 import ReplyAllIcon from '@/material-icons/400-24px/reply_all.svg?react';
 import StarIcon from '@/material-icons/400-24px/star-fill.svg?react';
 import StarBorderIcon from '@/material-icons/400-24px/star.svg?react';
-import AddReactionIcon from '@/material-icons/400-24px/add_reaction.svg?react';
 import { replyCompose } from 'mastodon/actions/compose';
 import { addReaction, toggleFavourite } from 'mastodon/actions/interactions';
 import { openModal } from 'mastodon/actions/modal';
@@ -120,7 +120,7 @@ export const Footer: React.FC<{
   }, [dispatch, status, signedIn]);
 
   const handleEmojiPick = useCallback(
-    (data: any) => {
+    (data: { native: string; imageUrl?: string }) => {
       if (status) {
         dispatch(
           addReaction(
