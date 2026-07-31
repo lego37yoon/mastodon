@@ -18,7 +18,8 @@ RSpec.describe MigrateSmoreThemes do
       }
       users = expected_settings.to_h do |legacy_theme, _expected|
         user = Fabricate(:user)
-        user.update_column(:settings, JSON.generate('theme' => legacy_theme, 'noindex' => false))
+        user.settings.update('theme' => legacy_theme, 'noindex' => false)
+        user.save!
         [legacy_theme, user]
       end
 
@@ -29,8 +30,34 @@ RSpec.describe MigrateSmoreThemes do
         expect(settings).to include(
           'theme' => theme,
           'web.color_scheme' => color_scheme,
-          'web.contrast' => contrast
+          'web.contrast' => contrast,
+          'noindex' => false
         )
+      end
+    end
+
+    it 'preserves users with themes that do not need migration' do
+      themes = %w(system default smore ridibatang maruburi)
+      original_settings = themes.index_with do |theme|
+        {
+          'theme' => theme,
+          'web.color_scheme' => 'auto',
+          'web.contrast' => 'auto',
+          'noindex' => true,
+        }
+      end
+      users = original_settings.to_h do |theme, settings|
+        user = Fabricate(:user)
+        user.settings.update(settings)
+        user.save!
+        [theme, user]
+      end
+
+      migration.up
+
+      users.each do |theme, user|
+        settings = JSON.parse(user.reload.attributes_before_type_cast['settings'])
+        expect(settings).to eq original_settings.fetch(theme)
       end
     end
 
