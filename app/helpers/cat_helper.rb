@@ -10,7 +10,7 @@ module CatHelper
 
     text = text.to_s
     entities = Extractor.extract_urls_with_indices(text, extract_url_without_protocol: false)
-                        .concat(Extractor.extract_hashtags_with_indices(text))
+      .concat(Extractor.extract_hashtags_with_indices(text))
 
     return nyaify_text(text) if entities.empty?
 
