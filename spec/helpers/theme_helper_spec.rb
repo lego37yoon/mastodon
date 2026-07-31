@@ -143,7 +143,7 @@ RSpec.describe ThemeHelper do
         end
 
         context 'when theme is not valid' do
-          it { is_expected.to eq('default') }
+          it { is_expected.to eq('smore') }
         end
       end
     end
