@@ -493,6 +493,7 @@ export const Dropdown = <Item extends object | null = MenuItem>({
   };
 
   if (children) {
+    // eslint-disable-next-line react-hooks/refs -- cloneElement forwards the ref without reading it.
     button = cloneElement(Children.only(children), buttonProps);
   } else if (icon && iconComponent) {
     button = (
