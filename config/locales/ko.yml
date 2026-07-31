@@ -2263,14 +2263,10 @@ ko:
     review_link: 이용 약관 검토하기
     title: "%{domain} 도메인의 이용 약관에 변경 있음"
   themes:
-    contrast: Mastodon (고대비)
-    default: Mastodon (기본)
-    mastodon-light: Mastodon (밝음)
-    system: 자동 (시스템 테마 사용)
-    maruburi-dark: 마루부리 (어두움)
-    maruburi-light: 마루부리 (밝음)
-    ridibatang-dark: 리디바탕 (어두움)
-    ridibatang-light: 리디바탕 (밝음)
+    default: Mastodon
+    maruburi: 마루부리
+    ridibatang: 리디바탕
+    smore: 기본
   time:
     formats:
       default: "%Y-%m-%d %H:%M"

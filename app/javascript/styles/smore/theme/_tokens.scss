@@ -1,0 +1,48 @@
+@mixin palette {
+  --color-smore-50: #fefaf4;
+  --color-smore-100: #f9f4ec;
+  --color-smore-200: #f2dbc2;
+  --color-smore-300: #e3cfb0;
+  --color-smore-400: #d69026;
+  --color-smore-500: #c48423;
+  --color-smore-600: #996a23;
+  --color-smore-700: #79531b;
+  --color-smore-800: #5c3e14;
+  --color-smore-900: #3d290d;
+  --color-smore-950: #271a08;
+}
+
+@mixin light {
+  --color-text-brand: var(--color-smore-600);
+  --color-text-brand-on-inverted: var(--color-smore-400);
+  --color-bg-primary: var(--color-smore-50);
+  --color-bg-secondary: var(--color-smore-100);
+  --color-bg-tertiary: var(--color-smore-200);
+  --color-bg-brand-base: var(--color-smore-600);
+  --color-bg-brand-base-hover: var(--color-smore-700);
+  --color-bg-brand-soft: var(--color-smore-200);
+  --color-bg-brand-softest: var(--color-smore-100);
+  --color-border-brand-soft: var(--color-smore-300);
+  --color-graph-primary-fill: var(--color-smore-100);
+}
+
+@mixin dark {
+  --color-text-brand: var(--color-smore-300);
+  --color-text-brand-on-inverted: var(--color-smore-600);
+  --color-bg-brand-base: var(--color-smore-600);
+  --color-bg-brand-base-hover: var(--color-smore-500);
+  --color-bg-brand-soft: var(--color-smore-900);
+  --color-bg-brand-softest: var(--color-smore-950);
+  --color-border-brand-soft: var(--color-smore-800);
+  --color-graph-primary-fill: var(--color-smore-950);
+}
+
+@mixin light-contrast {
+  --color-text-brand: var(--color-smore-700);
+  --color-border-brand: var(--color-smore-700);
+}
+
+@mixin dark-contrast {
+  --color-text-brand: var(--color-smore-200);
+  --color-border-brand: var(--color-smore-200);
+}

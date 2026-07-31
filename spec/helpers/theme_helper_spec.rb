@@ -105,16 +105,16 @@ RSpec.describe ThemeHelper do
 
     context 'when user is not signed in' do
       context 'when theme was not changed in settings' do
-        it { is_expected.to eq('default') }
+        it { is_expected.to eq('smore') }
       end
 
       context 'when theme is changed in settings' do
         before do
-          allow(Themes.instance).to receive(:names).and_return(%w(default contrast))
-          Setting.theme = 'contrast'
+          allow(Themes.instance).to receive(:names).and_return(%w(default smore ridibatang))
+          Setting.theme = 'ridibatang'
         end
 
-        it { is_expected.to eq('contrast') }
+        it { is_expected.to eq('ridibatang') }
       end
 
       context 'when theme is changed to invalid value' do
@@ -130,7 +130,7 @@ RSpec.describe ThemeHelper do
       let(:current_user) { Fabricate :user }
 
       context 'when user did not set theme' do
-        it { is_expected.to eq('default') }
+        it { is_expected.to eq('smore') }
       end
 
       context 'when user set theme' do
