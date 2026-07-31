@@ -67,7 +67,7 @@ tok:
     reports:
       are_you_sure: sina wile ala wile?
     statuses:
-      title: toki suli pi jan ni
+      title: toki suli pi jan ni - @%{name}
     tags:
       search: o alasa
   imports:

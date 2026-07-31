@@ -1028,7 +1028,7 @@ pt-PT:
       original_status: Publicação original
       reblogs: Impulsos
       status_changed: Publicação alterada
-      title: Publicações da conta
+      title: Publicações da conta - @%{name}
       trending: Em destaque
       visibility: Visibilidade
       with_media: Com media

@@ -1092,7 +1092,7 @@ fa:
       original_status: فرستهٔ اصلی
       reblogs: تقویت‌ها
       status_changed: فرسته تغییر کرد
-      title: نوشته‌های حساب
+      title: نوشته‌های حساب - @%{name}
       trending: پرطرفدار
       visibility: نمایانی
       with_media: دارای عکس یا ویدیو

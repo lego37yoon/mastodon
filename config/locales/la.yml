@@ -31,7 +31,7 @@ la:
     accounts:
       are_you_sure: Esne certus?
     statuses:
-      title: Ratiōnis publicātiōnēs
+      title: Ratiōnis publicātiōnēs - @%{name}
   auth:
     privacy_policy_agreement_html: Lēgī et cōnsēnsī ad <a href="%{privacy_policy_path}" target="_blank">pōlīticam prīvātī tūtelam</a>
     setup:

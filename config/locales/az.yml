@@ -112,7 +112,7 @@ az:
     statuses:
       application: Tətbiq
       metadata: Meta veri
-      title: Hesab göndərişləri
+      title: Hesab göndərişləri - @%{name}
     system_checks:
       elasticsearch_version_check:
         message_html: 'Uyumlu olmayan Elasticsearch versiyası: %{value}'

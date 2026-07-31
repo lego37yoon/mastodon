@@ -968,7 +968,7 @@ sv:
       quotes: Citat
       reblogs: Ombloggningar
       status_changed: Inlägg ändrat
-      title: Kontoinlägg
+      title: Kontoinlägg - @%{name}
       trending: Trendande
       visibility: Synlighet
       with_media: Med media
