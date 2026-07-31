@@ -1916,6 +1916,10 @@ uk:
     does_not_match_previous_name: не збігається з попереднім ім'ям
   terms_of_service:
     title: Умови використання
+  themes:
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: smore
   time:
     formats:
       default: "%b %d, %Y, %H:%M"

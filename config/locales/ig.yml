@@ -23,6 +23,10 @@ ig:
   settings:
     edit_profile: Dezie profaịlụ gị
     profile: Profaịlụ ọha
+  themes:
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: smore
   user_mailer:
     welcome:
       share_title: Kekọrịta profaịlụ Mastọdọnụ gị

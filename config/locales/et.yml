@@ -2194,6 +2194,9 @@ et:
     title: "%{domain} saidi kasutustingimused muutuvad"
   themes:
     default: Mastodon
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: smore
   time:
     formats:
       default: "%d. %B, %Y. aastal, kell %H:%M"

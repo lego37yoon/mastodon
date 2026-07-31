@@ -23,3 +23,7 @@ fil:
       title: Gawin ang moderation na aksiyon sa %{acct}
     account_moderation_notes:
       create: Mag-iwan ng note
+  themes:
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: smore

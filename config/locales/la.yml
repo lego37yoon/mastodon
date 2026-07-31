@@ -55,3 +55,7 @@ la:
       muting_html: Mox <strong>tacēbis</strong> usque ad <strong>%{total_items} ratiōnēs</strong> e <strong>%{filename}</strong>.
   scheduled_statuses:
     too_soon: Dāta dēfīnīta in futurō esse dēbēbit.
+  themes:
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: smore

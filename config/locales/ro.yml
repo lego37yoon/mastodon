@@ -707,6 +707,10 @@ ro:
     sensitive_content: Conținut sensibil
   tags:
     does_not_match_previous_name: nu se potrivește cu numele anterior
+  themes:
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: smore
   time:
     formats:
       default: "%d %m, %Y, %H:%M"

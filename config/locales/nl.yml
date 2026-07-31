@@ -2192,6 +2192,9 @@ nl:
     title: De gebruiksvoorwaarden van %{domain} worden gewijzigd
   themes:
     default: Mastodon
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: smore
   time:
     formats:
       default: "%d %B %Y om %H:%M"

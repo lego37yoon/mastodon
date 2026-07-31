@@ -1781,6 +1781,10 @@ fy:
     past_preamble_html: Wy hawwe ús gebrûksbetingsten wizige sûnt jo lêste besite. Wy rekommandearje jo oan om de bywurke betingsten troch te nimmen.
     review_link: Gebrûksbetingsten besjen
     title: De gebrûksbetingsten fan %{domain} wizigje
+  themes:
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: smore
   time:
     formats:
       default: "%d %B %Y om %H:%M"

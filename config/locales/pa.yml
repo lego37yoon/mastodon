@@ -166,3 +166,7 @@ pa:
   otp_authentication:
     enable: ਸਮਰੱਥ
     setup: ਸੈਟ ਅੱਪ
+  themes:
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: smore

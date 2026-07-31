@@ -2192,6 +2192,9 @@ es-AR:
     title: Los términos del servicio de %{domain} están cambiando
   themes:
     default: Mastodon
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: smore
   time:
     formats:
       default: "%Y.%b.%d, %H:%M"

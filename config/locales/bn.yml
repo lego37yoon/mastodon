@@ -231,5 +231,9 @@ bn:
     report_notes:
       created_msg: রিপোর্ট নোট সফলভাবে তৈরি করা হয়েছে!
       destroyed_msg: রিপোর্ট নোট সফলভাবে মোছা হয়েছে!
+  themes:
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: smore
   verification:
     verification: সত্যতা নির্ধারণ

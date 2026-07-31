@@ -2202,6 +2202,9 @@ lad:
     does_not_match_previous_name: no koensida kon el nombre anterior
   themes:
     default: Mastodon
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: smore
   time:
     formats:
       default: "%d de %b del %Y, %H:%M"

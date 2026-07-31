@@ -2539,6 +2539,9 @@ cs:
     does_not_match_previous_name: se neshoduje s předchozím názvem
   themes:
     default: Mastodon
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: smore
   time:
     formats:
       default: "%d. %b %Y, %H:%M"

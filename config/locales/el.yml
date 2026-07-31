@@ -2192,6 +2192,9 @@ el:
     title: Οι όροι παροχής υπηρεσιών του %{domain} αλλάζουν
   themes:
     default: Mastodon
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: smore
   time:
     formats:
       default: "%b %d, %Y, %H:%M"

@@ -2144,6 +2144,9 @@ vi:
     title: Sửa đổi điều khoản dịch vụ %{domain}
   themes:
     default: Mastodon
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: smore
   time:
     formats:
       default: "%-d.%m.%Y %H:%M"

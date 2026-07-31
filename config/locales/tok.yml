@@ -84,6 +84,10 @@ tok:
   statuses:
     visibilities:
       public_long: ale li ken lukin e ni
+  themes:
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: smore
   user_mailer:
     welcome:
       share_action: o pana

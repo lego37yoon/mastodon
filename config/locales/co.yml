@@ -947,6 +947,10 @@ co:
     sensitive_content: Cuntenutu sensibile
   tags:
     does_not_match_previous_name: ùn currisponde micca à l'anzianu nome
+  themes:
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: smore
   time:
     formats:
       default: "%d %b %Y, %H:%M"

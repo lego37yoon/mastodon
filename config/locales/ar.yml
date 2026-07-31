@@ -2162,6 +2162,9 @@ ar:
     title: شروط خدمة النطاق %{domain} ستتغير
   themes:
     default: ماستدون
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: smore
   time:
     formats:
       default: "%b %d, %Y, %H:%M"

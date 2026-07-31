@@ -2448,6 +2448,9 @@ fa:
     does_not_match_previous_name: با نام پیشین مطابق نیست
   themes:
     default: ماستودون
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: smore
   time:
     formats:
       default: "%d %b %Y, %H:%M"

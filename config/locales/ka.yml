@@ -435,6 +435,10 @@ ka:
       public: საჯარო
   stream_entries:
     sensitive_content: მგრძნობიარე კონტენტი
+  themes:
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: smore
   two_factor_authentication:
     disable: გათიშვა
     enabled: მეორე-ფაქტორის აუტენტიფიკაცია ჩართულია

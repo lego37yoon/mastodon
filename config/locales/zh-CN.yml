@@ -2144,6 +2144,9 @@ zh-CN:
     title: "%{domain} 更新了服务条款"
   themes:
     default: Mastodon
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: smore
   time:
     formats:
       default: "%Y年%m月%d日 %H:%M"

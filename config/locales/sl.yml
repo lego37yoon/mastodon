@@ -2037,6 +2037,10 @@ sl:
     title: Pogoji uporabe
   terms_of_service_interstitial:
     title: Spreminjajo se pogoji uporabe domene %{domain}
+  themes:
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: smore
   time:
     formats:
       default: "%b %d %Y, %H:%M"

@@ -783,6 +783,10 @@ hy:
       '7889238': 3 ամիս
   stream_entries:
     sensitive_content: Կասկածելի բովանդակութիւն
+  themes:
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: smore
   time:
     formats:
       default: "%b %d, %Y, %H:%M"

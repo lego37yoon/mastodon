@@ -2391,6 +2391,9 @@ pt-PT:
     does_not_match_previous_name: não coincide com o nome anterior
   themes:
     default: Mastodon
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: smore
   time:
     formats:
       default: "%H:%M em %d de %b de %Y"

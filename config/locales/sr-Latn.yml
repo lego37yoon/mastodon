@@ -1678,6 +1678,10 @@ sr-Latn:
       too_late: Istekao je rok za podnošenje žalbe na zabeležen prestup
   tags:
     does_not_match_previous_name: ne poklapa se sa prethodnim imenom
+  themes:
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: smore
   time:
     formats:
       default: "%d %b %Y, %H:%M"

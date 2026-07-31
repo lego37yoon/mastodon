@@ -2290,6 +2290,9 @@ gd:
     title: Tha teirmichean na seirbheise aig %{domain} gu bhith atharrachadh
   themes:
     default: Mastodon
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: smore
   time:
     formats:
       default: "%d %b %Y, %H:%M"

@@ -2532,6 +2532,9 @@ he:
     does_not_match_previous_name: לא תואם את השם האחרון
   themes:
     default: מסטודון
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: smore
   time:
     formats:
       default: "%d %b %Y, %H:%M"

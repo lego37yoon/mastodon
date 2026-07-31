@@ -162,6 +162,10 @@ af:
   strikes:
     errors:
       too_late: Dit is te laat om hierteen te appelleer
+  themes:
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: smore
   user_mailer:
     warning:
       title:

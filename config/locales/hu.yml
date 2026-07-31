@@ -2193,6 +2193,9 @@ hu:
     title: A(z) %{domain} felhasználási feltételei megváltoznak
   themes:
     default: Mastodon
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: smore
   time:
     formats:
       default: "%Y. %b %d., %H:%M"

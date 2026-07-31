@@ -2118,6 +2118,9 @@ ru:
     title: Изменяется пользовательское соглашение на сервере %{domain}
   themes:
     default: Mastodon
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: smore
   time:
     formats:
       default: "%d %b %Y, %H:%M"

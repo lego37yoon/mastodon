@@ -217,3 +217,7 @@ ta:
         other: "%{count} ஒலிகள்"
     errors:
       in_reply_not_found: நீங்கள் மறுமொழி அளிக்க முயலும் பதிவு இருப்பதுபோல் தெரியவில்லை.
+  themes:
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: smore

@@ -1708,6 +1708,10 @@ sr:
       too_late: Истекао је рок за подношење жалбе на забележен преступ
   tags:
     does_not_match_previous_name: не поклапа се са претходним именом
+  themes:
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: smore
   time:
     formats:
       default: "%d %b %Y, %H:%M"

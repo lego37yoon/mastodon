@@ -2143,6 +2143,9 @@ nan-TW:
     title: "%{domain} ê服務規定teh改變"
   themes:
     default: Mastodon
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: smore
   time:
     formats:
       default: "%Y 年 %b 月 %d 日 %H:%M"

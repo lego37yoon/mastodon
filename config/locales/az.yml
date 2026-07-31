@@ -333,6 +333,10 @@ az:
     sensitive_content: Həssas məzmun
   tags:
     does_not_match_previous_name: əvvəlki adla uyuşmur
+  themes:
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: smore
   two_factor_authentication:
     disabled_success: İki faktorlu kimlik doğrulama uğurla sıradan çıxarıldı
     enabled: İki faktorlu kimlik doğrulama fəallaşdırıldı

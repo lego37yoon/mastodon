@@ -214,6 +214,10 @@ hr:
     enabled: Automatski obriši strare postove
   stream_entries:
     sensitive_content: Osjetljivi sadržaj
+  themes:
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: smore
   two_factor_authentication:
     disable: Onemogući 2FA
   user_mailer:

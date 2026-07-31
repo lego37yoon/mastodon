@@ -103,3 +103,7 @@ ml:
       subject: "%{name} ഇപ്പോൾ നിങ്ങളെ പിന്തുടരുന്നു"
   relationships:
     following: പിന്തുടരുന്നു
+  themes:
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: smore

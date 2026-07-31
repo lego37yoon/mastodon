@@ -1784,6 +1784,10 @@ bg:
     past_preamble_html: Променихме условията на услугата ни от последното ви посещение. Насърчаваме ви да разгледате обновените условия.
     review_link: Разглеждане на условията на услугата
     title: Условията на услугата на %{domain} се променят
+  themes:
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: smore
   time:
     formats:
       default: "%d %b, %Y, %H:%M"

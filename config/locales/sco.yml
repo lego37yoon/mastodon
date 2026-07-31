@@ -1423,6 +1423,10 @@ sco:
       too_late: It is ower late fir tae appeal this strike
   tags:
     does_not_match_previous_name: disnae match the previous nemm
+  themes:
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: smore
   time:
     formats:
       default: "%b %d, %Y, %H:%M"
