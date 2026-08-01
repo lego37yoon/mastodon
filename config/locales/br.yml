@@ -863,7 +863,7 @@ br:
   themes:
     maruburi: MaruBuri
     ridibatang: RIDI Batang
-    smore: smore
+    smore: S'more
   time:
     formats:
       default: "%d a viz %b %Y, %H:%M"

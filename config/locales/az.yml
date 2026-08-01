@@ -333,7 +333,7 @@ az:
   themes:
     maruburi: MaruBuri
     ridibatang: RIDI Batang
-    smore: smore
+    smore: S'more
   two_factor_authentication:
     disabled_success: İki faktorlu kimlik doğrulama uğurla sıradan çıxarıldı
     enabled: İki faktorlu kimlik doğrulama fəallaşdırıldı

@@ -1894,7 +1894,7 @@ eu:
   themes:
     maruburi: MaruBuri
     ridibatang: RIDI Batang
-    smore: smore
+    smore: S'more
   time:
     formats:
       default: "%Y(e)ko %b %d, %H:%M"

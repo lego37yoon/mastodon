@@ -217,7 +217,7 @@ hr:
   themes:
     maruburi: MaruBuri
     ridibatang: RIDI Batang
-    smore: smore
+    smore: S'more
   two_factor_authentication:
     disable: Onemogući 2FA
   user_mailer:

@@ -1441,7 +1441,7 @@ an:
   themes:
     maruburi: MaruBuri
     ridibatang: RIDI Batang
-    smore: smore
+    smore: S'more
   time:
     formats:
       default: "%d de %b de %Y, %H:%M"

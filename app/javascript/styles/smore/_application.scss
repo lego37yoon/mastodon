@@ -1,5 +1,4 @@
 @use '../mastodon/mixins';
-@use '../fonts/plexsans';
 @use '../fonts/roboto-mono';
 
 @use '../mastodon/reset';
@@ -21,4 +20,5 @@
 @use '../mastodon/dashboard';
 @use '../mastodon/rtl';
 @use '../mastodon/rich_text';
+@use '../extensions';
 @use 'custom';

@@ -1660,7 +1660,7 @@ zh-HK:
   themes:
     maruburi: MaruBuri
     ridibatang: RIDI Batang
-    smore: smore
+    smore: S'more
   time:
     formats:
       default: "%Y年%b月%d日 %H:%M"

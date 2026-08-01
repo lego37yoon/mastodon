@@ -1,4 +1,4 @@
-default: styles/application.scss
+default: styles/default.scss
 smore: styles/smore.scss
 ridibatang: styles/ridibatang.scss
 maruburi: styles/maruburi.scss

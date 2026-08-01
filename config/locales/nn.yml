@@ -2183,7 +2183,7 @@ nn:
     default: Mastodon
     maruburi: MaruBuri
     ridibatang: RIDI Batang
-    smore: smore
+    smore: S'more
   time:
     formats:
       default: "%d.%b %Y, %H:%M"

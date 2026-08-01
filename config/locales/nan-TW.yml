@@ -2145,7 +2145,7 @@ nan-TW:
     default: Mastodon
     maruburi: MaruBuri
     ridibatang: RIDI Batang
-    smore: smore
+    smore: S'more
   time:
     formats:
       default: "%Y 年 %b 月 %d 日 %H:%M"

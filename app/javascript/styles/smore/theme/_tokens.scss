@@ -24,6 +24,26 @@
   --color-bg-brand-softest: var(--color-smore-100);
   --color-border-brand-soft: var(--color-smore-300);
   --color-graph-primary-fill: var(--color-smore-100);
+  --smore-color-bg-glass: color-mix(
+    in srgb,
+    var(--color-bg-secondary) 50%,
+    transparent
+  );
+  --smore-color-bg-glass-strong: color-mix(
+    in srgb,
+    var(--color-bg-secondary) 90%,
+    transparent
+  );
+  --smore-color-bg-accent-overlay: color-mix(
+    in srgb,
+    var(--color-bg-brand-base) 14%,
+    transparent
+  );
+  --smore-color-border-accent-overlay: color-mix(
+    in srgb,
+    var(--color-border-brand) 40%,
+    transparent
+  );
 }
 
 @mixin dark {
@@ -35,6 +55,26 @@
   --color-bg-brand-softest: var(--color-smore-950);
   --color-border-brand-soft: var(--color-smore-800);
   --color-graph-primary-fill: var(--color-smore-950);
+  --smore-color-bg-glass: color-mix(
+    in srgb,
+    var(--color-bg-secondary) 50%,
+    transparent
+  );
+  --smore-color-bg-glass-strong: color-mix(
+    in srgb,
+    var(--color-bg-secondary) 90%,
+    transparent
+  );
+  --smore-color-bg-accent-overlay: color-mix(
+    in srgb,
+    var(--color-bg-brand-base) 14%,
+    transparent
+  );
+  --smore-color-border-accent-overlay: color-mix(
+    in srgb,
+    var(--color-border-brand) 40%,
+    transparent
+  );
 }
 
 @mixin light-contrast {

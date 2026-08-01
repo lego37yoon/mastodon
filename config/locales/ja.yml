@@ -1930,7 +1930,7 @@ ja:
   themes:
     maruburi: MaruBuri
     ridibatang: RIDI Batang
-    smore: smore
+    smore: S'more
   time:
     formats:
       default: "%Y年%m月%d日 %H:%M"

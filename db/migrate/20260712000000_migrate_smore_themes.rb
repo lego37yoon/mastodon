@@ -11,8 +11,6 @@ class MigrateSmoreThemes < ActiveRecord::Migration[8.0]
     'ridibatang-dark' => %w(ridibatang dark auto),
     'maruburi-light' => %w(maruburi light auto),
     'maruburi-dark' => %w(maruburi dark auto),
-    'mastodon-light' => %w(default light auto),
-    'contrast' => %w(default dark high),
   }.freeze
 
   def up

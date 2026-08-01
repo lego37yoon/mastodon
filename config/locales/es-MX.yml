@@ -2194,7 +2194,7 @@ es-MX:
     default: Mastodon
     maruburi: MaruBuri
     ridibatang: RIDI Batang
-    smore: smore
+    smore: S'more
   time:
     formats:
       default: "%d de %b del %Y, %H:%M"
