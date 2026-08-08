@@ -1301,6 +1301,10 @@ kbd {
   padding: 0.5rem;
 }
 
+.reactions-bar__item__emoji {
+  width: auto;
+}
+
 .reactions-bar--announcements {
   // Reserve a single row and keep additional reactions on that row so adding a
   // reaction does not change the announcement's height.
