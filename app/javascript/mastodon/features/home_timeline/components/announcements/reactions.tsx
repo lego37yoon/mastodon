@@ -48,7 +48,7 @@ export const ReactionsBar: FC<{
 
   return (
     <div
-      className={classNames('reactions-bar', {
+      className={classNames('reactions-bar', 'reactions-bar--announcements', {
         'reactions-bar--empty': visibleReactions.length === 0,
       })}
     >

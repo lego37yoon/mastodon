@@ -208,6 +208,13 @@ a.status-card:active .status-card__description {
 
     &__content {
       border-radius: 10px;
+
+      // Keep custom emoji proportional to announcement text when Firefox
+      // reflows text during touch zoom.
+      .emojione {
+        width: 1.25em;
+        height: 1.25em;
+      }
     }
 
     &__unread {
@@ -1291,6 +1298,36 @@ kbd {
   border-radius: 25px 10px 10px 25px;
   color: var(--color-text-brand);
   padding: 0.5rem;
+}
+
+.reactions-bar--announcements {
+  // Reserve a single row and keep additional reactions on that row so adding a
+  // reaction does not change the announcement's height.
+  flex-wrap: nowrap;
+  min-height: 28px;
+  overflow-x: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .reactions-bar__item {
+    border-color: transparent;
+    border-radius: 10px;
+    color: var(--color-text-brand);
+    padding: 0.5rem;
+
+    &.active {
+      background: var(--color-bg-secondary);
+      color: var(--color-text-brand);
+    }
+  }
+
+  .reactions-bar__item__count {
+    font-variant-numeric: tabular-nums;
+    min-width: 2ch;
+  }
 }
 
 .reactions-bar__item--details {
