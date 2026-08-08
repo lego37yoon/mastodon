@@ -51,7 +51,7 @@ class UnsubscriptionsController < ApplicationController
 
   def email_type_from_param
     case params[:type]
-    when 'follow', 'reblog', 'favourite', 'mention', 'follow_request'
+    when 'follow', 'reblog', 'favourite', 'reaction', 'mention', 'follow_request'
       "notification_emails.#{params[:type]}"
     end
   end

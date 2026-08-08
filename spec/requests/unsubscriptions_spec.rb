@@ -98,4 +98,33 @@ RSpec.describe 'UnsubscriptionsController' do
       expect(user.settings['notification_emails.follow']).to be false
     end
   end
+
+  describe 'reaction notification email' do
+    let(:type) { 'reaction' }
+
+    before do
+      user.settings.update('notification_emails.reaction': true)
+      user.save!
+    end
+
+    it 'shows the unsubscribe confirmation page' do
+      get unsubscribe_url(token: token, type: type)
+
+      expect(response).to have_http_status(200)
+    end
+
+    it 'updates the reaction email setting from the confirmation form' do
+      post unsubscribe_url, params: { token: token, type: type }
+
+      expect(response).to have_http_status(200)
+      expect(user.reload.settings['notification_emails.reaction']).to be false
+    end
+
+    it 'updates the reaction email setting with one-click unsubscribe' do
+      post unsubscribe_url(token: token, type: type), params: { 'List-Unsubscribe' => 'One-Click' }
+
+      expect(response).to have_http_status(200)
+      expect(user.reload.settings['notification_emails.reaction']).to be false
+    end
+  end
 end

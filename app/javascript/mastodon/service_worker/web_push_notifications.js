@@ -101,7 +101,7 @@ export const handlePush = (event) => {
         options.data.url = `/@${notification.account.acct}`;
       }
 
-      if (notification.status && notification.status.spoiler_text || notification.status.sensitive) {
+      if (notification.status && (notification.status.spoiler_text || notification.status.sensitive)) {
         options.data.hiddenBody  = htmlToPlainText(notification.status.content);
         options.data.hiddenImage = notification.status.media_attachments.length > 0 && notification.status.media_attachments[0].preview_url;
 

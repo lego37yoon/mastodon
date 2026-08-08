@@ -79,6 +79,21 @@ RSpec.describe RemoveStatusService, :inline_jobs do
     end
   end
 
+  context 'when removed status is direct' do
+    let!(:status) do
+      PostStatusService.new.call(alice, text: "Hello @#{jeff.pretty_acct}", visibility: :direct)
+    end
+
+    it 'removes the status from the recipient direct feed without crashing' do
+      allow(FeedManager.instance).to receive(:unpush_from_direct).and_call_original
+
+      expect { subject.call(status) }
+        .to_not raise_error
+      expect(FeedManager.instance)
+        .to have_received(:unpush_from_direct).with(jeff, status)
+    end
+  end
+
   context 'when removed status is a private self-reblog' do
     let!(:original_status) { Fabricate(:status, account: alice, text: 'Hello ThisIsASecret', visibility: :private) }
     let!(:status) { ReblogService.new.call(alice, original_status) }

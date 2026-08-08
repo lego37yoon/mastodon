@@ -1,7 +1,7 @@
 = content_for :heading do
   = render 'application/mailer/heading',
            image_url: frontend_asset_url('images/mailer-new/heading/reaction.png'),
-           subtitle: t('notification_mailer.reaction.body', name: @status.account.pretty_acct),
+           subtitle: t('notification_mailer.reaction.body', name: @account.pretty_acct),
            title: t('notification_mailer.reaction.title')
 %table.email-w-full{ cellspacing: 0, cellpadding: 0, border: 0, role: 'presentation' }
   %tr
