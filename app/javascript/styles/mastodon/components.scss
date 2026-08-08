@@ -1314,7 +1314,7 @@ body > [data-popper-placement] {
   }
 }
 
-.announcements__content {
+.announcements__item__content {
   overflow-wrap: break-word;
   overflow-y: auto;
 
@@ -8505,25 +8505,10 @@ noscript {
 }
 
 .announcements {
-  width: calc(100% - 124px);
-  flex: 0 0 auto;
-  position: relative;
-  overflow: hidden;
-
-  .layout-multiple-columns & {
-    width: 100%;
-  }
-
-  @media screen and (max-width: (124px + 300px)) {
-    width: 100%;
-  }
-
-  &__root {
-    background: var(--color-bg-brand-softest);
-    font-size: 13px;
-    display: flex;
-    align-items: flex-end;
-  }
+  background: var(--color-bg-brand-softest);
+  font-size: 13px;
+  display: flex;
+  align-items: flex-end;
 
   &__mastodon {
     width: 124px;
@@ -8534,13 +8519,22 @@ noscript {
     }
   }
 
-  &__slides {
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: start;
+  &__container {
+    width: calc(100% - 124px);
+    flex: 0 0 auto;
+    position: relative;
+    overflow: hidden;
+
+    .layout-multiple-columns & {
+      width: 100%;
+    }
+
+    @media screen and (max-width: (124px + 300px)) {
+      width: 100%;
+    }
   }
 
-  &__slide {
+  &__item {
     box-sizing: border-box;
     width: 100%;
     flex: 0 0 100%;
@@ -8552,25 +8546,26 @@ noscript {
     font-weight: 400;
     max-height: 50vh;
     overflow: hidden;
+    display: flex;
     flex-direction: column;
-  }
 
-  &__range {
-    display: block;
-    font-weight: 500;
-    margin-bottom: 10px;
-    padding-inline-end: 18px;
-  }
+    &__range {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 10px;
+      padding-inline-end: 18px;
+    }
 
-  &__unread {
-    position: absolute;
-    top: 19px;
-    inset-inline-end: 19px;
-    display: block;
-    background: var(--color-text-brand);
-    border-radius: 50%;
-    width: 0.625rem;
-    height: 0.625rem;
+    &__unread {
+      position: absolute;
+      top: 19px;
+      inset-inline-end: 19px;
+      display: block;
+      background: var(--color-text-brand);
+      border-radius: 50%;
+      width: 0.625rem;
+      height: 0.625rem;
+    }
   }
 
   &__pagination {
@@ -8587,10 +8582,6 @@ noscript {
 
 .layout-multiple-columns .announcements__mastodon {
   display: none;
-}
-
-.layout-multiple-columns .announcements__container {
-  width: 100%;
 }
 
 .reactions-bar {

@@ -10,7 +10,7 @@ body ._comp_account_header {
     background: transparent;
   }
 
-  &__buttonsMObileIsStuck {
+  &__buttonsMobileIsStuck {
     border-top: none;
     box-shadow: 1px 1px 10px var(--color-bg-brand-soft);
   }
@@ -200,13 +200,24 @@ a.status-card:active .status-card__description {
 .announcements {
   border-radius: 10px;
   border: none;
-  max-height: 70vh;
   margin-bottom: 1em;
   background: var(--color-bg-secondary);
-}
 
-.announcements__item__content {
-  border-radius: 10px;
+  &__item {
+    max-height: 70vh;
+
+    &__content {
+      border-radius: 10px;
+    }
+
+    &__unread {
+      background: var(--color-text-brand);
+    }
+  }
+
+  &__mastodon {
+    border-bottom-left-radius: 8px;
+  }
 }
 
 .announcements-list__item__title:hover,
@@ -214,34 +225,26 @@ a.status-card:active .status-card__description {
   color: var(--color-text-brand);
 }
 
-.announcements__item__unread {
-  background: var(--color-text-brand);
-}
-
-.announcements__mastodon {
-  border-bottom-left-radius: 8px;
-}
-
 .autosuggest-textarea__suggestions {
   border-radius: 10px;
   background: var(--color-bg-primary);
   border: 1px solid var(--color-bg-brand-base);
-}
 
-.autosuggest-textarea__suggestions__item {
-  border-radius: 10px;
-}
+  &__item {
+    border-radius: 10px;
 
-.autosuggest-textarea__suggestions__item:hover {
-  background: var(--color-bg-secondary);
-}
+    &:hover {
+      background: var(--color-bg-secondary);
+    }
 
-.autosuggest-textarea__suggestions__item.selected {
-  background: var(--color-bg-brand-base);
-}
+    &.selected {
+      background: var(--color-bg-brand-base);
 
-.autosuggest-textarea__suggestions__item.selected:hover {
-  background: var(--color-text-brand);
+      &:hover {
+        background: var(--color-text-brand);
+      }
+    }
+  }
 }
 
 .back-link a {

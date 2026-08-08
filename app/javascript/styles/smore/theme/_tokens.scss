@@ -15,6 +15,7 @@
 @mixin light {
   --color-text-brand: var(--color-smore-600);
   --color-text-brand-on-inverted: var(--color-smore-400);
+  --color-border-success-soft: var(--color-green-600);
   --color-bg-primary: var(--color-smore-50);
   --color-bg-secondary: var(--color-smore-100);
   --color-bg-tertiary: var(--color-smore-200);
