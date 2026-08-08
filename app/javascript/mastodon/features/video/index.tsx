@@ -369,6 +369,7 @@ export const Video: React.FC<{
     videoRef.current.muted = muted;
   }, [volume, muted]);
 
+  /* eslint-disable react-hooks/set-state-in-effect -- Synchronizes local reveal state with controlled visibility and sensitivity. */
   useEffect(() => {
     if (typeof visible !== 'undefined') {
       setRevealed(visible);
@@ -379,6 +380,7 @@ export const Video: React.FC<{
       );
     }
   }, [visible, sensitive]);
+  /* eslint-enable react-hooks/set-state-in-effect */
 
   useEffect(() => {
     if (!revealed && videoRef.current) {

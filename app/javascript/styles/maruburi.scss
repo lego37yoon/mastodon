@@ -1,0 +1,6 @@
+@use 'fonts/maruburi';
+@use 'mastodon/variables' with (
+  $font-sans-serif: 'MaruBuri Regular',
+  $font-display: 'MaruBuri Regular'
+);
+@use 'smore/application';

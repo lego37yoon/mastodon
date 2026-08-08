@@ -92,7 +92,7 @@ export function useSearchTags({
   const tags = useMemo(() => {
     const trimmedQuery = query ? trimHashFromStart(query.trim()) : '';
     if (!trimmedQuery) {
-      return fetchedTags as TagSearchResult[];
+      return fetchedTags;
     }
 
     const results: TagSearchResult[] = [...fetchedTags]; // Make array mutable

@@ -1,0 +1,6 @@
+@use 'fonts/ridibatang';
+@use 'mastodon/variables' with (
+  $font-sans-serif: 'RIDIBatang',
+  $font-display: 'RIDIBatang'
+);
+@use 'smore/application';

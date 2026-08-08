@@ -168,6 +168,14 @@ class ActivityPub::Parser::StatusParser
     equals_or_includes_any?(@object['type'], ActivityPub::Activity::CONVERTED_TYPES)
   end
 
+  def audience_to
+    as_array(@object['to'] || @json['to']).map { |x| value_or_id(x) }
+  end
+
+  def audience_cc
+    as_array(@object['cc'] || @json['cc']).map { |x| value_or_id(x) }
+  end
+
   private
 
   def quote_subpolicy(subpolicy)
@@ -197,18 +205,6 @@ class ActivityPub::Parser::StatusParser
     elsif summary_language_map?
       @object['summaryMap'].keys.first
     end
-  end
-
-  def direct_message
-    @object['directMessage']
-  end
-
-  def audience_to
-    as_array(@object['to'] || @json['to']).map { |x| value_or_id(x) }
-  end
-
-  def audience_cc
-    as_array(@object['cc'] || @json['cc']).map { |x| value_or_id(x) }
   end
 
   def summary_language_map?

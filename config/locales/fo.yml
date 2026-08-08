@@ -2010,6 +2010,9 @@ fo:
     title: Tænastutreytirnar á %{domain} verða broyttar
   themes:
     default: Mastodon
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: S'more
   time:
     formats:
       default: "%b %d, %Y, %H:%M"

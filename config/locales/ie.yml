@@ -1645,6 +1645,10 @@ ie:
       too_late: It es tro tard por apellar ti admoniment
   tags:
     does_not_match_previous_name: ne concorda li anteyan nómine
+  themes:
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: S'more
   time:
     formats:
       default: "%d.%m.%Y ye %H:%M"

@@ -647,6 +647,10 @@ kk:
     sensitive_content: Нәзік мазмұн
   tags:
     does_not_match_previous_name: алдыңғы атқа сәйкес келмейді
+  themes:
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: S'more
   two_factor_authentication:
     disable: Ажырату
     enabled: Екі-факторлы авторизация қосылған

@@ -644,7 +644,6 @@ sk:
         follow_recommendations: Odporúčania pre nasledovanie
         profile_directory: Katalóg profilov
         public_timelines: Verejné časové osi
-        publish_discovered_servers: Zverejni objavené servery
         publish_statistics: Zverejni štatistiky
         title: Objavovanie
         trends: Trendy
@@ -695,7 +694,7 @@ sk:
       open: Otvor príspevok
       original_status: Pôvodný príspevok
       status_changed: Príspevok bol zmenený
-      title: Príspevky na účte
+      title: Príspevky na účte - @%{name}
       trending: Populárne
       visibility: Viditeľnosť
       with_media: S médiami
@@ -799,10 +798,7 @@ sk:
     deleted_msg: Alias úspešne odstránený. Presun z tamtoho účtu na tento už viac nebude možný.
     remove: Odpoj alias
   appearance:
-    advanced_web_interface: Pokročilé webové rozhranie
-    advanced_web_interface_hint: 'Ak chcete využiť celkú šírku svojej obrazovky, pokročilé webové rozhranie vám umožňuje nastaviť mnoho rôznych stĺpcov, aby ste videli naraz toľko informácií, koľko chcete: Domov, upozornenia, federovanú časovú os a ľubovolný počet zoznamov či hashtagov.'
     animations_and_accessibility: Animácie a prístupnosť
-    confirmation_dialogs: Potvrdzovacie dialógy
     discovery: Objavovanie
     localization:
       body: Mastodon je prekladaný dobrovoľníkmi.
@@ -1352,6 +1348,10 @@ sk:
     sensitive_content: Senzitívny obsah
   tags:
     does_not_match_previous_name: nezhoduje sa s predošlým názvom
+  themes:
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: S'more
   time:
     formats:
       default: "%b %d, %R, %H:%M"
@@ -1422,7 +1422,6 @@ sk:
       follow_title: Prispôsob svoj domáci kanál
       follows_title: Koho nasledovať
       post_title: Vytvor svoj prvý príspevok
-      share_action: Zdieľaj
       sign_in_action: Prihlás sa
       subject: Vitaj na Mastodone
       title: Vitaj na palube, %{name}!

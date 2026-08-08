@@ -1438,6 +1438,10 @@ an:
       too_late: Ye masiau tarde pa apelar esta amonestación
   tags:
     does_not_match_previous_name: no coincide con o nombre anterior
+  themes:
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: S'more
   time:
     formats:
       default: "%d de %b de %Y, %H:%M"

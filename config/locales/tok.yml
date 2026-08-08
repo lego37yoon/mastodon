@@ -67,7 +67,7 @@ tok:
     reports:
       are_you_sure: sina wile ala wile?
     statuses:
-      title: toki suli pi jan ni
+      title: toki suli pi jan ni - @%{name}
     tags:
       search: o alasa
   imports:
@@ -84,6 +84,7 @@ tok:
   statuses:
     visibilities:
       public_long: ale li ken lukin e ni
-  user_mailer:
-    welcome:
-      share_action: o pana
+  themes:
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: S'more

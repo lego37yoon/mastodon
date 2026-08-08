@@ -860,6 +860,10 @@ br:
       '7889238': 3 mizvezh
   terms_of_service:
     title: Divizoù implijout
+  themes:
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: S'more
   time:
     formats:
       default: "%d a viz %b %Y, %H:%M"

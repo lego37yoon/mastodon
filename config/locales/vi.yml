@@ -1206,6 +1206,7 @@ vi:
           other: "%{count} người dùng tuần rồi"
       title: Đề xuất và Xu hướng
       trending: Xu hướng
+    update_available: Bản cập nhật có sẵn
     username_blocks:
       add_new: Thêm mới
       block_registrations: Cấm đăng ký
@@ -2143,6 +2144,9 @@ vi:
     title: Sửa đổi điều khoản dịch vụ %{domain}
   themes:
     default: Mastodon
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: S'more
   time:
     formats:
       default: "%-d.%m.%Y %H:%M"

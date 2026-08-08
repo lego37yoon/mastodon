@@ -769,7 +769,6 @@ eo:
         preamble: Interesa enhavo estas grava por novaj uzantoj kiuj eble ne konas ajn iun.
         profile_directory: Profilujo
         public_timelines: Publikaj templinioj
-        publish_discovered_servers: Publikigi la malkovritajn servilojn
         publish_statistics: Publikigi statistikojn
         title: Eltrovado
         trends: Tendencoj
@@ -829,7 +828,7 @@ eo:
       original_status: Originala afiŝo
       reblogs: Reblogaĵoj
       status_changed: Afiŝo ŝanĝiĝis
-      title: Afiŝoj de la konto
+      title: Afiŝoj de la konto - @%{name}
       trending: Popularaĵoj
       visibility: Videbleco
       with_media: Kun aŭdovidaĵoj
@@ -1054,10 +1053,7 @@ eo:
     hint_html: Se vi volas translokiĝi de alia konto al ĉi tie, kreu alinomon. Ĝi estas <strong>sekura kaj inversebla</strong>. <strong>Ĝi komencitas de malnova konto</strong>.
     remove: Malligili alinomon
   appearance:
-    advanced_web_interface: Altnivela retpaĝa interfaco
-    advanced_web_interface_hint: 'Se vi volas uzi la tutan larĝecon de via ekrano, la kompleksa reta interfaco permesas al vi agordi multajn malsamajn kolumnojn por vidi tiom da informoj kiom vi volas samtempe: Hejmo, sciigoj, fratara templinio, kaj ajna kvanto de listoj kaj kradvortoj.'
     animations_and_accessibility: Animacioj kaj alirebleco
-    confirmation_dialogs: Konfirmaj fenestroj
     discovery: Eltrovo
     localization:
       body: Mastodon estas tradukita de volontuloj.
@@ -1113,7 +1109,6 @@ eo:
     migrate_account: Movi al alia konto
     migrate_account_html: Se vi deziras alidirekti ĉi tiun konton al alia, vi povas <a href="%{path}">agordi ĝin ĉi tie</a>.
     or_log_in_with: Aŭ saluti per
-    privacy_policy_agreement_html: Mi legis kaj konsentis pri <a href="%{privacy_policy_path}" target="_blank">privatpolitiko</a>
     progress:
       confirm: Konfirmi retadreson
       details: Viaj detaloj
@@ -1781,6 +1776,10 @@ eo:
   terms_of_service_interstitial:
     past_preamble_html: Ni ŝanĝis niajn servkondiĉojn ekde via lasta vizito. Ni instigas vin revizii la ĝisdatigitajn kondiĉojn.
     title: La servkondiĉoj de %{domain} ŝanĝiĝas
+  themes:
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: S'more
   time:
     formats:
       default: "%Y.%b.%d, %H:%M"
@@ -1902,7 +1901,6 @@ eo:
       post_action: Redakti
       post_step: Salutu la mondon per teksto, fotoj, filmetoj aŭ balotenketoj.
       post_title: Faru vian unuan afiŝon
-      share_action: Kundividi
       share_step: Sciigu viajn amikojn kiel trovi vin sur Mastodon.
       share_title: Kunhavigu vian Mastodon-profilon
       sign_in_action: Ensaluti

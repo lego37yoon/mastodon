@@ -15,6 +15,8 @@ import { usePrevious } from '@dnd-kit/utilities';
 import { animated, useSpring } from '@react-spring/web';
 import { useDrag } from '@use-gesture/react';
 
+import { useResizeObserver } from '@/mastodon/hooks/useObserver';
+
 import type { CarouselPaginationProps } from './pagination';
 import { CarouselPagination } from './pagination';
 
@@ -77,9 +79,7 @@ export const Carousel = <
   const [slideIndex, setSlideIndex] = useState(0);
   const wrapperRef = useRef<HTMLDivElement>(null);
   // Handle slide heights
-  const [currentSlideHeight, setCurrentSlideHeight] = useState(
-    () => wrapperRef.current?.scrollHeight ?? 0,
-  );
+  const [currentSlideHeight, setCurrentSlideHeight] = useState(0);
   const previousSlideHeight = usePrevious(currentSlideHeight);
   const handleSlideChange = useCallback(
     (direction: number) => {
@@ -106,10 +106,10 @@ export const Carousel = <
     [items.length, onChangeSlide],
   );
 
-  const observerRef = useRef<ResizeObserver | null>(null);
-  observerRef.current ??= new ResizeObserver(() => {
+  const handleResize = useCallback(() => {
     handleSlideChange(0);
-  });
+  }, [handleSlideChange]);
+  const observer = useResizeObserver(handleResize);
 
   const wrapperStyles = useSpring({
     x: `-${slideIndex * 100}%`,
@@ -185,7 +185,7 @@ export const Carousel = <
           <CarouselSlideWrapper<SlideProps>
             item={itemsProps}
             renderItem={renderItem}
-            observer={observerRef.current}
+            observer={observer}
             index={index}
             key={`slide-${itemsProps.id}`}
             className={classNames(`${classNamePrefix}__slide`, slideClassName, {
@@ -200,7 +200,7 @@ export const Carousel = <
 };
 
 type CarouselSlideWrapperProps<SlideProps extends CarouselSlideProps> = {
-  observer: ResizeObserver | null;
+  observer: ResizeObserver;
   className: string;
   active: boolean;
   item: SlideProps;
@@ -217,7 +217,7 @@ const CarouselSlideWrapper = <SlideProps extends CarouselSlideProps>({
 }: CarouselSlideWrapperProps<SlideProps>) => {
   const handleRef = useCallback(
     (instance: HTMLDivElement | null) => {
-      if (observer && instance) {
+      if (instance) {
         observer.observe(instance);
       }
     },

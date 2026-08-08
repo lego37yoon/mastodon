@@ -37,6 +37,20 @@ module.exports = {
   },
   overrides: [
     {
+      files: [
+        'app/javascript/styles/smore/_custom.scss',
+        'app/javascript/styles/_extensions.scss',
+      ],
+      rules: {
+        'declaration-property-value-disallowed-list': {
+          '/.*/': [
+            '/#[0-9a-fA-F]{3,8}\\b/',
+            '/(?:rgb|rgba|hsl|hsla|hwb|lab|lch|oklab|oklch)\\(/',
+          ],
+        },
+      },
+    },
+    {
       files: ['app/javascript/styles/entrypoints/mailer.scss'],
       rules: {
         'property-no-unknown': [

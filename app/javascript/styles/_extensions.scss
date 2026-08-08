@@ -1,0 +1,99 @@
+// Styles for features maintained by this fork. Keep upstream-owned selectors
+// in application.scss and mastodon/** unchanged.
+
+.account__avatar__cat-badge {
+  position: relative;
+  top: -2.2em;
+  display: flex;
+  width: min-content;
+  padding: 0 0.25em;
+  border-radius: 50%;
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-size: 0.8em;
+}
+
+.status--in-thread .reactions-bar {
+  margin-inline-start: 3rem;
+}
+
+.notification-ungrouped .reactions-bar {
+  margin-inline-start: 2.5rem;
+}
+
+.reactions-bar {
+  &__item {
+    &--container {
+      display: inline-flex;
+    }
+
+    &--with-reacted-by {
+      border-radius: 3px 0 0 3px;
+    }
+
+    &--details {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-inline-start: 1px;
+      padding-inline: 7px;
+      border-radius: 0 3px 3px 0;
+
+      .icon {
+        width: 14px;
+        height: 14px;
+      }
+    }
+  }
+
+  &__reacted-by {
+    &__link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    &__avatar {
+      width: 18px;
+      height: 18px;
+      flex: 0 0 auto;
+
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: var(--avatar-border-radius);
+        object-fit: cover;
+      }
+    }
+
+    &__name {
+      overflow: hidden;
+      font-size: 13px;
+      line-height: 18px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  &--container {
+    display: inline-flex;
+    align-items: center;
+    margin: 2px;
+
+    .reactions-bar__item {
+      margin: 0;
+    }
+
+    .reactions-bar__item--details {
+      margin-inline-start: 1px;
+    }
+  }
+}
+
+.notification-group--reaction .notification-group__icon,
+.notification-reaction .star-icon {
+  color: var(--color-text-favourite-highlight);
+}

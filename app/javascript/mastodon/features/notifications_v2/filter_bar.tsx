@@ -3,6 +3,7 @@ import { useCallback } from 'react';
 
 import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
 
+import AddReactionIcon from '@/material-icons/400-24px/add_reaction.svg?react';
 import CollectionsIcon from '@/material-icons/400-24px/category.svg?react';
 import HomeIcon from '@/material-icons/400-24px/home-fill.svg?react';
 import InsertChartIcon from '@/material-icons/400-24px/insert_chart.svg?react';
@@ -25,6 +26,10 @@ const tooltips = defineMessages({
     defaultMessage: 'Favorites',
   },
   boosts: { id: 'notifications.filter.boosts', defaultMessage: 'Boosts' },
+  reactions: {
+    id: 'notifications.filter.reactions',
+    defaultMessage: 'Reactions',
+  },
   polls: { id: 'notifications.filter.polls', defaultMessage: 'Poll results' },
   follows: { id: 'notifications.filter.follows', defaultMessage: 'Follows' },
   collections: {
@@ -104,6 +109,14 @@ export const FilterBar: React.FC = () => {
           title={intl.formatMessage(tooltips.boosts)}
         >
           <Icon id='retweet' icon={RepeatIcon} />
+        </BarButton>
+        <BarButton
+          selectedFilter={selectedFilter}
+          type='reaction'
+          key='reaction'
+          title={intl.formatMessage(tooltips.reactions)}
+        >
+          <Icon id='add-reaction' icon={AddReactionIcon} />
         </BarButton>
         <BarButton
           selectedFilter={selectedFilter}

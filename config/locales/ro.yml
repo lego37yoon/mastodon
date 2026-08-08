@@ -428,7 +428,7 @@ ro:
         follow_recommendations: Urmează recomandările
         profile_directory: Catalogul de profiluri
     statuses:
-      title: Postări cont
+      title: Postări cont - @%{name}
   aliases:
     add_new: Creează un alias
     created_msg: A fost creat cu succes un alias nou. Acum puteţi iniţia mutarea din vechiul cont.
@@ -465,7 +465,6 @@ ro:
     migrate_account: Transfer către un alt cont
     migrate_account_html: Dacă dorești să redirecționezi acest cont către un altul, poți <a href="%{path}">configura asta aici</a>.
     or_log_in_with: Sau conectează-te cu
-    privacy_policy_agreement_html: Am citit și sunt de acord cu <a href="%{privacy_policy_path}" target="_blank">Politica de confidențialitate</a>
     register: Înregistrare
     registration_closed: "%{instance} nu acceptă membri noi"
     reset_password: Resetare parolă
@@ -707,6 +706,10 @@ ro:
     sensitive_content: Conținut sensibil
   tags:
     does_not_match_previous_name: nu se potrivește cu numele anterior
+  themes:
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: S'more
   time:
     formats:
       default: "%d %m, %Y, %H:%M"

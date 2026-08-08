@@ -1226,6 +1226,7 @@ hu:
           other: "%{count} ember használta a múlt héten"
       title: Ajánlások és trendek
       trending: Felkapott
+    update_available: Frissítés érhető el
     username_blocks:
       add_new: Új hozzáadása
       block_registrations: Regisztrációk blokkolása
@@ -2192,6 +2193,9 @@ hu:
     title: A(z) %{domain} felhasználási feltételei megváltoznak
   themes:
     default: Mastodon
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: S'more
   time:
     formats:
       default: "%Y. %b %d., %H:%M"

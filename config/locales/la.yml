@@ -31,9 +31,8 @@ la:
     accounts:
       are_you_sure: Esne certus?
     statuses:
-      title: Ratiōnis publicātiōnēs
+      title: Ratiōnis publicātiōnēs - @%{name}
   auth:
-    privacy_policy_agreement_html: Lēgī et cōnsēnsī ad <a href="%{privacy_policy_path}" target="_blank">pōlīticam prīvātī tūtelam</a>
     setup:
       email_settings_hint_html: Premī nexum quem tibi mīsimus ut %{email} comprobēs. Hīc manēbimus.
     sign_up:
@@ -55,3 +54,7 @@ la:
       muting_html: Mox <strong>tacēbis</strong> usque ad <strong>%{total_items} ratiōnēs</strong> e <strong>%{filename}</strong>.
   scheduled_statuses:
     too_soon: Dāta dēfīnīta in futurō esse dēbēbit.
+  themes:
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: S'more

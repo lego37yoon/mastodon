@@ -933,6 +933,10 @@ ckb:
     sensitive_content: ناوەڕۆکی هەستیار
   tags:
     does_not_match_previous_name: لەگەڵ ناوی پێشوو یەک ناگرێتەوە
+  themes:
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: S'more
   two_factor_authentication:
     add: زیادکردن
     disable: لەکارخستنی 2FA

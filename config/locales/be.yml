@@ -2290,6 +2290,9 @@ be:
     title: На %{domain} змяняюцца ўмовы карыстання
   themes:
     default: Mastodon
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: S'more
   time:
     formats:
       default: "%d.%m.%Y %H:%M"

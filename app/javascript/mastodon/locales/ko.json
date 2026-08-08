@@ -1304,6 +1304,7 @@
   "status.bookmark": "북마크",
   "status.cancel_reblog_private": "부스트 취소",
   "status.cannot_reblog": "이 게시물은 부스트할 수 없어요",
+  "status.contains_quote": "인용 포함",
   "status.context.loading_error": "새 답글을 불러오지 못했어요",
   "status.context.loading_success": "새 답글을 불러왔어요",
   "status.context.more_replies_found": "새 답글이 더 있어요",

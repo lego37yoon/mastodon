@@ -1,29 +1,27 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useMemo } from 'react';
 
 export function useResizeObserver(callback: ResizeObserverCallback) {
-  const observerRef = useRef<ResizeObserver | null>(null);
-  observerRef.current ??= new ResizeObserver(callback);
+  const observer = useMemo(() => new ResizeObserver(callback), [callback]);
 
-  useEffect(() => {
-    const observer = observerRef.current;
-    return () => {
-      observer?.disconnect();
-    };
-  }, []);
+  useEffect(
+    () => () => {
+      observer.disconnect();
+    },
+    [observer],
+  );
 
-  return observerRef.current;
+  return observer;
 }
 
 export function useMutationObserver(callback: MutationCallback) {
-  const observerRef = useRef<MutationObserver | null>(null);
-  observerRef.current ??= new MutationObserver(callback);
+  const observer = useMemo(() => new MutationObserver(callback), [callback]);
 
-  useEffect(() => {
-    const observer = observerRef.current;
-    return () => {
-      observer?.disconnect();
-    };
-  }, []);
+  useEffect(
+    () => () => {
+      observer.disconnect();
+    },
+    [observer],
+  );
 
-  return observerRef.current;
+  return observer;
 }

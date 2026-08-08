@@ -1226,6 +1226,7 @@ da:
           other: Brugt af %{count} personer den seneste uge
       title: Anbefalinger og trends
       trending: Trender
+    update_available: Opdatering tilgængelig
     username_blocks:
       add_new: Tilføj ny
       block_registrations: Blokér registreringer
@@ -2192,6 +2193,9 @@ da:
     title: Tjenestevilkårene for %{domain} ændres
   themes:
     default: Mastodon
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: S'more
   time:
     formats:
       default: "%d. %b %Y, %H:%M"

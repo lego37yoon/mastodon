@@ -2341,6 +2341,9 @@ ga:
     title: Tá téarmaí seirbhíse %{domain} ag athrú
   themes:
     default: Mastodon
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: S'more
   time:
     formats:
       default: "%b %d, %Y, %H:%M"

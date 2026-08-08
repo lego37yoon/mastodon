@@ -1407,6 +1407,10 @@ id:
       too_late: Terlambat untuk mengajukan banding hukuman ini
   tags:
     does_not_match_previous_name: tidak cocok dengan nama sebelumnya
+  themes:
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: S'more
   time:
     formats:
       default: "%d %b %Y, %H:%M"

@@ -193,6 +193,11 @@ class ColumnSettings extends PureComponent {
           label={<FormattedMessage id='notifications.column_settings.collections' defaultMessage='Collections:' />}
         />
 
+        <ColumnSettingsGroup
+          type="reaction"
+          label={<FormattedMessage id='notifications.column_settings.reaction' defaultMessage='Reactions:' />}
+        />
+
         {((this.props.identity.permissions & PERMISSION_MANAGE_USERS) === PERMISSION_MANAGE_USERS) && (
           <section role='group' aria-labelledby='notifications-admin-sign-up'>
             <h3 id='notifications-status'><FormattedMessage id='notifications.column_settings.admin.sign_up' defaultMessage='New sign-ups:' /></h3>

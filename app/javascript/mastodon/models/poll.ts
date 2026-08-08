@@ -22,7 +22,7 @@ export function createPollOptionTranslationFromServerJSON(translation: {
   return {
     ...translation,
     titleHtml: escapeTextContentForBrowser(translation.title),
-  } as PollOptionTranslation;
+  };
 }
 
 export interface Poll extends Omit<

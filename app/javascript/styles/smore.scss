@@ -1,0 +1,6 @@
+@use 'fonts/plexsans';
+@use 'mastodon/variables' with (
+  $font-sans-serif: 'IBM Plex Sans KR',
+  $font-display: 'IBM Plex Sans KR'
+);
+@use 'smore/application';

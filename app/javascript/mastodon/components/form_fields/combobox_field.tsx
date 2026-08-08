@@ -301,11 +301,13 @@ const ComboboxWithRef = <Item extends ComboboxItem, GroupKey extends string>(
   }, [flatItems, getItemId, highlightItem]);
 
   // Reset scroll & highlight when menu items change
+  /* eslint-disable react-hooks/set-state-in-effect -- Synchronizes highlight state and popover scroll after async items change. */
   useEffect(() => {
     if (flatItems.length) {
       resetHighlight();
     }
   }, [flatItems, resetHighlight]);
+  /* eslint-enable react-hooks/set-state-in-effect */
 
   const handleFocus: React.FocusEventHandler<HTMLInputElement> = useCallback(
     (e) => {

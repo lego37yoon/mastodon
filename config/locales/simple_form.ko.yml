@@ -49,8 +49,8 @@ ko:
         email: 확인용 이메일을 보내게 됩니다
         header: WEBP, PNG, GIF 혹은 JPG. 최대 %{size}. %{dimensions}px로 축소됨
         inbox_url: 사용 할 릴레이 서버의 프론트페이지에서 URL을 복사합니다
-        is_cat: Misskey의 고양이 모드와 같다냐. 글을 올리면 고양이가 된다냥? Misskey와 호환성을 갖고 있다냐. 베타니까 잘 작동하지 않으면 운영자에게 연락하라냐!!
         irreversible: 필터링 된 게시물은 나중에 필터가 사라지더라도 돌아오지 않게 됩니다
+        is_cat: Misskey의 고양이 모드와 같다냐. 글을 올리면 고양이가 된다냥? Misskey와 호환성을 갖고 있다냐. 베타니까 잘 작동하지 않으면 운영자에게 연락하라냐!!
         locale: 사용자 인터페이스, 이메일, 푸시 알림 언어
         password: 최소 8글자
         phrase: 게시물 내용이나 열람주의 내용 안에서 대소문자 구분 없이 매칭 됩니다
@@ -231,8 +231,8 @@ ko:
         header: 헤더 사진
         honeypot: "%{label} (채우지 마시오)"
         inbox_url: 릴레이 서버의 inbox URL
-        is_cat: 고양이 모드
         irreversible: 숨기는 대신 삭제
+        is_cat: 고양이 모드
         locale: 인터페이스 언어
         max_uses: 사용 횟수 제한
         new_password: 새로운 암호 입력
@@ -352,8 +352,8 @@ ko:
         mention: 누군가 나를 언급했을 때
         pending_account: 새 계정이 심사가 필요할 때
         quote: 누군가 나를 인용했을 때
-        reblog: 누군가 내 게시물을 부스트 했을 때
         reaction: 누군가 내 게시물에 반응을 남겼을 때
+        reblog: 누군가 내 게시물을 부스트 했을 때
         report: 새 신고가 접수되었을 때
         software_updates:
           all: 모든 업데이트에 대해 알림

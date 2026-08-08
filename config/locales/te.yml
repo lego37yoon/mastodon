@@ -68,3 +68,7 @@ te:
       moderation_notes: మోడరేషన్ నోట్స్
       most_recent_activity: ఇటీవల యాక్టివిటీ
       most_recent_ip: ఇటీవలి IP
+  themes:
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: S'more

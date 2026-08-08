@@ -1834,6 +1834,10 @@ th:
     does_not_match_previous_name: ไม่ตรงกับชื่อก่อนหน้านี้
   terms_of_service:
     title: เงื่อนไขการให้บริการ
+  themes:
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: S'more
   time:
     formats:
       default: "%d %b %Y %H:%M น."

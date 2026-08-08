@@ -17,3 +17,7 @@ ry:
       subject: "%{name} ся пудписує ся на вас"
   relationships:
     following: Пудпискы
+  themes:
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: S'more

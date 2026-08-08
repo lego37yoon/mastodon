@@ -1,0 +1,39 @@
+@use '../mastodon/theme/base';
+@use '../mastodon/theme/dark';
+@use '../mastodon/theme/light';
+@use '../mastodon/theme/utils';
+@use 'theme/tokens';
+
+html {
+  @include base.palette;
+  @include tokens.palette;
+}
+
+[data-color-scheme='dark'],
+html:not([data-color-scheme]) {
+  color-scheme: dark;
+
+  @include dark.tokens;
+  @include tokens.dark;
+  @include utils.invert-on-dark;
+
+  &[data-contrast='high'],
+  [data-contrast='high'] & {
+    @include dark.contrast-overrides;
+    @include tokens.dark-contrast;
+  }
+}
+
+[data-color-scheme='light'] {
+  color-scheme: light;
+
+  @include light.tokens;
+  @include tokens.light;
+  @include utils.invert-on-light;
+
+  &[data-contrast='high'],
+  [data-contrast='high'] & {
+    @include light.contrast-overrides;
+    @include tokens.light-contrast;
+  }
+}

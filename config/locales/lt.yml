@@ -1276,6 +1276,10 @@ lt:
     sensitive_content: Jautrus turinys
   terms_of_service:
     title: Paslaugų sąlygos
+  themes:
+    maruburi: MaruBuri
+    ridibatang: RIDI Batang
+    smore: S'more
   two_factor_authentication:
     add: Pridėti
     disable: Išjungti 2FA
