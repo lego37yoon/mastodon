@@ -123,48 +123,6 @@ a.status-card:active .status-card__description {
   color: var(--color-text-brand);
 }
 
-.account__header {
-  border-radius: 10px;
-  margin-bottom: 1em;
-}
-
-.account__header__bar {
-  border: none;
-}
-
-.account__header__bio .account__header__fields .verified:first-child {
-  border-bottom-left-radius: 25px;
-  border-bottom-right-radius: 25px;
-}
-
-.account__header__bio .account__header__fields .verified:last-child {
-  border-bottom-left-radius: 25px;
-  border-bottom-right-radius: 25px;
-}
-
-.account__header__tabs__buttons .icon-button {
-  border-radius: 50%;
-  border: none;
-}
-
-.account__header__bio .account__header__fields {
-  border-radius: 25px;
-  border: none;
-}
-
-.account__header__bio .account__header__fields dl {
-  border-bottom: none;
-}
-
-.account__header__bio .account__header__fields a {
-  color: var(--color-bg-brand-base);
-}
-
-.account__header__fields {
-  background: var(--smore-color-bg-glass);
-  border: 0;
-}
-
 .account-role {
   border-radius: 25px;
   color: var(--color-text-brand);
@@ -290,7 +248,8 @@ body .muted-hint a,
 .button.button-secondary {
   background: color-mix(in srgb, var(--color-bg-brand-base) 87%, transparent);
   color: white;
-  border: none;
+  border: 1px solid
+    color-mix(in srgb, var(--color-bg-brand-base) 87%, transparent);
 }
 
 .button.button-secondary:active,
@@ -1016,8 +975,7 @@ a.table-action-link:hover {
 .inline-follow-suggestions__body__scrollable__card .account__avatar,
 .status__avatar .account_avatar,
 .account__avatar-wrapper .account__avatar,
-.detailed-status__display-avatar .account__avatar,
-.account__header__bar .avatar .account__avatar {
+.detailed-status__display-avatar .account__avatar {
   border-radius: 50%;
   border: 0;
 }
@@ -1298,6 +1256,7 @@ kbd {
 
 .reactions-bar__item--details {
   border-radius: 10px 25px 25px 10px;
+  border: none;
 }
 
 .reactions-bar__item--details:hover,
@@ -1552,6 +1511,11 @@ kbd {
 
 .status__line {
   border-radius: 10px;
+}
+
+.status__quote {
+  box-shadow: 1px 1px 5px var(--color-bg-brand-softest);
+  border: 1px solid var(--color-bg-brand-soft);
 }
 
 .status__quote-author-button {
