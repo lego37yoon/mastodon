@@ -2,6 +2,7 @@ import { forwardRef } from 'react';
 import type {
   ElementType,
   ComponentPropsWithRef,
+  ComponentRef,
   ForwardRefRenderFunction,
   ReactElement,
   Ref,
@@ -25,14 +26,7 @@ type PropsOf<As extends ElementType> = ComponentPropsWithRef<As>;
  * - For intrinsic elements, look up in JSX.IntrinsicElements
  * - For components, infer from `ComponentPropsWithRef`
  */
-type ElementRef<As extends ElementType> =
-  As extends keyof React.JSX.IntrinsicElements
-    ? React.JSX.IntrinsicElements[As] extends { ref?: Ref<infer Inst> }
-      ? Inst
-      : never
-    : ComponentPropsWithRef<As> extends { ref?: Ref<infer Inst> }
-      ? Inst
-      : never;
+type ElementRef<As extends ElementType> = ComponentRef<As>;
 
 /**
  * Merge additional props with intrinsic/element props for `as`.

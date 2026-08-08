@@ -126,11 +126,23 @@ interface FocusTargetElementProps extends React.ComponentPropsWithoutRef<'h1'> {
 export const NavigationFocusTarget = polymorphicForwardRef<
   'h1',
   FocusTargetElementProps
->(({ as: Component = 'h1', focusTargetName, children, ...otherProps }) => {
+>(({ as: Component = 'h1', focusTargetName, children, ...otherProps }, ref) => {
   const focusOnNavigation = useFocusOnNavigation(focusTargetName);
+  const setRef = useCallback(
+    (element: HTMLHeadingElement | null) => {
+      focusOnNavigation(element);
+
+      if (typeof ref === 'function') {
+        ref(element);
+      } else if (ref) {
+        ref.current = element;
+      }
+    },
+    [focusOnNavigation, ref],
+  );
 
   return (
-    <Component ref={focusOnNavigation} tabIndex={-1} {...otherProps}>
+    <Component ref={setRef} tabIndex={-1} {...otherProps}>
       {children}
     </Component>
   );
