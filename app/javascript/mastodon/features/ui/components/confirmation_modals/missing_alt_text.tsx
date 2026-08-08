@@ -33,8 +33,8 @@ const messages = defineMessages({
 });
 
 export const ConfirmMissingAltTextModal: React.FC<
-  BaseConfirmationModalProps
-> = ({ onClose }) => {
+  BaseConfirmationModalProps & { scheduledAt?: string | null }
+> = ({ onClose, scheduledAt }) => {
   const intl = useIntl();
   const dispatch = useAppDispatch();
   const mediaId = useAppSelector(
@@ -64,8 +64,8 @@ export const ConfirmMissingAltTextModal: React.FC<
   }, [dispatch, mediaId]);
 
   const handleSecondary = useCallback(() => {
-    dispatch(submitCompose());
-  }, [dispatch]);
+    dispatch(submitCompose(undefined, scheduledAt));
+  }, [dispatch, scheduledAt]);
 
   return (
     <ConfirmationModal

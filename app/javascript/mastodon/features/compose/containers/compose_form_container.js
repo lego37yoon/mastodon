@@ -67,23 +67,23 @@ const mapDispatchToProps = (dispatch, props) => ({
     dispatch(changeCompose(text));
   },
 
-  onSubmit ({ missingAltText, quoteToPrivate }) {
+  onSubmit ({ missingAltText, quoteToPrivate, scheduledAt }) {
     if (missingAltText) {
       dispatch(openModal({
         modalType: 'CONFIRM_MISSING_ALT_TEXT',
-        modalProps: {},
+        modalProps: { scheduledAt },
       }));
     } else if (quoteToPrivate) {
       dispatch(openModal({
         modalType: 'CONFIRM_PRIVATE_QUOTE_NOTIFY',
-        modalProps: {},
+        modalProps: { scheduledAt },
       }));
     } else {
       dispatch(submitCompose((status) => {
-        if (props.redirectOnSuccess) {
+        if (props.redirectOnSuccess && status.url) {
           window.location.assign(status.url);
         }
-      }));
+      }, scheduledAt));
     }
   },
 

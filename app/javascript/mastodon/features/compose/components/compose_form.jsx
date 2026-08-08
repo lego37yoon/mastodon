@@ -28,6 +28,7 @@ import { LanguageDropdown } from './language_dropdown';
 import { NavigationBar } from './navigation_bar';
 import { PollForm } from "./poll_form";
 import { ReplyIndicator } from './reply_indicator';
+import { ScheduleButton } from './schedule_button';
 import { UploadForm } from './upload_form';
 import { Warning } from './warning';
 import { ComposeQuotedStatus } from './quoted_post';
@@ -142,11 +143,26 @@ class ComposeForm extends ImmutablePureComponent {
     this.props.onSubmit({
       missingAltText: missingAltTextModal && this.props.missingAltText && this.props.privacy !== 'direct',
       quoteToPrivate: this.props.quoteToPrivate,
+      scheduledAt: null,
     });
 
     if (e) {
       e.preventDefault();
     }
+  };
+
+  handleSchedule = (scheduledAt) => {
+    if (this.props.text !== this.textareaRef.current.value) {
+      this.props.onChange(this.textareaRef.current.value);
+    }
+
+    if (!this.canSubmit()) return;
+
+    this.props.onSubmit({
+      missingAltText: missingAltTextModal && this.props.missingAltText && this.props.privacy !== 'direct',
+      quoteToPrivate: this.props.quoteToPrivate,
+      scheduledAt,
+    });
   };
 
   onSuggestionsClearRequested = () => {
@@ -331,18 +347,23 @@ class ComposeForm extends ImmutablePureComponent {
               </div>
 
               <div className='compose-form__submit'>
-                <Button
-                  type='submit'
-                  compact
-                  disabled={!this.canSubmit()}
-                  loading={isSubmitting}
-                >
-                  {intl.formatMessage(
-                    this.props.isEditing ?
-                      messages.saveChanges :
-                      (this.props.isInReply ? messages.reply : messages.publish)
-                  )}
-                </Button>
+                {this.props.isEditing ? (
+                  <Button
+                    type='submit'
+                    compact
+                    disabled={!this.canSubmit()}
+                    loading={isSubmitting}
+                  >
+                    {intl.formatMessage(messages.saveChanges)}
+                  </Button>
+                ) : (
+                  <ScheduleButton
+                    disabled={!this.canSubmit()}
+                    loading={isSubmitting}
+                    label={intl.formatMessage(this.props.isInReply ? messages.reply : messages.publish)}
+                    onSchedule={this.handleSchedule}
+                  />
+                )}
               </div>
             </div>
           </div>

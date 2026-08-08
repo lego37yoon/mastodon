@@ -86,6 +86,7 @@ const messages = defineMessages({
   open: { id: 'compose.published.open', defaultMessage: 'Open' },
   published: { id: 'compose.published.body', defaultMessage: 'Post published.' },
   saved: { id: 'compose.saved.body', defaultMessage: 'Post saved.' },
+  scheduled: { id: 'compose.scheduled.body', defaultMessage: 'Post scheduled.' },
   blankPostError: { id: 'compose.error.blank_post', defaultMessage: 'Post can\'t be blank.' },
 });
 
@@ -189,7 +190,7 @@ export function directCompose(account) {
   };
 }
 
-export function submitCompose(successCallback) {
+export function submitCompose(successCallback, scheduledAt = /** @type {string | null} */ (null)) {
   return function (dispatch, getState) {
     const status   = getState().getIn(['compose', 'text'], '');
     const media    = getState().getIn(['compose', 'media_attachments']);
@@ -247,20 +248,29 @@ export function submitCompose(successCallback) {
         language: getState().getIn(['compose', 'language']),
         quoted_status_id: getState().getIn(['compose', 'quoted_status_id']),
         quote_approval_policy: visibility === 'private' || visibility === 'direct' ? 'nobody' : getState().getIn(['compose', 'quote_policy']),
+        scheduled_at: statusId === null ? scheduledAt : undefined,
       },
       headers: {
         'Idempotency-Key': getState().getIn(['compose', 'idempotencyKey']),
       },
     }).then(function (response) {
+      const isScheduled = scheduledAt !== null;
+
       if ((browserHistory.location.pathname === '/publish' || browserHistory.location.pathname === '/statuses/new') && window.history.state) {
         browserHistory.goBack();
       }
 
-      dispatch(insertIntoTagHistory(response.data.tags, status));
       dispatch(submitComposeSuccess({ ...response.data }));
       if (typeof successCallback === 'function') {
         successCallback(response.data);
       }
+
+      if (isScheduled) {
+        dispatch(showAlert({ message: messages.scheduled }));
+        return;
+      }
+
+      dispatch(insertIntoTagHistory(response.data.tags, status));
 
       // To make the app more responsive, immediately push the status
       // into the columns
