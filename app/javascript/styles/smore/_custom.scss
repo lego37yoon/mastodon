@@ -1146,7 +1146,6 @@ kbd {
     color-mix(in srgb, var(--color-shadow-primary) 67%, transparent);
   word-break: keep-all;
   border-radius: 10px;
-  padding: 0.5rem;
 }
 
 .more-from-author {
@@ -1669,6 +1668,69 @@ kbd {
   border: 1px solid var(--color-bg-brand-base);
   background: var(--color-bg-secondary);
   border-radius: 25px;
+}
+
+// Floating surfaces used to share the translucent appearance of the Smore
+// theme. Mastodon 4.6 moved their base colors to opaque design tokens, so keep
+// the theme treatment in one place as new popovers and modal shells are added.
+.account__domain-pill__popout,
+.autosuggest-textarea__suggestions,
+.compose-form__schedule-popover,
+.dialog-modal__popout,
+.dropdown-menu,
+.emoji-picker-dropdown__menu,
+.emoji-picker-dropdown__modifiers__menu,
+.hover-card,
+.language-dropdown__dropdown,
+.privacy-dropdown__dropdown,
+.search__popout,
+.visibility-dropdown__dropdown {
+  background: var(--smore-color-bg-glass-strong);
+  backdrop-filter: blur(10px) contrast(90%) brightness(100%);
+}
+
+.actions-modal,
+.boost-modal,
+.compare-history-modal,
+.dialog-modal,
+.interaction-modal,
+.modal-placeholder,
+.report-dialog-modal,
+.report-modal,
+.safety-action-modal__top,
+.safety-action-modal__bottom,
+.safety-action-modal__bottom.active {
+  background: var(--smore-color-bg-glass-strong);
+  backdrop-filter: blur(10px) contrast(90%) brightness(100%);
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .account__domain-pill__popout,
+  .autosuggest-textarea__suggestions,
+  .compose-form__schedule-popover,
+  .dialog-modal__popout,
+  .dropdown-menu,
+  .emoji-picker-dropdown__menu,
+  .emoji-picker-dropdown__modifiers__menu,
+  .hover-card,
+  .language-dropdown__dropdown,
+  .privacy-dropdown__dropdown,
+  .search__popout,
+  .visibility-dropdown__dropdown,
+  .actions-modal,
+  .boost-modal,
+  .compare-history-modal,
+  .dialog-modal,
+  .interaction-modal,
+  .modal-placeholder,
+  .report-dialog-modal,
+  .report-modal,
+  .safety-action-modal__top,
+  .safety-action-modal__bottom,
+  .safety-action-modal__bottom.active {
+    background: var(--color-bg-primary);
+    backdrop-filter: none;
+  }
 }
 
 .warning-banner {

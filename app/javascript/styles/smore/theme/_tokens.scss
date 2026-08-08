@@ -81,9 +81,13 @@
 @mixin light-contrast {
   --color-text-brand: var(--color-smore-700);
   --color-border-brand: var(--color-smore-700);
+  --smore-color-bg-glass: var(--color-bg-primary);
+  --smore-color-bg-glass-strong: var(--color-bg-primary);
 }
 
 @mixin dark-contrast {
   --color-text-brand: var(--color-smore-200);
   --color-border-brand: var(--color-smore-200);
+  --smore-color-bg-glass: var(--color-bg-primary);
+  --smore-color-bg-glass-strong: var(--color-bg-primary);
 }
