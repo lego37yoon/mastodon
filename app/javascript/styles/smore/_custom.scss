@@ -1,5 +1,33 @@
 // Component overrides adapted from https://gist.github.com/97436b9ea588c220602a9ad3be908895.
 
+body ._comp_account_header {
+  &__header {
+    border-bottom: none;
+  }
+
+  &__avatar {
+    border: none;
+    background: transparent;
+  }
+
+  &__buttonsMObileIsStuck {
+    border-top: none;
+    box-shadow: 1px 1px 10px var(--color-bg-brand-soft);
+  }
+}
+
+body ._comp_form_fields_form_field_wrapper {
+  &__wrapper {
+    margin-bottom: 0.5rem;
+  }
+}
+
+body ._feat_account_timeline {
+  &__statusWrapper article:has(._feat_account_timeline__pinnedViewAllButton) {
+    border-bottom: none;
+  }
+}
+
 a:focus {
   border-radius: 10px;
 }
@@ -834,12 +862,20 @@ a.table-action-link:hover {
   border-radius: 10px;
 }
 
+.explore__search-header {
+  border: none;
+}
+
 .explore__search-header .search__input {
   border: none;
 }
 
 .explore__search-header .search .fa {
   top: 8px;
+}
+
+.explore__search-results {
+  border: none;
 }
 
 .featured-carousel__pagination {
