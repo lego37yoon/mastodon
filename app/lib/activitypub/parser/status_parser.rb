@@ -168,6 +168,10 @@ class ActivityPub::Parser::StatusParser
     equals_or_includes_any?(@object['type'], ActivityPub::Activity::CONVERTED_TYPES)
   end
 
+  def direct_message
+    @object['directMessage']
+  end
+
   def audience_to
     as_array(@object['to'] || @json['to']).map { |x| value_or_id(x) }
   end

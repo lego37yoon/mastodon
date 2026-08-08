@@ -369,6 +369,31 @@ class Status < ApplicationRecord
   end
 
   class << self
+    def as_direct_timeline(account, limit = 20, max_id = nil, since_id = nil, min_id = nil)
+      from_account = where(account_id: account.id).direct_visibility
+      to_account = direct_visibility
+        .joins(:mentions)
+        .where(mentions: { account_id: account.id })
+        .not_excluded_by_account(account)
+
+      if min_id.present?
+        from_account = from_account.where(arel_table[:id].gt(min_id)).reorder(id: :asc).limit(limit)
+        to_account = to_account.where(Mention.arel_table[:status_id].gt(min_id)).reorder(Mention.arel_table[:status_id].asc).limit(limit)
+        ids = (from_account.pluck(:id) + to_account.pluck(:id)).sort.uniq.take(limit).reverse
+      else
+        from_account = from_account.where(arel_table[:id].lt(max_id)) if max_id.present?
+        to_account = to_account.where(Mention.arel_table[:status_id].lt(max_id)) if max_id.present?
+        from_account = from_account.where(arel_table[:id].gt(since_id)) if since_id.present?
+        to_account = to_account.where(Mention.arel_table[:status_id].gt(since_id)) if since_id.present?
+
+        ids = (from_account.reorder(id: :desc).limit(limit).pluck(:id) +
+               to_account.reorder(Mention.arel_table[:status_id].desc).limit(limit).pluck(:id)).sort.uniq.reverse.take(limit)
+      end
+
+      statuses_by_id = where(id: ids).index_by(&:id)
+      ids.filter_map { |id| statuses_by_id[id] }
+    end
+
     def favourites_map(status_ids, account_id)
       Favourite.select(:status_id).where(status_id: status_ids).where(account_id: account_id).to_h { |f| [f.status_id, true] }
     end

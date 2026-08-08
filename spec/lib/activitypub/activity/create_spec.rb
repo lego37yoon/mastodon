@@ -459,6 +459,32 @@ RSpec.describe ActivityPub::Activity::Create do
         end
       end
 
+      context 'when directMessage attribute is false' do
+        let(:recipient) { Fabricate(:account) }
+
+        let(:object_json) do
+          {
+            id: [ActivityPub::TagManager.instance.uri_for(sender), '#bar'].join,
+            type: 'Note',
+            content: 'Lorem ipsum',
+            directMessage: false,
+            to: ActivityPub::TagManager.instance.uri_for(recipient),
+            tag: {
+              type: 'Mention',
+              href: ActivityPub::TagManager.instance.uri_for(recipient),
+            },
+          }
+        end
+
+        it 'creates status with limited visibility' do
+          expect { subject.perform }.to change(sender.statuses, :count).by(1)
+
+          expect(sender.statuses.first)
+            .to be_present
+            .and have_attributes(visibility: 'limited')
+        end
+      end
+
       context 'when the status is already known' do
         let(:recipient) { Fabricate(:account) }
 

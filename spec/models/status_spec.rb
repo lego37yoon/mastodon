@@ -448,6 +448,19 @@ RSpec.describe Status do
       results2 = described_class.as_direct_timeline(account)
       expect(results2).to include(not_followed_direct_status)
     end
+
+    it 'applies max_id, since_id, and min_id with stable ordering' do
+      older, middle, newer = Array.new(3) { Fabricate(:status, account: account, visibility: :direct) }
+
+      expect(described_class.as_direct_timeline(account, 2).map(&:id))
+        .to eq([newer.id, middle.id])
+      expect(described_class.as_direct_timeline(account, 2, newer.id).map(&:id))
+        .to eq([middle.id, older.id])
+      expect(described_class.as_direct_timeline(account, 1, nil, older.id).map(&:id))
+        .to eq([newer.id])
+      expect(described_class.as_direct_timeline(account, 1, nil, nil, older.id).map(&:id))
+        .to eq([middle.id])
+    end
   end
 
   describe '.only_reblogs' do
