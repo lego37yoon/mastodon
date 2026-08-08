@@ -9,7 +9,12 @@ import { BetaBadge } from 'mastodon/components/badge';
 import { Button } from 'mastodon/components/button';
 import { Icon } from 'mastodon/components/icon';
 
-const MINIMUM_SCHEDULE_DELAY = 5 * 60 * 1000;
+import {
+  getDefaultScheduledDate,
+  getMinimumScheduledDate,
+  isScheduledAtValid,
+  toLocalDateTimeValue,
+} from '../util/scheduled_at';
 
 const messages = defineMessages({
   open: {
@@ -34,16 +39,6 @@ const messages = defineMessages({
   },
 });
 
-const toLocalDateTimeValue = (date: Date) => {
-  const localDate = new Date(
-    date.getTime() - date.getTimezoneOffset() * 60_000,
-  );
-  return localDate.toISOString().slice(0, 16);
-};
-
-const roundUpToMinute = (date: Date) =>
-  new Date(Math.ceil(date.getTime() / 60_000) * 60_000);
-
 interface Props {
   disabled: boolean;
   loading: boolean;
@@ -63,25 +58,21 @@ export const ScheduleButton: React.FC<Props> = ({
   const [open, setOpen] = useState(false);
   const [scheduledAt, setScheduledAt] = useState('');
   const [minimumDate, setMinimumDate] = useState('');
+  const [validationDate, setValidationDate] = useState<Date>();
 
   const isValid =
-    scheduledAt !== '' &&
-    new Date(scheduledAt).getTime() >= new Date(minimumDate).getTime();
+    validationDate !== undefined &&
+    isScheduledAtValid(scheduledAt, validationDate);
 
   const handleToggle = useCallback(() => {
     if (disabled || loading) return;
 
     setOpen((previous) => {
       if (!previous) {
-        const now = Date.now();
-        setMinimumDate(
-          toLocalDateTimeValue(
-            roundUpToMinute(new Date(now + MINIMUM_SCHEDULE_DELAY)),
-          ),
-        );
-        setScheduledAt(
-          toLocalDateTimeValue(roundUpToMinute(new Date(now + 10 * 60 * 1000))),
-        );
+        const now = new Date();
+        setValidationDate(now);
+        setMinimumDate(toLocalDateTimeValue(getMinimumScheduledDate(now)));
+        setScheduledAt(toLocalDateTimeValue(getDefaultScheduledDate(now)));
       }
 
       return !previous;
@@ -97,12 +88,12 @@ export const ScheduleButton: React.FC<Props> = ({
     (event) => {
       event.preventDefault();
       event.stopPropagation();
-      if (!isValid) return;
+      if (!isScheduledAtValid(scheduledAt)) return;
 
       onSchedule(new Date(scheduledAt).toISOString());
       setOpen(false);
     },
-    [isValid, onSchedule, scheduledAt],
+    [onSchedule, scheduledAt],
   );
 
   const handleDateChange = useCallback<

@@ -47,6 +47,35 @@ describe('<ScheduleButton />', () => {
     );
   });
 
+  it('does not submit the surrounding compose form', () => {
+    const onSchedule = vi.fn();
+    const onSubmit = vi.fn((event: React.FormEvent) => {
+      event.preventDefault();
+    });
+
+    render(
+      <IntlProvider locale='en'>
+        <form onSubmit={onSubmit}>
+          <ScheduleButton
+            disabled={false}
+            loading={false}
+            label='Post'
+            onSchedule={onSchedule}
+          />
+        </form>
+      </IntlProvider>,
+    );
+
+    fireEvent.click(screen.getByRole('button', { name: 'Schedule post' }));
+    fireEvent.change(screen.getByLabelText('Publishing date and time'), {
+      target: { value: '2026-01-01T12:15' },
+    });
+    fireEvent.click(screen.getByRole('button', { name: 'Schedule' }));
+
+    expect(onSchedule).toHaveBeenCalledOnce();
+    expect(onSubmit).not.toHaveBeenCalled();
+  });
+
   it('does not open the scheduling popover when disabled', () => {
     renderButton(vi.fn(), { disabled: true });
 
