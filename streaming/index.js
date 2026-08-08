@@ -711,7 +711,32 @@ const startServer = async () => {
       // The rest of the logic from here on in this function is to handle
       // filtering of statuses:
 
-      const localPayload = payload.account.username === payload.account.acct;
+      if (
+        typeof payload !== 'object' ||
+        payload === null ||
+        !('id' in payload) ||
+        !('account' in payload) ||
+        typeof payload.account !== 'object' ||
+        payload.account === null ||
+        !('username' in payload.account) ||
+        typeof payload.account.username !== 'string' ||
+        !('acct' in payload.account) ||
+        typeof payload.account.acct !== 'string' ||
+        !('id' in payload.account) ||
+        typeof payload.account.id !== 'string' ||
+        !('mentions' in payload) ||
+        !Array.isArray(payload.mentions) ||
+        !payload.mentions.every(item =>
+          typeof item === 'object' && item !== null && 'id' in item && typeof item.id === 'string'
+        )
+      ) {
+        log.warn({ event, payload }, 'Invalid status payload received from Redis');
+        return;
+      }
+
+      const account = /** @type {{ id: string, username: string, acct: string }} */ (payload.account);
+      const mentions = /** @type {Array<{ id: string }>} */ (payload.mentions);
+      const localPayload = account.username === account.acct;
       if (localPayload ? filterLocal : filterRemote) {
         log.debug(`Message ${payload.id} filtered by feed settings`);
         return;
@@ -732,10 +757,8 @@ const startServer = async () => {
       }
 
       // Filter based on domain blocks, blocks, mutes, or custom filters:
-      // @ts-expect-error
-      const targetAccountIds = [payload.account.id].concat(payload.mentions.map(item => item.id));
-      // @ts-expect-error
-      const accountDomain = payload.account.acct.split('@')[1];
+      const targetAccountIds = [account.id].concat(mentions.map(item => item.id));
+      const accountDomain = account.acct.split('@')[1];
 
       // TODO: Move this logic out of the message handling loop
       pgPool.connect((err, client, releasePgConnection) => {
@@ -754,9 +777,7 @@ const startServer = async () => {
                         SELECT 1
                         FROM mutes
                         WHERE account_id = $1
-                          AND target_account_id IN (${placeholders(targetAccountIds, 2)})`, [req.accountId, payload.
-                          // @ts-expect-error
-                          account.id].concat(targetAccountIds)),
+                          AND target_account_id IN (${placeholders(targetAccountIds, 2)})`, [req.accountId, account.id].concat(targetAccountIds)),
         ];
 
         if (accountDomain) {
