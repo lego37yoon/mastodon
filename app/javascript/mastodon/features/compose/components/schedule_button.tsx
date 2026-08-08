@@ -95,6 +95,7 @@ export const ScheduleButton: React.FC<Props> = ({
   const handleSubmit = useCallback<React.FormEventHandler<HTMLFormElement>>(
     (event) => {
       event.preventDefault();
+      event.stopPropagation();
       if (!isValid) return;
 
       onSchedule(new Date(scheduledAt).toISOString());
