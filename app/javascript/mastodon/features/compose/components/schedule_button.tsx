@@ -5,6 +5,7 @@ import { defineMessages, useIntl } from 'react-intl';
 import Overlay from 'react-overlays/Overlay';
 
 import ArrowDropDownIcon from '@/material-icons/400-24px/arrow_drop_down.svg?react';
+import { BetaBadge } from 'mastodon/components/badge';
 import { Button } from 'mastodon/components/button';
 import { Icon } from 'mastodon/components/icon';
 
@@ -152,7 +153,12 @@ export const ScheduleButton: React.FC<Props> = ({
             className='compose-form__schedule-popover dropdown-animation'
           >
             <form onSubmit={handleSubmit}>
-              <strong>{intl.formatMessage(messages.title)}</strong>
+              <div
+                style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
+              >
+                <strong>{intl.formatMessage(messages.title)}</strong>
+                <BetaBadge />
+              </div>
               <label htmlFor={`${popoverId}-datetime`}>
                 {intl.formatMessage(messages.dateTime)}
               </label>

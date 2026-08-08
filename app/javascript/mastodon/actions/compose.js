@@ -10,6 +10,7 @@ import { tagHistory } from 'mastodon/settings';
 import { emojiMartSearch } from '@/mastodon/features/emoji/picker';
 
 import { showAlert, showAlertForError } from './alerts';
+import { fetchScheduledStatuses } from './scheduled_statuses';
 import { useEmoji } from './emojis';
 import { importFetchedAccounts, importFetchedStatus } from './importer';
 import { openModal } from './modal';
@@ -267,6 +268,7 @@ export function submitCompose(successCallback, scheduledAt = /** @type {string |
 
       if (isScheduled) {
         dispatch(showAlert({ message: messages.scheduled }));
+        dispatch(fetchScheduledStatuses());
         return;
       }
 

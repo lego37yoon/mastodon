@@ -119,6 +119,19 @@ export const PendingBadge: FC<PresetBadgeProps> = (props) => (
   />
 );
 
+export const BetaBadge: FC<Partial<BadgeProps>> = ({ label, ...props }) => (
+  <Badge
+    variant='warning'
+    icon={null}
+    label={
+      label ?? (
+        <FormattedMessage id='account.badges.beta' defaultMessage='Beta' />
+      )
+    }
+    {...props}
+  />
+);
+
 export const MutedBadge: FC<
   Partial<BadgeProps> & { expiresAt?: string | null }
 > = ({ expiresAt, label, ...props }) => {

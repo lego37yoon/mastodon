@@ -29,6 +29,7 @@ import { pictureInPictureReducer } from './picture_in_picture';
 import { pollsReducer } from './polls';
 import push_notifications from './push_notifications';
 import { relationshipsReducer } from './relationships';
+import { scheduledStatusesReducer } from './scheduled_statuses';
 import { searchReducer } from './search';
 import { serverReducer } from './server';
 import settings from './settings';
@@ -42,6 +43,7 @@ import trends from './trends';
 import user_lists from './user_lists';
 
 const reducers = {
+  scheduled_statuses: scheduledStatusesReducer,
   announcements,
   dropdownMenu: dropdownMenuReducer,
   timelines,

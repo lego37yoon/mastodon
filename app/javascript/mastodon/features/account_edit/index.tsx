@@ -9,6 +9,7 @@ import type { ModalType } from '@/mastodon/actions/modal';
 import { openModal } from '@/mastodon/actions/modal';
 import { AccountBio } from '@/mastodon/components/account_bio';
 import { Avatar } from '@/mastodon/components/avatar';
+import { BetaBadge } from '@/mastodon/components/badge';
 import { Button } from '@/mastodon/components/button';
 import { DismissibleCallout } from '@/mastodon/components/callout/dismissible';
 import { CustomEmojiProvider } from '@/mastodon/components/emoji/context';
@@ -374,10 +375,19 @@ export const AccountEdit: FC = () => {
             onChange={handleIsCatToggle}
             disabled={isPending}
             label={
-              <FormattedMessage
-                id='simple_form.labels.defaults.is_cat'
-                defaultMessage='Cat mode'
-              />
+              <span
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                }}
+              >
+                <FormattedMessage
+                  id='simple_form.labels.defaults.is_cat'
+                  defaultMessage='Cat mode'
+                />
+                <BetaBadge />
+              </span>
             }
             hint={
               <FormattedMessage
