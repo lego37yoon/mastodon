@@ -121,7 +121,8 @@ class Sanitize
 
       attributes: {
         :all => %w(lang),
-        'a' => %w(href rel class translate),
+        'a' => %w(href rel class title translate),
+        'abbr' => %w(title),
         'span' => %w(class translate),
         'blockquote' => %w(cite),
         'ol' => %w(start reversed),

@@ -2,20 +2,13 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Admin::Settings::Appearance' do
-  let(:admin_user) { Fabricate(:admin_user) }
+RSpec.describe 'Settings preferences appearance page' do
+  let(:user) { Fabricate :user }
 
-  before { sign_in(admin_user) }
+  before { sign_in user }
 
-  it 'Saves changes to appearance settings' do
-    visit admin_settings_appearance_path
-    expect(page)
-      .to have_title(I18n.t('admin.settings.appearance.title'))
-
-    fill_in custom_css_field,
-            with: 'html { display: inline; }'
-
-    click_on submit_button
+  it 'Views and updates user prefs' do
+    visit settings_preferences_appearance_path
 
     expect(page)
       .to have_private_cache_control
@@ -33,7 +26,23 @@ RSpec.describe 'Admin::Settings::Appearance' do
       .to have_title(I18n.t('settings.appearance'))
   end
 
-  def custom_css_field
-    form_label 'form_admin_settings.custom_css'
+  def save_changes
+    within('form') { click_on submit_button }
+  end
+
+  def confirm_delete_field
+    form_label('defaults.setting_delete_modal')
+  end
+
+  def confirm_reblog_field
+    form_label('defaults.setting_boost_modal')
+  end
+
+  def theme_selection_field
+    form_label('defaults.setting_theme')
+  end
+
+  def advanced_layout_field
+    form_label('defaults.setting_advanced_layout')
   end
 end

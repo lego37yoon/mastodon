@@ -31,7 +31,13 @@ RSpec.describe ActivityPub::Activity::Like do
     end
 
     context 'with a Misskey custom emoji reaction' do
-      let!(:custom_emoji) { Fabricate(:custom_emoji, domain: sender.domain, shortcode: 'blobcat', image_remote_url: 'https://example.com/emoji/blobcat.png') }
+      let(:emoji_url) { 'https://example.com/emoji/blobcat.png' }
+      let!(:custom_emoji) do
+        Fabricate(:custom_emoji, domain: sender.domain, shortcode: 'blobcat').tap do |emoji|
+          emoji.update_column(:image_remote_url, emoji_url) # Bypass the remote attachment downloader in this unit spec
+        end
+      end
+
       let(:json) do
         super().merge(
           content: ':blobcat:',
@@ -42,7 +48,7 @@ RSpec.describe ActivityPub::Activity::Like do
               id: 'https://example.com/emojis/blobcat',
               name: ':blobcat:',
               icon: {
-                url: custom_emoji.image_remote_url,
+                url: emoji_url,
               },
             },
           ]

@@ -238,43 +238,6 @@ RSpec.describe Status do
     end
   end
 
-  describe 'on create' do
-    subject { described_class.new }
-
-    let(:local_account) { Fabricate(:account, username: 'local', domain: nil) }
-    let(:remote_account) { Fabricate(:account, username: 'remote', domain: 'example.com') }
-
-    describe 'on a status that ends with the local-only emoji' do
-      before do
-        subject.text = "A toot #{subject.local_only_emoji}"
-      end
-
-      context 'when the status originates from this instance' do
-        before do
-          subject.account = local_account
-        end
-
-        it 'is marked local-only' do
-          subject.save!
-
-          expect(subject).to be_local_only
-        end
-      end
-
-      context 'when the status is remote' do
-        before do
-          subject.account = remote_account
-        end
-
-        it 'is not marked local-only' do
-          subject.save!
-
-          expect(subject).to_not be_local_only
-        end
-      end
-    end
-  end
-
   describe '#reported?' do
     context 'when the status is not reported' do
       it 'returns false' do

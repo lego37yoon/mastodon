@@ -5,6 +5,8 @@ require 'rails_helper'
 RSpec.describe 'Translation Languages' do
   describe 'GET /api/v1/instances/translation_languages' do
     context 'when no translation service is configured' do
+      before { allow(TranslationService).to receive(:configured?).and_return(false) }
+
       it 'returns empty language matrix', :aggregate_failures do
         get api_v1_instance_translation_languages_path
 

@@ -81,7 +81,7 @@ RSpec.describe 'Auth Registration' do
       fill_in 'user_password_confirmation', with: 'Test.123.Pass'
       check 'user_agreement'
 
-      find('input[aria-label="Day"]').fill_in with: date_of_birth.day
+      find('input[autocomplete="bday-day"]').fill_in with: date_of_birth.day
       find('input[autocomplete="bday-month"]').fill_in with: date_of_birth.month
       find('input[autocomplete="bday-year"]').fill_in with: date_of_birth.year
 

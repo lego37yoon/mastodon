@@ -39,6 +39,7 @@ RSpec.describe 'Profile API' do
           'header_description' => '',
           'hide_collections' => anything,
           'bot' => account.bot,
+          'is_cat' => account.is_cat,
           'locked' => account.locked,
           'discoverable' => account.discoverable,
           'indexable' => account.indexable,
