@@ -2,6 +2,8 @@ import { useState, useCallback, useMemo } from 'react';
 
 import { useIntl, defineMessages } from 'react-intl';
 
+import classNames from 'classnames';
+
 import type {
   List,
   Map as ImmutableMap,
@@ -160,7 +162,12 @@ export const UploadForm: React.FC = () => {
 
       {mediaIds.size > 0 && (
         <div
-          className={`compose-form__uploads media-gallery media-gallery--layout-${mediaIds.size}`}
+          className={classNames(
+            'compose-form__uploads',
+            'media-gallery',
+            'media-gallery--layout-' + String(mediaIds.size),
+            { 'media-gallery--layout-many': mediaIds.size > 4 },
+          )}
         >
           {mediaIds.size === 1 ? (
             <Upload

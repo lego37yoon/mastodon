@@ -652,6 +652,10 @@ body > [data-popper-placement] {
 
   .media-gallery {
     gap: 8px;
+
+    &--layout-many {
+      grid-auto-rows: calc((100% - 8px) / 2);
+    }
   }
 
   &__upload {
@@ -7261,6 +7265,20 @@ a.status-card {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   gap: 2px;
+
+  &--layout-many {
+    grid-auto-rows: calc((100% - 2px) / 2);
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+      width: 0;
+      height: 0;
+    }
+  }
 
   &--layout-1 {
     // The size of single images is determined by their

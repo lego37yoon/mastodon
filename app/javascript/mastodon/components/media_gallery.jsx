@@ -99,7 +99,7 @@ class Item extends PureComponent {
       width = 100;
     }
 
-    if (size === 4 || (size === 3 && index > 0)) {
+    if (size >= 4 || (size === 3 && index > 0)) {
       height = 50;
     }
 
@@ -321,7 +321,7 @@ class MediaGallery extends PureComponent {
     }
 
     return (
-      <div className={`media-gallery media-gallery--layout-${size}`} style={style} ref={this.handleRef}>
+      <div className={classNames('media-gallery', 'media-gallery--layout-' + size, { 'media-gallery--layout-many': size > 4 })} style={style} ref={this.handleRef}>
         {children}
 
         {(!visible || uncached) && <SpoilerButton uncached={uncached} sensitive={sensitive} onClick={this.handleOpen} matchedFilters={matchedFilters} />}
