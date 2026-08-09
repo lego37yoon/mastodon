@@ -1,7 +1,8 @@
 import { Children } from 'react';
 import type { ReactNode } from 'react';
 
-import { fireEvent, render, screen } from '@/testing/rendering';
+import { act, fireEvent, render, screen } from '@/testing/rendering';
+import { SCHEDULED_STATUSES_PRUNE_EXPIRED } from 'mastodon/actions/scheduled_statuses';
 import type { ScheduledStatusData } from 'mastodon/actions/scheduled_statuses';
 import type { RootState } from 'mastodon/store';
 import { useAppDispatch, useAppSelector } from 'mastodon/store';
@@ -48,7 +49,7 @@ vi.mock('../components/scheduled_status', () => ({
 
 const status: ScheduledStatusData = {
   id: '1',
-  scheduled_at: '2026-01-01T12:30:00.000Z',
+  scheduled_at: '2999-01-01T12:30:00.000Z',
   params: { text: 'Scheduled post', visibility: 'public' },
 };
 
@@ -58,6 +59,10 @@ describe('<ScheduledStatuses />', () => {
   beforeEach(() => {
     dispatch.mockClear();
     vi.mocked(useAppDispatch).mockReturnValue(dispatch as never);
+  });
+
+  afterEach(() => {
+    vi.useRealTimers();
   });
 
   it('shows a retry action after the initial request fails', () => {
@@ -104,5 +109,39 @@ describe('<ScheduledStatuses />', () => {
 
     expect(screen.getByText('Scheduled post')).not.toBeNull();
     expect(dispatch).toHaveBeenCalledTimes(2);
+  });
+
+  it('removes a status when its scheduled time passes', async () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date('2026-01-01T12:00:00.000Z'));
+    const expiringStatus = {
+      ...status,
+      scheduled_at: '2026-01-01T12:00:01.000Z',
+    };
+
+    vi.mocked(useAppSelector).mockImplementation(
+      (selector: (state: RootState) => unknown) =>
+        selector({
+          scheduled_statuses: {
+            items: [expiringStatus],
+            next: null,
+            isLoading: false,
+            isLoadingMore: false,
+            error: null,
+            pending: {},
+          },
+        } as unknown as RootState),
+    );
+
+    render(<ScheduledStatuses />);
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(1_000);
+    });
+
+    expect(dispatch).toHaveBeenLastCalledWith({
+      type: SCHEDULED_STATUSES_PRUNE_EXPIRED,
+      now: Date.parse(expiringStatus.scheduled_at),
+    });
   });
 });

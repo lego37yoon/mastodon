@@ -11,6 +11,7 @@ import {
   SCHEDULED_STATUSES_FETCH_SUCCESS,
   SCHEDULED_STATUS_CANCEL_FAIL,
   SCHEDULED_STATUS_CANCEL_REQUEST,
+  SCHEDULED_STATUS_DISMISS,
   SCHEDULED_STATUS_UPDATE_REQUEST,
   SCHEDULED_STATUS_UPDATE_SUCCESS,
   updateScheduledStatusTime,
@@ -125,6 +126,24 @@ describe('scheduled status actions', () => {
     });
   });
 
+  it('dismisses a status when cancellation races with publishing', async () => {
+    client.delete.mockRejectedValue({ response: { status: 404 } });
+    const result = await cancelScheduledStatus('1')(dispatch as never, () =>
+      scheduledState(),
+    );
+
+    expect(result).toBe(false);
+    expect(dispatch).toHaveBeenNthCalledWith(1, {
+      type: SCHEDULED_STATUS_CANCEL_REQUEST,
+      id: '1',
+    });
+    expect(dispatch).toHaveBeenNthCalledWith(2, {
+      type: SCHEDULED_STATUS_DISMISS,
+      id: '1',
+    });
+    expect(dispatch).toHaveBeenCalledTimes(2);
+  });
+
   it('updates a scheduled time and returns success', async () => {
     const updated = { ...status, scheduled_at: '2026-01-01T13:00:00.000Z' };
     client.put.mockResolvedValue({ data: updated });
@@ -145,5 +164,24 @@ describe('scheduled status actions', () => {
       type: SCHEDULED_STATUS_UPDATE_SUCCESS,
       status: updated,
     });
+  });
+
+  it('dismisses a status when updating races with publishing', async () => {
+    client.put.mockRejectedValue({ response: { status: 404 } });
+    const result = await updateScheduledStatusTime(
+      '1',
+      '2026-01-01T13:00:00.000Z',
+    )(dispatch as never, () => scheduledState());
+
+    expect(result).toBe(false);
+    expect(dispatch).toHaveBeenNthCalledWith(1, {
+      type: SCHEDULED_STATUS_UPDATE_REQUEST,
+      id: '1',
+    });
+    expect(dispatch).toHaveBeenNthCalledWith(2, {
+      type: SCHEDULED_STATUS_DISMISS,
+      id: '1',
+    });
+    expect(dispatch).toHaveBeenCalledTimes(2);
   });
 });

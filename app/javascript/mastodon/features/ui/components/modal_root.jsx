@@ -108,6 +108,11 @@ export const MODAL_COMPONENTS = {
   'ACCOUNT_HIDE_FEATURED_TAB': () => import('@/mastodon/features/ui/components/confirmation_modals/hide_featured_tab').then(module => ({ default: module.ConfirmHideFeaturedTabModal })),
 };
 
+const MODALS_WITH_CLOSE_CONFIRMATION = new Set([
+  'FOCAL_POINT',
+  'ACCOUNT_EDIT_FIELD_EDIT',
+]);
+
 /** @arg {keyof import('@/mastodon/features/account_edit/modals')} type */
 function accountEditModal(type) {
   return () => import('@/mastodon/features/account_edit/modals').then(module => ({ default: module[type] }));
@@ -163,7 +168,22 @@ export default class ModalRoot extends PureComponent {
           <>
             <Bundle key={type} fetchComponent={MODAL_COMPONENTS[type]} loading={this.renderLoading} error={this.renderError} renderDelay={200}>
               {(SpecificComponent) => {
-                return <SpecificComponent {...props} onChangeBackgroundColor={this.setBackgroundColor} onClose={this.handleClose} ref={this.setModalRef} />;
+                const componentProps = {
+                  ...props,
+                  onChangeBackgroundColor: this.setBackgroundColor,
+                  onClose: this.handleClose,
+                };
+
+                if (MODALS_WITH_CLOSE_CONFIRMATION.has(type)) {
+                  return (
+                    <SpecificComponent
+                      {...componentProps}
+                      ref={this.setModalRef}
+                    />
+                  );
+                }
+
+                return <SpecificComponent {...componentProps} />;
               }}
             </Bundle>
 

@@ -14,6 +14,9 @@ export const SCHEDULED_STATUSES_EXPAND_REQUEST =
 export const SCHEDULED_STATUSES_EXPAND_SUCCESS =
   'SCHEDULED_STATUSES_EXPAND_SUCCESS';
 export const SCHEDULED_STATUSES_EXPAND_FAIL = 'SCHEDULED_STATUSES_EXPAND_FAIL';
+export const SCHEDULED_STATUSES_PRUNE_EXPIRED =
+  'SCHEDULED_STATUSES_PRUNE_EXPIRED';
+export const SCHEDULED_STATUS_DISMISS = 'SCHEDULED_STATUS_DISMISS';
 export const SCHEDULED_STATUS_CANCEL_REQUEST =
   'SCHEDULED_STATUS_CANCEL_REQUEST';
 export const SCHEDULED_STATUS_CANCEL_SUCCESS =
@@ -87,6 +90,8 @@ export type ScheduledStatusesAction =
       next: string | null;
     }
   | { type: typeof SCHEDULED_STATUSES_EXPAND_FAIL; error: unknown }
+  | { type: typeof SCHEDULED_STATUSES_PRUNE_EXPIRED; now: number }
+  | { type: typeof SCHEDULED_STATUS_DISMISS; id: string }
   | { type: typeof SCHEDULED_STATUS_CANCEL_REQUEST; id: string }
   | { type: typeof SCHEDULED_STATUS_CANCEL_SUCCESS; id: string }
   | { type: typeof SCHEDULED_STATUS_CANCEL_FAIL; id: string }
@@ -99,6 +104,20 @@ export type ScheduledStatusesAction =
 
 const getNextLink = (response: Parameters<typeof getLinks>[0]) =>
   getLinks(response).refs.find((link) => link.rel === 'next')?.uri ?? null;
+
+const isNotFoundError = (error: unknown) => {
+  if (typeof error !== 'object' || error === null) return false;
+
+  const response = (error as { response?: unknown }).response;
+  if (typeof response !== 'object' || response === null) return false;
+
+  return (response as { status?: unknown }).status === 404;
+};
+
+export const pruneExpiredScheduledStatuses = (now = Date.now()) => ({
+  type: SCHEDULED_STATUSES_PRUNE_EXPIRED,
+  now,
+});
 
 export function fetchScheduledStatuses() {
   return (dispatch: AppDispatch, getState: () => RootState) => {
@@ -164,7 +183,12 @@ export function cancelScheduledStatus(id: string) {
         dispatch(showAlert({ message: messages.cancelSuccess }));
         return true;
       })
-      .catch(() => {
+      .catch((error: unknown) => {
+        if (isNotFoundError(error)) {
+          dispatch({ type: SCHEDULED_STATUS_DISMISS, id });
+          return false;
+        }
+
         dispatch({ type: SCHEDULED_STATUS_CANCEL_FAIL, id });
         dispatch(showAlert({ message: messages.cancelError }));
         return false;
@@ -191,7 +215,12 @@ export function updateScheduledStatusTime(id: string, scheduledAt: string) {
         dispatch(showAlert({ message: messages.updateSuccess }));
         return true;
       })
-      .catch(() => {
+      .catch((error: unknown) => {
+        if (isNotFoundError(error)) {
+          dispatch({ type: SCHEDULED_STATUS_DISMISS, id });
+          return false;
+        }
+
         dispatch({ type: SCHEDULED_STATUS_UPDATE_FAIL, id });
         dispatch(showAlert({ message: messages.updateError }));
         return false;

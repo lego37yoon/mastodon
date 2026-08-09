@@ -3,6 +3,7 @@ import {
   SCHEDULED_STATUSES_EXPAND_REQUEST,
   SCHEDULED_STATUSES_EXPAND_SUCCESS,
   SCHEDULED_STATUSES_FETCH_SUCCESS,
+  SCHEDULED_STATUSES_PRUNE_EXPIRED,
   SCHEDULED_STATUS_CANCEL_FAIL,
   SCHEDULED_STATUS_CANCEL_REQUEST,
   SCHEDULED_STATUS_CANCEL_SUCCESS,
@@ -118,5 +119,27 @@ describe('scheduledStatusesReducer', () => {
     expect(pending.pending['1']).toBe('update');
     expect(succeeded.items).toEqual([updated]);
     expect(succeeded.pending['1']).toBeUndefined();
+  });
+
+  it('removes statuses whose scheduled time has passed', () => {
+    const now = Date.parse('2026-01-01T12:10:00.000Z');
+    const state = scheduledStatusesReducer(
+      {
+        ...initialScheduledStatusesState,
+        items: [
+          scheduledStatus('expired', '2026-01-01T12:09:59.000Z'),
+          scheduledStatus('boundary', '2026-01-01T12:10:00.000Z'),
+          scheduledStatus('future', '2026-01-01T12:10:01.000Z'),
+        ],
+        pending: { expired: 'delete', future: 'update' },
+      },
+      {
+        type: SCHEDULED_STATUSES_PRUNE_EXPIRED,
+        now,
+      },
+    );
+
+    expect(state.items.map(({ id }) => id)).toEqual(['future']);
+    expect(state.pending).toEqual({ future: 'update' });
   });
 });

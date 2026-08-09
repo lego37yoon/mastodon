@@ -5,6 +5,8 @@ import {
   SCHEDULED_STATUSES_EXPAND_REQUEST,
   SCHEDULED_STATUSES_EXPAND_SUCCESS,
   SCHEDULED_STATUSES_EXPAND_FAIL,
+  SCHEDULED_STATUSES_PRUNE_EXPIRED,
+  SCHEDULED_STATUS_DISMISS,
   SCHEDULED_STATUS_CANCEL_REQUEST,
   SCHEDULED_STATUS_CANCEL_SUCCESS,
   SCHEDULED_STATUS_CANCEL_FAIL,
@@ -78,11 +80,27 @@ export function scheduledStatusesReducer(
       };
     case SCHEDULED_STATUSES_EXPAND_FAIL:
       return { ...state, isLoadingMore: false, error: action.error };
+    case SCHEDULED_STATUSES_PRUNE_EXPIRED: {
+      const items = state.items.filter((item) => {
+        const scheduledAt = Date.parse(item.scheduled_at);
+        return !Number.isFinite(scheduledAt) || scheduledAt > action.now;
+      });
+      const itemIds = new Set(items.map((item) => item.id));
+
+      return {
+        ...state,
+        items,
+        pending: Object.fromEntries(
+          Object.entries(state.pending).filter(([id]) => itemIds.has(id)),
+        ),
+      };
+    }
     case SCHEDULED_STATUS_CANCEL_REQUEST:
       return {
         ...state,
         pending: { ...state.pending, [action.id]: 'delete' },
       };
+    case SCHEDULED_STATUS_DISMISS:
     case SCHEDULED_STATUS_CANCEL_SUCCESS:
       return {
         ...state,

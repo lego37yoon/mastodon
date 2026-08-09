@@ -9,6 +9,7 @@ import ScheduleIcon from '@/material-icons/400-24px/schedule.svg?react';
 import {
   expandScheduledStatuses,
   fetchScheduledStatuses,
+  pruneExpiredScheduledStatuses,
 } from 'mastodon/actions/scheduled_statuses';
 import { Button } from 'mastodon/components/button';
 import { Column } from 'mastodon/components/column';
@@ -34,6 +35,8 @@ const messages = defineMessages({
   },
 });
 
+const MAX_TIMEOUT_DELAY = 2_147_483_647;
+
 const ScheduledStatuses: FC<{ multiColumn?: boolean }> = ({
   multiColumn = false,
 }) => {
@@ -48,6 +51,55 @@ const ScheduledStatuses: FC<{ multiColumn?: boolean }> = ({
   useEffect(() => {
     void dispatch(fetchScheduledStatuses());
   }, [dispatch]);
+
+  useEffect(() => {
+    let timeoutId: number | undefined;
+
+    const expirationTimes = items
+      .map((status) => Date.parse(status.scheduled_at))
+      .filter(Number.isFinite);
+
+    const pruneExpired = () => {
+      const now = Date.now();
+
+      if (expirationTimes.some((scheduledAt) => scheduledAt <= now)) {
+        dispatch(pruneExpiredScheduledStatuses(now));
+        return true;
+      }
+
+      return false;
+    };
+
+    const scheduleNextExpiration = () => {
+      const nextExpiration = Math.min(...expirationTimes);
+      if (!Number.isFinite(nextExpiration)) return;
+
+      timeoutId = window.setTimeout(
+        () => {
+          if (!pruneExpired()) scheduleNextExpiration();
+        },
+        Math.min(Math.max(nextExpiration - Date.now(), 0), MAX_TIMEOUT_DELAY),
+      );
+    };
+
+    const refreshExpirationTimer = () => {
+      if (timeoutId !== undefined) window.clearTimeout(timeoutId);
+
+      if (!pruneExpired()) scheduleNextExpiration();
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible') refreshExpirationTimer();
+    };
+
+    refreshExpirationTimer();
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    return () => {
+      if (timeoutId !== undefined) window.clearTimeout(timeoutId);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, [dispatch, items]);
 
   const handleHeaderClick = useCallback(() => {
     columnRef.current?.scrollTop();
