@@ -445,6 +445,10 @@ a.table-action-link:hover {
   background: var(--color-bg-secondary);
 }
 
+.compose-form .spoiler-input .autosuggest-input:focus-within {
+  border: 2px solid var(--color-border-brand);
+}
+
 .compose-form .compose-form__warning {
   border-radius: 10px;
   border-color: var(--color-bg-secondary);
