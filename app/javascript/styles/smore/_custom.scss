@@ -881,7 +881,7 @@ a.table-action-link:hover {
   padding: 0;
 }
 
-.explore__search-header .search {
+body .explore__search-header .search {
   margin-bottom: 1rem;
 }
 
@@ -1746,10 +1746,6 @@ kbd {
 }
 
 @media screen and (width <= 630px) {
-  .columns-area--mobile .column {
-    padding: 0 1em;
-  }
-
   .column-back-button {
     margin-bottom: 1em;
   }
@@ -1829,13 +1825,13 @@ kbd {
     border: none;
   }
 
-  .explore__search-header {
+  body .explore__search-header {
     border-radius: 10px;
     padding: 0;
     margin: 0 0.5rem;
   }
 
-  .explore__search-header .search {
+  body .explore__search-header .search {
     margin-bottom: 0.5rem;
   }
 }
