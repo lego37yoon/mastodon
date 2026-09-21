@@ -1,54 +1,20 @@
 import { SUPPORTED_LOCALES } from 'emojibase';
-import type { Locale, ShortcodesDataset } from 'emojibase';
-import type { DBSchema, IDBPDatabase } from 'idb';
-import { openDB } from 'idb';
+import type { CompactEmoji, Locale, ShortcodesDataset } from 'emojibase';
 
-import { EMOJI_DB_SHORTCODE_TEST } from './constants';
-import { toSupportedLocale, toSupportedLocaleOrCustom } from './locale';
-import type { CustomEmojiData, UnicodeEmojiData, EtagTypes } from './types';
+import type { ApiCustomEmojiJSON } from '@/mastodon/api_types/custom_emoji';
+import { onceAsync } from '@/mastodon/utils/promises';
+
+import { openEmojiDB } from './db-schema';
+import type { Database } from './db-schema';
+import { importEmojiData } from './loader';
+import { localeToSegmenter, toSupportedLocale } from './locale';
+import {
+  skinHexcodeToEmoji,
+  transformCustomEmojiData,
+  transformEmojiData,
+} from './normalize';
+import type { CacheKey } from './types';
 import { emojiLogger } from './utils';
-
-interface EmojiDB extends LocaleTables, DBSchema {
-  custom: {
-    key: string;
-    value: CustomEmojiData;
-    indexes: {
-      category: string;
-    };
-  };
-  shortcodes: {
-    key: string;
-    value: {
-      hexcode: string;
-      shortcodes: string[];
-    };
-    indexes: {
-      hexcode: string;
-      shortcodes: string[];
-    };
-  };
-  etags: {
-    key: EtagTypes;
-    value: string;
-  };
-}
-
-interface LocaleTable {
-  key: string;
-  value: UnicodeEmojiData;
-  indexes: {
-    group: number;
-    label: string;
-    order: number;
-    tags: string[];
-    shortcodes: string[];
-  };
-}
-type LocaleTables = Record<Locale, LocaleTable>;
-
-type Database = IDBPDatabase<EmojiDB>;
-
-const SCHEMA_VERSION = 2;
 
 const loadedLocales = new Set<Locale>();
 
@@ -56,104 +22,55 @@ const log = emojiLogger('database');
 
 // Loads the database in a way that ensures it's only loaded once.
 const loadDB = (() => {
-  let dbPromise: Promise<Database> | null = null;
-
   // Actually load the DB.
   async function initDB() {
-    const db = await openDB<EmojiDB>('mastodon-emoji', SCHEMA_VERSION, {
-      upgrade(database, oldVersion, newVersion, trx) {
-        if (!database.objectStoreNames.contains('custom')) {
-          const customTable = database.createObjectStore('custom', {
-            keyPath: 'shortcode',
-            autoIncrement: false,
-          });
-          customTable.createIndex('category', 'category');
-        }
-
-        if (!database.objectStoreNames.contains('etags')) {
-          database.createObjectStore('etags');
-        }
-
-        for (const locale of SUPPORTED_LOCALES) {
-          if (!database.objectStoreNames.contains(locale)) {
-            const localeTable = database.createObjectStore(locale, {
-              keyPath: 'hexcode',
-              autoIncrement: false,
-            });
-            localeTable.createIndex('group', 'group');
-            localeTable.createIndex('label', 'label');
-            localeTable.createIndex('order', 'order');
-            localeTable.createIndex('tags', 'tags', { multiEntry: true });
-            localeTable.createIndex('shortcodes', 'shortcodes', {
-              multiEntry: true,
-            });
-          }
-          // Added in version 2.
-          const localeTable = trx.objectStore(locale);
-          if (!localeTable.indexNames.contains('shortcodes')) {
-            localeTable.createIndex('shortcodes', 'shortcodes', {
-              multiEntry: true,
-            });
-          }
-        }
-
-        if (!database.objectStoreNames.contains('shortcodes')) {
-          const shortcodeTable = database.createObjectStore('shortcodes', {
-            keyPath: 'hexcode',
-            autoIncrement: false,
-          });
-          shortcodeTable.createIndex('hexcode', 'hexcode');
-          shortcodeTable.createIndex('shortcodes', 'shortcodes', {
-            multiEntry: true,
-          });
-        }
-
-        log(
-          'Upgraded emoji database from version %d to %d',
-          oldVersion,
-          newVersion,
-        );
-      },
-      blocked(currentVersion, blockedVersion) {
-        log(
-          'Emoji database upgrade from version %d to %d is blocked',
-          currentVersion,
-          blockedVersion,
-        );
-      },
-      blocking(currentVersion, blockedVersion) {
-        log(
-          'Emoji database upgrade from version %d is blocking upgrade to %d',
-          currentVersion,
-          blockedVersion,
-        );
-      },
-    });
+    const db = await openEmojiDB();
     await syncLocales(db);
     log('Loaded database version %d', db.version);
     return db;
   }
 
+  let dbPromise = onceAsync(initDB);
+
   // Loads the database, or returns the existing promise if it hasn't resolved yet.
-  const loadPromise = async (): Promise<Database> => {
-    if (dbPromise) {
-      return dbPromise;
-    }
-    dbPromise = initDB();
-    return dbPromise;
-  };
+  const loadPromise = () => dbPromise();
+
   // Special way to reset the database, used for unit testing.
   loadPromise.reset = () => {
-    dbPromise = null;
+    dbPromise = onceAsync(initDB);
   };
   return loadPromise;
 })();
 
-export async function putEmojiData(emojis: UnicodeEmojiData[], locale: Locale) {
+export async function rawSearch(query: string, locale: Locale, prefix = true) {
+  await toLoadedLocale(locale);
+  const db = await loadDB();
+  const range = prefix
+    ? IDBKeyRange.lowerBound(query)
+    : IDBKeyRange.only(query);
+  const [unicodeResults, customResults, shortcodeResults] = await Promise.all([
+    db.getAllFromIndex(locale, 'tokens', range),
+    db.getAllFromIndex('custom', 'tokens', range),
+    db.getAllFromIndex('shortcodes', 'shortcodes', range),
+  ]);
+  return {
+    unicodeResults,
+    customResults,
+    shortcodeResults,
+  };
+}
+
+export async function putEmojiData(emojis: CompactEmoji[], locale: Locale) {
   loadedLocales.add(locale);
   const db = await loadDB();
   const trx = db.transaction(locale, 'readwrite');
-  await Promise.all(emojis.map((emoji) => trx.store.put(emoji)));
+  await trx.store.clear();
+  const segmenter = localeToSegmenter(locale);
+  await Promise.all(
+    emojis
+      .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
+      .map((emoji) => trx.store.put(transformEmojiData(emoji, segmenter))),
+  );
   await trx.done;
 }
 
@@ -161,7 +78,7 @@ export async function putCustomEmojiData({
   emojis,
   clear = false,
 }: {
-  emojis: CustomEmojiData[];
+  emojis: ApiCustomEmojiJSON[];
   clear?: boolean;
 }) {
   const db = await loadDB();
@@ -173,7 +90,9 @@ export async function putCustomEmojiData({
     log('Cleared existing custom emojis in database');
   }
 
-  await Promise.all(emojis.map((emoji) => trx.store.put(emoji)));
+  await Promise.all(
+    emojis.map((emoji) => trx.store.put(transformCustomEmojiData(emoji))),
+  );
   await trx.done;
 
   log('Imported %d custom emojis into database', emojis.length);
@@ -193,16 +112,21 @@ export async function putLegacyShortcodes(shortcodes: ShortcodesDataset) {
   await trx.done;
 }
 
-export async function putLatestEtag(etag: string, name: EtagTypes) {
+export async function loadCacheValue(key: CacheKey) {
   const db = await loadDB();
-  await db.put('etags', etag, name);
+  const value = await db.get('etags', key);
+  return value;
 }
 
-export async function clearEtag(localeString: string) {
-  const locale = toSupportedLocaleOrCustom(localeString);
+export async function putCacheValue(key: CacheKey, value: string) {
   const db = await loadDB();
-  await db.delete('etags', locale);
-  log('Cleared etag for %s', locale);
+  await db.put('etags', value, key);
+}
+
+export async function clearCache(key: CacheKey) {
+  const db = await loadDB();
+  await db.delete('etags', key);
+  log('Cleared cache for %s', key);
 }
 
 export async function loadEmojiByHexcode(
@@ -210,32 +134,31 @@ export async function loadEmojiByHexcode(
   localeString: string,
 ) {
   const db = await loadDB();
-  const locale = toLoadedLocale(localeString);
-  return db.get(locale, hexcode);
-}
+  const locale = await toLoadedLocale(localeString);
+  const result = await db.get(locale, hexcode);
+  if (result) {
+    return result;
+  }
 
-export async function searchEmojisByHexcodes(
-  hexcodes: string[],
-  localeString: string,
-) {
-  const db = await loadDB();
-  const locale = toLoadedLocale(localeString);
-  const sortedCodes = hexcodes.toSorted();
-  const results = await db.getAll(
+  // If the emoji wasn't found, check if it's a skin tone variant.
+  const skinResult = await db.getFromIndex(
     locale,
-    IDBKeyRange.bound(sortedCodes.at(0), sortedCodes.at(-1)),
+    'skinHexcodes',
+    IDBKeyRange.only(hexcode),
   );
-  return results.filter((emoji) => hexcodes.includes(emoji.hexcode));
+
+  if (!skinResult) {
+    return skinResult;
+  }
+
+  // Reconstruct the full unicode string from the skin tone hexcode.
+  return skinHexcodeToEmoji(hexcode, skinResult);
 }
 
-export async function searchEmojisByTag(tag: string, localeString: string) {
+export async function loadAllUnicodeEmojis(localeString: string) {
+  const locale = await toLoadedLocale(localeString);
   const db = await loadDB();
-  const locale = toLoadedLocale(localeString);
-  const range = IDBKeyRange.bound(
-    tag.toLowerCase(),
-    `${tag.toLowerCase()}\uffff`,
-  );
-  return db.getAllFromIndex(locale, 'tags', range);
+  return db.getAll(locale);
 }
 
 export async function loadCustomEmojiByShortcode(shortcode: string) {
@@ -244,6 +167,9 @@ export async function loadCustomEmojiByShortcode(shortcode: string) {
 }
 
 export async function searchCustomEmojisByShortcodes(shortcodes: string[]) {
+  if (shortcodes.length === 0) {
+    return [];
+  }
   const db = await loadDB();
   const sortedCodes = shortcodes.toSorted();
   const results = await db.getAll(
@@ -251,6 +177,24 @@ export async function searchCustomEmojisByShortcodes(shortcodes: string[]) {
     IDBKeyRange.bound(sortedCodes.at(0), sortedCodes.at(-1)),
   );
   return results.filter((emoji) => shortcodes.includes(emoji.shortcode));
+}
+
+export async function loadCustomEmojiKeys(
+  query?: string | null,
+  chunkSize = 1_000,
+) {
+  const db = await loadDB();
+  const keyRange = query ? IDBKeyRange.lowerBound(query, true) : null;
+  return db.getAllKeys('custom', keyRange, chunkSize);
+}
+
+export async function loadAllCustomEmoji() {
+  const db = await loadDB();
+  const cacheValue = await db.get('etags', 'custom');
+  if (!cacheValue) {
+    return null;
+  }
+  return db.getAll('custom');
 }
 
 export async function loadLegacyShortcodesByShortcode(shortcode: string) {
@@ -262,24 +206,9 @@ export async function loadLegacyShortcodesByShortcode(shortcode: string) {
   );
 }
 
-export async function loadLatestEtag(localeString: string) {
-  const locale = toSupportedLocaleOrCustom(localeString);
+export async function loadAllShortcodes() {
   const db = await loadDB();
-  const rowCount = await db.count(locale);
-  if (!rowCount) {
-    return null; // No data for this locale, return null even if there is an etag.
-  }
-
-  // Check if shortcodes exist for the given Unicode locale.
-  if (locale !== 'custom') {
-    const result = await db.get(locale, EMOJI_DB_SHORTCODE_TEST);
-    if (!result?.shortcodes) {
-      return null;
-    }
-  }
-
-  const etag = await db.get('etags', locale);
-  return etag ?? null;
+  return db.getAll('shortcodes');
 }
 
 // Private functions
@@ -301,13 +230,15 @@ async function syncLocales(db: Database) {
   log('Loaded %d locales: %o', loadedLocales.size, loadedLocales);
 }
 
-function toLoadedLocale(localeString: string) {
+async function toLoadedLocale(localeString: string) {
   const locale = toSupportedLocale(localeString);
   if (localeString !== locale) {
     log(`Locale ${locale} is different from provided ${localeString}`);
   }
   if (!loadedLocales.has(locale)) {
-    throw new LocaleNotLoadedError(locale);
+    log('Locale %s not loaded, importing...', locale);
+    await importEmojiData(locale);
+    return locale;
   }
   return locale;
 }

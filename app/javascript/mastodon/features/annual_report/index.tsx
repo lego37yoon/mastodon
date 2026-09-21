@@ -10,6 +10,7 @@ import classNames from 'classnames/bind';
 import { closeModal } from '@/mastodon/actions/modal';
 import { IconButton } from '@/mastodon/components/icon_button';
 import { LoadingIndicator } from '@/mastodon/components/loading_indicator';
+import { NavigationFocusTarget } from '@/mastodon/components/navigation_focus_target';
 import { getReport } from '@/mastodon/reducers/slices/annual_report';
 import {
   createAppSelector,
@@ -81,9 +82,11 @@ export const AnnualReport: FC<{ context?: 'modal' | 'standalone' }> = ({
   const topHashtag = report.data.top_hashtags[0];
 
   return (
-    <div className={moduleClassNames(styles.wrapper, 'theme-dark')}>
+    <div className={styles.wrapper} data-color-scheme='dark'>
       <div className={styles.header}>
-        <h1>Wrapstodon {report.year}</h1>
+        <NavigationFocusTarget as='h1'>
+          Wrapstodon {report.year}
+        </NavigationFocusTarget>
         {account && <p>@{account.acct}</p>}
         {context === 'modal' && (
           <IconButton

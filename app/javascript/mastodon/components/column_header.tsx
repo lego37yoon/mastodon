@@ -16,6 +16,10 @@ import { Icon } from 'mastodon/components/icon';
 import { ButtonInTabsBar } from 'mastodon/features/ui/util/columns_context';
 import { useIdentity } from 'mastodon/identity_context';
 
+import { useColumnIndexContext } from '../features/ui/components/columns_area';
+import { getColumnSkipLinkId } from '../features/ui/components/skip_links';
+
+import { NavigationFocusTarget } from './navigation_focus_target';
 import { useAppHistory } from './router';
 
 export const messages = defineMessages({
@@ -33,10 +37,11 @@ export const messages = defineMessages({
 });
 
 const BackButton: React.FC<{
-  onlyIcon: boolean;
-}> = ({ onlyIcon }) => {
+  hasTitle: boolean;
+}> = ({ hasTitle }) => {
   const history = useAppHistory();
   const intl = useIntl();
+  const columnIndex = useColumnIndexContext();
 
   const handleBackClick = useCallback(() => {
     if (history.location.state?.fromMastodon) {
@@ -50,8 +55,9 @@ const BackButton: React.FC<{
     <button
       onClick={handleBackClick}
       className={classNames('column-header__back-button', {
-        compact: onlyIcon,
+        compact: hasTitle,
       })}
+      id={!hasTitle ? getColumnSkipLinkId(columnIndex) : undefined}
       aria-label={intl.formatMessage(messages.back)}
       type='button'
     >
@@ -60,7 +66,7 @@ const BackButton: React.FC<{
         icon={ArrowBackIcon}
         className='column-back-button__icon'
       />
-      {!onlyIcon && (
+      {!hasTitle && (
         <FormattedMessage id='column_back_button.label' defaultMessage='Back' />
       )}
     </button>
@@ -68,11 +74,12 @@ const BackButton: React.FC<{
 };
 
 export interface Props {
-  title?: string;
+  title?: React.ReactNode;
   icon?: string;
   iconComponent?: IconProp;
   active?: boolean;
   children?: React.ReactNode;
+  className?: string;
   pinned?: boolean;
   multiColumn?: boolean;
   extraButton?: React.ReactNode;
@@ -91,6 +98,7 @@ export const ColumnHeader: React.FC<Props> = ({
   iconComponent,
   active,
   children,
+  className,
   pinned,
   multiColumn,
   extraButton,
@@ -141,11 +149,11 @@ export const ColumnHeader: React.FC<Props> = ({
     onPin?.();
   }, [history, pinned, onPin]);
 
-  const wrapperClassName = classNames('column-header__wrapper', {
+  const wrapperClassName = classNames('column-header__wrapper', className, {
     active,
   });
 
-  const buttonClassName = classNames('column-header', {
+  const headingClassName = classNames('column-header', {
     active,
   });
 
@@ -219,7 +227,7 @@ export const ColumnHeader: React.FC<Props> = ({
     !pinned &&
     ((multiColumn && history.location.state?.fromMastodon) || showBackButton)
   ) {
-    backButton = <BackButton onlyIcon={!!title} />;
+    backButton = <BackButton hasTitle={!!title} />;
   }
 
   const collapsedContent = [extraContent];
@@ -256,39 +264,58 @@ export const ColumnHeader: React.FC<Props> = ({
   }
 
   const hasIcon = icon && iconComponent;
-  const hasTitle = hasIcon && title;
+  // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+  const hasTitle = (hasIcon || backButton) && title;
+  const columnIndex = useColumnIndexContext();
+
+  const titleContents = (
+    <>
+      {!backButton && hasIcon && (
+        <Icon id={icon} icon={iconComponent} className='column-header__icon' />
+      )}
+      <span className='column-header__text'>{title}</span>
+    </>
+  );
+
+  const titleClassNames = classNames('column-header__title', {
+    'column-header__title--with-back-button': !!backButton,
+  });
 
   const component = (
     <div className={wrapperClassName}>
-      <h1 className={buttonClassName}>
+      <div className={headingClassName}>
+        {backButton}
         {hasTitle && (
-          <>
-            {backButton}
-
-            <button
-              onClick={handleTitleClick}
-              className='column-header__title'
-              type='button'
-            >
-              {!backButton && (
-                <Icon
-                  id={icon}
-                  icon={iconComponent}
-                  className='column-header__icon'
-                />
-              )}
-              {title}
-            </button>
-          </>
+          <NavigationFocusTarget
+            as='h1'
+            className='column-header__title-wrapper'
+          >
+            {onClick ? (
+              <button
+                onClick={handleTitleClick}
+                className={titleClassNames}
+                type='button'
+                id={getColumnSkipLinkId(columnIndex)}
+              >
+                {titleContents}
+              </button>
+            ) : (
+              <span
+                className={titleClassNames}
+                tabIndex={-1}
+                id={getColumnSkipLinkId(columnIndex)}
+              >
+                {titleContents}
+              </span>
+            )}
+          </NavigationFocusTarget>
         )}
-
-        {!hasTitle && backButton}
 
         <div className='column-header__buttons'>
           {extraButton}
           {collapseButton}
         </div>
-      </h1>
+      </div>
 
       <div
         className={collapsibleClassName}

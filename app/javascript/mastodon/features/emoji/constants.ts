@@ -15,6 +15,8 @@ export const SKIN_TONE_CODES = [
   0x1f3ff, // Dark skin tone
 ] as const;
 
+export const EMOJI_MIN_TOKEN_LENGTH = 2;
+
 // Emoji rendering modes. A mode is what we are using to render emojis, a style is what the user has selected.
 export const EMOJI_MODE_NATIVE = 'native';
 export const EMOJI_MODE_NATIVE_WITH_FLAGS = 'native-flags';
@@ -24,8 +26,8 @@ export const EMOJI_TYPE_UNICODE = 'unicode';
 export const EMOJI_TYPE_CUSTOM = 'custom';
 
 export const EMOJI_DB_NAME_SHORTCODES = 'shortcodes';
-
 export const EMOJI_DB_SHORTCODE_TEST = '2122'; // 2122 is the trademark sign, which we know has shortcodes in all datasets.
+export const EMOJI_DB_RELOAD_EVENT = 'emojiDbReload';
 
 export const EMOJIS_WITH_DARK_BORDER = [
   '🎱', // 1F3B1

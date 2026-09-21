@@ -1,6 +1,6 @@
 import type { List as ImmutableList } from 'immutable';
 
-import type { FlatCompactEmoji, Locale } from 'emojibase';
+import type { CompactEmoji, Locale, SkinTone } from 'emojibase';
 
 import type { ApiCustomEmojiJSON } from '@/mastodon/api_types/custom_emoji';
 import type { CustomEmoji } from '@/mastodon/models/custom_emoji';
@@ -22,20 +22,29 @@ export type EmojiMode =
 
 export type LocaleOrCustom = Locale | typeof EMOJI_TYPE_CUSTOM;
 export type LocaleWithShortcodes = `${Locale}-shortcodes`;
-export type EtagTypes =
+export type CacheKey =
   | LocaleOrCustom
   | typeof EMOJI_DB_NAME_SHORTCODES
   | LocaleWithShortcodes;
 
 export interface EmojiAppState {
-  locales: Locale[];
   currentLocale: Locale;
   mode: EmojiMode;
   darkTheme: boolean;
+  assetHost: string;
 }
 
-export type CustomEmojiData = ApiCustomEmojiJSON;
-export type UnicodeEmojiData = FlatCompactEmoji;
+export type CustomEmojiData = ApiCustomEmojiJSON & { tokens: string[] };
+export interface UnicodeEmojiData extends Omit<
+  CompactEmoji,
+  'emoticon' | 'skins' | 'tags'
+> {
+  shortcodes: string[];
+  tokens: string[];
+  emoticons?: string[];
+  skinHexcodes?: string[];
+  skinTones?: (SkinTone | SkinTone[])[];
+}
 export type AnyEmojiData = CustomEmojiData | UnicodeEmojiData;
 
 type CustomEmojiRenderFields = Pick<
@@ -64,9 +73,30 @@ export type CustomEmojiMapArg =
   | ExtraCustomEmojiMap
   | ImmutableList<CustomEmoji>
   | CustomEmoji[]
-  | ApiCustomEmojiJSON[];
+  | Pick<ApiCustomEmojiJSON, 'shortcode' | 'static_url' | 'url'>[];
 
 export type ExtraCustomEmojiMap = Record<
   string,
   Pick<CustomEmojiData, 'shortcode' | 'static_url' | 'url'>
 >;
+
+export type EmojiWorkerMessage =
+  | { type: 'ready' }
+  | { type: 'db-blocked' }
+  | {
+      type: 'load';
+      storeName: string;
+    }
+  | {
+      type: 'done';
+      storeName: string;
+      importCount: number;
+    }
+  | {
+      type: 'log';
+      message: string;
+    }
+  | {
+      type: 'debug';
+      debugValue: string;
+    };
