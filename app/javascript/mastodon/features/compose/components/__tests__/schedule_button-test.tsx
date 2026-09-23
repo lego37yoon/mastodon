@@ -49,7 +49,7 @@ describe('<ScheduleButton />', () => {
 
   it('does not submit the surrounding compose form', () => {
     const onSchedule = vi.fn();
-    const onSubmit = vi.fn((event: React.FormEvent) => {
+    const onSubmit = vi.fn((event: React.SyntheticEvent) => {
       event.preventDefault();
     });
 

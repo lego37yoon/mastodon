@@ -1,3 +1,5 @@
+import { IntlProvider } from 'react-intl';
+
 import { MemoryRouter } from 'react-router-dom';
 
 import { render } from '@testing-library/react';
@@ -12,11 +14,14 @@ describe('<LinkedDisplayName />', () => {
       username: 'alice',
       acct: 'alice',
       display_name: 'Alice',
-    }).set('display_name_html', '<a href="https://example.com">Alice</a>');
+    });
+    account.display_name_html = '<a href="https://example.com">Alice</a>';
 
     const { container } = render(
       <MemoryRouter>
-        <LinkedDisplayName displayProps={{ account }} />
+        <IntlProvider locale='en'>
+          <LinkedDisplayName displayProps={{ account }} />
+        </IntlProvider>
       </MemoryRouter>,
     );
 

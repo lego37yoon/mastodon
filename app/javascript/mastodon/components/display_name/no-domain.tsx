@@ -9,10 +9,8 @@ import { Skeleton } from '../skeleton';
 
 import type { DisplayNameProps } from './index';
 
-// Display names are often rendered inside a link to the account. Remote
-// instances can send display-name HTML containing links, which would otherwise
-// produce invalid nested anchors. Keep their contents and styling, but make
-// those links non-interactive.
+// Display names commonly sit inside account links. Preserve the contents of
+// remote anchor markup without creating invalid, interactive nested links.
 export const handleDisplayNameElement: OnElementHandler = (
   element,
   { href: _, rel: _rel, target: _target, ...props },
@@ -38,10 +36,10 @@ export const DisplayNameWithoutDomain: FC<
         {account ? (
           <EmojiHTML
             className='display-name__html'
-            htmlString={account.get('display_name_html')}
+            htmlString={account.display_name_html}
             as='strong'
             onElement={handleDisplayNameElement}
-            extraEmojis={account.get('emojis')}
+            extraEmojis={account.emojis}
           />
         ) : (
           <strong className='display-name__html'>

@@ -1,4 +1,4 @@
-import { useCallback, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import type {
   ComponentPropsWithoutRef,
   ComponentType,
@@ -14,8 +14,6 @@ import classNames from 'classnames';
 import { usePrevious } from '@dnd-kit/utilities';
 import { animated, useSpring } from '@react-spring/web';
 import { useDrag } from '@use-gesture/react';
-
-import { useResizeObserver } from '@/mastodon/hooks/useObserver';
 
 import type { CarouselPaginationProps } from './pagination';
 import { CarouselPagination } from './pagination';
@@ -77,9 +75,14 @@ export const Carousel = <
 }: CarouselProps<SlideProps> & ComponentPropsWithoutRef<'div'>) => {
   // Handle slide change
   const [slideIndex, setSlideIndex] = useState(0);
-  const wrapperRef = useRef<HTMLDivElement>(null);
+  const [wrapperElement, setWrapperElement] = useState<HTMLDivElement | null>(
+    null,
+  );
+
   // Handle slide heights
-  const [currentSlideHeight, setCurrentSlideHeight] = useState(0);
+  const [currentSlideHeight, setCurrentSlideHeight] = useState<number | null>(
+    null,
+  );
   const previousSlideHeight = usePrevious(currentSlideHeight);
   const handleSlideChange = useCallback(
     (direction: number) => {
@@ -92,7 +95,7 @@ export const Carousel = <
           newIndex = 0;
         }
 
-        const slide = wrapperRef.current?.children[newIndex];
+        const slide = wrapperElement?.children[newIndex];
         if (slide) {
           setCurrentSlideHeight(slide.scrollHeight);
           if (slide instanceof HTMLElement) {
@@ -103,26 +106,27 @@ export const Carousel = <
         return newIndex;
       });
     },
-    [items.length, onChangeSlide],
+    [wrapperElement, items.length, onChangeSlide],
   );
 
-  const handleResize = useCallback(() => {
+  // Update slide height when the component mounts
+  if (wrapperElement && currentSlideHeight === null) {
     handleSlideChange(0);
-  }, [handleSlideChange]);
-  const observer = useResizeObserver(handleResize);
+  }
+
+  const [observer] = useState<ResizeObserver>(
+    () =>
+      new ResizeObserver(() => {
+        handleSlideChange(0);
+      }),
+  );
 
   const wrapperStyles = useSpring({
     x: `-${slideIndex * 100}%`,
-    height: currentSlideHeight,
+    height: currentSlideHeight ?? 0,
     // Don't animate from zero to the height of the initial slide
     immediate: !previousSlideHeight,
   });
-  useLayoutEffect(() => {
-    // Update slide height when the component mounts
-    if (currentSlideHeight === 0) {
-      handleSlideChange(0);
-    }
-  }, [currentSlideHeight, handleSlideChange]);
 
   // Handle swiping animations
   const bind = useDrag(
@@ -135,12 +139,12 @@ export const Carousel = <
     handleSlideChange(-1);
     // We're focusing on the wrapper as the child slides can potentially be inert.
     // Because of that, only the active slide can be focused anyway.
-    wrapperRef.current?.focus();
-  }, [handleSlideChange]);
+    wrapperElement?.focus();
+  }, [handleSlideChange, wrapperElement]);
   const handleNext = useCallback(() => {
     handleSlideChange(1);
-    wrapperRef.current?.focus();
-  }, [handleSlideChange]);
+    wrapperElement?.focus();
+  }, [handleSlideChange, wrapperElement]);
 
   const intl = useIntl();
 
@@ -173,7 +177,7 @@ export const Carousel = <
 
       <animated.div
         className={`${classNamePrefix}__slides`}
-        ref={wrapperRef}
+        ref={setWrapperElement}
         style={wrapperStyles}
         aria-label={intl.formatMessage(messages.slide, {
           current: slideIndex + 1,
@@ -200,7 +204,7 @@ export const Carousel = <
 };
 
 type CarouselSlideWrapperProps<SlideProps extends CarouselSlideProps> = {
-  observer: ResizeObserver;
+  observer: ResizeObserver | null;
   className: string;
   active: boolean;
   item: SlideProps;
@@ -217,7 +221,7 @@ const CarouselSlideWrapper = <SlideProps extends CarouselSlideProps>({
 }: CarouselSlideWrapperProps<SlideProps>) => {
   const handleRef = useCallback(
     (instance: HTMLDivElement | null) => {
-      if (instance) {
+      if (observer && instance) {
         observer.observe(instance);
       }
     },
@@ -235,7 +239,7 @@ const CarouselSlideWrapper = <SlideProps extends CarouselSlideProps>({
       className={className}
       role='group'
       aria-roledescription='slide'
-      inert={active ? undefined : ''}
+      inert={!active}
       data-index={index}
     >
       {children}

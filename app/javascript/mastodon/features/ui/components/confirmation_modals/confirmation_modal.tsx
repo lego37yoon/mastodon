@@ -52,8 +52,8 @@ export const ConfirmationModal: React.FC<
   noCloseOnConfirm = false,
   noFocusButton = false,
 }) => {
-  const handleSubmit = useCallback(
-    (e: React.FormEvent) => {
+  const handleSubmit = useCallback<React.SubmitEventHandler<HTMLFormElement>>(
+    (e) => {
       e.preventDefault();
 
       if (!noCloseOnConfirm) {
@@ -109,7 +109,6 @@ export const ConfirmationModal: React.FC<
           </>
         )}
 
-        {}
         <Button
           type='submit'
           loading={updating}
@@ -118,7 +117,7 @@ export const ConfirmationModal: React.FC<
         >
           {confirm}
         </Button>
-        {}
+        { }
       </ModalShellActions>
     </ModalShell>
   );

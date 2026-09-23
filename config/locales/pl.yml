@@ -1872,7 +1872,6 @@ pl:
     next: Następna
     older: Starsze
     prev: Poprzednia
-    truncate: "&hellip;"
   polls:
     errors:
       already_voted: Już oddałeś(-aś) głos w tym głosowaniu
@@ -2133,9 +2132,6 @@ pl:
     title: Warunki korzystania z %{domain} zmieniają się
   themes:
     default: Mastodon
-    maruburi: MaruBuri
-    ridibatang: RIDI Batang
-    smore: S'more
   time:
     formats:
       default: "%d. %b %Y, %H:%M"

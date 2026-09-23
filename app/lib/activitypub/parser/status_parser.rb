@@ -105,8 +105,6 @@ class ActivityPub::Parser::StatusParser
       :unlisted
     elsif audience_to.include?(@options[:followers_collection])
       :private
-    elsif direct_message == false
-      :limited
     else
       :direct
     end
@@ -166,10 +164,6 @@ class ActivityPub::Parser::StatusParser
 
   def converted_object_type?
     equals_or_includes_any?(@object['type'], ActivityPub::Activity::CONVERTED_TYPES)
-  end
-
-  def direct_message
-    @object['directMessage']
   end
 
   def audience_to

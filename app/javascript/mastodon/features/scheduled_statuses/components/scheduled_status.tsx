@@ -1,5 +1,5 @@
 import { useCallback, useId, useMemo, useState } from 'react';
-import type { ChangeEvent, FC, FormEvent } from 'react';
+import type { ChangeEvent, FC, SyntheticEvent } from 'react';
 
 import { defineMessages, useIntl } from 'react-intl';
 
@@ -121,7 +121,7 @@ export const ScheduledStatusCard: FC<ScheduledStatusProps> = ({ status }) => {
   );
 
   const handleSaveTime = useCallback(
-    (event: FormEvent) => {
+    (event: SyntheticEvent) => {
       event.preventDefault();
       if (!isScheduledAtValid(scheduledAt)) return;
 
