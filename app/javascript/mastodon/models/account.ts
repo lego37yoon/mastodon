@@ -7,6 +7,7 @@ import type {
   ApiAccountFieldJSON,
   ApiAccountRoleJSON,
   ApiAccountJSON,
+  ApiReactionAccountJSON,
 } from 'mastodon/api_types/accounts';
 import { unescapeHTML } from 'mastodon/utils/html';
 
@@ -161,5 +162,24 @@ export function createAccountFromServerJSON(serverJSON: ApiAccountJSON) {
       accountJSON.url?.startsWith('https://')
         ? accountJSON.url
         : accountJSON.uri,
+  });
+}
+
+export function createAccountFromReactionJSON(
+  serverJSON: ApiReactionAccountJSON,
+) {
+  return AccountFactory({
+    id: serverJSON.id,
+    username: serverJSON.username,
+    acct: serverJSON.acct,
+    display_name: serverJSON.display_name,
+    display_name_html: serverJSON.display_name_html,
+    url: serverJSON.url,
+    avatar: serverJSON.avatar,
+    avatar_static: serverJSON.avatar_static,
+    emojis: ImmutableList(
+      serverJSON.emojis.map((emoji) => CustomEmojiFactory(emoji)),
+    ),
+    is_cat: serverJSON.is_cat,
   });
 }

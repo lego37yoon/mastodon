@@ -64,31 +64,25 @@ export const REACTION_REMOVE_FAIL    = 'REACTION_REMOVE_FAIL';
 export * from "./interactions_typed";
 
 const getReactionAccountFromState = (state) => {
-  const accountId = state?.meta?.get
-    ? state.meta.get('me')
-    : state?.getIn?.(['meta', 'me']);
+  const accountId = state.meta.get('me');
   if (!accountId) return null;
 
   const accountLookupId = `${accountId}`;
-  const accounts = state?.get?.('accounts') || state?.accounts;
+  const account = state.accounts.get(accountId) || state.accounts.get(accountLookupId);
 
-  const account = accounts
-    ? (accounts.get?.(accountId) || accounts.get?.(accountLookupId))
-    : (state?.getIn?.(['accounts', accountId]) || state?.getIn?.(['accounts', accountLookupId]));
-
-  if (!account || !account.get) return null;
+  if (!account) return null;
 
   return {
-    id: account.get('id'),
-    username: account.get('username'),
-    acct: account.get('acct'),
-    display_name: account.get('display_name'),
-    display_name_html: account.get('display_name_html'),
-    url: account.get('url'),
-    avatar: account.get('avatar'),
-    avatar_static: account.get('avatar_static'),
-    emojis: account.get('emojis'),
-    is_cat: account.get('is_cat'),
+    id: account.id,
+    username: account.username,
+    acct: account.acct,
+    display_name: account.display_name,
+    display_name_html: account.display_name_html,
+    url: account.url,
+    avatar: account.avatar,
+    avatar_static: account.avatar_static,
+    emojis: account.emojis.toJS(),
+    is_cat: account.is_cat,
   };
 };
 
@@ -529,7 +523,7 @@ export function toggleFavourite(statusId) {
 }
 
 export const addReaction = (statusId, name, url) => (dispatch, getState) => {
-  const status = getState().get('statuses').get(statusId);
+  const status = getState().statuses.get(statusId);
   let alreadyAdded = false;
   if (status) {
     const reaction = status.get('reactions').find(x => x.get('name') === name);

@@ -142,6 +142,7 @@ export const statusFactoryAPI: FactoryFunction<ApiStatusJSON> = ({
   mentions: [],
   tags: [],
   emojis: [],
+  reactions: [],
   tagged_collections: [],
   content:
     data.text

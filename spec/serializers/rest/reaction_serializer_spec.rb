@@ -17,10 +17,16 @@ RSpec.describe REST::ReactionSerializer do
   it 'includes full reacted_by list for the reaction' do
     expect(subject['reacted_by']).to contain_exactly(hash_including(
                                                        'id' => reactor_a.id.to_s,
-                                                       'display_name' => reactor_a.display_name
+                                                       'username' => reactor_a.username,
+                                                       'display_name' => reactor_a.display_name,
+                                                       'display_name_html' => reactor_a.display_name,
+                                                       'emojis' => []
                                                      ), hash_including(
                                                           'id' => reactor_b.id.to_s,
-                                                          'display_name' => reactor_b.display_name
+                                                          'username' => reactor_b.username,
+                                                          'display_name' => reactor_b.display_name,
+                                                          'display_name_html' => reactor_b.display_name,
+                                                          'emojis' => []
                                                         ))
   end
 end

@@ -1,6 +1,7 @@
 // See app/serializers/rest/announcement_serializer.rb
 
 import type { ApiCustomEmojiJSON } from './custom_emoji';
+import type { ApiReactionJSON } from './reactions';
 import type { ApiMentionJSON, ApiStatusJSON, ApiTagJSON } from './statuses';
 
 export interface ApiAnnouncementJSON {
@@ -19,10 +20,4 @@ export interface ApiAnnouncementJSON {
   reactions: ApiAnnouncementReactionJSON[];
 }
 
-export interface ApiAnnouncementReactionJSON {
-  name: string;
-  count: number;
-  me: boolean;
-  url?: string;
-  static_url?: string;
-}
+export type ApiAnnouncementReactionJSON = ApiReactionJSON;
