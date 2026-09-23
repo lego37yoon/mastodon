@@ -189,6 +189,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_12_154114) do
     t.integer "id_scheme", default: 1
     t.string "inbox_url", default: "", null: false
     t.boolean "indexable", default: false, null: false
+    t.boolean "is_cat", default: false, null: false
     t.datetime "last_webfingered_at", precision: nil
     t.boolean "locked", default: false, null: false
     t.boolean "memorial", default: false, null: false
@@ -214,7 +215,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_12_154114) do
     t.string "uri"
     t.string "url"
     t.string "username", default: "", null: false
-    t.boolean "is_cat", default: false, null: false
     t.index "(((setweight(to_tsvector('simple'::regconfig, (display_name)::text), 'A'::\"char\") || setweight(to_tsvector('simple'::regconfig, (username)::text), 'B'::\"char\")) || setweight(to_tsvector('simple'::regconfig, (COALESCE(domain, ''::character varying))::text), 'C'::\"char\")))", name: "search_index", using: :gin
     t.index "lower((username)::text), COALESCE(lower((domain)::text), ''::text)", name: "index_accounts_on_username_and_domain_lower", unique: true
     t.index ["domain", "id"], name: "index_accounts_on_domain_and_id"
@@ -1219,10 +1219,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_12_154114) do
 
   create_table "status_reactions", force: :cascade do |t|
     t.bigint "account_id", null: false
-    t.bigint "status_id", null: false
-    t.string "name", default: "", null: false
-    t.bigint "custom_emoji_id"
     t.datetime "created_at", null: false
+    t.bigint "custom_emoji_id"
+    t.string "name", default: "", null: false
+    t.bigint "status_id", null: false
     t.datetime "updated_at", null: false
     t.index ["account_id", "status_id", "name"], name: "index_status_reactions_on_account_id_and_status_id", unique: true
     t.index ["account_id"], name: "index_status_reactions_on_account_id"
