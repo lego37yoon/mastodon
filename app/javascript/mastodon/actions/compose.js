@@ -15,6 +15,7 @@ import { useEmoji } from './emojis';
 import { importFetchedAccounts, importFetchedStatus } from './importer';
 import { openModal } from './modal';
 import { updateTimeline } from './timelines';
+import { insertStatusIntoAccountTimelines } from './timelines_typed';
 
 /** @type {AbortController | undefined} */
 let fetchComposeSuggestionsAccountsController;
@@ -191,15 +192,19 @@ export function directCompose(account) {
   };
 }
 
-export function submitCompose(successCallback, scheduledAt = /** @type {string | null} */ (null)) {
+/**
+ * @param {((status: import('../api_types/statuses').ApiStatusJSON) => void) | undefined} successCallback
+ * @param {string | null} [scheduledAt]
+ */
+export function submitCompose(successCallback, scheduledAt = null) {
   return function (dispatch, getState) {
-    const status   = getState().getIn(['compose', 'text'], '');
-    const media    = getState().getIn(['compose', 'media_attachments']);
-    const statusId = getState().getIn(['compose', 'id'], null);
-    const hasQuote = !!getState().getIn(['compose', 'quoted_status_id']);
+    const statusText   = getState().getIn(['compose', 'text'], '');
+    const media        = getState().getIn(['compose', 'media_attachments']);
+    const statusId     = getState().getIn(['compose', 'id'], null);
+    const hasQuote     = !!getState().getIn(['compose', 'quoted_status_id']);
     const spoiler_text = getState().getIn(['compose', 'spoiler']) ? getState().getIn(['compose', 'spoiler_text'], '') : '';
 
-    const fulltext = `${spoiler_text ?? ''}${countableText(status ?? '')}`;
+    const fulltext = `${spoiler_text ?? ''}${countableText(statusText ?? '')}`;
     const hasText = fulltext.trim().length > 0;
 
     if (!(hasText || media.size !== 0 || (hasQuote && spoiler_text?.length))) {
@@ -238,7 +243,7 @@ export function submitCompose(successCallback, scheduledAt = /** @type {string |
       url: statusId === null ? '/api/v1/statuses' : `/api/v1/statuses/${statusId}`,
       method: statusId === null ? 'post' : 'put',
       data: {
-        status,
+        status: statusText,
         spoiler_text,
         in_reply_to_id: getState().getIn(['compose', 'in_reply_to'], null),
         media_ids: media.map(item => item.get('id')),
@@ -272,7 +277,7 @@ export function submitCompose(successCallback, scheduledAt = /** @type {string |
         return;
       }
 
-      dispatch(insertIntoTagHistory(response.data.tags, status));
+      dispatch(insertIntoTagHistory(response.data.tags, statusText));
 
       // To make the app more responsive, immediately push the status
       // into the columns
@@ -297,6 +302,8 @@ export function submitCompose(successCallback, scheduledAt = /** @type {string |
         insertIfOnline('public');
         insertIfOnline(`account:${response.data.account.id}`);
       }
+
+      dispatch(insertStatusIntoAccountTimelines({ ...response.data }))
 
       dispatch(showAlert({
         message: statusId === null ? messages.published : messages.saved,

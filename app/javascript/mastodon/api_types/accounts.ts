@@ -60,7 +60,7 @@ export interface BaseApiAccountJSON {
   show_featured: boolean;
   noindex?: boolean;
   note: string;
-  roles?: ApiAccountJSON[];
+  roles?: ApiAccountRoleJSON[];
   statuses_count: number;
   uri: string;
   url?: string;
@@ -72,6 +72,7 @@ export interface BaseApiAccountJSON {
   hide_collections: boolean;
   is_cat?: boolean;
   email_subscriptions?: boolean;
+  invalid_handle?: boolean;
 }
 
 // See app/serializers/rest/muted_account_serializer.rb
@@ -82,6 +83,20 @@ export interface ApiMutedAccountJSON extends BaseApiAccountJSON {
 // For now, we have the same type representing both `Account` and `MutedAccount`
 // objects, but we should refactor this in the future.
 export type ApiAccountJSON = ApiMutedAccountJSON;
+
+// See app/serializers/rest/reaction_serializer.rb
+export interface ApiReactionAccountJSON {
+  id: string;
+  username: string;
+  acct: string;
+  display_name: string;
+  display_name_html: string;
+  url: string;
+  avatar: string;
+  avatar_static: string;
+  emojis: ApiCustomEmojiJSON[];
+  is_cat: boolean;
+}
 
 // See app/serializers/rest/familiar_followers_serializer.rb
 export type ApiFamiliarFollowersJSON = {

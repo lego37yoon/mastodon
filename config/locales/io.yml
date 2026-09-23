@@ -1527,7 +1527,6 @@ io:
     next: Sequanta
     older: Olda
     prev: Preiranta
-    truncate: "&hellip;"
   polls:
     errors:
       already_voted: Vu ja votis sur ca votinquesto

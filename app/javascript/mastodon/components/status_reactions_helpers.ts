@@ -1,9 +1,9 @@
 import { List } from 'immutable';
 import type { Map as ImmutableMap } from 'immutable';
 
-import type { ApiCustomEmojiJSON } from 'mastodon/api_types/custom_emoji';
+import type { ApiReactionAccountJSON } from 'mastodon/api_types/accounts';
 import type { Account } from 'mastodon/models/account';
-import { CustomEmojiFactory } from 'mastodon/models/custom_emoji';
+import { createAccountFromReactionJSON } from 'mastodon/models/account';
 
 import type {
   ReactedByAccount,
@@ -70,47 +70,10 @@ export const getReactedByList = (reaction: Reaction): ReactedByAccount[] => {
   return reactedBy.toArray() as ReactedByAccount[];
 };
 
-const hasToJS = (value: unknown): value is { toJS: () => unknown } =>
-  typeof value === 'object' &&
-  value !== null &&
-  'toJS' in value &&
-  typeof value.toJS === 'function';
+const toReactionAccountJSON = (
+  account: ReactedByAccount,
+): ApiReactionAccountJSON =>
+  account.toJS() as unknown as ApiReactionAccountJSON;
 
-const toCustomEmojiJSON = (emoji: unknown): ApiCustomEmojiJSON => {
-  if (hasToJS(emoji)) {
-    return emoji.toJS() as ApiCustomEmojiJSON;
-  }
-
-  return emoji as ApiCustomEmojiJSON;
-};
-
-const getReactionAccountEmojis = (account: MapLike) => {
-  const emojis = getValue(account, 'emojis');
-
-  if (!List.isList(emojis)) {
-    return emojis;
-  }
-
-  return emojis.map((emoji) => CustomEmojiFactory(toCustomEmojiJSON(emoji)));
-};
-
-export const toDisplayAccount = (
-  account: ReactedByAccount | Record<string, unknown>,
-): Account => {
-  const displayAccount = {
-    id: getString(account, 'id') ?? '',
-    acct: getString(account, 'acct') ?? '',
-    avatar: getString(account, 'avatar') ?? '',
-    avatar_static: getString(account, 'avatar_static') ?? '',
-    is_cat: getBoolean(account, 'is_cat'),
-    get: (key: string): unknown => {
-      if (key === 'emojis') {
-        return getReactionAccountEmojis(account);
-      }
-
-      return getValue(account, key);
-    },
-  };
-
-  return displayAccount as unknown as Account;
-};
+export const toDisplayAccount = (account: ReactedByAccount): Account =>
+  createAccountFromReactionJSON(toReactionAccountJSON(account));

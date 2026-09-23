@@ -5,16 +5,15 @@ import { Link } from 'react-router-dom';
 
 import { useHovering } from 'mastodon/hooks/useHovering';
 import { autoPlayGif } from 'mastodon/initial_state';
-import type { Account } from 'mastodon/models/account';
+import type { Account, AccountShapeFull } from 'mastodon/models/account';
 
 import { useAccount } from '../hooks/useAccount';
 
 interface Props {
-  account:
-    | (Pick<Account, 'id' | 'acct' | 'avatar' | 'avatar_static'> & {
-        is_cat?: boolean;
-      })
-    | undefined; // FIXME: remove `undefined` once we know for sure its always there
+  account?: Pick<
+    Account | AccountShapeFull,
+    'id' | 'acct' | 'avatar' | 'avatar_static'
+  > & { is_cat?: boolean };
   alt?: string;
   size?: number;
   style?: React.CSSProperties;
@@ -71,10 +70,11 @@ export const Avatar: React.FC<Props> = ({
       {src && !error && (
         <img src={src} alt={alt} onLoad={handleLoad} onError={handleError} />
       )}
+
       {account?.is_cat && (
-        <div className='account__avatar__cat-badge'>
+        <span className='account__avatar__cat-badge' aria-hidden='true'>
           <span>🐱</span>
-        </div>
+        </span>
       )}
 
       {counter && (

@@ -208,7 +208,7 @@ class Reaction extends PureComponent<ReactionProps, ReactionState> {
             items={reactedByList}
             forceDropdown
             placement='top'
-            offset={[0, 4]}
+            offset={{ crossAxis: 0, mainAxis: 4 }}
             scrollable={reactedByList.length > 4}
             renderItem={this.renderItem}
           >

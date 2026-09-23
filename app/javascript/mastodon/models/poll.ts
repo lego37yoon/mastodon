@@ -18,7 +18,7 @@ export interface PollOption extends ApiPollOptionJSON {
 
 export function createPollOptionTranslationFromServerJSON(translation: {
   title: string;
-}) {
+}): PollOptionTranslation {
   return {
     ...translation,
     titleHtml: escapeTextContentForBrowser(translation.title),

@@ -1542,7 +1542,6 @@ bg:
     next: Напред
     older: По-старо
     prev: Назад
-    truncate: "&hellip;"
   polls:
     errors:
       already_voted: Вече сте гласували в тази анкета

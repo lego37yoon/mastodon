@@ -87,7 +87,7 @@ const addReaction = (state, id, name, url, account) => updateReaction(
     const reactorId = getReactionId(account);
 
     if (reactorId != null && !reactedBy.some(current => `${getReactionId(current)}` === `${reactorId}`)) {
-      reactedBy = reactedBy.push(account);
+      reactedBy = reactedBy.push(fromJS(account));
     }
 
     return x.set('me', true)

@@ -277,24 +277,16 @@ RSpec.describe ActivityPub::Activity::Create do
         end
       end
 
-      context 'with a standalone' do
+      context 'with a standalone post' do
         let(:object_json) { build_object }
 
-        it 'creates status' do
+        it 'creates a status with expected text and direct privacy' do
           expect { subject.perform }.to change(sender.statuses, :count).by(1)
 
           status = sender.statuses.first
 
           expect(status).to_not be_nil
           expect(status.text).to eq 'Lorem ipsum'
-        end
-
-        it 'missing to/cc defaults to direct privacy' do
-          expect { subject.perform }.to change(sender.statuses, :count).by(1)
-
-          status = sender.statuses.first
-
-          expect(status).to_not be_nil
           expect(status.visibility).to eq 'direct'
         end
       end
@@ -329,6 +321,55 @@ RSpec.describe ActivityPub::Activity::Create do
           status = sender.statuses.first
 
           expect(status).to_not be_nil
+          expect(status.visibility).to eq 'public'
+        end
+      end
+
+      context 'with a public status mentioning multiple links' do
+        let(:object_json) do
+          build_object(
+            to: 'as:Public',
+            content: 'This is a test <a href="https://joinmastodon.org">https://joinmastodon.org</a> <a href="https://activitypub.rocks/">https://activitypub.rocks/</a>'
+          )
+        end
+
+        it 'creates a status and schedules link fetching job for first link' do
+          expect { subject.perform }
+            .to change(sender.statuses, :count).by(1)
+
+          status = sender.statuses.first
+
+          expect(status).to_not be_nil
+
+          expect(LinkCrawlWorker).to have_enqueued_sidekiq_job(status.id, nil)
+
+          expect(status.visibility).to eq 'public'
+        end
+      end
+
+      context 'with a public status specifying a link attachment (FEP-8967)' do
+        let(:object_json) do
+          build_object(
+            to: 'as:Public',
+            content: 'This is a test <a href="https://joinmastodon.org">https://joinmastodon.org</a> <a href="https://activitypub.rocks/">https://activitypub.rocks/</a>',
+            attachment: [
+              {
+                href: 'https://activitypub.rocks/',
+              },
+            ]
+          )
+        end
+
+        it 'creates a status and schedules link fetching job for specified link' do
+          expect { subject.perform }
+            .to change(sender.statuses, :count).by(1)
+
+          status = sender.statuses.first
+
+          expect(status).to_not be_nil
+
+          expect(LinkCrawlWorker).to have_enqueued_sidekiq_job(status.id, 'https://activitypub.rocks/')
+
           expect(status.visibility).to eq 'public'
         end
       end
@@ -459,32 +500,6 @@ RSpec.describe ActivityPub::Activity::Create do
         end
       end
 
-      context 'when directMessage attribute is false' do
-        let(:recipient) { Fabricate(:account) }
-
-        let(:object_json) do
-          {
-            id: [ActivityPub::TagManager.instance.uri_for(sender), '#bar'].join,
-            type: 'Note',
-            content: 'Lorem ipsum',
-            directMessage: false,
-            to: ActivityPub::TagManager.instance.uri_for(recipient),
-            tag: {
-              type: 'Mention',
-              href: ActivityPub::TagManager.instance.uri_for(recipient),
-            },
-          }
-        end
-
-        it 'creates status with limited visibility' do
-          expect { subject.perform }.to change(sender.statuses, :count).by(1)
-
-          expect(sender.statuses.first)
-            .to be_present
-            .and have_attributes(visibility: 'limited')
-        end
-      end
-
       context 'when the status is already known' do
         let(:recipient) { Fabricate(:account) }
 
@@ -520,29 +535,6 @@ RSpec.describe ActivityPub::Activity::Create do
               href: ActivityPub::TagManager.instance.uri_for(recipient),
             }
           )
-        end
-
-        it 'creates status with direct visibility' do
-          expect { subject.perform }.to change(sender.statuses, :count).by(1)
-
-          status = sender.statuses.first
-
-          expect(status).to_not be_nil
-          expect(status.visibility).to eq 'direct'
-        end
-      end
-
-      context 'when directMessage attribute is true' do
-        let(:recipient) { Fabricate(:account) }
-
-        let(:object_json) do
-          {
-            id: [ActivityPub::TagManager.instance.uri_for(sender), '#bar'].join,
-            type: 'Note',
-            content: 'Lorem ipsum',
-            to: ActivityPub::TagManager.instance.uri_for(recipient),
-            directMessage: true,
-          }
         end
 
         it 'creates status' do

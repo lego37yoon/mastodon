@@ -84,8 +84,10 @@ export const ScheduleButton: React.FC<Props> = ({
     triggerRef.current?.focus();
   }, []);
 
-  const handleSubmit = useCallback<React.FormEventHandler<HTMLFormElement>>(
-    (event) => {
+  const getTriggerElement = useCallback(() => triggerRef.current, []);
+
+  const handleSubmit = useCallback(
+    (event: React.SyntheticEvent<HTMLFormElement>) => {
       event.preventDefault();
       event.stopPropagation();
       if (!isScheduledAtValid(scheduledAt)) return;
@@ -134,7 +136,7 @@ export const ScheduleButton: React.FC<Props> = ({
         offset={[0, 5]}
         placement='top-end'
         flip
-        target={triggerRef}
+        target={getTriggerElement}
         popperConfig={{ strategy: 'fixed' }}
       >
         {({ props }) => (

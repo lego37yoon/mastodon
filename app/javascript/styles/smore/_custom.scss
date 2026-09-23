@@ -1753,6 +1753,15 @@ kbd {
 
   .columns-area__panels__pane--navigational
     .columns-area__panels__pane__inner
+    .navigation-panel {
+    // Keep the menu viewport-constrained so it can scroll on short mobile
+    // screens instead of growing past the bottom of the viewport.
+    height: 100dvh;
+    max-height: 100dvh;
+  }
+
+  .columns-area__panels__pane--navigational
+    .columns-area__panels__pane__inner
     .navigation-panel__menu {
     overflow: scroll;
     z-index: 5;

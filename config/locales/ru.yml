@@ -736,6 +736,8 @@ ru:
       new:
         title: Новое правило для IP-адресов
       no_ip_block_selected: Ничего не изменилось, так как ни одно правило не было выделено
+      reset: Сбросить
+      search: Поиск
       title: Правила для IP-адресов
     relationships:
       title: Отношения пользователя %{acct}
@@ -1930,7 +1932,6 @@ ru:
     next: Вперёд
     older: Раньше
     prev: Назад
-    truncate: "&hellip;"
   polls:
     errors:
       already_voted: Вы уже проголосовали в этом опросе
@@ -2194,9 +2195,6 @@ ru:
     title: Изменяется пользовательское соглашение на сервере %{domain}
   themes:
     default: Mastodon
-    maruburi: MaruBuri
-    ridibatang: RIDI Batang
-    smore: S'more
   time:
     formats:
       default: "%d %b %Y, %H:%M"

@@ -7,11 +7,12 @@ import type {
   ApiAccountFieldJSON,
   ApiAccountRoleJSON,
   ApiAccountJSON,
+  ApiReactionAccountJSON,
 } from 'mastodon/api_types/accounts';
 import { unescapeHTML } from 'mastodon/utils/html';
 
 import { CustomEmojiFactory } from './custom_emoji';
-import type { CustomEmoji } from './custom_emoji';
+import type { CustomEmoji, CustomEmojiShape } from './custom_emoji';
 
 // AccountField
 export interface AccountFieldShape extends Required<ApiAccountFieldJSON> {
@@ -55,6 +56,14 @@ export interface AccountShape extends Required<
   moved: string | null;
   url: string;
 }
+export type AccountShapeFull = Omit<
+  AccountShape,
+  'emojis' | 'fields' | 'roles'
+> & {
+  emojis: CustomEmojiShape[];
+  fields: AccountFieldShape[];
+  roles: AccountRoleShape[];
+};
 
 export type Account = RecordOf<AccountShape>;
 
@@ -105,6 +114,7 @@ export const accountDefaultValues: AccountShape = {
   hide_collections: false,
   is_cat: false,
   email_subscriptions: false,
+  invalid_handle: false,
   // This comes from `ApiMutedAccountJSON`, but we should eventually
   // store that in a different object.
   mute_expires_at: null,
@@ -152,5 +162,24 @@ export function createAccountFromServerJSON(serverJSON: ApiAccountJSON) {
       accountJSON.url?.startsWith('https://')
         ? accountJSON.url
         : accountJSON.uri,
+  });
+}
+
+export function createAccountFromReactionJSON(
+  serverJSON: ApiReactionAccountJSON,
+) {
+  return AccountFactory({
+    id: serverJSON.id,
+    username: serverJSON.username,
+    acct: serverJSON.acct,
+    display_name: serverJSON.display_name,
+    display_name_html: serverJSON.display_name_html,
+    url: serverJSON.url,
+    avatar: serverJSON.avatar,
+    avatar_static: serverJSON.avatar_static,
+    emojis: ImmutableList(
+      serverJSON.emojis.map((emoji) => CustomEmojiFactory(emoji)),
+    ),
+    is_cat: serverJSON.is_cat,
   });
 }
