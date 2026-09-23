@@ -1,6 +1,8 @@
 @use 'fonts/plexsans';
-@use 'mastodon/variables' with (
-  $font-sans-serif: 'IBM Plex Sans KR',
-  $font-display: 'IBM Plex Sans KR'
-);
 @use 'smore/application';
+
+html,
+html[data-redesign='true'] {
+  --font-body: 'IBM Plex Sans KR', sans-serif;
+  --font-heading: 'IBM Plex Sans KR', sans-serif;
+}
