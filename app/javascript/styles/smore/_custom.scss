@@ -204,26 +204,6 @@ a.status-card:active .status-card__description {
   background: var(--color-bg-secondary);
 
   &__item {
-    box-sizing: border-box;
-    width: 100%;
-    padding: 15px;
-    position: relative;
-    font-size: 15px;
-    line-height: 20px;
-    overflow-wrap: break-word;
-    font-weight: 400;
-    max-height: 70vh;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-
-    &__range {
-      display: block;
-      font-weight: 500;
-      margin-bottom: 10px;
-      padding-inline-end: 18px;
-    }
-
     &__content {
       border-radius: 10px;
 
@@ -233,17 +213,6 @@ a.status-card:active .status-card__description {
         width: 1.25em;
         height: 1.25em;
       }
-    }
-
-    &__unread {
-      position: absolute;
-      top: 19px;
-      inset-inline-end: 19px;
-      display: block;
-      background: var(--color-text-brand);
-      border-radius: 50%;
-      width: 0.625rem;
-      height: 0.625rem;
     }
   }
 
