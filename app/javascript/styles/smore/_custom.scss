@@ -1324,24 +1324,6 @@ kbd {
   background: var(--smore-color-bg-glass);
 }
 
-.react-toggle--checked .react-toggle-track {
-  background-color: var(--color-text-brand);
-}
-
-.react-toggle--focus {
-  outline: 2px solid var(--color-text-brand);
-}
-
-.react-toggle:hover:not(.react-toggle--disabled) .react-toggle-track,
-.react-toggle.react-toggle--checked:hover:not(.react-toggle--disabled)
-  .react-toggle-track {
-  background: var(--color-bg-brand-base);
-}
-
-.react-toggle-track {
-  background: var(--color-bg-secondary);
-}
-
 .relationship-tag {
   border-radius: 25px;
   padding: 5px 10px;
