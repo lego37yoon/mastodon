@@ -1700,6 +1700,12 @@ kbd {
 }
 
 @media screen and (width <= 630px) {
+  .layout-single-column
+    .notifications-column-header
+    .column-header__collapsible:not(.collapsed) {
+    margin-block-end: 0.5rem;
+  }
+
   .column-back-button {
     margin-bottom: 1em;
   }

@@ -259,6 +259,7 @@ export const Notifications: React.FC<{
       label={intl.formatMessage(messages.title)}
     >
       <ColumnHeader
+        className='notifications-column-header'
         icon='bell'
         iconComponent={NotificationsIcon}
         active={isUnread}
