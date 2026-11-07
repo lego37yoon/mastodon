@@ -1302,7 +1302,7 @@ kbd {
   // Reserve a single row and keep additional reactions on that row so adding a
   // reaction does not change the announcement's height.
   flex-wrap: nowrap;
-  min-height: 28px;
+  min-height: calc(28px + 1rem);
   overflow-x: auto;
   scrollbar-width: none;
 
