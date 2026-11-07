@@ -779,7 +779,8 @@ body > [data-popover-placement] {
   &__submit {
     display: flex;
     align-items: center;
-    flex: 1 1 auto;
+    flex: 0 1 auto;
+    margin-inline-start: auto;
     max-width: 100%;
   }
 

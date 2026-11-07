@@ -454,24 +454,10 @@ a.table-action-link:hover {
   color: var(--color-text-brand);
 }
 
-.compose-form .compose-form__autosuggest-wrapper {
-  border-radius: 10px;
-  margin-bottom: 1em;
-}
-
-.compose-form .compose-form__modifiers {
-  border-radius: 10px;
-  margin: 1px;
-}
-
 .compose-form__highlightable {
   border: none;
   border-radius: 10px;
   background: var(--color-bg-secondary);
-}
-
-.compose-form__poll-wrapper select {
-  border-radius: 25px;
 }
 
 .compose-form .spoiler-input .autosuggest-input {
