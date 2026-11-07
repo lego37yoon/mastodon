@@ -13,6 +13,8 @@
 }
 
 @mixin light {
+  --color-bg-disabled: var(--color-smore-200);
+  --color-text-on-disabled: var(--color-smore-700);
   --color-text-brand: var(--color-smore-600);
   --color-text-brand-on-inverted: var(--color-smore-400);
   --color-border-success-soft: var(--color-green-600);
@@ -48,6 +50,8 @@
 }
 
 @mixin dark {
+  --color-bg-disabled: var(--color-smore-900);
+  --color-text-on-disabled: var(--color-smore-300);
   --color-text-brand: var(--color-smore-300);
   --color-text-brand-on-inverted: var(--color-smore-600);
   --color-bg-brand-base: var(--color-smore-600);
